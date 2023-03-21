@@ -195,7 +195,7 @@ insert into rua values (null,'Haddock Lobo','1414001'),
 					   (null,'José neto Julho','12940760'),
 					   (null,'Rua Palanque','08030-110'),
 					   (null,'Avenida Julho Vargas','01308-071'),
-					   (null,'Algusta','01308-071');
+					   (null,'Algusta','01308-071');
 
 create table estado(
 idEstado int primary key auto_increment,
