@@ -1,0 +1,8 @@
+
+/* menu hamburguer */
+@media (max-width: 850px){
+    .nav-lista {
+        display: none;
+    }
+}
+
