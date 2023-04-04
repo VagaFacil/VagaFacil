@@ -1,0 +1,172 @@
+body {
+    margin: 0;
+    background-color: #1C7C94;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+/*Começo do header*/
+.container{
+    display: flex;
+    width: 95%;
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
+}
+.navBar {
+    display: flex;
+    align-items: center;
+    background-color: #0C243C;
+    width: 100%;
+    height:70px ;
+}
+.navBar img{
+    height: 50px;
+    transition: 400ms;
+}
+.navBar img:hover {
+    transform: scale(1.15);
+}
+.line{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.line ul{
+    display: flex;
+    list-style: none;
+    color: #F49C24;
+    font-size: 25px;
+    font-weight: 700;
+   
+}
+.line ul li:hover{
+    transform: scale(1.1);
+}
+.line ul li {
+    margin-right: 25px;
+    transition: 400ms;
+}
+/* Fim do Header */
+/* Começo do primeiro banner */
+/* Começo dos canais de atendimento */
+.titulo1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.titulo1 h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0C243C;
+    color: #F49C24;
+    width: 400px;
+    height: 50px;
+    border-radius:25px;
+}
+.banner1 h1{
+    color: #F49C24;
+}
+.banner1 {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+.canais {
+    display: flex;
+    flex-direction: column;
+    background-color: #0C243C;
+    border-radius: 0px 25px 25px 0px;
+    width: 40%;
+    height: 650px;
+    margin-top: 70px;
+    justify-content: center;
+    padding-left: 7%;
+}
+.canais .endereco img {
+    height: 50px;
+    width: 60px;
+}
+.canais img{
+    height: 250px;
+    width: 350px;
+    border-radius:15px ;
+}
+.canais ul {
+    list-style: none;
+    padding: 0;
+    font-weight: 700;
+    font-size: 20px;
+}
+/* Final do canais de atendimento */
+/* Começo do contato */
+.contato {
+    margin-top:40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 10%;
+    margin-top: 150px;
+}
+.contato h1 {
+    display: flex;
+    justify-content: center;
+    background-color: #0C243C;
+    color: #F49C24 ;
+    width: 400px;
+    border-radius: 25px;
+    padding: 10px;
+}
+.contato ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+.contato ul input {
+    width: 300px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    transition: 500ms;
+}
+.contato ul input:hover{
+    transform: scale(1.05);
+}
+.contato h2 {
+    display: flex;
+    justify-content: center;
+    width: 270px;
+    background-color: #0C243C;
+    color: #F49C24;
+    border-radius: 25px;
+    padding: 10px;
+    transition: 500ms;
+}
+.contato h2:hover{
+    transform: scale(1.1);
+}
+.endereco {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 350px;
+}
+.endereco p {
+    font-weight: 700;
+    margin-left: 40px;
+}
+/* Final do contato */
+/* Começo do footer */
+footer{
+    background-color: #0C243C;
+    color: #F49C24;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: px;
+    margin-top:30px;
+}
+/* Final do footer */
