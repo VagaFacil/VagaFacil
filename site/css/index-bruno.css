@@ -20,7 +20,7 @@ body::-webkit-scrollbar {
     color: #F49C24;
     background-color: #0C243C;
     margin: 100px auto 0 auto;
-    border-radius: 20px;
+    border-radius: 50px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;

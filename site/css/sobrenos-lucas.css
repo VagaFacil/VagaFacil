@@ -1,43 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@1&display=swap');
 
-body {
-    margin: 0;
-    font-family: 'Source Sans Pro', sans-serif;
-    background-color: #1C7C94;
+html {
+    font-family: 'font';
 }
 
-.header {
-    width: 100%;
-    height: 8vh;
-    background-color: #0C243C;
-}
 
-.header a img {
-    width: 50px;
-    height: 50px;
-    align-items: center;
-}
-
-.navBar {
-    width: 800px;
-    color: #F49C24;
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-a {
-    text-decoration: none;
-    color: #F49C24;
-    font-size: 32px;
-}
-
-.navBar a:hover {
-    letter-spacing: 2px;
-    font-size: 34px;
-    transition: 0.3s;
-}
 
 .container {
     width: 95%;
@@ -52,11 +18,18 @@ a {
 }
 
 .banner {
+    margin: 70px auto 0 auto;
     width: 100%;
     height: 100vh;
-    background-image: url(../img/transito\ 1.png);
+    background-image: url(../img/sobrenos/transito\ 1.png);
     display: flex;
     background-size: cover;
+} 
+.banner .container {
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    justify-content: center;
 }
 
 .bloco {
@@ -68,29 +41,19 @@ a {
     flex-direction: column;
     text-align: center;
     align-items: center;
-    padding-top: 15px;
-    padding-bottom: 0px;
-}
 
-.banner .container {
-    width: 100%;
-    height: 100%;
-    margin-top: 50px;
-    justify-content: center;
 }
-
 .bloco h1 {
     margin: 0;
     color: #F49C24;
-    font-size: 48px;
+    font-size: 30px;
+    font-family: 'fonte';
     display: flex;
     justify-content: start;
 }
-
 .bloco p {
-    width: 1280px;
-    margin-top: 25px;
-    font-size: 32px;
+    width: 100%;
+    font-size: 28px;
     color: #FCF4EC;
     line-height: 40px;
     display: flex;
