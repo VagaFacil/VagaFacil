@@ -170,3 +170,11 @@ footer{
     margin-top:30px;
 }
 /* Final do footer */
+
+
+/*  alteração bruno */
+
+.line li a {
+    text-decoration: none;
+    color: #F49C24;
+}
