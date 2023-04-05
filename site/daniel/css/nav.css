@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    background-color: #1C7C94;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width:90%;
+    margin: auto;
+    display: flex;
+}
+
+/* Cabeçalho */
+
+.cabecalho {
+    background-color: #0C243C;
+    width: 100%;
+    height: 70px;
+}
+
+.cabecalho .container {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cabecalho img {
+    height: 40px;
+}
+
+.cabecalho ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 500px;
+    list-style: none;
+}
+
+.cabecalho li, a {
+    color: #F49C24;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+}
