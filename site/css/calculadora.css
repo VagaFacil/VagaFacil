@@ -16,6 +16,7 @@ html {
 
 .banner {
     width: 100%;
+    padding: 70px 0 0 0;
     display: flex;
     background-size: cover;
 }
@@ -39,9 +40,10 @@ html {
 .bloco h1 {
     margin: 0;
     color: #F49C24;
-    font-size: 48px;
+    font-size: 30px;
     display: flex;
-    justify-content: start;
+    justify-content: center;
+    font-family: 'fonte';
 }
 
 .social {
