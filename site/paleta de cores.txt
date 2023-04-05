@@ -1,4 +1,0 @@
-#fcf4ec - branco
-#0c243c - azul escuro
-#1c7c94 - azul claro
-#f49c24 - laranja

@@ -1,78 +1,6 @@
-
-
-/* Configurações gerais */
-
-*{
-    font-family: Arial;
+html {
+    font-family: 'font';
 }
-
-body{
-    height: 1000px;
-    margin: 0;
-    background-color: #1c7c94;
-}
-
-a{
-    text-decoration: none;
-}
-
-
-
-p{
-    color: #fff;
-}
-
-
-
-
-
-/*  Início header  */
-
-.header{
-    background-color: #0C243C;
-    width: 100%;
-    height: 80px;
-    display: flex;
-}
-
-img{
-    width: 50px;
-    height: 50px;
-    align-items: center;
-}
-
-
-.container{
-    width: 90%;
-    margin: auto;
-    display: flex;
-}
-
-.header .container{
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-ul{
-    width: 40%;
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-
-li,a{
-    color: #F49C24;
-}
-
-/*Fim do header*/
-
-
-
-
-
 
 /*  Início da frase "Recuperação Senha" */
 
@@ -82,18 +10,22 @@ li,a{
     height: 100px;
     display: flex;
     justify-content: center;
+    margin: 70px 0 0 0;
+
 }
 
 .mensagem{
-    
     width: 500px;
     background-color: #F49C24;
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
-    margin-bottom: 10px;
     display: flex;
     justify-content: center;
     color: #0C243C;
+    font-size: 30px;
+    font-family: 'fonte';
+}.mensagem h1 {
+    padding-top: 30px;
 }
 
 /*  Final da frase "Recuperação Senha" */
@@ -131,10 +63,11 @@ h5 {
 .form {
     padding: 20px 60px;
     background-color: #0C243C;
-    display: flex;
-    flex-direction: column;
+
     color: #F49C24;
     border-radius: 10px;
+    text-align: center;
+    margin: auto;
 
 
 }
@@ -155,8 +88,7 @@ button {
     color: #0C243C;
     width: 150px;
     border-radius: 40px;
-    display: flex;
-    justify-content: center;
+
     font-size: x-large;
     margin-top: 20px;
     margin-bottom: 10px;

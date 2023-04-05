@@ -1,15 +1,6 @@
-body::-webkit-scrollbar {
-    width: 5px;
-  }
-  body::-webkit-scrollbar-track {
-    background-color: #0C243C;
-  }
-
-  body::-webkit-scrollbar-thumb {
-    background-color: #F49C24;
-    outline: 1px solid #0C243C;
-    border-radius: 20px;
-  }
+html {
+    font-family: 'font';
+}
 
 .inicio-sobrenos {
     width: 100%;
@@ -17,13 +8,13 @@ body::-webkit-scrollbar {
 .i-titulo {
     width: 500px;
     height: 70px;
-    color: #F49C24;
-    background-color: #0C243C;
-    margin: 100px auto 0 auto;
-    border-radius: 50px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    margin: 100px auto 0 auto;
+    background-color: #0C243C;
+    color: #F49C24;
+    border-radius: 50px;
     font-size: 30px;
     font-family: 'fonte';
 }
