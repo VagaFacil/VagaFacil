@@ -1,0 +1,135 @@
+html {
+    font-family: 'font';
+}
+
+.container {
+    width: 95%;
+    display: flex;
+    margin: auto;
+    align-items: center;
+}
+.header .container {
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.banner {
+    width: 100%;
+    padding: 70px 0 0 0;
+    display: flex;
+    background-size: cover;
+}
+.bloco {
+    width: 40%;
+    background-color: #0C243C;
+    border-radius: 50px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 0px;
+}
+
+.banner .container {
+    width: 100%;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.bloco h1 {
+    margin: 0;
+    color: #F49C24;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    font-family: 'fonte';
+}
+
+.social {
+   
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.social .conteiner2 {
+    background-color: #0C243C;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 5px;
+    flex-wrap: wrap;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+span {
+    color: #F49C24;
+}
+
+p {
+    color: #FCF4EC;
+}
+
+.card {
+    width: 35%;
+    height: 100px;
+    background-color: #0C243C;
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px 5px;
+    margin-bottom: 5%;
+}
+
+.card4 {
+    width: 35%;
+    height: 50px;
+    background-color: #0C243C;
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px 5px;
+    margin-bottom: 5%;
+}
+
+h2 {
+    color: #F49C24
+}
+
+.botão {
+    width: 35%;
+    height: auto;
+    background-color: #0C243C;
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px 5px;
+    margin-bottom: 5%;
+    color: #F49C24;
+    text-align: center;
+    align-items: center;
+}
+
+.container2 {
+    align-items: center;
+}
+.container3{
+align-items: center;
+}
+
+
+    .containerInput input {
+width: 30%;
+    }
+    .container4{
+        display: flex;
+        align-items: center;
+        }
+    .card5 {
+        width: 5%;
+        height: 30px;
+        background-color: #0C243C;
+        border-radius: 20px;
+        text-align: center;
+        padding: 20px 5px;
+        margin-bottom: 5%;
+    }
