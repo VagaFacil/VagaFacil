@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/login-gabriel.css">
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="css/mediaQueries.css">
+    <script src="js/login.js"></script>
     <title>Vaga Fácil</title>
 </head>
 
@@ -52,13 +53,13 @@
             <div class="form">
                 <center>
                     <h1>Insira seu Email</h1>
-                    <input type="email">
+                    <input type="email" id="ipt_email">
                     <h1>Insira sua Senha</h1>
-                    <input type="password">
+                    <input type="password" id="ipt_senha">
                     <h5>Não tem conta? <a href="">Crie uma</a></h5>
 
 
-                    <button><a>Login</a></button>
+                    <button onclick="logar()">Login</button>
 
                     <div class="cancelar">
                         <a href="">Cancelar</a>
