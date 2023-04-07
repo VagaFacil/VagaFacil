@@ -1,0 +1,111 @@
+/* Início do titulo */
+.box_mensagem {
+    width: auto;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    margin: 70px 0 0 0;
+}
+
+.mensagem{
+    width: 500px;
+    background-color: #F49C24;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    display: flex;
+    justify-content: center;
+    color: #0C243C;
+    font-size: 30px;
+    font-family: 'fonte';
+}.mensagem h1 {
+    padding-top: 30px;
+}
+/* Final do titulo */
+/* Começo do primeiro banner */
+/* Primeiro card */
+.container {
+    width: 90%;
+    margin: auto;
+}
+.banner {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.card1 {
+    background-color: #0C243C;
+    width: 550px;
+    list-style: none;
+    padding:40px ;
+    border-radius: 20px;
+    font-size: 20px;
+}
+.coluna h1 {
+    color: #F49C24;
+    font-size: 25px;
+    font-weight: 700;
+}
+.card1 li {
+    margin-top: 20px;
+   
+    width: 90%;
+}
+.card1 input{
+    width: 100%;
+    height: 40px;
+    border-radius: 15px;
+}
+/* final do primeiro card */
+/* Começo do segundo e terceiro card */
+.card {
+    background-color: #0C243C;
+    width: 550px;
+    list-style: none;
+    padding:40px ;
+   
+    border-radius: 20px;
+    font-size: 20px;
+    height: 170px;
+    margin-bottom: 30px;
+
+}
+.card ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+.card input {
+    border-radius: 10px;
+    height: 25px;
+}
+.card p {
+    margin-top: 10px;
+}
+.card p input {
+    width: 100%;
+}
+.senha input {
+    width: 250px;
+}
+/* Final do segundo e terceiro card */
+/* Cadastrar */
+.boxCadastro {
+    display: flex;
+    justify-content: center;
+}
+.cadastro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F49C24;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+}
+.boxCadastro .cadastro h1 a{
+    text-decoration: none;
+    color: #0C243C;
+    font-size: 25px;
+    font-weight: 700;
+}
