@@ -61,7 +61,7 @@ a {
     justify-content: center;
     align-items: center;
     color: #0C243C;
-    font-family: 'font'; 
+    font-family: 'fonte'; 
     font-size: larger;
 }
 
@@ -311,6 +311,7 @@ input{
     margin: 10px;
     font-family: 'font';
     text-decoration: underline;
+    color: #F49C24  ;
 }
 
 .footer2 li{
