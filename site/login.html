@@ -33,13 +33,9 @@
     </header>
 
     <!--Inicio mensagem "login"-->
-
-    <div class="box_mensagem">
-        <div class="mensagem">
-            <h1>Login</h1>
-        </div>
+    <div class="mensagem">
+        <h1>Login</h1>
     </div>
-
     <!--Fim mensagem "login"-->
 
 
@@ -49,17 +45,22 @@
     <div class="banner">
         <div class="container">
             <div class="form">
-
                 <h1>Insira seu Email</h1>
                 <input type="email" id="ipt_email">
+                <div id="erroE1">Insira dados válidos</div>
+                <div id="erroE2">Insira um email válido</div>
+                <div id="erroE3">Email não cadastrado</div>
+
                 <h1>Insira sua Senha</h1>
                 <input type="password" id="ipt_senha">
+                <div id="erroS1">Insira dados válidos</div>
+                <div id="erroS2">Senha incorreta</div>
+
                 <a href="rec-senha.html">Esqueci minha senha</a>
 
                 <button onclick="logar()">LOGIN</button>
 
-                <a href="cadastro.html">Não tem conta? Crie uma</a>  
-
+                <a href="cadastro.html">Não tem conta? Crie uma</a>
 
             </div>
         </div>

@@ -1,3 +1,7 @@
+
+var email = 'vaga@gmail.com';
+
+
 function enviar() {
     div_tela1.style.display = "none";
     div_tela2.style.display = "block";
