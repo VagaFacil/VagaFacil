@@ -61,7 +61,7 @@ a {
     align-items: center;
     color: #0C243C;
     font-family: 'fonte'; 
-    font-size: larger;
+    font-size: 30px;
 }
 
 /* Fim da frase: "Recuperação de Senha" */
@@ -71,19 +71,20 @@ a {
 /* Início Banner */
 
 .banner {
-    width: auto;
+    width: 100%;
     height: auto;
-    margin: 30px;
+    margin: auto;
 }
 
 .banner .container{
-    width: 500px;
+    width: 40%;
     height: auto;
     background-color: #0C243C;
-    border-radius: 15px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 40px auto auto auto;
 }
 
 /* Fim Banner */
@@ -102,34 +103,30 @@ a {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
 }
-
-
 .tela01 p {
-    font-family: 'fonte';
+    font-family: 'font';
     color: #fdfdfd;
     margin: 10px;
     padding: 10px;
     text-align: center;
 }
-
 .tela01 h1 {
     font-family: 'font';
     font-size: larger;
     color: #F49C24;
     margin-bottom: 10px;
+    font-size: 24px;
 }
 
 input{
-    width: 250px;
+    width: 70%px;
     border: solid 3px #32a7b1;
     border-radius: 10px;
     padding-bottom: 10px;
     text-align: center;
     align-items: center;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin: auto;
 }
 
 .tela01 button {
