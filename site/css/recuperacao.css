@@ -119,14 +119,13 @@ a {
     font-size: 24px;
 }
 
-input{
-    width: 70%px;
+.tela01 input{
+    width: 70%;
     border: solid 3px #32a7b1;
     border-radius: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-    align-items: center;
+    padding: 10px;
     margin: auto;
+    text-align: center;
 }
 
 .tela01 button {
@@ -149,12 +148,17 @@ input{
 
 /* Final Banner Tela 01 */
 
-
+/* Erro tela 1  */
+#div_erro {
+    color: red;
+    font-size: 14px;
+    display: none;
+}
 
 /* Início Banner Tela 02 */
 
-.container .tela02 {
-    width: auto;
+.tela02 {
+    width: 100%;
     height: auto;
     display: none;
     flex-direction: column;
@@ -168,53 +172,61 @@ input{
 .tela02 p {
     font-family: 'fonte';
     color: #fdfdfd;
-    margin: 10px;
-    margin-bottom: 20px;
-    padding: 10px;
+    margin: 20px 10px 20px 10px;
     text-align: center;
 }
 
 .tela02 h1 {
     font-family: 'font';
-    font-size: larger;
+    font-size: 24px;
     color: #F49C24;
-    margin-bottom: 10px;
 }
 
-input{
-    width: 250px;
+.tela02 input{
+    width: 70%;
     border: solid 3px #32a7b1;
     border-radius: 10px;
-    padding-bottom: 10px;
     text-align: center;
     align-items: center;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin: 10px;
+    padding: 10px;
 }
 
 .tela02 button {
     background-color: #F49C24;
     color: #0C243C;
-    width: 150px;
+    width: auto;
+    height: auto;
     border-radius: 40px;
-    display: flex;
-    justify-content: center;
-    font-size: x-large;
-    margin: 15px;
-    padding: 5px;
-    margin-left: 22%;
-    margin-right: 25%;
+    font-family: 'fonte';
+    margin: 10px auto;
+    padding: 10px 30px 10px 30px;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
 }
 
 .tela02 button a{
     color: #0C243C;
-    font-family: 'font';
+    font-family: 'fonte';
 }
 
-.tela02 h1{
-    margin-bottom: 5px;
-    margin-top: 30px;
+.cancelar{
+    margin: 10px 10px 20px 10px;
 }
+
+/* erros tela 02 */
+.erroSenha {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    margin: auto;
+    justify-content: space-between;
+    width: 70%;
+    padding: 0 0 10px 0;
+}
+
 
 /* Fim Banner Tela 02 */
 

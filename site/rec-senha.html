@@ -43,8 +43,9 @@
         <div class="container">
             <div id="div_tela1"  class="tela01">
                 <p>Para redefinir sua senha, informe o e-mail cadastrado na sua conta e lhe enviaremos um link com as instruções.</p>
-                <h1>E-mail ou usuário</h1>
-                <input type="text">
+                <h1>E-mail</h1>
+                <input type="text" id="rec_email">
+                <div id="div_erro">Email não cadastrado!</div>
                 <button onclick="enviar()"><a>Enviar</a></button>
                 <div class=" cancelar">
                     <a href="login.html">Cancelar</a>
@@ -54,10 +55,16 @@
             <div id="div_tela2"  class="tela02">
                 <p>Preencha os campos abaixo</p>
                 <h1>Digite sua nova senha</h1>
-                <input type="password">
+                <input type="password" id="ipt_senha">
+                <div class="erroSenha">
+                    <div id="erro1">1 letra maiúscula</div>
+                    <div id="erro2">1 letra minúscula</div>
+                    <div id="erro3">1 número</div>
+                    <div id="erro4">8+ caracteres</div>
+                </div>
                 <h1>Digite novamente</h1>
                 <input type="password">
-                <button onclick="continuar()"><a>Continuar</a></button>
+                <button onclick="continuar()">Continuar</button>
                 <div class="cancelar">
                     <a onclick="cancelar()" >Cancelar</a>
                 </div>
@@ -67,7 +74,7 @@
                 <div class="banner">
                     <div class="container">
                         <h1>Senha alterada com sucesso !</h1>
-                        <button><a href="login.html">Concluído</a></button>
+                        <a href="login.html"><button>Concluído</button></a>
                     </div>
                 </div>
             </div>

@@ -71,9 +71,8 @@ function logar() {
     }
 
     if (erro == false && email == vaga && senha == facil) {
-        location.href = '../daniel/dashboard.html';
         ipt_email.style = 'border-color: #32a7b1';
         ipt_senha.style = 'border-color: #32a7b1';
-
+        location.href = '../daniel/dashboard.html';
     }
 }
