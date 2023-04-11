@@ -105,13 +105,19 @@ button {
     color: #0C243C;
     width: auto;
     height: auto;
-    border-radius: 40px;
+    border-radius: 20px;
     font-family: 'fonte';
-    margin: 10px auto;
+    margin: 10px auto 10px auto;
     padding: 10px 30px 10px 30px;
     font-size: 22px;
     border: none;
     cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 2px 4px black;
+} button:hover {
+    background-color: #FCF4EC;
+    transition: .3s;
+    box-shadow: 0 4px 8px black;
 }
 
 button a {
