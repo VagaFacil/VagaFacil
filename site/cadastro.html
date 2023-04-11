@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/cadastro.css">
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="css/mediaQueries.css">
+    <script src="js/cadastro.js"></script>
 </head>
 
 <body>
@@ -44,62 +45,82 @@
                 <div class="card1">
                     <h1>Informações pessoais</h1>
                     <div class="ul">
-                        <li>Nome: <br>
+                        <li>
+                            <p>Nome</p>
                             <input type="Nome">
                         </li>
-                        <li>Sobrenome: <br>
+                        <li>
+                            <p>Sobrenome</p>
                             <input type="Sobrenome">
                         </li>
-                        <li>Data de nascimento: <br>
+                        <li>
+                            <p>Data de nascimento</p>
                             <input type="Data de nascimento" placeholder="00/00/0000">
                         </li>
-                        <li>CPF: <br>
+                        <li>
+                            <p>CPF</p>
                             <input type="CPF" placeholder="000-000-000-94">
                         </li>
-                        <li>Telefone: <br>
+                        <li>
+                            <p>Telefone</p>
                             <input type="telefone" placeholder="(00) 90000-0000">
                         </li>
                     </div>
                 </div>
             </div>
             <div class="coluna">
-                <div class="card">
+                <div class="card2">
                     <h1>Informações da empresa</h1>
                     <ul>
-                        <li>Razão: <br>
-                            <input type="razão">
+                        <li>
+                            <p>Razão</p>
+                            <input type="text">
                         </li>
-                        <li>CEP: <br>
-                            <input type="CEP">
+                        <li>
+                            <p>CNPJ</p>
+                            <input type="text">
                         </li>
-                        <li>Endereço: <br>
-                            <input type="Endereço">
+                        <li>
+                            <p>CEP</p>
+                            <input type="text">
+                        </li>
+                    </ul>
+                    </li>
+                    <ul>
+                        <li>
+                            <p>Endereço</p>
+                            <input type="text">
                         </li>
                     </ul>
                     <ul>
-                        <li>Número: <br>
-                            <input type="Número">
+                        <li>
+                            <p>Número</p>
+                            <input type="text">
                         </li>
-                        <li>Complemento: <br>
-                            <input type="complemento">
+                        <li>
+                            <p>Complemento</p>
+                            <input type="text">
                         </li>
-                        <li>Bairro <br>
-                            <input type="bairro">
+                        <li>
+                            <p>Bairro</p>
+                            <input type="text">
                         </li>
                     </ul>
 
 
                 </div>
-                <div class="card">
+                <div class="card3">
                     <h1>Informações de login</h1>
-                    <p> Email: <br>
-                        <input type="email">
-                    </p>
+                    <p>Email</p>
+                    <input type="email">
+
                     <ul class="senha">
-                        <li>senha: <br>
+                        <li>
+                            <p>Senha</p>
                             <input type="senha">
                         </li>
-                        <li>confirmar senha: <br>
+                        <li>
+                            <p>Confirmar senha</p>
                             <input type="confirmação" id="ipt_senha" oninput="cadastro()">
                         </li>
                     </ul>

@@ -34,11 +34,13 @@
 }
 .card1 {
     background-color: #0C243C;
-    width: 550px;
+    width: 400PX;
     list-style: none;
     padding:40px ;
     border-radius: 20px;
     font-size: 20px;
+    height: 450px;
+    height: 426px;
 }
 .coluna h1 {
     color: #F49C24;
@@ -47,43 +49,80 @@
 }
 .card1 li {
     margin-top: 20px;
-   
     width: 90%;
 }
+.card1 p {
+    margin: 0;
+    padding: 0 0 0 10px;
+}
 .card1 input{
-    width: 100%;
-    height: 40px;
+    padding: 10px;
     border-radius: 15px;
+    outline: none;
+    border: 0;
+    width: 100%;
 }
 /* final do primeiro card */
-/* Começo do segundo e terceiro card */
-.card {
+
+/* Começo card2 */
+.card2 {
     background-color: #0C243C;
-    width: 550px;
+    width: auto;
+    height: auto;
     list-style: none;
     padding:40px ;
-   
     border-radius: 20px;
     font-size: 20px;
-    height: 170px;
-    margin-bottom: 30px;
-
 }
-.card ul {
+.card2 ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
 }
-.card input {
-    border-radius: 10px;
-    height: 25px;
+.card2 ul li {
+    width: auto;
 }
-.card p {
-    margin-top: 10px;
+.card2 p {
+    margin: 0;
+    padding: 0 0 0 10px;
 }
-.card p input {
-    width: 100%;
+.card2 input {
+    padding: 10px;
+    border-radius: 15px;
+    outline: none;
+    border: 0;
+}    
+/* Final card2 */
+
+/* Começo card3 */
+.card3 {
+    background-color: #0C243C;
+    width: auto;
+    height: auto;
+    list-style: none;
+    padding:40px ;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+.card3 ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card3 ul li {
+    width: auto;
+}
+.card3 p {
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+.card3 input {
+    padding: 10px;
+    border-radius: 15px;
+    outline: none;
+    border: 0;
+    margin: 0;
 }
 .senha input {
     width: 250px;
