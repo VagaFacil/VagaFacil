@@ -55,7 +55,7 @@
             <div id="div_tela2"  class="tela02">
                 <p>Preencha os campos abaixo</p>
                 <h1>Digite sua nova senha</h1>
-                <input type="password" id="ipt_senha">
+                <input type="password" id="ipt_senha" onkeyup="validar()">
                 <div class="erroSenha">
                     <div id="erro1">1 letra maiúscula</div>
                     <div id="erro2">1 letra minúscula</div>
@@ -63,8 +63,9 @@
                     <div id="erro4">8+ caracteres</div>
                 </div>
                 <h1>Digite novamente</h1>
-                <input type="password">
-                <button onclick="continuar()">Continuar</button>
+                <input type="password" id="ipt_senha_repeat">
+                <div id="erroRepeat">Senhas diferentes</div>
+                <button onclick="continuar()"><a>Continuar</a></button>
                 <div class="cancelar">
                     <a onclick="cancelar()" >Cancelar</a>
                 </div>

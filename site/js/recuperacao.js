@@ -19,15 +19,15 @@ function cancelar() {
 }
 
 // Tela 02
-// Validando a nova senha
+// Variáveis globais
+var erroMai = '';
+var erroMin = '';
+var erroNum = '';
+var erroCar = '';
 
-function continuar() {
-    // Variáveis gerais
+// Validando a nova senha
+function validar() {
     var senha = ipt_senha.value;
-    var erroMai = false;
-    var erroMin = false;
-    var erroNum = false; 
-    var erroCar = false;
 
     // // Validar 1 letra maiúscula
     // if (condition) {
@@ -64,10 +64,23 @@ function continuar() {
         erro4.style.color = 'greenyellow';
         erroCar = false
     }
+}
 
+function continuar() {
     // Verigicar se tme erro
+    var senha_igual = ipt_senha.value == ipt_senha_repeat.value;
+    if (ipt_senha.value == '' && ipt_senha_repeat.value == '') {
+        senha_igual = false
+    }
+    if (senha_igual) {
+        erroRepeat.style.display = 'none';
+    } else {
+        erroRepeat.style.display = 'block';
+    }
+
     var pode_seguir = erroMai == false && erroMin == false && erroNum == false && erroCar == false;
-    if (pode_seguir) {
+
+    if (pode_seguir && senha_igual) {
         div_tela1.style.display = "none";
         div_tela2.style.display = "none";
         div_tela3.style.display = "block";

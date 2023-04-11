@@ -131,19 +131,27 @@ a {
 .tela01 button {
     background-color: #F49C24;
     color: #0C243C;
-    width: 150px;
+    width: auto;
+    height: auto;
     border-radius: 40px;
-    display: flex;
-    justify-content: center;
-    font-size: x-large;
-    margin: 15px;
-    padding: 5px;
-    border: 0;
+    font-family: 'fonte';
+    margin: 20px auto 10px auto;
+    padding: 10px 30px 10px 30px;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 2px 4px black;
+}.tela01 button:hover {
+    background-color: #FCF4EC;
+    color: #F49C24;
+    transition: .3s;
+    box-shadow: 0 4px 8px black;
 }
 
 .tela01 button a{
     color: #0C243C;
-    font-family: 'font';
+    font-family: 'fonte';
 }
 
 /* Final Banner Tela 01 */
@@ -153,6 +161,7 @@ a {
     color: red;
     font-size: 14px;
     display: none;
+    padding: 5px 0 0 0;
 }
 
 /* Início Banner Tela 02 */
@@ -204,6 +213,13 @@ a {
     font-size: 22px;
     border: none;
     cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 4px 8px black;
+}.tela02 button:hover {
+    background-color: #FCF4EC;
+    color: #F49C24;
+    transition: .3s;
+    box-shadow: 0 8px 16px black;
 }
 
 .tela02 button a{
@@ -220,10 +236,17 @@ a {
     color: white;
     display: flex;
     flex-direction: row;
-    font-size: 14px;
+    font-size: 12px;
     margin: auto;
     justify-content: space-between;
     width: 70%;
+    padding: 0 0 10px 0;
+}
+
+#erroRepeat {
+    display: none;
+    color: red;
+    font-size: 14px;
     padding: 0 0 10px 0;
 }
 
@@ -236,45 +259,53 @@ a {
 /* Início Banner Tela 02 */
 
 .tela03 {
-    width: auto;
+    width: 100%;
     height: auto;
+    margin: auto;
     display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
 }
-
 .tela03 .container {
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-
-
 .tela03 h1 {
     font-family: 'font';
-    font-size: larger;
-    color: #fdfdfd;
+    text-align: center;
+    width: auto;
+    color: black;
     margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 20px;
     background-color: #58D244;   
 }   
 
 .tela03 button {
     background-color: #F49C24;
     color: #0C243C;
-    width: 150px;
+    width: auto;
+    height: auto;
     border-radius: 40px;
-    display: flex;
-    justify-content: center;
-    font-size: x-large;
-    margin: 15px;
-    padding: 5px;
+    font-family: 'fonte';
+    margin: 20px auto;
+    padding: 10px 30px 10px 30px;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 4px 8px black;
+}.tela03 button:hover {
+    background-color: #FCF4EC;
+    color: #0C243C;
+    transition: .3s;
+    box-shadow: 0 8px 16px black;
 }
 
-.tela03 button a{
+.tela03 a button{
     color: #0C243C;
-    font-family: 'font';
+    font-family: 'fonte';
 }
 
 /* Fim do footer 3 */
