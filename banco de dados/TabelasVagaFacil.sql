@@ -347,4 +347,6 @@ insert into dados values (null, '2023-04-10 17:30:00', '1', 150009);
 insert into dados values (null, '2023-04-10 18:00:00', '0', 150009);
 insert into dados values (null, '2023-04-10 18:30:00', '1', 150009);
 insert into dados values (null, '2023-04-10 19:00:00', '0', 150009);
-select * from dados where fkSensor=150009;
+select * from dados;
+
+-- select dataHora, SUM(valor) FROM dados group by dataHora;
