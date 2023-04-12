@@ -7,6 +7,14 @@ create table empresa (
         cnpj char(18)        
 );
 
+insert into empresa values (null,'coca-cola','45.997.418/0001-53');
+insert into empresa values (null,'itaú','60.701.190/0001-04');
+insert into empresa values(null,'burguer-king','13.574.594/0001-96');
+insert into empresa values(null,'ford','03.470.727/0001-20');
+insert into empresa values(null,'carrefour','45.543.915/0001-81'); 
+insert into empresa values(null,'continental','48.754.139/0001-57');
+select * from empresa;
+
 create table filial (
 		idFilial int primary key auto_increment,
         cep char(9),
@@ -17,7 +25,13 @@ create table filial (
         foreign key (fkEmpresa) references empresa(idEmpresa)
 )auto_increment = 50000;
 
-create table Usuario (
+insert into filial values (null,'04709-000','R. Arquiteto Olavo Redig de Campos','105','Chácara Santo Antônio (Zona Sul)','1');
+insert into filial values (null,'04344-020','R. Volkswagen','100','Jabaquara, São Paulo)','2');
+insert into filial values (null,'05690-000',' R. George Eastman','213','Vila Tramontano, São Paulo - SP','3');
+insert into filial values (null,'07042-010','Av. Sen. Adolf Schindling','131','Vila Endres, Guarulhos - SP','4');
+select * from filial;
+
+create table usuario (
 		idUsuario int primary key auto_increment,
         nome varchar(50),
         email varchar(100),
@@ -27,20 +41,19 @@ create table Usuario (
         foreign key (fkFilial) references filial(idFilial)
 )auto_increment = 100000;
 
+insert into usuario values (null,'felipe alves santos','felipe@gmail.com','felipe123','55011972311126','50000');
+insert into usuario values (null,'luciano neves','luciano@outlook.com','luciano123','55011962322128','50001');
+insert into usuario values (null,'gabriel neves','gabriel@outlook.com','gabriel123','55011934322144','50002');
+insert into usuario values (null,'diego costa','diego@sptech.com','diego123','55011923322189','50003');
+insert into usuario values (null,'rogério ceni','rogério@gmail.com','rogério123','55011914578156','50003');
+select * from usuario;
+
 create table sensor(
 		idsensor int primary key auto_increment,
 		cep char(9),
 		numRua varchar(45),
 		numSensor varchar(45)
 )auto_increment=150000;
-
-create table dados(
-		idDados int primary key auto_increment,
-		dataHora datetime,
-		valor char(1),
-		fkSensor int,
-		foreign key(fksensor) references sensor(idsensor)
-)auto_increment=200000;
 
 insert into sensor values (null,'04100-000', '202', '1');
 insert into sensor values (null,'03100-000', '307', '2');
@@ -54,6 +67,16 @@ insert into sensor values (null,'01000-000', '200', '9');
 insert into sensor values (null,'01300-000', '578', '10');
 
 select * from sensor;
+
+create table dados(
+		idDados int primary key auto_increment,
+		dataHora datetime,
+		valor char(1),
+		fkSensor int,
+		foreign key(fksensor) references sensor(idsensor)
+)auto_increment=200000;
+
+
 
 -- Dados referenter au sensor Numero 1
 insert into dados values (null, '2023-04-10 07:00:00', '0', 150000);
