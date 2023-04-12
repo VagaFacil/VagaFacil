@@ -59,17 +59,35 @@ function cadastrar() {
     
     // card2
     // razão
+    if (ipt_razao.value.length < 3) {
+        vNome.style.display = 'block';
+        ipt_nome.style = 'border-color: red';
+        erroNome = true;;
+    } else {
+        vNome.style.display = 'none';
+        ipt_nome.style = 'border-color: #32a7b1';
+        erroNome = false;
+    }
     // cnpj
     // cep
     // endereço
     // número
-    // complemento
+    // complemento - sem validação
     // bairro
     // tem erro no card?
     validarCard2 = erroRazao == false && erroCnpj == false && erroCep == false && erroEndereco == false && erroNumero == false && erroComp == false && erroBairro == false;
 
     // card3
     // email
+    if (ipt_email.value.indexOf('@') < 0 && ipt_email.value.indexOf('.com') < 0) {
+        vEmail.style.display = 'block';
+        ipt_email.style = 'border-color: red';
+        erroEmail = true;;
+    } else {
+        vEmail.style.display = 'none';
+        ipt_email.style = 'border-color: #32a7b1';
+        erroEmail = false;
+    }
     // senha
     // senha repetida
     // tem erro no card?
