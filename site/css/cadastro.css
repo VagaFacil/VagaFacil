@@ -34,13 +34,12 @@
 }
 .card1 {
     background-color: #0C243C;
-    width: 400PX;
+    width: 370px;
     list-style: none;
     padding:40px ;
     border-radius: 20px;
     font-size: 20px;
-    height: 450px;
-    height: 426px;
+    height: 560px;
 }
 .coluna h1 {
     color: #F49C24;
@@ -73,10 +72,17 @@
 }
 
 /* Começo card2 */
+.coluna {
+    height: 560px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .card2 {
     background-color: #0C243C;
     width: auto;
-    height: auto;
+    height: 215px;
     list-style: none;
     padding:40px ;
     border-radius: 20px;
@@ -89,6 +95,7 @@
 }
 .card2 ul li {
     width: auto;
+    margin: 0 10px 0 0;
 }
 .card2 p {
     margin: 0;
@@ -100,6 +107,9 @@
     outline: none;
     border-color: #32a7b1;
 }    
+#ipt_email {
+    width: 97%;
+}
 /* Final card2 */
 
 /* Erros card1 */
@@ -114,12 +124,11 @@
 .card3 {
     background-color: #0C243C;
     width: auto;
-    height: auto;
+    height: 215;
     list-style: none;
     padding:40px ;
     border-radius: 20px;
     font-size: 20px;
-    margin-top: 20px;
 }
 .card3 ul {
     display: flex;
@@ -165,6 +174,7 @@
     width: 300px;
     height: 50px;
     border-radius: 10px;
+    border: 0;
 }
 .boxCadastro .cadastro h1 a{
     text-decoration: none;
