@@ -47,23 +47,31 @@
                     <div class="ul">
                         <li>
                             <p>Nome</p>
-                            <input type="Nome">
+                            <input id="ipt_nome" type="text" >
+                            <div id="vNome">Informe um nome válido</div>
+                            <!-- v de validar -->
                         </li>
                         <li>
                             <p>Sobrenome</p>
-                            <input type="Sobrenome">
+                            <input id="ipt_sobrenome" type="text">
+                            <div id="vSobrenome">Informe um sobrenome válido</div>
+
                         </li>
                         <li>
                             <p>Data de nascimento</p>
-                            <input type="Data de nascimento" placeholder="00/00/0000">
+                            <input id="ipt_dataN" type="text" placeholder="00/00/0000">
+                            <div id="vDataN">Informe um data válida</div>
                         </li>
                         <li>
                             <p>CPF</p>
-                            <input type="CPF" placeholder="000-000-000-94">
+                            <input id="ipt_cpf" type="text" placeholder="000-000-000-94">
+                            <div id="vCpf">Informe um CPF válido</div>
+
                         </li>
                         <li>
                             <p>Telefone</p>
-                            <input type="telefone" placeholder="(00) 90000-0000">
+                            <input id="ipt_telefone" type="text" placeholder="(00) 90000-0000">
+                            <div id="vTelefone">Informe um telefone válido</div>
                         </li>
                     </div>
                 </div>
@@ -74,36 +82,36 @@
                     <ul>
                         <li>
                             <p>Razão</p>
-                            <input type="text">
+                            <input id="ipt_razao" type="text">
                         </li>
                         <li>
                             <p>CNPJ</p>
-                            <input type="text">
+                            <input id="ipt_cnpj" type="text">
                         </li>
                         <li>
                             <p>CEP</p>
-                            <input type="text">
+                            <input id="ipt_cep" type="text">
                         </li>
                     </ul>
                     </li>
                     <ul>
                         <li>
                             <p>Endereço</p>
-                            <input type="text">
+                            <input id="ipt_endereco" type="text">
                         </li>
                     </ul>
                     <ul>
                         <li>
                             <p>Número</p>
-                            <input type="text">
+                            <input id="ipt_numero" type="text">
                         </li>
                         <li>
                             <p>Complemento</p>
-                            <input type="text">
+                            <input id="ipt_comp" type="text">
                         </li>
                         <li>
                             <p>Bairro</p>
-                            <input type="text">
+                            <input id="ipt_bairro" type="text">
                         </li>
                     </ul>
 
@@ -112,16 +120,16 @@
                 <div class="card3">
                     <h1>Informações de login</h1>
                     <p>Email</p>
-                    <input type="email">
+                    <input id="ipt_email" type="email">
 
                     <ul class="senha">
                         <li>
                             <p>Senha</p>
-                            <input type="senha">
+                            <input id="ipt_senha" type="senha">
                         </li>
                         <li>
                             <p>Confirmar senha</p>
-                            <input type="confirmação" id="ipt_senha" oninput="cadastro()">
+                            <input id="ipt_senhaRep" type="confirmação" id="ipt_senha" oninput="cadastro()">
                         </li>
                     </ul>
                 </div>
@@ -131,9 +139,7 @@
         <!-- Começo do cadastrar -->
     </div>
     <div class="boxCadastro">
-        <div class="cadastro">
-            <h1> <a href="login.html"> Cadastrar </a></h1>
-        </div>
+        <button class="cadastro" onclick="cadastrar()">Cadastrar</button>
     </div>
 
 </body>

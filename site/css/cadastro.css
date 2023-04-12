@@ -3,7 +3,7 @@
     width: auto;
     height: 100px;
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     margin: 70px 0 0 0;
 }
 
@@ -59,10 +59,18 @@
     padding: 10px;
     border-radius: 15px;
     outline: none;
-    border: 0;
+    border-color: #32a7b1;
     width: 100%;
 }
 /* final do primeiro card */
+
+/* Erros card1 */
+#vNome, #vSobrenome, #vDataN, #vCpf, #vTelefone {
+    display: none   ;
+    color: red;
+    font-size: 14px;
+    padding: 0 0 0 10px;
+}
 
 /* Começo card2 */
 .card2 {
@@ -90,7 +98,7 @@
     padding: 10px;
     border-radius: 15px;
     outline: none;
-    border: 0;
+    border-color: #32a7b1;
 }    
 /* Final card2 */
 
@@ -121,7 +129,7 @@
     padding: 10px;
     border-radius: 15px;
     outline: none;
-    border: 0;
+    border-color: #32a7b1;
     margin: 0;
 }
 .senha input {
