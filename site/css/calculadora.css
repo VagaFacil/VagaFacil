@@ -15,13 +15,14 @@ html {
     background-size: cover;
     margin: 100px 0 0 0;
 }
+
 .bloco {
     width: 500px;
     height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-        background-color: #0C243C;
+    background-color: #0C243C;
     color: #F49C24;
     border-radius: 50px;
     font-size: 30px;
@@ -52,29 +53,30 @@ html {
 .social .conteiner2 {
     display: flex;
     justify-content: space-around;
-    padding: 20px 5px;
     flex-wrap: wrap;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin: 30px;
 }
 
 
 span {
     color: #F49C24;
     font-family: 'fonte';
-    font-size: 28px;
+    font-size: 30px;
 }
 
 p {
     color: #FCF4EC;
     font-size: 22px;
+    padding: 20px 10px 10px 10px;
 }
 
 .tres-cards {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    height: auto;
 }
+
 .card {
     width: 30%;
     height: auto;
@@ -82,7 +84,6 @@ p {
     border-radius: 20px;
     text-align: center;
     padding: 20px 5px;
-    margin-bottom: 5%;
 }
 
 .card4 {
@@ -112,27 +113,37 @@ h2 {
     align-items: center;
 }
 
-.container2 {
+.calculadora {
+    width: 100%;
+    height: auto;
+    background-color: #0C243C;
+}
+
+
+.containerInput input {
+    width: 30%;
+}
+
+.container4 {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
-.container3{
-align-items: center;
+
+.card4 {
+    width: 500px;
+    margin: auto;
+    font-size: 30px;
+    font-family: 'fonte';
+    color: #F49C24;
 }
 
-
-    .containerInput input {
-width: 30%;
-    }
-    .container4{
-        display: flex;
-        align-items: center;
-        }
-    .card5 {
-        width: 5%;
-        height: 30px;
-        background-color: #0C243C;
-        border-radius: 20px;
-        text-align: center;
-        padding: 20px 5px;
-        margin-bottom: 5%;
-    }
+.card5 {
+    width: 5%;
+    height: 30px;
+    background-color: #0C243C;
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px 5px;
+    margin-bottom: 5%;
+}
