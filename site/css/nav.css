@@ -47,6 +47,7 @@ body::-webkit-scrollbar {
     position: fixed;
     top: 0;
     box-shadow: 0 2px 8px black;
+    z-index: 1;
 }
 .nav-lista {
     display: flex;
