@@ -8,32 +8,28 @@ html {
     margin: auto;
     align-items: center;
 }
-.header .container {
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-}
 
 .banner {
     width: 100%;
-    padding: 70px 0 0 0;
     display: flex;
     background-size: cover;
+    margin: 100px 0 0 0;
 }
 .bloco {
-    width: 40%;
-    background-color: #0C243C;
-    border-radius: 50px;
-    flex-direction: column;
-    text-align: center;
+    width: 500px;
+    height: 70px;
+    display: flex;
     align-items: center;
-    padding-top: 15px;
-    padding-bottom: 0px;
+    justify-content: space-evenly;
+        background-color: #0C243C;
+    color: #F49C24;
+    border-radius: 50px;
+    font-size: 30px;
+    font-family: 'fonte';
 }
 
 .banner .container {
     width: 100%;
-    margin-top: 50px;
     justify-content: center;
 }
 
@@ -47,7 +43,6 @@ html {
 }
 
 .social {
-   
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -55,7 +50,6 @@ html {
 }
 
 .social .conteiner2 {
-    background-color: #0C243C;
     display: flex;
     justify-content: space-around;
     padding: 20px 5px;
@@ -64,17 +58,26 @@ html {
     margin-bottom: 5%;
 }
 
+
 span {
     color: #F49C24;
+    font-family: 'fonte';
+    font-size: 28px;
 }
 
 p {
     color: #FCF4EC;
+    font-size: 22px;
 }
 
+.tres-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
 .card {
-    width: 35%;
-    height: 100px;
+    width: 30%;
+    height: auto;
     background-color: #0C243C;
     border-radius: 20px;
     text-align: center;
