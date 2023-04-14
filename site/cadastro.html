@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastre-se</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/cadastro.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/mediaQueries.css">
     <script src="js/cadastro.js"></script>
+    <title>Vaga Fácil</title>
 </head>
 
 <body>
@@ -43,7 +43,9 @@
         <div class="banner">
             <div class="coluna">
                 <div class="card1">
-                    <h1>Informações pessoais</h1>
+                    <div class="card-titulo">
+                        <h1>Informações pessoais</h1>
+                    </div>
                     <div class="ul">
                         <li>
                             <p>Nome</p>
@@ -77,8 +79,10 @@
             </div>
             <div class="coluna">
                 <div class="card2">
-                    <h1>Informações da empresa</h1>
-                    <ul>
+                    <div class="card-titulo">
+                        <h1>Informações da empresa</h1>
+                    </div>
+                    <ul class="card2-space">
                         <li>
                             <p>Razão</p>
                             <input id="ipt_razao" type="text">
@@ -103,7 +107,7 @@
                             <div id="vEndereco">Informe um endereço válido</div>
                         </li>
                     </ul>
-                    <ul>
+                    <ul class="card2-space">
                         <li>
                             <p>Número</p>
                             <input id="ipt_numero" type="text">
@@ -123,12 +127,18 @@
 
                 </div>
                 <div class="card3">
-                    <h1>Informações de login</h1>
-                    <p>Email</p>
-                    <input id="ipt_email" type="email">
-                    <div id="vEmail">Informe um email válido</div>
+                    <div class="card-titulo">
+                        <h1>Informações de login</h1>
+                    </div>
+                    <ul>
+                        <li>
+                            <p>Email</p>
+                            <input id="ipt_email" type="email">
+                            <div id="vEmail">Informe um email válido</div>
+                        </li>
+                    </ul>
 
-                    <ul class="senha">
+                    <ul class="card2-space">
                         <li>
                             <p>Senha</p>
                             <input id="ipt_senha" type="senha">
