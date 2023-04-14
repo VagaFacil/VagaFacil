@@ -7,12 +7,12 @@ create table empresa (
         cnpj char(18)        
 );
 
-insert into empresa values (null,'coca-cola','45.997.418/0001-53');
-insert into empresa values (null,'itaú','60.701.190/0001-04');
-insert into empresa values(null,'burguer-king','13.574.594/0001-96');
-insert into empresa values(null,'ford','03.470.727/0001-20');
-insert into empresa values(null,'carrefour','45.543.915/0001-81'); 
-insert into empresa values(null,'continental','48.754.139/0001-57');
+insert into empresa values (null,'coca-cola','45.997.418/0001-53'),
+						   (null,'itaú','60.701.190/0001-04'),
+                           (null,'burguer-king','13.574.594/0001-96'),
+                           (null,'ford','03.470.727/0001-20'),
+                           (null,'carrefour','45.543.915/0001-81'), 
+                           (null,'continental','48.754.139/0001-57');
 select * from empresa;
 
 create table filial (
@@ -25,10 +25,10 @@ create table filial (
         foreign key (fkEmpresa) references empresa(idEmpresa)
 )auto_increment = 50000;
 
-insert into filial values (null,'04709-000','R. Arquiteto Olavo Redig de Campos','105','Chácara Santo Antônio (Zona Sul)','1');
-insert into filial values (null,'04344-020','R. Volkswagen','100','Jabaquara, São Paulo)','2');
-insert into filial values (null,'05690-000',' R. George Eastman','213','Vila Tramontano, São Paulo - SP','3');
-insert into filial values (null,'07042-010','Av. Sen. Adolf Schindling','131','Vila Endres, Guarulhos - SP','4');
+insert into filial values (null,'04709-000','R. Arquiteto Olavo Redig de Campos','105','Chácara Santo Antônio (Zona Sul)','1'),
+						  (null,'04344-020','R. Volkswagen','100','Jabaquara, São Paulo)','2'),
+                          (null,'05690-000',' R. George Eastman','213','Vila Tramontano, São Paulo - SP','3'),
+                          (null,'07042-010','Av. Sen. Adolf Schindling','131','Vila Endres, Guarulhos - SP','4');
 select * from filial;
 
 create table usuario (
@@ -41,31 +41,30 @@ create table usuario (
         foreign key (fkFilial) references filial(idFilial)
 )auto_increment = 100000;
 
-insert into usuario values (null,'felipe alves santos','felipe@gmail.com','felipe123','55011972311126','50000');
-insert into usuario values (null,'luciano neves','luciano@outlook.com','luciano123','55011962322128','50001');
-insert into usuario values (null,'gabriel neves','gabriel@outlook.com','gabriel123','55011934322144','50002');
-insert into usuario values (null,'diego costa','diego@sptech.com','diego123','55011923322189','50003');
-insert into usuario values (null,'rogério ceni','rogério@gmail.com','rogério123','55011914578156','50003');
+insert into usuario values (null,'felipe alves santos','felipe@gmail.com','felipe123','55011972311126','50000'),
+						   (null,'luciano neves','luciano@outlook.com','luciano123','55011962322128','50001'),
+                           (null,'gabriel neves','gabriel@outlook.com','gabriel123','55011934322144','50002'),
+                           (null,'diego costa','diego@sptech.com','diego123','55011923322189','50003'),
+                           (null,'rogério ceni','rogério@gmail.com','rogério123','55011914578156','50003');
 select * from usuario;
 
 create table sensor(
 		idsensor int primary key auto_increment,
-		cep char(9),
+		cep char(9), -- removido e colocado na tabela rua 
 		numRua varchar(45),
 		numSensor varchar(45)
 )auto_increment=150000;
 
-insert into sensor values (null,'04100-000', '202', '1');
-insert into sensor values (null,'03100-000', '307', '2');
-insert into sensor values (null,'03000-000', '472', '3');
-insert into sensor values (null,'04500-000', '532', '4');
-insert into sensor values (null,'04700-000', '298', '5');
-insert into sensor values (null,'05300-000', '397', '6');
-insert into sensor values (null,'05400-000', '485', '7');
-insert into sensor values (null,'05800-000', '604', '8');
-insert into sensor values (null,'01000-000', '200', '9');
-insert into sensor values (null,'01300-000', '578', '10');
-
+insert into sensor values (null,'04100-000', '202', '1'),
+						  (null,'03100-000', '307', '2'),
+                          (null,'03000-000', '472', '3'),
+                          (null,'04500-000', '532', '4'),
+                          (null,'04700-000', '298', '5'),
+                          (null,'05300-000', '397', '6'),
+                          (null,'05400-000', '485', '7'),
+                          (null,'05800-000', '604', '8'),
+                          (null,'01000-000', '200', '9'),
+                          (null,'01300-000', '578', '10');
 select * from sensor;
 
 create table dados(
@@ -79,274 +78,282 @@ create table dados(
 
 
 -- Dados referenter au sensor Numero 1
-insert into dados values (null, '2023-04-10 07:00:00', '0', 150000);
-insert into dados values (null, '2023-04-10 07:30:00', '0', 150000);
-insert into dados values (null, '2023-04-10 08:00:00', '0', 150000);
-insert into dados values (null, '2023-04-10 08:30:00', '1', 150000);
-insert into dados values (null, '2023-04-10 09:00:00', '1', 150000);
-insert into dados values (null, '2023-04-10 09:30:00', '1', 150000);
-insert into dados values (null, '2023-04-10 10:00:00', '1', 150000);
-insert into dados values (null, '2023-04-10 10:30:00', '1', 150000);
-insert into dados values (null, '2023-04-10 11:00:00', '0', 150000);
-insert into dados values (null, '2023-04-10 11:30:00', '0', 150000);
-insert into dados values (null, '2023-04-10 12:00:00', '1', 150000);
-insert into dados values (null, '2023-04-10 12:30:00', '1', 150000);
-insert into dados values (null, '2023-04-10 13:00:00', '1', 150000);
-insert into dados values (null, '2023-04-10 13:30:00', '1', 150000);
-insert into dados values (null, '2023-04-10 14:00:00', '1', 150000);
-insert into dados values (null, '2023-04-10 14:30:00', '1', 150000);
-insert into dados values (null, '2023-04-10 15:00:00', '1', 150000);
-insert into dados values (null, '2023-04-10 15:30:00', '0', 150000);
-insert into dados values (null, '2023-04-10 16:00:00', '0', 150000);
-insert into dados values (null, '2023-04-10 16:30:00', '0', 150000);
-insert into dados values (null, '2023-04-10 17:00:00', '0', 150000);
-insert into dados values (null, '2023-04-10 17:30:00', '1', 150000);
-insert into dados values (null, '2023-04-10 18:00:00', '1', 150000);
-insert into dados values (null, '2023-04-10 18:30:00', '1', 150000);
-insert into dados values (null, '2023-04-10 19:00:00', '1', 150000);
-
--- Dados referenter au sensor Numero 2
-insert into dados values (null, '2023-04-10 07:00:00', '1', 150001);
-insert into dados values (null, '2023-04-10 07:30:00', '1', 150001);
-insert into dados values (null, '2023-04-10 08:00:00', '0', 150001);
-insert into dados values (null, '2023-04-10 08:30:00', '0', 150001);
-insert into dados values (null, '2023-04-10 09:00:00', '0', 150001);
-insert into dados values (null, '2023-04-10 09:30:00', '1', 150001);
-insert into dados values (null, '2023-04-10 10:00:00', '1', 150001);
-insert into dados values (null, '2023-04-10 10:30:00', '1', 150001);
-insert into dados values (null, '2023-04-10 11:00:00', '0', 150001);
-insert into dados values (null, '2023-04-10 11:30:00', '1', 150001);
-insert into dados values (null, '2023-04-10 12:00:00', '1', 150001);
-insert into dados values (null, '2023-04-10 12:30:00', '1', 150001);
-insert into dados values (null, '2023-04-10 13:00:00', '1', 150001);
-insert into dados values (null, '2023-04-10 13:30:00', '1', 150001);
-insert into dados values (null, '2023-04-10 14:00:00', '1', 150001);
-insert into dados values (null, '2023-04-10 14:30:00', '1', 150001);
-insert into dados values (null, '2023-04-10 15:00:00', '1', 150001);
-insert into dados values (null, '2023-04-10 15:30:00', '1', 150001);
-insert into dados values (null, '2023-04-10 16:00:00', '0', 150001);
-insert into dados values (null, '2023-04-10 16:30:00', '0', 150001);
-insert into dados values (null, '2023-04-10 17:00:00', '0', 150001);
-insert into dados values (null, '2023-04-10 17:30:00', '1', 150001);
-insert into dados values (null, '2023-04-10 18:00:00', '1', 150001);
-insert into dados values (null, '2023-04-10 18:30:00', '1', 150001);
-insert into dados values (null, '2023-04-10 19:00:00', '0', 150001);
-
--- Dados referenter au sensor Numero 3
-insert into dados values (null, '2023-04-10 07:00:00', '1', 150002);
-insert into dados values (null, '2023-04-10 07:30:00', '1', 150002);
-insert into dados values (null, '2023-04-10 08:00:00', '0', 150002);
-insert into dados values (null, '2023-04-10 08:30:00', '1', 150002);
-insert into dados values (null, '2023-04-10 09:00:00', '0', 150002);
-insert into dados values (null, '2023-04-10 09:30:00', '1', 150002);
-insert into dados values (null, '2023-04-10 10:00:00', '1', 150002);
-insert into dados values (null, '2023-04-10 10:30:00', '1', 150002);
-insert into dados values (null, '2023-04-10 11:00:00', '0', 150002);
-insert into dados values (null, '2023-04-10 11:30:00', '1', 150002);
-insert into dados values (null, '2023-04-10 12:00:00', '1', 150002);
-insert into dados values (null, '2023-04-10 12:30:00', '1', 150002);
-insert into dados values (null, '2023-04-10 13:00:00', '0', 150002);
-insert into dados values (null, '2023-04-10 13:30:00', '1', 150002);
-insert into dados values (null, '2023-04-10 14:00:00', '1', 150002);
-insert into dados values (null, '2023-04-10 14:30:00', '1', 150002);
-insert into dados values (null, '2023-04-10 15:00:00', '0', 150002);
-insert into dados values (null, '2023-04-10 15:30:00', '1', 150002);
-insert into dados values (null, '2023-04-10 16:00:00', '0', 150002);
-insert into dados values (null, '2023-04-10 16:30:00', '0', 150002);
-insert into dados values (null, '2023-04-10 17:00:00', '1', 150002);
-insert into dados values (null, '2023-04-10 17:30:00', '1', 150002);
-insert into dados values (null, '2023-04-10 18:00:00', '1', 150002);
-insert into dados values (null, '2023-04-10 18:30:00', '1', 150002);
-insert into dados values (null, '2023-04-10 19:00:00', '0', 150002);
-
--- Dados referenter au sensor Numero 4
-insert into dados values (null, '2023-04-10 07:00:00', '1', 150003);
-insert into dados values (null, '2023-04-10 07:30:00', '1', 150003);
-insert into dados values (null, '2023-04-10 08:00:00', '0', 150003);
-insert into dados values (null, '2023-04-10 08:30:00', '1', 150003);
-insert into dados values (null, '2023-04-10 09:00:00', '0', 150003);
-insert into dados values (null, '2023-04-10 09:30:00', '0', 150003);
-insert into dados values (null, '2023-04-10 10:00:00', '1', 150003);
-insert into dados values (null, '2023-04-10 10:30:00', '1', 150003);
-insert into dados values (null, '2023-04-10 11:00:00', '0', 150003);
-insert into dados values (null, '2023-04-10 11:30:00', '1', 150003);
-insert into dados values (null, '2023-04-10 12:00:00', '0', 150003);
-insert into dados values (null, '2023-04-10 12:30:00', '1', 150003);
-insert into dados values (null, '2023-04-10 13:00:00', '0', 150003);
-insert into dados values (null, '2023-04-10 13:30:00', '1', 150003);
-insert into dados values (null, '2023-04-10 14:00:00', '1', 150003);
-insert into dados values (null, '2023-04-10 14:30:00', '0', 150003);
-insert into dados values (null, '2023-04-10 15:00:00', '0', 150003);
-insert into dados values (null, '2023-04-10 15:30:00', '1', 150003);
-insert into dados values (null, '2023-04-10 16:00:00', '0', 150003);
-insert into dados values (null, '2023-04-10 16:30:00', '0', 150003);
-insert into dados values (null, '2023-04-10 17:00:00', '1', 150003);
-insert into dados values (null, '2023-04-10 17:30:00', '1', 150003);
-insert into dados values (null, '2023-04-10 18:00:00', '0', 150003);
-insert into dados values (null, '2023-04-10 18:30:00', '1', 150003);
-insert into dados values (null, '2023-04-10 19:00:00', '1', 150003);
-
--- Dados referenter au sensor Numero 5
-insert into dados values (null, '2023-04-10 07:00:00', '1', 150004);
-insert into dados values (null, '2023-04-10 07:30:00', '1', 150004);
-insert into dados values (null, '2023-04-10 08:00:00', '1', 150004);
-insert into dados values (null, '2023-04-10 08:30:00', '1', 150004);
-insert into dados values (null, '2023-04-10 09:00:00', '1', 150004);
-insert into dados values (null, '2023-04-10 09:30:00', '0', 150004);
-insert into dados values (null, '2023-04-10 10:00:00', '1', 150004);
-insert into dados values (null, '2023-04-10 10:30:00', '1', 150004);
-insert into dados values (null, '2023-04-10 11:00:00', '0', 150004);
-insert into dados values (null, '2023-04-10 11:30:00', '1', 150004);
-insert into dados values (null, '2023-04-10 12:00:00', '0', 150004);
-insert into dados values (null, '2023-04-10 12:30:00', '1', 150004);
-insert into dados values (null, '2023-04-10 13:00:00', '0', 150004);
-insert into dados values (null, '2023-04-10 13:30:00', '1', 150004);
-insert into dados values (null, '2023-04-10 14:00:00', '1', 150004);
-insert into dados values (null, '2023-04-10 14:30:00', '0', 150004);
-insert into dados values (null, '2023-04-10 15:00:00', '0', 150004);
-insert into dados values (null, '2023-04-10 15:30:00', '1', 150004);
-insert into dados values (null, '2023-04-10 16:00:00', '0', 150004);
-insert into dados values (null, '2023-04-10 16:30:00', '1', 150004);
-insert into dados values (null, '2023-04-10 17:00:00', '1', 150004);
-insert into dados values (null, '2023-04-10 17:30:00', '1', 150004);
-insert into dados values (null, '2023-04-10 18:00:00', '1', 150004);
-insert into dados values (null, '2023-04-10 18:30:00', '1', 150004);
-insert into dados values (null, '2023-04-10 19:00:00', '1', 150004);
-
--- Dados referenter au sensor Numero 5
-insert into dados values (null, '2023-04-10 07:00:00', '1', 150005);
-insert into dados values (null, '2023-04-10 07:30:00', '1', 150005);
-insert into dados values (null, '2023-04-10 08:00:00', '1', 150005);
-insert into dados values (null, '2023-04-10 08:30:00', '1', 150005);
-insert into dados values (null, '2023-04-10 09:00:00', '1', 150005);
-insert into dados values (null, '2023-04-10 09:30:00', '0', 150005);
-insert into dados values (null, '2023-04-10 10:00:00', '1', 150005);
-insert into dados values (null, '2023-04-10 10:30:00', '1', 150005);
-insert into dados values (null, '2023-04-10 11:00:00', '0', 150005);
-insert into dados values (null, '2023-04-10 11:30:00', '1', 150005);
-insert into dados values (null, '2023-04-10 12:00:00', '0', 150005);
-insert into dados values (null, '2023-04-10 12:30:00', '1', 150005);
-insert into dados values (null, '2023-04-10 13:00:00', '0', 150005);
-insert into dados values (null, '2023-04-10 13:30:00', '1', 150005);
-insert into dados values (null, '2023-04-10 14:00:00', '1', 150005);
-insert into dados values (null, '2023-04-10 14:30:00', '0', 150005);
-insert into dados values (null, '2023-04-10 15:00:00', '0', 150005);
-insert into dados values (null, '2023-04-10 15:30:00', '1', 150005);
-insert into dados values (null, '2023-04-10 16:00:00', '0', 150005);
-insert into dados values (null, '2023-04-10 16:30:00', '1', 150005);
-insert into dados values (null, '2023-04-10 17:00:00', '1', 150005);
-insert into dados values (null, '2023-04-10 17:30:00', '1', 150005);
-insert into dados values (null, '2023-04-10 18:00:00', '1', 150005);
-insert into dados values (null, '2023-04-10 18:30:00', '1', 150005);
-insert into dados values (null, '2023-04-10 19:00:00', '1', 150005);
-
--- Dados referenter au sensor Numero 7
-insert into dados values (null, '2023-04-10 07:00:00', '0', 150006);
-insert into dados values (null, '2023-04-10 07:30:00', '1', 150006);
-insert into dados values (null, '2023-04-10 08:00:00', '1', 150006);
-insert into dados values (null, '2023-04-10 08:30:00', '0', 150006);
-insert into dados values (null, '2023-04-10 09:00:00', '1', 150006);
-insert into dados values (null, '2023-04-10 09:30:00', '0', 150006);
-insert into dados values (null, '2023-04-10 10:00:00', '1', 150006);
-insert into dados values (null, '2023-04-10 10:30:00', '1', 150006);
-insert into dados values (null, '2023-04-10 11:00:00', '0', 150006);
-insert into dados values (null, '2023-04-10 11:30:00', '1', 150006);
-insert into dados values (null, '2023-04-10 12:00:00', '1', 150006);
-insert into dados values (null, '2023-04-10 12:30:00', '1', 150006);
-insert into dados values (null, '2023-04-10 13:00:00', '0', 150006);
-insert into dados values (null, '2023-04-10 13:30:00', '0', 150006);
-insert into dados values (null, '2023-04-10 14:00:00', '1', 150006);
-insert into dados values (null, '2023-04-10 14:30:00', '0', 150006);
-insert into dados values (null, '2023-04-10 15:00:00', '0', 150006);
-insert into dados values (null, '2023-04-10 15:30:00', '1', 150006);
-insert into dados values (null, '2023-04-10 16:00:00', '0', 150006);
-insert into dados values (null, '2023-04-10 16:30:00', '1', 150006);
-insert into dados values (null, '2023-04-10 17:00:00', '1', 150006);
-insert into dados values (null, '2023-04-10 17:30:00', '0', 150006);
-insert into dados values (null, '2023-04-10 18:00:00', '0', 150006);
-insert into dados values (null, '2023-04-10 18:30:00', '1', 150006);
-insert into dados values (null, '2023-04-10 19:00:00', '1', 150006);
-
--- Dados referenter au sensor Numero 8
-insert into dados values (null, '2023-04-10 07:00:00', '0', 150007);
-insert into dados values (null, '2023-04-10 07:30:00', '0', 150007);
-insert into dados values (null, '2023-04-10 08:00:00', '1', 150007);
-insert into dados values (null, '2023-04-10 08:30:00', '0', 150007);
-insert into dados values (null, '2023-04-10 09:00:00', '1', 150007);
-insert into dados values (null, '2023-04-10 09:30:00', '0', 150007);
-insert into dados values (null, '2023-04-10 10:00:00', '1', 150007);
-insert into dados values (null, '2023-04-10 10:30:00', '1', 150007);
-insert into dados values (null, '2023-04-10 11:00:00', '0', 150007);
-insert into dados values (null, '2023-04-10 11:30:00', '1', 150007);
-insert into dados values (null, '2023-04-10 12:00:00', '1', 150007);
-insert into dados values (null, '2023-04-10 12:30:00', '1', 150007);
-insert into dados values (null, '2023-04-10 13:00:00', '1', 150007);
-insert into dados values (null, '2023-04-10 13:30:00', '0', 150007);
-insert into dados values (null, '2023-04-10 14:00:00', '1', 150007);
-insert into dados values (null, '2023-04-10 14:30:00', '0', 150007);
-insert into dados values (null, '2023-04-10 15:00:00', '0', 150007);
-insert into dados values (null, '2023-04-10 15:30:00', '0', 150007);
-insert into dados values (null, '2023-04-10 16:00:00', '1', 150007);
-insert into dados values (null, '2023-04-10 16:30:00', '1', 150007);
-insert into dados values (null, '2023-04-10 17:00:00', '1', 150007);
-insert into dados values (null, '2023-04-10 17:30:00', '0', 150007);
-insert into dados values (null, '2023-04-10 18:00:00', '0', 150007);
-insert into dados values (null, '2023-04-10 18:30:00', '1', 150007);
-insert into dados values (null, '2023-04-10 19:00:00', '1', 150007);
-
--- Dados referenter au sensor Numero 9
-insert into dados values (null, '2023-04-10 07:00:00', '1', 150008);
-insert into dados values (null, '2023-04-10 07:30:00', '0', 150008);
-insert into dados values (null, '2023-04-10 08:00:00', '1', 150008);
-insert into dados values (null, '2023-04-10 08:30:00', '0', 150008);
-insert into dados values (null, '2023-04-10 09:00:00', '0', 150008);
-insert into dados values (null, '2023-04-10 09:30:00', '0', 150008);
-insert into dados values (null, '2023-04-10 10:00:00', '1', 150008);
-insert into dados values (null, '2023-04-10 10:30:00', '1', 150008);
-insert into dados values (null, '2023-04-10 11:00:00', '1', 150008);
-insert into dados values (null, '2023-04-10 11:30:00', '1', 150008);
-insert into dados values (null, '2023-04-10 12:00:00', '1', 150008);
-insert into dados values (null, '2023-04-10 12:30:00', '1', 150008);
-insert into dados values (null, '2023-04-10 13:00:00', '0', 150008);
-insert into dados values (null, '2023-04-10 13:30:00', '0', 150008);
-insert into dados values (null, '2023-04-10 14:00:00', '1', 150008);
-insert into dados values (null, '2023-04-10 14:30:00', '0', 150008);
-insert into dados values (null, '2023-04-10 15:00:00', '0', 150008);
-insert into dados values (null, '2023-04-10 15:30:00', '1', 150008);
-insert into dados values (null, '2023-04-10 16:00:00', '1', 150008);
-insert into dados values (null, '2023-04-10 16:30:00', '1', 150008);
-insert into dados values (null, '2023-04-10 17:00:00', '1', 150008);
-insert into dados values (null, '2023-04-10 17:30:00', '0', 150008);
-insert into dados values (null, '2023-04-10 18:00:00', '0', 150008);
-insert into dados values (null, '2023-04-10 18:30:00', '1', 150008);
-insert into dados values (null, '2023-04-10 19:00:00', '1', 150008);
-
--- Dados referenter au sensor Numero 10
-insert into dados values (null, '2023-04-10 07:00:00', '1', 150009);
-insert into dados values (null, '2023-04-10 07:30:00', '0', 150009);
-insert into dados values (null, '2023-04-10 08:00:00', '1', 150009);
-insert into dados values (null, '2023-04-10 08:30:00', '0', 150009);
-insert into dados values (null, '2023-04-10 09:00:00', '0', 150009);
-insert into dados values (null, '2023-04-10 09:30:00', '0', 150009);
-insert into dados values (null, '2023-04-10 10:00:00', '1', 150009);
-insert into dados values (null, '2023-04-10 10:30:00', '1', 150009);
-insert into dados values (null, '2023-04-10 11:00:00', '0', 150009);
-insert into dados values (null, '2023-04-10 11:30:00', '0', 150009);
-insert into dados values (null, '2023-04-10 12:00:00', '1', 150009);
-insert into dados values (null, '2023-04-10 12:30:00', '1', 150009);
-insert into dados values (null, '2023-04-10 13:00:00', '0', 150009);
-insert into dados values (null, '2023-04-10 13:30:00', '0', 150009);
-insert into dados values (null, '2023-04-10 14:00:00', '1', 150009);
-insert into dados values (null, '2023-04-10 14:30:00', '0', 150009);
-insert into dados values (null, '2023-04-10 15:00:00', '1', 150009);
-insert into dados values (null, '2023-04-10 15:30:00', '1', 150009);
-insert into dados values (null, '2023-04-10 16:00:00', '1', 150009);
-insert into dados values (null, '2023-04-10 16:30:00', '1', 150009);
-insert into dados values (null, '2023-04-10 17:00:00', '1', 150009);
-insert into dados values (null, '2023-04-10 17:30:00', '1', 150009);
-insert into dados values (null, '2023-04-10 18:00:00', '0', 150009);
-insert into dados values (null, '2023-04-10 18:30:00', '1', 150009);
-insert into dados values (null, '2023-04-10 19:00:00', '0', 150009);
+insert into dados values (null, '2023-04-10 07:00:00', '0', 150000),
+						 (null, '2023-04-10 07:30:00', '0', 150000),
+                         (null, '2023-04-10 08:00:00', '0', 150000),
+                         (null, '2023-04-10 08:30:00', '1', 150000),
+                         (null, '2023-04-10 09:00:00', '1', 150000),
+                         (null, '2023-04-10 09:30:00', '1', 150000),
+                         (null, '2023-04-10 10:00:00', '1', 150000),
+                         (null, '2023-04-10 10:30:00', '1', 150000),
+                         (null, '2023-04-10 11:00:00', '0', 150000),
+                         (null, '2023-04-10 11:30:00', '0', 150000),
+                         (null, '2023-04-10 12:00:00', '1', 150000),
+                         (null, '2023-04-10 12:30:00', '1', 150000),
+                         (null, '2023-04-10 13:00:00', '1', 150000),
+                         (null, '2023-04-10 13:30:00', '1', 150000),
+                         (null, '2023-04-10 14:00:00', '1', 150000),
+                         (null, '2023-04-10 14:30:00', '1', 150000),
+                         (null, '2023-04-10 15:00:00', '1', 150000),
+                         (null, '2023-04-10 15:30:00', '0', 150000),
+                         (null, '2023-04-10 16:00:00', '0', 150000),
+                         (null, '2023-04-10 16:30:00', '0', 150000),
+                         (null, '2023-04-10 17:00:00', '0', 150000),
+                         (null, '2023-04-10 17:30:00', '1', 150000),
+                         (null, '2023-04-10 18:00:00', '1', 150000),
+                         (null, '2023-04-10 18:30:00', '1', 150000),
+                         (null, '2023-04-10 19:00:00', '1', 150000),
+                         (null, '2023-04-10 07:00:00', '1', 150001),
+						 (null, '2023-04-10 07:30:00', '1', 150001),
+                         (null, '2023-04-10 08:00:00', '0', 150001),
+                         (null, '2023-04-10 08:30:00', '0', 150001),
+                         (null, '2023-04-10 09:00:00', '0', 150001),
+                         (null, '2023-04-10 09:30:00', '1', 150001),
+                         (null, '2023-04-10 10:00:00', '1', 150001),
+                         (null, '2023-04-10 10:30:00', '1', 150001),
+                         (null, '2023-04-10 11:00:00', '0', 150001),
+                         (null, '2023-04-10 11:30:00', '1', 150001),
+                         (null, '2023-04-10 12:00:00', '1', 150001),
+                         (null, '2023-04-10 12:30:00', '1', 150001),
+                         (null, '2023-04-10 13:00:00', '1', 150001),
+                         (null, '2023-04-10 13:30:00', '1', 150001),
+                         (null, '2023-04-10 14:00:00', '1', 150001),
+                         (null, '2023-04-10 14:30:00', '1', 150001),
+                         (null, '2023-04-10 15:00:00', '1', 150001),
+                         (null, '2023-04-10 15:30:00', '1', 150001),
+                         (null, '2023-04-10 16:00:00', '0', 150001),
+                         (null, '2023-04-10 16:30:00', '0', 150001),
+                         (null, '2023-04-10 17:00:00', '0', 150001),
+                         (null, '2023-04-10 17:30:00', '1', 150001),
+                         (null, '2023-04-10 18:00:00', '1', 150001),
+                         (null, '2023-04-10 18:30:00', '1', 150001),
+                         (null, '2023-04-10 19:00:00', '0', 150001),
+                         (null, '2023-04-10 07:00:00', '1', 150002),
+						 (null, '2023-04-10 07:30:00', '1', 150002),
+                         (null, '2023-04-10 08:00:00', '0', 150002),
+                         (null, '2023-04-10 08:30:00', '1', 150002),
+                         (null, '2023-04-10 09:00:00', '0', 150002),
+                         (null, '2023-04-10 09:30:00', '1', 150002),
+                         (null, '2023-04-10 10:00:00', '1', 150002),
+                         (null, '2023-04-10 10:30:00', '1', 150002),
+                         (null, '2023-04-10 11:00:00', '0', 150002),
+                         (null, '2023-04-10 11:30:00', '1', 150002),
+                         (null, '2023-04-10 12:00:00', '1', 150002),
+                         (null, '2023-04-10 12:30:00', '1', 150002),
+                         (null, '2023-04-10 13:00:00', '0', 150002),
+                         (null, '2023-04-10 13:30:00', '1', 150002),
+                         (null, '2023-04-10 14:00:00', '1', 150002),
+                         (null, '2023-04-10 14:30:00', '1', 150002),
+                         (null, '2023-04-10 15:00:00', '0', 150002),
+                         (null, '2023-04-10 15:30:00', '1', 150002),
+                         (null, '2023-04-10 16:00:00', '0', 150002),
+                         (null, '2023-04-10 16:30:00', '0', 150002),
+                         (null, '2023-04-10 17:00:00', '1', 150002),
+                         (null, '2023-04-10 17:30:00', '1', 150002),
+                         (null, '2023-04-10 18:00:00', '1', 150002),
+                         (null, '2023-04-10 18:30:00', '1', 150002),
+                         (null, '2023-04-10 19:00:00', '0', 150002),
+                         (null, '2023-04-10 07:00:00', '1', 150003),
+						 (null, '2023-04-10 07:30:00', '1', 150003),
+                         (null, '2023-04-10 08:00:00', '0', 150003),
+                         (null, '2023-04-10 08:30:00', '1', 150003),
+                         (null, '2023-04-10 09:00:00', '0', 150003),
+                         (null, '2023-04-10 09:30:00', '0', 150003),
+                         (null, '2023-04-10 10:00:00', '1', 150003),
+                         (null, '2023-04-10 10:30:00', '1', 150003),
+                         (null, '2023-04-10 11:00:00', '0', 150003),
+                         (null, '2023-04-10 11:30:00', '1', 150003),
+                         (null, '2023-04-10 12:00:00', '0', 150003),
+                         (null, '2023-04-10 12:30:00', '1', 150003),
+                         (null, '2023-04-10 13:00:00', '0', 150003),
+                         (null, '2023-04-10 13:30:00', '1', 150003),
+                         (null, '2023-04-10 14:00:00', '1', 150003),
+                         (null, '2023-04-10 14:30:00', '0', 150003),
+                         (null, '2023-04-10 15:00:00', '0', 150003),
+                         (null, '2023-04-10 15:30:00', '1', 150003),
+                         (null, '2023-04-10 16:00:00', '0', 150003),
+                         (null, '2023-04-10 16:30:00', '0', 150003),
+                         (null, '2023-04-10 17:00:00', '1', 150003),
+                         (null, '2023-04-10 17:30:00', '1', 150003),
+                         (null, '2023-04-10 18:00:00', '0', 150003),
+                         (null, '2023-04-10 18:30:00', '1', 150003),
+                         (null, '2023-04-10 19:00:00', '1', 150003),
+                         (null, '2023-04-10 07:00:00', '1', 150004),
+						 (null, '2023-04-10 07:30:00', '1', 150004),
+                         (null, '2023-04-10 08:00:00', '1', 150004),
+                         (null, '2023-04-10 08:30:00', '1', 150004),
+                         (null, '2023-04-10 09:00:00', '1', 150004),
+                         (null, '2023-04-10 09:30:00', '0', 150004),
+                         (null, '2023-04-10 10:00:00', '1', 150004),
+                         (null, '2023-04-10 10:30:00', '1', 150004),
+                         (null, '2023-04-10 11:00:00', '0', 150004),
+                         (null, '2023-04-10 11:30:00', '1', 150004),
+                         (null, '2023-04-10 12:00:00', '0', 150004),
+                         (null, '2023-04-10 12:30:00', '1', 150004),
+                         (null, '2023-04-10 13:00:00', '0', 150004),
+                         (null, '2023-04-10 13:30:00', '1', 150004),
+                         (null, '2023-04-10 14:00:00', '1', 150004),
+                         (null, '2023-04-10 14:30:00', '0', 150004),
+                         (null, '2023-04-10 15:00:00', '0', 150004),
+                         (null, '2023-04-10 15:30:00', '1', 150004),
+                         (null, '2023-04-10 16:00:00', '0', 150004),
+                         (null, '2023-04-10 16:30:00', '1', 150004),
+                         (null, '2023-04-10 17:00:00', '1', 150004),
+                         (null, '2023-04-10 17:30:00', '1', 150004),
+                         (null, '2023-04-10 18:00:00', '1', 150004),
+                         (null, '2023-04-10 18:30:00', '1', 150004),
+                         (null, '2023-04-10 19:00:00', '1', 150004),
+                         (null, '2023-04-10 07:00:00', '1', 150005),
+						 (null, '2023-04-10 07:30:00', '1', 150005),
+                         (null, '2023-04-10 08:00:00', '1', 150005),
+                         (null, '2023-04-10 08:30:00', '1', 150005),
+                         (null, '2023-04-10 09:00:00', '1', 150005),
+                         (null, '2023-04-10 09:30:00', '0', 150005),
+                         (null, '2023-04-10 10:00:00', '1', 150005),
+                         (null, '2023-04-10 10:30:00', '1', 150005),
+                         (null, '2023-04-10 11:00:00', '0', 150005),
+                         (null, '2023-04-10 11:30:00', '1', 150005),
+                         (null, '2023-04-10 12:00:00', '0', 150005),
+                         (null, '2023-04-10 12:30:00', '1', 150005),
+                         (null, '2023-04-10 13:00:00', '0', 150005),
+                         (null, '2023-04-10 13:30:00', '1', 150005),
+                         (null, '2023-04-10 14:00:00', '1', 150005),
+                         (null, '2023-04-10 14:30:00', '0', 150005),
+                         (null, '2023-04-10 15:00:00', '0', 150005),
+                         (null, '2023-04-10 15:30:00', '1', 150005),
+                         (null, '2023-04-10 16:00:00', '0', 150005),
+                         (null, '2023-04-10 16:30:00', '1', 150005),
+                         (null, '2023-04-10 17:00:00', '1', 150005),
+                         (null, '2023-04-10 17:30:00', '1', 150005),
+                         (null, '2023-04-10 18:00:00', '1', 150005),
+                         (null, '2023-04-10 18:30:00', '1', 150005),
+                         (null, '2023-04-10 19:00:00', '1', 150005),
+                         (null, '2023-04-10 07:00:00', '0', 150006),
+						 (null, '2023-04-10 07:30:00', '1', 150006),
+                         (null, '2023-04-10 08:00:00', '1', 150006),
+                         (null, '2023-04-10 08:30:00', '0', 150006),
+                         (null, '2023-04-10 09:00:00', '1', 150006),
+                         (null, '2023-04-10 09:30:00', '0', 150006),
+                         (null, '2023-04-10 10:00:00', '1', 150006),
+                         (null, '2023-04-10 10:30:00', '1', 150006),
+                         (null, '2023-04-10 11:00:00', '0', 150006),
+                         (null, '2023-04-10 11:30:00', '1', 150006),
+                         (null, '2023-04-10 12:00:00', '1', 150006),
+                         (null, '2023-04-10 12:30:00', '1', 150006),
+                         (null, '2023-04-10 13:00:00', '0', 150006),
+                         (null, '2023-04-10 13:30:00', '0', 150006),
+                         (null, '2023-04-10 14:00:00', '1', 150006),
+                         (null, '2023-04-10 14:30:00', '0', 150006),
+                         (null, '2023-04-10 15:00:00', '0', 150006),
+                         (null, '2023-04-10 15:30:00', '1', 150006),
+                         (null, '2023-04-10 16:00:00', '0', 150006),
+                         (null, '2023-04-10 16:30:00', '1', 150006),
+                         (null, '2023-04-10 17:00:00', '1', 150006),
+                         (null, '2023-04-10 17:30:00', '0', 150006),
+                         (null, '2023-04-10 18:00:00', '0', 150006),
+                         (null, '2023-04-10 18:30:00', '1', 150006),
+                         (null, '2023-04-10 19:00:00', '1', 150006),
+                         (null, '2023-04-10 07:00:00', '0', 150007),
+						 (null, '2023-04-10 07:30:00', '0', 150007),
+                         (null, '2023-04-10 08:00:00', '1', 150007),
+                         (null, '2023-04-10 08:30:00', '0', 150007),
+                         (null, '2023-04-10 09:00:00', '1', 150007),
+                         (null, '2023-04-10 09:30:00', '0', 150007),
+                         (null, '2023-04-10 10:00:00', '1', 150007),
+                         (null, '2023-04-10 10:30:00', '1', 150007),
+                         (null, '2023-04-10 11:00:00', '0', 150007),
+                         (null, '2023-04-10 11:30:00', '1', 150007),
+                         (null, '2023-04-10 12:00:00', '1', 150007),
+                         (null, '2023-04-10 12:30:00', '1', 150007),
+                         (null, '2023-04-10 13:00:00', '1', 150007),
+                         (null, '2023-04-10 13:30:00', '0', 150007),
+                         (null, '2023-04-10 14:00:00', '1', 150007),
+                         (null, '2023-04-10 14:30:00', '0', 150007),
+                         (null, '2023-04-10 15:00:00', '0', 150007),
+                         (null, '2023-04-10 15:30:00', '0', 150007),
+                         (null, '2023-04-10 16:00:00', '1', 150007),
+                         (null, '2023-04-10 16:30:00', '1', 150007),
+                         (null, '2023-04-10 17:00:00', '1', 150007),
+                         (null, '2023-04-10 17:30:00', '0', 150007),
+                         (null, '2023-04-10 18:00:00', '0', 150007),
+                         (null, '2023-04-10 18:30:00', '1', 150007),
+                         (null, '2023-04-10 19:00:00', '1', 150007),
+                         (null, '2023-04-10 07:00:00', '1', 150008),
+						 (null, '2023-04-10 07:30:00', '0', 150008),
+                         (null, '2023-04-10 08:00:00', '1', 150008),
+                         (null, '2023-04-10 08:30:00', '0', 150008),
+                         (null, '2023-04-10 09:00:00', '0', 150008),
+                         (null, '2023-04-10 09:30:00', '0', 150008),
+                         (null, '2023-04-10 10:00:00', '1', 150008),
+                         (null, '2023-04-10 10:30:00', '1', 150008),
+                         (null, '2023-04-10 11:00:00', '1', 150008),
+                         (null, '2023-04-10 11:30:00', '1', 150008),
+                         (null, '2023-04-10 12:00:00', '1', 150008),
+                         (null, '2023-04-10 12:30:00', '1', 150008),
+                         (null, '2023-04-10 13:00:00', '0', 150008),
+                         (null, '2023-04-10 13:30:00', '0', 150008),
+                         (null, '2023-04-10 14:00:00', '1', 150008),
+                         (null, '2023-04-10 14:30:00', '0', 150008),
+                         (null, '2023-04-10 15:00:00', '0', 150008),
+                         (null, '2023-04-10 15:30:00', '1', 150008),
+                         (null, '2023-04-10 16:00:00', '1', 150008),
+                         (null, '2023-04-10 16:30:00', '1', 150008),
+                         (null, '2023-04-10 17:00:00', '1', 150008),
+                         (null, '2023-04-10 17:30:00', '0', 150008),
+                         (null, '2023-04-10 18:00:00', '0', 150008),
+                         (null, '2023-04-10 18:30:00', '1', 150008),
+                         (null, '2023-04-10 19:00:00', '1', 150008),
+                         (null, '2023-04-10 07:00:00', '1', 150009),
+						 (null, '2023-04-10 07:30:00', '0', 150009),
+                         (null, '2023-04-10 08:00:00', '1', 150009),
+                         (null, '2023-04-10 08:30:00', '0', 150009),
+                         (null, '2023-04-10 09:00:00', '0', 150009),
+                         (null, '2023-04-10 09:30:00', '0', 150009),
+                         (null, '2023-04-10 10:00:00', '1', 150009),
+                         (null, '2023-04-10 10:30:00', '1', 150009),
+                         (null, '2023-04-10 11:00:00', '0', 150009),
+                         (null, '2023-04-10 11:30:00', '0', 150009),
+                         (null, '2023-04-10 12:00:00', '1', 150009),
+                         (null, '2023-04-10 12:30:00', '1', 150009),
+                         (null, '2023-04-10 13:00:00', '0', 150009),
+                         (null, '2023-04-10 13:30:00', '0', 150009),
+                         (null, '2023-04-10 14:00:00', '1', 150009),
+                         (null, '2023-04-10 14:30:00', '0', 150009),
+                         (null, '2023-04-10 15:00:00', '1', 150009),
+                         (null, '2023-04-10 15:30:00', '1', 150009),
+                         (null, '2023-04-10 16:00:00', '1', 150009),
+                         (null, '2023-04-10 16:30:00', '1', 150009),
+                         (null, '2023-04-10 17:00:00', '1', 150009),
+                         (null, '2023-04-10 17:30:00', '1', 150009),
+                         (null, '2023-04-10 18:00:00', '0', 150009),
+                         (null, '2023-04-10 18:30:00', '1', 150009),
+                         (null, '2023-04-10 19:00:00', '0', 150009);
 select * from dados;
-
 -- select dataHora, SUM(valor) FROM dados group by dataHora;
+
+-- criação da tabela rua e inserção de valores 
+create table rua (
+		idRua int primary key auto_increment,
+        nome varchar(45),
+        bairro varchar(45),
+        cep char(9)
+)auto_increment = 250000;
+select * from rua;
+-- alteração na tabela sensor, adição da coluna fkRua
+alter table sensor add column fkRua int;
+alter table sensor add foreign key(fkRua) references rua(idRua);
+alter table sensor drop column cep;
+
+-- select das tabelas relacionadas
+
+select * from empresa join filial on fkEmpresa = idEmpresa;
+
+select * from filial join usuario on fkFilial = idFilial;
+
+select * from empresa join filial join usuario on fkEmpresa = idEmpresa and fkFilial = idFilial;
+
+select * from rua join sensor on fkRua = idRua;
+
+select * from sensor join dados on fkSensor = idSensor;
+
+select * from rua join sensor join dados on fkRua = idRua and fkSensor = idSensor; 
