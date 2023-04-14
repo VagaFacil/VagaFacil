@@ -40,3 +40,9 @@
     width: 120px;
     height: 120px;
 }
+
+a{
+    color: #F49C24;
+    text-decoration: none;
+    font-family: 'fonte';
+}
