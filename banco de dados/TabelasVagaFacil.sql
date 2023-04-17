@@ -334,10 +334,16 @@ select * from dados;
 -- criação da tabela rua e inserção de valores 
 create table rua (
 		idRua int primary key auto_increment,
-        nome varchar(45),
+        nome varchar(45), -- logradouro 
         bairro varchar(45),
         cep char(9)
 )auto_increment = 250000;
+
+insert into rua values (null, 'Rua Antonio Bento', 'Jardim Paulista', '01432-000'),
+					   (null, 'Rua Consolação', 'Cerqueira César', '01416-003'),
+                       (null, 'Avenida Doutor Luís Rocha Miranda', 'Jabaquara', '04344‑010'),
+                       (null, 'Rua dos Pinheiros', 'Pinheiros', '05422-000'),
+                       (null, 'Alameda Itupiranga', 'Saúde', '04294‑090');
 select * from rua;
 -- alteração na tabela sensor, adição da coluna fkRua
 alter table sensor add column fkRua int;
