@@ -61,15 +61,19 @@
         <div class="container">
             <div class="card">
                 <div class="img1">
+                    <!--Começo do grafico de linha-->
                     <div class="graphCard">
                         <canvas id="canvLine"></canvas>
                         <cavas id="canvMap"></cavas>
                     </div>
+                    <!--final-->
                 </div>
+                <!--Começo dos graficos de pizza-->
                 <div class="grafPizza">
                     <canvas id="canvGauge1" class="canvasGauge"></canvas>
                     <canvas id="canvGauge2" class="canvasGauge"></canvas>
                 </div>
+                <!--final-->
             </div>
             <div class="card">
                 <div class="img3">
@@ -86,7 +90,7 @@
 </html>
 <script>
     var dadosLinha = [0];
-    var dadosPizza = [];
+    var dadosPizza = [0];
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -397,6 +401,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `10 min`;
             graficoPizza.update();
         }
         if (endereco.value == "2") {
@@ -407,6 +412,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `50 min`;
             graficoPizza.update();
         } if (endereco.value == "3") {
             dadosPizza  = [75,150];
@@ -416,6 +422,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `25 min`;
             graficoPizza.update();
         } if (endereco.value == "4") {
             dadosPizza  = [78,95];
@@ -425,6 +432,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `90 min`;
             graficoPizza.update();
         } if (endereco.value == "5") {
             dadosPizza  = [55,360];
@@ -434,6 +442,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `30 min`;
             graficoPizza.update();
         } if (endereco.value == "6") {
             dadosPizza  = [400,250];
@@ -443,6 +452,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `45 min`;
             graficoPizza.update();
         } if (endereco.value == "7") {
             dadosPizza  = [400,400];
@@ -452,6 +462,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `60 min`;
             graficoPizza.update();
         } if (endereco.value == "8") {
             dadosPizza  = [856,455];
@@ -461,6 +472,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `7 min`;
             graficoPizza.update();
         } if (endereco.value == "9") {
             dadosPizza  = [78,90];
@@ -470,6 +482,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `25 min`;
             graficoPizza.update();
         } if (endereco.value == "10") {
             dadosPizza  = [350,500];
@@ -479,6 +492,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `27 min`;
             graficoPizza.update();
         } if (endereco.value == "11") {
             dadosPizza  = [465,88];
@@ -488,6 +502,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `15 min`;
             graficoPizza.update();
         } if (endereco.value == "12") {
             dadosPizza  = [125,860];
@@ -497,6 +512,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `10 min`;
             graficoPizza.update();
         } if (endereco.value == "13") {
             dadosPizza  = [455,667];
@@ -506,6 +522,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `45 min`;
             graficoPizza.update();
         } if (endereco.value == "14") {
             dadosPizza  = [222,333];
@@ -515,6 +532,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `50 min`;
             graficoPizza.update();
         } if (endereco.value == "15") {
             dadosPizza  = [751,555];
@@ -524,6 +542,7 @@
                     borderWidth: 1
                 }
             ]
+            graficoPizza.options.plugins.subtitle.text = `17 min`;
             graficoPizza.update();
         }
     }
