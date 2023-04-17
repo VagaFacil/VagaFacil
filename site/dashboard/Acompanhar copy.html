@@ -85,7 +85,8 @@
 
 </html>
 <script>
-    var dados = [0];
+    var dadosLinha = [0];
+    var dadosPizza = [];
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -96,12 +97,12 @@
     }
 
     const chartLine = document.getElementById('canvLine');
-
-    var graficoTeste = new Chart(chartLine, {
+/*Começo do gráfico de linha*/
+    var graficoLinha = new Chart(chartLine, {
         type: 'line',
         data: {
             datasets: [{
-                data: dados,
+                data: dadosLinha,
             }],
             labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
         },
@@ -136,9 +137,11 @@
             borderColor: '#F49C24',
         }
     });
+/*Final do grafico de linha*/
 
+/*Começo dos gráficos de pizza*/
     const chartGauge1 = document.getElementById('canvGauge1');
-    new Chart(chartGauge1, {
+    var graficoPizza = new Chart(chartGauge1, {
         type: 'doughnut',
         data: {
             datasets: [{
@@ -210,6 +213,8 @@
             cutout: '70%'
         }
     });
+    /*Final dos gráficos de pizza*/
+    /*Começo da function para a definição dos gráficos e endereços*/
     function prosseguir() {
         //Começo das definições dos mapas
         if (endereco.value == "1") {
@@ -263,125 +268,265 @@
         //final da definição dos mapas
         //organização dos dados do gráfico de linha
         if (endereco.value == "1") {
-            dados = [4, 10, 5, 6, 10, 15, 45, 14, 10, 8, 7, 12, 14, 24, 53, 40, 38, 35, 35, 30, 21, 44, 10, 8];
-            graficoTeste.data.datasets = [{
-                data: dados,
+            dadosLinha   = [4, 10, 5, 6, 10, 15, 45, 14, 10, 8, 7, 12, 14, 24, 53, 40, 38, 35, 35, 30, 21, 44, 10, 8];
+            graficoLinha.data.datasets = [{
+                data: dadosLinha,
             }]
-            graficoTeste.update();
+            graficoLinha.update();
         }
         if (endereco.value == "2") {
-            dados = [4, 4, 5, 6, 10, 15, 13, 14, 10, 8, 7, 12, 18, 24, 32, 40, 38, 41, 35, 30, 21, 15, 10, 8];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [4, 4, 5, 6, 10, 15, 13, 14, 10, 8, 7, 12, 18, 24, 32, 40, 38, 41, 35, 30, 21, 15, 10, 8];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
         }
         if (endereco.value == "3") {
-            dados = [9, 22, 19, 11, 38, 3, 40, 33, 29, 31, 24, 30, 15, 13, 8, 28, 42, 27, 20, 43, 2, 44, 37, 14];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [9, 22, 19, 11, 38, 3, 40, 33, 29, 31, 24, 30, 15, 13, 8, 28, 42, 27, 20, 43, 2, 44, 37, 14];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
         } if (endereco.value == "4") {
-            dados = [8, 39, 4, 41, 35, 16, 20, 33, 7, 32, 24, 43, 31, 42, 12, 25, 14, 21, 1, 27, 40, 23, 13, 3];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [8, 39, 4, 41, 35, 16, 20, 33, 7, 32, 24, 43, 31, 42, 12, 25, 14, 21, 1, 27, 40, 23, 13, 3];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
         } if (endereco.value == "5") {
-            dados = [33, 10, 16, 19, 20, 27, 14, 40, 39, 32, 24, 3, 23, 30, 41, 42, 17, 35, 18, 1, 6, 38, 11, 12];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [33, 10, 16, 19, 20, 27, 14, 40, 39, 32, 24, 3, 23, 30, 41, 42, 17, 35, 18, 1, 6, 38, 11, 12];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
         } if (endereco.value == "6") {
-            dados = [36, 17, 6, 21, 20, 25, 10, 7, 34, 35, 39, 40, 13, 9, 31, 8, 18, 24, 22, 15, 29, 2, 33, 5];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [36, 17, 6, 21, 20, 25, 10, 7, 34, 35, 39, 40, 13, 9, 31, 8, 18, 24, 22, 15, 29, 2, 33, 5];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
         } if (endereco.value == "7") {
-            dados = [16, 28, 37, 4, 43, 35, 1, 26, 17, 9, 18, 41, 22, 5, 21, 13, 40, 2, 31, 19, 24, 11, 42, 15];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [16, 28, 37, 4, 43, 35, 1, 26, 17, 9, 18, 41, 22, 5, 21, 13, 40, 2, 31, 19, 24, 11, 42, 15];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
         } if (endereco.value == "8") {
-            dados = [23, 30, 4, 13, 22, 28, 43, 18, 5, 16, 12, 19, 25, 38, 35, 24, 20, 9, 41, 39, 2, 11, 42, 27];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [23, 30, 4, 13, 22, 28, 43, 18, 5, 16, 12, 19, 25, 38, 35, 24, 20, 9, 41, 39, 2, 11, 42, 27];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
         } if (endereco.value == "9") {
-            dados = [12, 39, 23, 6, 17, 27, 38, 35, 33, 21, 8, 34, 11, 31, 25, 32, 36, 4, 40, 7, 2, 22, 19, 42];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [12, 39, 23, 6, 17, 27, 38, 35, 33, 21, 8, 34, 11, 31, 25, 32, 36, 4, 40, 7, 2, 22, 19, 42];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
         } if (endereco.value == "10") {
-            dados = [5, 11, 42, 39, 19, 26, 36, 38, 33, 22, 13, 41, 9, 3, 2, 27, 23, 31, 16, 35, 28, 15, 17, 14];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [5, 11, 42, 39, 19, 26, 36, 38, 33, 22, 13, 41, 9, 3, 2, 27, 23, 31, 16, 35, 28, 15, 17, 14];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
         } if (endereco.value == "11") {
-            dados = [39, 13, 18, 34, 10, 22, 28, 5, 2, 19, 16, 41, 12, 21, 30, 1, 43, 24, 7, 11, 27, 4, 33, 23];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [39, 13, 18, 34, 10, 22, 28, 5, 2, 19, 16, 41, 12, 21, 30, 1, 43, 24, 7, 11, 27, 4, 33, 23];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
         } if (endereco.value == "12") {
-            dados = [31, 23, 34, 20, 6, 8, 27, 40, 21, 33, 42, 10, 19, 41, 7, 9, 15, 12, 38, 29, 4, 22, 26, 14];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [31, 23, 34, 20, 6, 8, 27, 40, 21, 33, 42, 10, 19, 41, 7, 9, 15, 12, 38, 29, 4, 22, 26, 14];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
         } if (endereco.value == "13") {
-            dados = [35, 3, 28, 1, 11, 22, 31, 14, 8, 42, 43, 18, 39, 15, 9, 17, 13, 41, 33, 40, 6, 10, 26, 21];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [35, 3, 28, 1, 11, 22, 31, 14, 8, 42, 43, 18, 39, 15, 9, 17, 13, 41, 33, 40, 6, 10, 26, 21];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
         } if (endereco.value == "14") {
-            dados = [9, 18, 15, 24, 36, 8, 42, 43, 28, 32, 13, 16, 35, 6, 39, 2, 20, 1, 31, 21, 27, 23, 19, 12];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [9, 18, 15, 24, 36, 8, 42, 43, 28, 32, 13, 16, 35, 6, 39, 2, 20, 1, 31, 21, 27, 23, 19, 12];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
         } if (endereco.value == "15") {
-            dados = [28, 32, 19, 16, 37, 12, 5, 20, 9, 33, 10, 30, 22, 4, 34, 7, 41, 40, 15, 38, 43, 23, 26, 3];
-            graficoTeste.data.datasets = [
+            dadosLinha   = [28, 32, 19, 16, 37, 12, 5, 20, 9, 33, 10, 30, 22, 4, 34, 7, 41, 40, 15, 38, 43, 23, 26, 3];
+            graficoLinha.data.datasets = [
                 {
-                    data: dados,
+                    data: dadosLinha,
                 }
             ]
-            graficoTeste.update();
+            graficoLinha.update();
+        }
+        /*Graficos de Pizza*/
+        if (endereco.value == "1") {
+            dadosPizza  = [300,150];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        }
+        if (endereco.value == "2") {
+            dadosPizza  = [150,900];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        } if (endereco.value == "3") {
+            dadosPizza  = [75,150];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        } if (endereco.value == "4") {
+            dadosPizza  = [78,95];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        } if (endereco.value == "5") {
+            dadosPizza  = [55,360];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        } if (endereco.value == "6") {
+            dadosPizza  = [400,250];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        } if (endereco.value == "7") {
+            dadosPizza  = [400,400];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        } if (endereco.value == "8") {
+            dadosPizza  = [856,455];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        } if (endereco.value == "9") {
+            dadosPizza  = [78,90];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        } if (endereco.value == "10") {
+            dadosPizza  = [350,500];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        } if (endereco.value == "11") {
+            dadosPizza  = [465,88];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        } if (endereco.value == "12") {
+            dadosPizza  = [125,860];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        } if (endereco.value == "13") {
+            dadosPizza  = [455,667];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        } if (endereco.value == "14") {
+            dadosPizza  = [222,333];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
+        } if (endereco.value == "15") {
+            dadosPizza  = [751,555];
+            graficoPizza.data.datasets = [
+                {
+                    data: dadosPizza,
+                    borderWidth: 1
+                }
+            ]
+            graficoPizza.update();
         }
     }
+    /*Final da function para a definição dos gráficos*/
+    
 </script>
