@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/usuarios.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/mediaQueries.css">
+    <script src="js/usuarios.js"></script>
     <title>Vaga Fácil</title>
 </head>
 
@@ -21,32 +22,32 @@
                     <input id="ipt_pesquisa" type="text" placeholder="Pesquisar usuário">
                 </div>
                 <div id="scroll">
-                    <div class="usuarios">
+                    <div class="usuarios" onclick="exibir(anizio)">
                         <img class="img" src="../img/sobrenos/anizio.jpg" alt="">
                         <h1 class="nome">Anízio Mesquita</h1>
                         <img class="seta" src="img/seta.png" alt="">
                     </div>
-                    <div class="usuarios">
+                    <div class="usuarios" onclick="exibir(bruno)">
                         <img class="img" src="../img/sobrenos/bruno.png" alt="">
                         <h1 class="nome">Bruno Lima</h1>
                         <img class="seta" src="img/seta.png" alt="">
                     </div>
-                    <div class="usuarios">
+                    <div class="usuarios" onclick="exibir(daniel)">
                         <img class="img" src="../img/sobrenos/daniel.jpg" alt="">
                         <h1 class="nome">Daniel Yuzo</h1>
                         <img class="seta" src="img/seta.png" alt="">
                     </div>
-                    <div class="usuarios">
+                    <div class="usuarios" onclick="exibir(gabriel)">
                         <img class="img" src="../img/sobrenos/gabriel.jpg" alt="">
                         <h1 class="nome">Gabriel Branco</h1>
                         <img class="seta" src="img/seta.png" alt="">
                     </div>
-                    <div class="usuarios">
+                    <div class="usuarios" onclick="exibir(henrique)">
                         <img class="img" src="../img/sobrenos/henrique.jpg" alt="">
-                        <h1 class="nome">Henrique</h1>
+                        <h1 class="nome">Henrique Bechis</h1>
                         <img class="seta" src="img/seta.png" alt="">
                     </div>
-                    <div class="usuarios">
+                    <div class="usuarios" onclick="exibir(lucas)">
                         <img class="img" src="../img/sobrenos/lucas.jpg" alt="">
                         <h1 class="nome">Lucas Neves</h1>
                         <img class="seta" src="img/seta.png" alt="">
@@ -54,16 +55,27 @@
                 </div>
             </div>
             <div class="campo-info">
-                <h1>Informações do usuário</h1>
+                <h1>Informações</h1>
                 <div class="space-campo-info">
                     <div class="perguntas">
                         <p>Nome</p>
                         <p>Sobrenome</p>
+                        <p>Nascimento</p>
+                        <p>CPF</p>
+                        <p>Telefone</p>
+                        <p>Email</p>
                     </div>
                     <div class="respostas">
-                        <p>aaaaaaaa</p>
-                        <p>-</p>
+                        <p id="nome">-</p>
+                        <p id="sobrenome">-</p>
+                        <p id="dataN">-</p>
+                        <p id="cpf">-</p>
+                        <p id="telefone">-</p>
+                        <p id="email">-</p>
                     </div>
+                </div>
+                <div class="space-btn">
+                    <button id="btn-excluir">Excluir usuário</button>
                 </div>
             </div>
         </div>
