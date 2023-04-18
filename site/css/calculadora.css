@@ -100,23 +100,7 @@ h2 {
     color: #F49C24
 }
 
-.botão {
-    width: 35%;
-    height: auto;
-    background-color: #0C243C;
-    border-radius: 20px;
-    text-align: center;
-    padding: 20px 5px;
-    margin-bottom: 10px;
-    color: #F49C24;
-    text-align: center;
-    align-items: center;
-}
 
-.botao2 {
-    display: flex;
-    justify-content: center;
-}
 
 .calculadora {
     /* width: 100%; */
