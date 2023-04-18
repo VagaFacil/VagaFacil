@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaga Fácil</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <script src="js/menuH.js"></script>
+    <script src="js/usuarios.js"></script>
+</head>
+
+<body>
+    <!-- Começo do Header -->
+    <header>
+        <nav class="nav">
+
+            <a href=""><img class="logo" src="img/logo.png" alt="Home"></a>
+
+            <img class="menuH" onclick="menuH()" src="img/menuH.png" alt="Menu Hamburguer">
+            
+            <div id="listaMenuH">
+                <img onclick="seta()" src="img/seta.png" alt="">
+                <ul class="itens-menuH">
+                    <li><a href="acompanhar.html">Acompanhar</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="">Perfil</a></li>
+                    <li><a href="usuarios.html">Lista de usuários</a></li>
+                    <li><a href="">Adicionar usuário</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Fim do Header -->
+
+
+
+    <div class="dashboard">
+        <div class="containerBairro" id="divBairro">
+            <div class="bairroFiltros">
+                <div>
+                    Região:
+                    <select id="selRegiaoBairro" onchange="filtrarRegiao()">
+                        <option value="-">- Selecione uma região -</option>
+                        <option value="N">Norte</option>
+                        <option value="S">Sul</option>
+                        <option value="L">Leste</option>
+                        <option value="O">Oeste</option>
+                        <option value="C">Centro</option>
+                    </select>
+                </div>
+                <div>
+                    Faixa de Renda:
+                    <select id="selRendaBairro" onchange="filtrarRenda()">
+                        <option value="1">Baixa</option>
+                        <option value="2">Média</option>
+                        <option value="3">Alta</option>
+                    </select>
+                </div>
+                <div>
+                    Faixa Etária:
+                    <select id="selIdadeBairro" onchange="filtrarIdade()">
+                        <option value="1">Adolescente</option>
+                        <option value="2">Jovem adulto</option>
+                        <option value="3">Adulto</option>
+                        <option value="4">Idoso</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="bairroLista">
+                <div class="bairroCard" id="cardBelaVista" onclick="mostrarRuas()">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29257.437762132045!2d-46.66740926954158!3d-23.561987955130906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59b756463d61%3A0x9f3d1e6f7f40964!2sBela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1681782500682!5m2!1spt-BR!2sbr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h3>Bela Vista</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+                <div class="bairroCard" id="cardCasaVerde" onclick="mostrarRuas()">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14634.51734231196!2d-46.6571045!3d-23.50985685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef7e5c6d5f26b%3A0x376a6771e50f3423!2sCasa%20Verde%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1681822120581!5m2!1spt-BR!2sbr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h3>Casa Verde</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+                <div class="bairroCard" id="cardConsolacao" onclick="mostrarRuas()">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14629.600080126318!2d-46.661385608669164!3d-23.55407254083721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59caaaacb22d%3A0xf14864d2aa14537e!2zQ29uc29sYcOnw6NvLCBTw6NvIFBhdWxvIC0gU1A!5e0!3m2!1spt-BR!2sbr!4v1681782587649!5m2!1spt-BR!2sbr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h3>Consolação</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+                <div class="bairroCard" id="cardGuaianases" onclick="mostrarRuas()">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14627.53445751161!2d-46.40527305!3d-23.572623149999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce659ca591b7a9%3A0xacc2483060dcb157!2sGuaianases%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1681822163502!5m2!1spt-BR!2sbr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h3>Guaianases</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+                <div class="bairroCard" id="cardItaimBibi" onclick="mostrarRuas()">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14626.258415632714!2d-46.691407058649546!3d-23.58407594500048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5742bc832a29%3A0xa9323f13433864db!2sItaim%20Bibi%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1681782612703!5m2!1spt-BR!2sbr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h3>Itaim Bibi</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+                <div class="bairroCard" id="cardPenha" onclick="mostrarRuas()">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14632.864732576456!2d-46.546265850000005!3d-23.524725749999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5e51b4d72683%3A0x5a7009ad0acffd39!2sPenha%20de%20Fran%C3%A7a%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1681822211768!5m2!1spt-BR!2sbr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h3>Penha</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+                <div class="bairroCard" id="cardRepublica" onclick="mostrarRuas()">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7315.377924827028!2d-46.64738316031948!3d-23.543686979488943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5851c0395f3b%3A0xf36ea5aa7f8ff302!2zUmVww7pibGljYSwgU8OjbyBQYXVsbyAtIFNQ!5e0!3m2!1spt-BR!2sbr!4v1681782470841!5m2!1spt-BR!2sbr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h3>República</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+                <div class="bairroCard" id="cardSantana" onclick="mostrarRuas()">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29271.085150556428!2d-46.649598519702465!3d-23.500628139482505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef62dae139b07%3A0x666ae659df9b322c!2sSantana%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1681822244013!5m2!1spt-BR!2sbr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h3>Santana</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+                <div class="bairroCard" id="cardSe" onclick="mostrarRuas()">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7314.908529630435!2d-46.63812236031807!3d-23.55212313009663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59aa220b74bd%3A0x6412aad263604c19!2zU8OpLCBTw6NvIFBhdWxvIC0gU1A!5e0!3m2!1spt-BR!2sbr!4v1681782279513!5m2!1spt-BR!2sbr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h3>Sé</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="containerRua" id="divRua">
+            <div class="ruaFiltros">
+                <div>
+                    Região:
+                    <select id="selRegiaoRua" onchange="filtrarRegiaoRua()">
+                        <option value="-">- Selecione uma região -</option>
+                        <option value="N">Norte</option>
+                        <option value="S">Sul</option>
+                        <option value="L">Leste</option>
+                        <option value="O">Oeste</option>
+                        <option value="C">Centro</option>
+                    </select>
+                </div>
+                <div>
+                    Faixa de Renda:
+                    <select id="selRendaRua" onchange="filtrarRendaRua()">
+                        <option value="1">Baixa</option>
+                        <option value="2">Média</option>
+                        <option value="3">Alta</option>
+                    </select>
+                </div>
+                <div>
+                    Faixa Etária:
+                    <select id="selIdadeRua" onchange="filtrarIdadeRua()">
+                        <option value="1">Adolescente</option>
+                        <option value="2">Jovem adulto</option>
+                        <option value="3">Adulto</option>
+                        <option value="4">Idoso</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="ruaLista">
+                <div onclick="mostrarDados()" class="ruaCard" id="rua1">Alameda Joaquim Eugênio de Lima, 1394 - Jardim Paulista</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua2">Rua Pamplona, 726 - Jardim Paulista</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua3">Rua Peixoto Gomide, 167 - Jardim Paulista</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua4">Alameda Santos, 211 - Cerqueira César</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua5">Rua Haddock Lobo, 595 - Cerqueira César</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua6">Rua Padre João Manuel, 755 - Cerqueira César</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua7">Avenida Paulista, 1374 - Bela Vista</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua8">Rua Pamplona, 145 - Bela Vista</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua9">Rua São Carlos do Pinhal, 424 - Bela Vista</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua10">Rua Bela Cintra, 1200 - Consolação</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua11">Rua Frei Caneca, 569 - Consolação</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua12">Rua Augusta, 129 - Consolação </div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua13">Rua Estados Unidos, 1585 - Jardins</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua14">Alameda Lorena, 1821 - Jardins</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua15">Rua da Consolação, 2905 - Cerqueira César</div>
+            </div>
+        </div>
+
+        <div class="containerDados" id="divDados">
+            <div class="fundo">
+                <h2>Vaga Fácil</h2>
+            </div>
+            <div class="endereco">
+                Endereço<br>
+                <input type="text" id="inpEndereco" class="inputWide">
+            </div>
+            <div class="dashContainer">
+                <div class="card">
+                    <div>Tipo de dia 
+                        <label class="switch">
+                        <input type="checkbox" onclick="changeDisabled('selTipo')">
+                        <span class="slider"></span>
+                        </label>
+                    </div>
+                    <select id="selTipo" disabled="true">
+                        <option value="semana">Dia de Semana</option>
+                        <option value="fimSemana">Fim de Semana</option>
+                        <option value="feriado">Feriado</option>
+                    </select>
+                </div>
+                <div class="card">
+                    <div>Dia da semana                     
+                        <label class="switch">
+                        <input type="checkbox" onclick="changeDisabled('selSemana')">
+                        <span class="slider"></span>
+                        </label>
+                    </div>
+                    <select id="selSemana" disabled="true">
+                        <option value="2">Segunda</option>
+                        <option value="3">Terça</option>
+                        <option value="4">Quarta</option>
+                        <option value="5">Quinta</option>
+                        <option value="6">Sexta</option>
+                        <option value="7">Sabado</option>
+                        <option value="1">Domingo</option>
+                    </select>
+                </div>
+                <div class="card">
+                    <div>Mês                     
+                        <label class="switch">
+                        <input type="checkbox" onclick="changeDisabled('selMes')">
+                        <span class="slider"></span>
+                        </label>
+                    </div>
+                    <select id="selMes" disabled="true">
+                        <option value="1">Janeiro</option>
+                        <option value="2">Fevereiro</option>
+                        <option value="3">Março</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Maio</option>
+                        <option value="6">Junho</option>
+                        <option value="7">Julho</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select>
+                </div>
+                <div class="card">
+                    <div>Vaga                     
+                        <label class="switch">
+                        <input type="checkbox" onclick="changeDisabled('selVaga')">
+                        <span class="slider"></span>
+                        </label></div>
+                    <select id="selVaga" disabled="true">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="graphContainer">
+                <div class="gaugeCard">
+                    <canvas id="canvGauge1" class="canvasGauge"></canvas>
+                    <canvas id="canvGauge2" class="canvasGauge"></canvas>
+                </div>
+                <div class="graphCard">
+                    <canvas id="canvLine"></canvas>
+                    <cavas id="canvMap"></cavas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="rodape">
+        <div class="container">
+            <div class="cardFooter">
+                <img src="img/logo.png" id="logoFooter">
+            </div>
+            <div class="cardFooterCentral">
+                <ul>
+                    <li>
+                        <a href="index.html">Início</a>
+                    </li>
+                    <li>
+                        <a href="">Sobre Nós</a>
+                    </li>
+                    <li>
+                        <a href="">Simule Aqui</a>
+                    </li>
+                    <li>
+                        <a href="">Fale Conosco</a>
+                    </li>
+                    <li>
+                        <a href="">Acessar o Sistema</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="cardFooter">
+                <a href=""><img src="img/linkedin.png" alt="Link para nossa página no LinkedIn"></a>
+                <a href=""><img src="img/facebook.png" alt="Link para nossa página no FaceBook"></a>
+                <a href=""><img src="img/twitter.png" alt="Link para nossa página no Twitter"></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var cards = [{bairro: 'Bela Vista', zona: 'C', fluxo: 1399.9675, adolescente: 11.7524, jovemAdulto: 37.3423, adulto: 135.9402, idoso: 48.2816, baixa: 86.2817, media: 126.1465, alta: 49.7127, card: cardBelaVista},
+        {bairro: 'Casa Verde', zona: 'N', fluxo: 274.8794, adolescente: 10.6285, jovemAdulto: 19.1434, adulto: 53.1315, idoso: 20.9573, baixa: 64.6413, media: 44.1204, alta: 11.1584, card: cardCasaVerde},
+        {bairro: 'Consolação', zona: 'C', fluxo: 881.3238, adolescente: 5.0696, jovemAdulto: 23.9223, adulto: 77.4689, idoso: 33.1550, baixa: 37.9716, media: 59.2960, alta: 54.0841, card: cardConsolacao},
+        {bairro: 'Guaianases', zona: 'L', fluxo: 170.1894, adolescente: 12.1617, jovemAdulto: 27.1466, adulto: 47.2799, idoso: 14.8391, baixa: 88.7966, media: 32.7180, alta: 0.0000, card: cardGuaianases},
+        {bairro: 'Itaim Bibi', zona: 'O', fluxo: 592.4852, adolescente: 5.1743, jovemAdulto: 11.1305, adulto: 47.3278, idoso: 22.1495, baixa: 10.9992, media: 48.3891, alta: 36.5763, card: cardItaimBibi},
+        {bairro: 'Penha', zona: 'L', fluxo: 240.5230, adolescente: 9.4914, jovemAdulto: 18.3281, adulto: 48.3499, idoso: 22.8408, baixa: 69.1325, media: 30.2277, alta: 13.2080, card: cardPenha},
+        {bairro: 'República', zona: 'C', fluxo: 1608.6098, adolescente: 16.7818, jovemAdulto: 37.1776, adulto: 126.6192, idoso: 53.9079, baixa: 165.9556, media: 66.6981, alta: 29.3103, card: cardRepublica},
+        {bairro: 'Santana', zona: 'N', fluxo: 307.2974, adolescente: 5.2185, jovemAdulto: 13.5873, adulto: 37.7952, idoso: 21.4771, baixa: 28.2796, media: 33.4486, alta: 25.3265, card: cardSantana},
+        {bairro: 'Sé', zona: 'C', fluxo: 1652.0939, adolescente: 8.3894, jovemAdulto: 21.2916, adulto: 52.4830, idoso: 17.4791, baixa: 83.0976, media: 29.0585, alta: 7.2406, card: cardSe}];
+
+    function filtrarRegiao() {
+        var regiao = selRegiaoBairro.value;
+        if (regiao == '-') {
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].card.style.display = 'flex';
+            }
+        } else {
+            for (var i = 0; i < cards.length; i++) {
+                if (cards[i].zona == regiao) {
+                    cards[i].card.style.display = 'flex';
+                } else {
+                    cards[i].card.style.display = 'none';
+                }
+            }  
+        } 
+    }
+
+    function filtrarRenda() {
+        var renda = Number(selRendaBairro.value);
+        if (renda == 1) {
+            cards.sort((a, b) => a.baixa - b.baixa);
+            for (var i = 1; i <= cards.length; i++) {
+                cards[i-1].card.style.order = i;
+            }
+        } else if (renda == 2) {
+            cards.sort((a, b) => a.media - b.media);
+            for (var i = 1; i <= cards.length; i++) {
+                cards[i-1].card.style.order = i;
+            }
+        } else {
+            cards.sort((a, b) => a.alta - b.alta);
+            for (var i = 1; i <= cards.length; i++) {
+                cards[i-1].card.style.order = i;
+            }
+        }
+    }
+
+    function filtrarIdade() {
+        var idade = Number(selIdadeBairro.value);
+        if (idade == 1) {
+            cards.sort((a, b) => a.adolescente - b.adolescente);
+            for (var i = 1; i <= cards.length; i++) {
+                cards[i-1].card.style.order = i;
+            }
+        } else if (idade == 2) {
+            cards.sort((a, b) => a.jovemAdulto - b.jovemAdulto);
+            for (var i = 1; i <= cards.length; i++) {
+                cards[i-1].card.style.order = i;
+            }
+        } else if (idade == 3) {
+            cards.sort((a, b) => a.adulto - b.adulto);
+            for (var i = 1; i <= cards.length; i++) {
+                cards[i-1].card.style.order = i;
+            }
+        } else if (idade == 4) {
+            cards.sort((a, b) => a.idoso - b.idoso);
+            for (var i = 1; i <= cards.length; i++) {
+                cards[i-1].card.style.order = i;
+            }
+        }
+    }
+
+    var ruas = [rua1, rua2, rua3, rua4, rua5, rua6, rua7, rua8, rua9, rua10, rua11, rua12, rua13, rua14, rua15];
+
+    function mostrarRuas() {
+        divRua.style.display = 'flex';
+        divBairro.style.display = 'none';
+    }
+
+    function filtrarIdadeRua () {
+        ruas = ruas.sort((a,b) => 0.5 - Math.random());
+        for (var i = 0; i < ruas.length; i++){
+            ruas[i].style.order = i;
+        }
+    }
+
+    function filtrarRegiaoRua() {
+        var regiao = selRegiaoRua.value;
+        for (var i = 0; i < ruas.length; i++){
+            if (Math.random() < 0.5 || regiao == '-') {
+                ruas[i].style.display = 'flex';
+            } else {
+                ruas[i].style.display = 'none';
+            }
+        }
+    }
+
+    function filtrarRendaRua() {
+        ruas = ruas.sort((a,b) => 0.5 - Math.random());
+        for (var i = 0; i < ruas.length; i++){
+            ruas[i].style.order = i;
+        }
+    }
+
+    function mostrarDados() {
+        divDados.style.display = 'flex';
+        divRua.style.display = 'none';
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    function changeDisabled(elemento) {
+        var disabled = document.getElementById(elemento).disabled
+        document.getElementById(elemento).disabled = !disabled;
+    }
+
+    // const chartLine = document.getElementById('canvLine');
+    // new Chart(chartLine, {
+    //     type: 'line',
+    //     data: {
+    //         datasets: [{
+    //             data: [4,4,5,6,10,15,13,14,10,8,7,12,18,24,32,40,38,41,35,30,21,15,10,8],
+    //         }],
+    //         labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],            
+    //     },
+    //     options: {
+    //         plugins: {
+    //             title: {
+    //                 display: true,
+    //                 text: 'Ocupação total da rua',
+    //                 color: '#F49C24',
+    //                 font: {
+    //                     size: 20
+    //                 }
+    //             },
+    //             legend: {
+    //                 display: false
+    //             }
+    //         },
+    //         scales: {
+    //             y: {
+    //                 beginAtZero: true,
+    //                 ticks: {
+    //                     color: '#F49C24',
+    //                 }
+    //             },
+    //             x: {
+    //                 ticks: {
+    //                     color: '#F49C24',
+    //                 }
+    //             }
+    //         },
+    //         backgroundColor: '#F49C24',
+    //         borderColor: '#F49C24',
+    //     }
+    // });
+
+    const chartGauge1 = document.getElementById('canvGauge1');
+    new Chart(chartGauge1, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [15, 105],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Tempo médio de permanência',
+                    color: '#F49C24',
+                    font: {
+                        size: 20
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: '15 mins',
+                    color: '#F49C24',
+                    padding: 0,
+                    font: {
+                        size: 16
+                    }
+                },
+            },
+            backgroundColor: ['#F49C24', '#0C243C'],
+            borderColor: '#FCF4EC',
+            circumference: 180,
+            rotation: -90,
+            cutout: '70%'
+        }
+    });
+
+    const chartGauge2 = document.getElementById('canvGauge2');
+    new Chart(chartGauge2, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [55, 45],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Ocupação média',
+                    color: '#F49C24',
+                    font: {
+                        size: 20
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: '55%',
+                    color: '#F49C24',
+                    padding: 0,
+                    font: {
+                        size: 16
+                    }
+                },
+            },
+            backgroundColor: ['#F49C24', '#0C243C'],
+            borderColor: '#FCF4EC',
+            circumference: 180,
+            rotation: -90,
+            cutout: '70%'
+        }
+    });
+
+
+
+    var contextoChave = document.getElementById('canvLine').getContext('2d');
+        contextoChave.canvas.width = 300;
+        contextoChave.canvas.height = 100;
+        var cores = ['#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24'];
+        var chave = new Chart(
+            contextoChave,
+            {
+                type: 'bar',
+                data: {
+                    datasets: [{
+                        label: 'Chave',
+                        type: 'bar',
+                        borderColor: cores,
+                        backgroundColor: cores,
+                    }],
+                },
+                options: {
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Ocupação Recente',
+                            color: '#F49C24',
+                            font: {
+                                size: 20
+                            }
+                        },
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                color: '#F49C24',
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#F49C24',
+                            },
+                        },
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true,
+                            },
+                            barPercentage: 1,
+                            categoryPercentage: 1
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                display: true,
+                                beginAtZero: true,
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+        var paginacao = {};
+        var tempo = {};
+        function obterDados(grafico, endpoint) {
+            var http = new XMLHttpRequest();
+            http.open('GET', 'http://localhost:3000/sensores/' + endpoint, false);
+            http.send(null);
+            var valores = JSON.parse(http.responseText);
+            if (paginacao[endpoint] == null) {
+                paginacao[endpoint] = 0;
+            }
+            if (tempo[endpoint] == null) {
+                tempo[endpoint] = 0;
+            }
+            // Exibir à partir do último elemento exibido anteriormente
+            var ultimaPaginacao = paginacao[endpoint];
+            paginacao[endpoint] = valores.length;
+            var valores = valores.slice(ultimaPaginacao);
+            valores.forEach((valor) => {
+                //Máximo de 60 itens exibidos no gráfico
+                if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                    grafico.data.labels.shift();
+                    grafico.data.datasets[0].data.shift();
+                }
+
+                grafico.data.labels.push(tempo[endpoint]++);
+                grafico.data.datasets[0].data.push(parseFloat(valor));
+                grafico.update();
+            })
+        }
+
+        setInterval(() => {
+            // obterDados(dht11Umidade, 'dht11/umidade');
+            // obterDados(dht11Temperatura, 'dht11/temperatura');
+            // obterDados(luminosidade, 'luminosidade');
+            // obterDados(lm35Temperatura, 'lm35/temperatura');
+            obterDados(chave, 'chave');
+        }, 1000);
+</script>

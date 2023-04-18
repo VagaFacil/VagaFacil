@@ -1,17 +1,107 @@
 /* Início do dashboard */
 
-.dashboard .container {
+.dashboard {
+  margin-top: 110px;
+}
+
+  /* Início da tela de bairro */
+.dashboard .containerBairro {
+  width:90%;
+  margin: 20px auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.dashboard .bairroFiltros {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  border: 1px solid black;
+}
+
+.dashboard .bairroLista {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 70%;
+  border: 1px solid black;
+  padding:5px;
+}
+
+.dashboard .bairroCard {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+}
+
+.dashboard .bairroCard iframe {
+  width: 90%;
+  aspect-ratio: 1;
+}
+
+.dashboard .bairroCard h3 {
+  margin: 5px 0px;
+  font-size: large;
+  font-weight: bold;
+}
+  /* Fim da tela de bairro */
+
+  /* Início da tela de ruas */
+
+  .dashboard .containerRua {
+    width:90%;
+    margin: 20px auto;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  
+  .dashboard .ruaFiltros {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    border: 1px solid black;
+  }
+  
+  .dashboard .ruaLista {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    border: 1px solid black;
+    padding:5px;
+  }
+  
+  .dashboard .ruaCard {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  /* Fim da tela de ruas */
+
+  /* Início da tela de dados */
+.dashboard .containerDados {
+    width:90%;
+    margin: auto;
+    display: none;
     flex-direction: column;
     align-items: center;
 }
 
-.dashboard .container h2 {
+.dashboard .containerDados h2 {
   font-size: x-large;
   font-weight: bold;
   margin: 10px;
 }
 
-.dashboard .container .dashContainer {
+.dashboard .containerDados .dashContainer {
     display: flex;
     justify-content: center;
     width:100%;
