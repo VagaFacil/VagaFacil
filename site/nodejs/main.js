@@ -34,6 +34,7 @@ const serial = async (
             baudRate: SERIAL_BAUD_RATE
         }
     );
+    
     arduino.on('open', () => {
         console.log(`A leitura do arduino foi iniciada na porta ${portaArduino.path} utilizando Baud Rate de ${SERIAL_BAUD_RATE}`);
     });
