@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'fonte';
-    src: url(../font/SourceSansPro-Bold.otf);
+    src: url(../../font/SourceSansPro-Bold.otf);
 }
 
 @font-face {
     font-family: 'font';
-    src: url(../font/SourceSansPro-Regular.otf);
+    src: url(../../font/SourceSansPro-Regular.otf);
 }
 
 html {
@@ -81,7 +81,7 @@ body::-webkit-scrollbar {
 }
 .itens-menuH {
     margin: auto;
-    width: 70%;
+    width: 68%;
     line-height: 2;
 }
 #listaMenuH img {
@@ -92,5 +92,8 @@ body::-webkit-scrollbar {
 }
 .itens-menuH li a {
     color: #0C243C;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'fonte';
 }
 

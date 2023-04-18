@@ -1,8 +1,13 @@
+html {
+  font-family: 'font';
+}
+
 /* Início do dashboard */
 
 .dashboard .container {
     flex-direction: column;
     align-items: center;
+    margin-top: 100px;
 }
 
 .dashboard .container h2 {
@@ -14,16 +19,20 @@
 .dashboard .container .dashContainer {
     display: flex;
     justify-content: center;
-    width:100%;
+    width: auto;
     padding: 10px;
+    margin: auto;
 }
 
-.dashboard .endereco {
+.dashboard .endereco, .fundo {
     width: 60%;
+    margin: auto;
+    text-align: center;
 }
 
 .dashboard .inputWide {
     width: 100%;
+    margin: auto;
 }
 
 .dashboard input, select {
@@ -46,12 +55,14 @@
     align-items: center;
     flex-direction: column;
     width:90%;
+    margin: auto;
 }
 
 .dashboard .graphCard {
     display: flex;
     width: 60%;
     justify-content: space-between;
+    margin: auto;
 }
 
 .dashboard .gaugeCard {
@@ -60,6 +71,7 @@
     gap:20%;
     position: relative;
     right: 18%;
+    margin: auto;
 }
 
 /* Checkbox */
