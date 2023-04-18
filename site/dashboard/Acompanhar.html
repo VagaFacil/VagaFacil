@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/footer.css">
     <script src="js/menuH.js"></script>
     <script src="js/usuarios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/acompanhar.js"></script>
     <title>Nova localização</title>
 </head>
 
@@ -26,16 +28,26 @@
             <div id="listaMenuH">
                 <img onclick="seta()" src="img/seta.png" alt="">
                 <ul class="itens-menuH">
-                    <li><a href="acompanhar.html">Acompanhar</a></li>
                     <li><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="">Perfil</a></li>
+                    <li><a href="acompanhar.html">Acompanhar</a></li>
+                    <li><a href="expandir.html">Expandir</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
                     <li><a href="usuarios.html">Lista de usuários</a></li>
-                    <li><a href="">Adicionar usuário</a></li>
+                    <li><a href="adicionarUsuario.html">Adicionar usuário</a></li>
+                    <button class="btn-site" onclick="sair()">Site Institucional</button>
                 </ul>
             </div>
         </nav>
+        <div id="alertSair">
+            <div class="caixa">
+                <h1>Deseja voltar para o Site Institucional?</h1>
+                <button onclick="sim()">Sim</button>
+                <button onclick="nao()">Não</button>
+            </div>
+        </div>
     </header>
     <!-- Fim do Header -->
+
     <!-- Começo do acompanhar -->
 
     <div class="i-titulo">
@@ -101,5 +113,3 @@
 </body>
 
 </html>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="js/acompanhar.js"></script>
