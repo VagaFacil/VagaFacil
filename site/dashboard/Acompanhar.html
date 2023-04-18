@@ -12,16 +12,16 @@
     <link rel="stylesheet" href="css/mediaQueries.css">
     <script src="js/menuH.js"></script>
     <script src="js/usuarios.js"></script>
-    <title>Nova localização</title>
+    <title>Vaga Fácil</title>
 </head>
 
 <body>
     <!-- Começo do Header -->
     <header>
         <nav class="nav">
-
+            
             <a href=""><img class="logo" src="img/logo.png" alt="Home"></a>
-
+            
             <img class="menuH" onclick="menuH()" src="img/menuH.png" alt="Menu Hamburguer">
             
             <div id="listaMenuH">
@@ -32,10 +32,18 @@
                     <li><a href="perfil.html">Perfil</a></li>
                     <li><a href="usuarios.html">Lista de usuários</a></li>
                     <li><a href="adicionarUsuario.html">Adicionar usuário</a></li>
-                    <li><a href="../index.html">Site Institucional</a></li>
+                    <button class="btn-site" onclick="sair()">Site Institucional</button>
                 </ul>
             </div>
+            
         </nav>
+        <div id="alertSair">
+            <div class="caixa">
+                <h1>Deseja voltar para o Site Institucional?</h1>
+                <button onclick="sim()">Sim</button>
+                <button onclick="nao()">Não</button>
+            </div>
+        </div>
     </header>
     <!-- Fim do Header -->
     <!-- Começo do acompanhar -->

@@ -3,7 +3,7 @@
     width: auto;
     height: 100px;
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     margin: 70px 0 0 0;
 }
 
@@ -30,42 +30,107 @@
 .banner {
     display: flex;
     justify-content: space-between;
-    margin-top: 50px;
+    margin: 50px auto 50px auto;
 }
 .card1 {
     background-color: #0C243C;
-    width: 550px;
+    width: 370px;
     list-style: none;
     padding:40px ;
     border-radius: 20px;
     font-size: 20px;
+    height: auto;
+}
+.ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%;
 }
 .coluna h1 {
     color: #F49C24;
     font-size: 25px;
     font-weight: 700;
 }
+.card-titulo {
+    text-align: center;
+}
 .card1 li {
     margin-top: 20px;
-   
     width: 90%;
 }
+.card1 p {
+    margin: 0;
+    padding: 0 0 0 10px;
+}
 .card1 input{
-    width: 100%;
-    height: 40px;
+    padding: 10px;
     border-radius: 15px;
+    outline: none;
+    border-color: #32a7b1;
+    width: 100%;
 }
 /* final do primeiro card */
-/* Começo do segundo e terceiro card */
+
+/* Erros card1 */
+#vNome, #vSobrenome, #vDataN, #vCpf, #vTelefone {
+    display: none   ;
+    color: red;
+    font-size: 14px;
+    padding: 0 0 0 10px;
+}
+
+
+/* Começo card3 */
+.card3 {
+    background-color: #0C243C;
+    width: 500px;
+    height: auto;
+    list-style: none;
+    padding: 40px 68px 40px 40px;
+    border-radius: 20px;
+    font-size: 20px;
+
+}
+
+.card3 ul li {
+    width: auto;
+    margin: 10px 10px 0 0;
+
+}
+.card3 p {
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+.card3 input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    outline: none;
+    border-color: #32a7b1;
+}
+#ipt_email{
+    width: 100%;
+}
+
+/* Final do segundo e terceiro card */
+#vEmail, #vSenha, #vSenhaRep {
+    display: none   ;
+    color: red;
+    font-size: 14px;
+    padding: 0 0 0 10px;
+}
+
+
+/* Cadastrar */
 .card {
     background-color: #0C243C;
     width: 550px;
     list-style: none;
-    padding:40px ;
-   
+    padding: 40px 40px 40px 40px;   
     border-radius: 20px;
     font-size: 20px;
-    height: 170px;
+    height: auto;
     margin-bottom: 30px;
 
 }
@@ -76,18 +141,22 @@
     margin-top: 10px;
 }
 .card input {
-    border-radius: 10px;
-    height: 25px;
+    width: 230px;
+    padding: 10px;
+    border-radius: 15px;
+    outline: none;
+    border-color: #32a7b1;
 }
 .card p {
-    margin-top: 10px;
+    margin: 10px 0 0 0;
+    padding: 0 0 0 10px;
 }
-.card p input {
-    width: 100%;
+#ipt_email {
+    width: 96%;
 }
-.senha input {
-    width: 20px;
-}
+
+
+
 /* Final do segundo e terceiro card */
 /* Cadastrar */
 .boxCadastro {
