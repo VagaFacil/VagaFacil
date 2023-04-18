@@ -41,10 +41,7 @@ body::-webkit-scrollbar {
     box-shadow: 0 2px 8px black;
     z-index: 1;
 }
-.nav-lista {
-    display: flex;
-    flex-direction: row;
-}
+
 
 .logo{
     width: 50px;
@@ -68,5 +65,32 @@ body::-webkit-scrollbar {
 .logo:hover, .menuH:hover{
     transition: .3s;
     transform: scale(1.2);
+}
+
+#listaMenuH {
+    width: 20%;
+    height: 100%;
+    background-color: #F49C24;
+    position: fixed;
+    top: 0;
+    box-shadow: 0 2px 8px black;
+    z-index: 1;
+    font-family: 'fonte';
+    margin: auto;
+    display: none;
+}
+.itens-menuH {
+    margin: auto;
+    width: 70%;
+    line-height: 2;
+}
+#listaMenuH img {
+    width: 40px;
+    max-width: 100%;
+    padding: 20px;
+    cursor: pointer;
+}
+.itens-menuH li a {
+    color: #0C243C;
 }
 

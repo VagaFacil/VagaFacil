@@ -10,9 +10,32 @@
     <link rel="stylesheet" href="css/perfil.css">
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="css/mediaQueries.css">
-    <script src=""></script>
+    <script src="js/menuH.js"></script>
+    <script src="js/usuarios.js"></script>
     <title>Vaga Fácil</title>
 </head>
+<body>
+    <!-- Começo do Header -->
+    <header>
+        <nav class="nav">
+
+            <a href=""><img class="logo" src="img/logo.png" alt="Home"></a>
+
+            <img class="menuH" onclick="menuH()" src="img/menuH.png" alt="Menu Hamburguer">
+            
+            <div id="listaMenuH">
+                <img onclick="seta()" src="img/seta.png" alt="">
+                <ul class="itens-menuH">
+                    <li><a href="acompanhar.html">Acompanhar</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="usuarios.html">Lista de usuários</a></li>
+                    <li><a href="">Adicionar usuário</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Fim do Header -->
 
 </body>
 
