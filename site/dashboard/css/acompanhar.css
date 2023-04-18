@@ -64,7 +64,7 @@ p{
 .container{
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 80%;
     margin: auto;
 }
 .img1 img{

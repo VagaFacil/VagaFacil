@@ -308,7 +308,7 @@ function prosseguir() {
  
     // gráfico do tempo de permanência
     if (endereco.value == "1") {
-        dadosPizza = [300, 150];
+        dadosPizza = [10, 110];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
@@ -319,7 +319,7 @@ function prosseguir() {
         graficoPizza.update();
     }
     if (endereco.value == "2") {
-        dadosPizza = [150, 900];
+        dadosPizza = [50, 70];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
@@ -329,7 +329,7 @@ function prosseguir() {
         graficoPizza.options.plugins.subtitle.text = `50 min`;
         graficoPizza.update();
     } if (endereco.value == "3") {
-        dadosPizza = [75, 150];
+        dadosPizza = [25, 95];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
@@ -339,7 +339,7 @@ function prosseguir() {
         graficoPizza.options.plugins.subtitle.text = `25 min`;
         graficoPizza.update();
     } if (endereco.value == "4") {
-        dadosPizza = [78, 95];
+        dadosPizza = [90, 30];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
@@ -349,17 +349,17 @@ function prosseguir() {
         graficoPizza.options.plugins.subtitle.text = `90 min`;
         graficoPizza.update();
     } if (endereco.value == "5") {
-        dadosPizza = [55, 360];
+        dadosPizza = [120, 00];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
                 borderWidth: 1
             }
         ]
-        graficoPizza.options.plugins.subtitle.text = `30 min`;
+        graficoPizza.options.plugins.subtitle.text = `120 min`;
         graficoPizza.update();
     } if (endereco.value == "6") {
-        dadosPizza = [400, 250];
+        dadosPizza = [45, 75];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
@@ -369,7 +369,7 @@ function prosseguir() {
         graficoPizza.options.plugins.subtitle.text = `45 min`;
         graficoPizza.update();
     } if (endereco.value == "7") {
-        dadosPizza = [400, 400];
+        dadosPizza = [60, 60];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
@@ -379,7 +379,7 @@ function prosseguir() {
         graficoPizza.options.plugins.subtitle.text = `60 min`;
         graficoPizza.update();
     } if (endereco.value == "8") {
-        dadosPizza = [856, 455];
+        dadosPizza = [7, 113];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
@@ -389,7 +389,7 @@ function prosseguir() {
         graficoPizza.options.plugins.subtitle.text = `7 min`;
         graficoPizza.update();
     } if (endereco.value == "9") {
-        dadosPizza = [78, 90];
+        dadosPizza = [25, 95];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
@@ -399,7 +399,7 @@ function prosseguir() {
         graficoPizza.options.plugins.subtitle.text = `25 min`;
         graficoPizza.update();
     } if (endereco.value == "10") {
-        dadosPizza = [350, 500];
+        dadosPizza = [27, 93];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
@@ -409,7 +409,7 @@ function prosseguir() {
         graficoPizza.options.plugins.subtitle.text = `27 min`;
         graficoPizza.update();
     } if (endereco.value == "11") {
-        dadosPizza = [465, 88];
+        dadosPizza = [15, 105];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
@@ -419,7 +419,7 @@ function prosseguir() {
         graficoPizza.options.plugins.subtitle.text = `15 min`;
         graficoPizza.update();
     } if (endereco.value == "12") {
-        dadosPizza = [125, 860];
+        dadosPizza = [10, 110];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
@@ -429,7 +429,7 @@ function prosseguir() {
         graficoPizza.options.plugins.subtitle.text = `10 min`;
         graficoPizza.update();
     } if (endereco.value == "13") {
-        dadosPizza = [455, 667];
+        dadosPizza = [45, 75];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
@@ -439,7 +439,7 @@ function prosseguir() {
         graficoPizza.options.plugins.subtitle.text = `45 min`;
         graficoPizza.update();
     } if (endereco.value == "14") {
-        dadosPizza = [222, 333];
+        dadosPizza = [50, 70];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
@@ -449,7 +449,7 @@ function prosseguir() {
         graficoPizza.options.plugins.subtitle.text = `50 min`;
         graficoPizza.update();
     } if (endereco.value == "15") {
-        dadosPizza = [751, 555];
+        dadosPizza = [17, 103];
         graficoPizza.data.datasets = [
             {
                 data: dadosPizza,
