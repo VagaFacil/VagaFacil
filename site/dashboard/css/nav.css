@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'fonte';
-    src: url(../font/SourceSansPro-Bold.otf);
+    src: url(../../font/SourceSansPro-Bold.otf);
 }
 
 @font-face {
     font-family: 'font';
-    src: url(../font/SourceSansPro-Regular.otf);
+    src: url(../../font/SourceSansPro-Regular.otf);
 }
 
 html {
@@ -16,17 +16,37 @@ html {
 
 body::-webkit-scrollbar {
     width: 5px;
-  }
-  body::-webkit-scrollbar-track {
-    background-color: #0C243C;
-  }
+}
 
-  body::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-track {
+    background-color: #0C243C;
+}
+
+body::-webkit-scrollbar-thumb {
     background-color: #F49C24;
     outline: 1px solid #0C243C;
     border-radius: 20px;
-  }
+}
 
+button {
+    background-color: #F49C24;
+    color: #0C243C;
+    width: auto;
+    height: auto;
+    border-radius: 20px;
+    font-family: 'fonte';
+    margin: 10px auto 10px auto;
+    padding: 10px 30px 10px 30px;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 2px 4px black;
+} button:hover {
+    background-color: #FCF4EC;
+    transition: .3s;
+    box-shadow: 0 4px 8px black;
+}
 
 .nav {
     display: flex;
@@ -43,7 +63,7 @@ body::-webkit-scrollbar {
 }
 
 
-.logo{
+.logo {
     width: 50px;
     height: 50px;
     margin: 10px 10px 10px 20px;
@@ -52,7 +72,8 @@ body::-webkit-scrollbar {
     left: 0;
     transition: .3s;
 }
-.menuH{
+
+.menuH {
     width: 40px;
     height: 40px;
     margin: 15px 20px;
@@ -62,7 +83,8 @@ body::-webkit-scrollbar {
     transition: .3s;
 }
 
-.logo:hover, .menuH:hover{
+.logo:hover,
+.menuH:hover {
     transition: .3s;
     transform: scale(1.2);
 }
@@ -79,18 +101,57 @@ body::-webkit-scrollbar {
     margin: auto;
     display: none;
 }
+
 .itens-menuH {
     margin: auto;
-    width: 70%;
+    width: 68%;
     line-height: 2;
 }
+
 #listaMenuH img {
     width: 40px;
     max-width: 100%;
     padding: 20px;
     cursor: pointer;
 }
+
 .itens-menuH li a {
     color: #0C243C;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'fonte';
+    cursor: pointer;
 }
 
+.btn-site {
+    padding: 0;
+    box-shadow: none;
+    font-size: 20px;
+}.btn-site:hover {
+    padding: 0;
+    box-shadow: none;
+    font-size: 20px;
+    background-color: #F49C24;
+}
+
+#alertSair {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: rgba(0, 0, 0, 0.721);
+    display: none;
+}
+
+.caixa {
+    width: 25%;
+    height: auto;
+    margin: 250px auto 0 auto;
+    background-color: #0C243C;
+    border-radius: 25px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px #1f3f5f;
+}

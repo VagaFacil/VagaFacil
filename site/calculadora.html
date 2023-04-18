@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,14 +71,16 @@
     </div>
     <div class="calculadora">
         <div class="card4">
-            <h1>Simule agora</h1>
-            <h1>e saiba até quanto pode ganhar</h1>
+            <h4>Simule agora</h4>
+            <h4>e saiba até quanto pode ganhar</h4>
         </div>
-
+<!-- <br>
+<br>
+<br>
+<br> -->
         <div class="containerInput">
-            <h4>Simulador financeiro</h4>
-            Lucro na localização atual: <input id="inpLucro"><br>
-            Bairro da localização atual: <select id="selBairroAtual">
+            <p> Lucro na localização atual:</p> <input class="inplucro" id="inpLucro"><br>
+            <p> Bairro da localização atual:</p> <select id="selBairroAtual">
                 <option value="-1">- Selecione um bairro -</option>
                 <option value="228.1379">Água Rasa</option>
                 <option value="159.1332">Alto de Pinheiros</option>
@@ -175,7 +179,7 @@
                 <option value="258.3770">Vila Prudente</option>
                 <option value="236.7365">Vila Sônia</option>
             </select><br>
-            Bairro da nova localização: <select id="selBairroNovo">
+            <p>  Bairro da nova localização:</p> <select id="selBairroNovo">
                 <option value="-1">- Selecione um bairro -</option>
                 <option value="228.1379">Água Rasa</option>
                 <option value="159.1332">Alto de Pinheiros</option>
@@ -277,11 +281,8 @@
             <button class="botão" onclick="calcularLucro()">Calcular novo lucro</button>
         </div>
 
-        <div id="divLucro"></div>
-        <div class="conteiner4">
-            <div class="card5">
-                rápido e fácil
-            </div>
+       <div class="lucro" id="divLucro"></div>
+        
         </div>
 
     </div>
