@@ -12,17 +12,19 @@
     <link rel="stylesheet" href="css/mediaQueries.css">
     <script src="js/menuH.js"></script>
     <script src="js/usuarios.js"></script>
+    <script src="js/perfil.js"></script>
     <title>Vaga Fácil</title>
 </head>
+
 <body>
     <!-- Começo do Header -->
     <header>
         <nav class="nav">
-            
+
             <a href=""><img class="logo" src="img/logo.png" alt="Home"></a>
-            
+
             <img class="menuH" onclick="menuH()" src="img/menuH.png" alt="Menu Hamburguer">
-            
+
             <div id="listaMenuH">
                 <img onclick="seta()" src="img/seta.png" alt="">
                 <ul class="itens-menuH">
@@ -45,7 +47,48 @@
         </div>
     </header>
     <!-- Fim do Header -->
+    <div class="container">
+        <div class="usuario">
+            <div class="menu">
+                <img src="../img/sobrenos/lucas.jpg" alt="">
+                <p>Lucas Neves</p>
+                <div class="campos">
+                    <button onclick="exibir_informacaoPessoal()">Dados Pessoais</button>
+                    <button onclick="exibir_comercial()">Dados Empresariais</button>
+                    <button onclick="exibir_atuacao()">Atuação</button>
+                    <button onclick="exibir_personalizar()">Personalizar usuario</button>
+                </div>
+            </div>
+            <div class="informacaoPessoal" id="pessoal">
+                <h1>Nome e Sobrenome</h1>
+                <p>Lucas Neves Rocha</p>
+                <h1>Data de nascimento</h1>
+                <p>03/07/1999</p>
+                <h1>CPF</h1>
+                <p>547.555.736-44</p>
+                <h1>Telefone</h1>
+                <p>(11)91234-4321</p>
+                <h1>Email</h1>
+                <p>lucas123@gmail.com</p>
+            </div>
+            <div class="comercial" id="comercial">
+                <h1>Nome da empresa</h1>
+                <p>Vaga Fácil</p>
+                <h1>CEP</h1>
+                <p>01414-001</p>
+                <h1>Localização</h1>
+                <p> Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP</p>
+                <h1>Cargo</h1>
+                <p>Scrum Master</p>
+            </div>
+            <div class="atuacao" id="atuacao">
 
+            </div>
+            <div class="personalizar" id="personalizar">
+                
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
