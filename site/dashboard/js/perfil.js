@@ -25,3 +25,7 @@ function exibir_personalizar() {
     atuacao.style = "display: none;";
     personalizar.style = "display: flex;";
 }
+
+function mudar() {
+    menu.innerHTML = `<p> ${nome.value} </p>`;
+}

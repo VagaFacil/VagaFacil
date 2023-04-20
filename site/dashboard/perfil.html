@@ -49,9 +49,9 @@
     <!-- Fim do Header -->
     <div class="container">
         <div class="usuario">
-            <div class="menu">
-                <img src="../img/sobrenos/lucas.jpg" alt="">
-                <p>Lucas Neves</p>
+            <div class="menu" id="menu">
+                <img src="../img/sobrenos/lucas.jpg" id="usuario">
+                <p> Lucas Neves</p>
                 <div class="campos">
                     <button onclick="exibir_informacaoPessoal()">Dados Pessoais</button>
                     <button onclick="exibir_comercial()">Dados Empresariais</button>
@@ -78,14 +78,25 @@
                 <p>01414-001</p>
                 <h1>Localização</h1>
                 <p> Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP</p>
-                <h1>Cargo</h1>
-                <p>Scrum Master</p>
+                <h1>CNPJ</h1>
+                <p>42.591.681/0031-43</p>
             </div>
             <div class="atuacao" id="atuacao">
-
+                <h1>Setor</h1>
+                <p>Desenvolvimento</p>
+                <h1>Cargo</h1>
+                <p>Desenvolvedor JR</p>
+                <h1>Area de Atuação</h1>
+                <p>Back-end</p>
+                <h1>Jornada de trabalho</h1>
+                <p>Jornada comercial- 45 Horas semanais</p>
             </div>
             <div class="personalizar" id="personalizar">
-                
+                <h1>Alterar imagem de perfil</h1>
+                <input type="file" id="img">
+                <h1>Alterar Nome</h1>
+                <input type="text" id="nome">
+                <button onclick="mudar()">Alterar Dados</button>
             </div>
         </div>
     </div>
