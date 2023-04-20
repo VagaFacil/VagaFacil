@@ -630,11 +630,23 @@
 
         var paginacao = {};
         var tempo = {};
+        var online = true;
         function obterDados(grafico, endpoint) {
-            var http = new XMLHttpRequest();
-            http.open('GET', 'http://localhost:3000/sensores/' + endpoint, false);
-            http.send(null);
-            var valores = JSON.parse(http.responseText);
+            var valores;
+            if (online) {
+                try {
+                    var http = new XMLHttpRequest();
+                    http.open('GET', 'http://localhost:3000/sensores/' + endpoint, false);
+                    http.send(null);
+                    valores = JSON.parse(http.responseText);
+                } catch (error) {
+                    online = false;
+                    valores = [0,0,0,0,0,0,0,0,0,0];
+                }
+            } else {
+                valores = [0,0,0,0,0,0,0,0,0,0];
+            }
+
             if (paginacao[endpoint] == null) {
                 paginacao[endpoint] = 0;
             }
@@ -652,13 +664,20 @@
                     grafico.data.datasets[0].data.shift();
                 }
 
-                grafico.data.labels.push(tempo[endpoint]++);
+                if (online) {
+                    grafico.data.labels.push(tempo[endpoint]++);
+                } else {
+                    grafico.data.labels.push('-');
+                }
                 grafico.data.datasets[0].data.push(parseFloat(valor));
                 grafico.update();
             })
         }
 
-        // setInterval(() => {
-            // obterDados(chave, 'chave');
-        //}, 1000);
+        setInterval(() => {
+            obterDados(chave, 'chave');
+        }, 1000);
+        setInterval(() => {
+            online = true;
+        }, 60000);
 </script>
