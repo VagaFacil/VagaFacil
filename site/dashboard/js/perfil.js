@@ -29,6 +29,7 @@ function exibir_personalizar() {
 function mudar() {
     if (alterarNome.value.length >= 5) {
         nomeUsuario.innerHTML = alterarNome.value;
+        nomePessoal.innerHTML = alterarNome.value;
     } else {
         validacaoNome.innerHTML = "O seu novo nome tem que ter no mínimo <u>5</u> caracteres";
         alterarNome.style = "border-color: red;";
@@ -47,5 +48,4 @@ function novaImagem() {
         };
         leitor.readAsDataURL(arquivo);
     });
-    // perfilImagemInput.click();
 }
