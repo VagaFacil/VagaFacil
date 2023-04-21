@@ -27,5 +27,25 @@ function exibir_personalizar() {
 }
 
 function mudar() {
-    menu.innerHTML = `<p> ${nome.value} </p>`;
+    if (alterarNome.value.length >= 5) {
+        nomeUsuario.innerHTML = alterarNome.value;
+    } else {
+        validacaoNome.innerHTML = "O seu novo nome tem que ter no mínimo <u>5</u> caracteres";
+        alterarNome.style = "border-color: red;";
+    }
+}
+
+function novaImagem() {
+    const perfilImagemInput = document.getElementById('img');
+    const perfilImagemUsuario = document.getElementById('usuario');
+
+    perfilImagemInput.addEventListener("change", function () {
+        const arquivo = this.files[0];
+        const leitor = new FileReader();
+        leitor.onload = function () {
+            perfilImagemUsuario.src = leitor.result;
+        };
+        leitor.readAsDataURL(arquivo);
+    });
+    // perfilImagemInput.click();
 }

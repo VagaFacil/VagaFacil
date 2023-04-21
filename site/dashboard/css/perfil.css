@@ -163,7 +163,7 @@ html {
     padding: 20px 10px ;
  }
 
- #nome {
+ #alterarNome {
     width: 40%;
     border-radius: 20px;
     color: black;
@@ -172,5 +172,5 @@ html {
  }
 
  #img {
-     margin-bottom: 100px;
+     border-radius: 10px;
  }
