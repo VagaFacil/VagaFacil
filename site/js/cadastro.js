@@ -100,14 +100,14 @@ function cadastrar() {
     
 }
 
-function ver_cep() {
-    if (ipt_cep.value.length == 8) {
-        fetch(`https://viacep.com.br/ws/${ipt_cep.value}/json/`).then(nome_qualquer=>{
-            return nome_qualquer.json();
-        }).then(corpo=>{
-            document.getElementById('ipt_endereco').value = corpo.logradouro;
-            document.getElementById('ipt_bairro').value = corpo.bairro;
-        })
+// function ver_cep() {
+//     if (ipt_cep.value.length == 8) {
+//         fetch(`https://viacep.com.br/ws/${ipt_cep.value}/json/`).then(nome_qualquer=>{
+//             return nome_qualquer.json();
+//         }).then(corpo=>{
+//             document.getElementById('ipt_endereco').value = corpo.logradouro;
+//             document.getElementById('ipt_bairro').value = corpo.bairro;
+//         })
         
-    }
-}
+//     }
+// }

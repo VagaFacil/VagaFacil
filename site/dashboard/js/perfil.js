@@ -36,16 +36,16 @@ function mudar() {
     }
 }
 
-function novaImagem() {
-    const perfilImagemInput = document.getElementById('img');
-    const perfilImagemUsuario = document.getElementById('usuario');
+// function novaImagem() {
+//     const perfilImagemInput = document.getElementById('img');
+//     const perfilImagemUsuario = document.getElementById('usuario');
 
-    perfilImagemInput.addEventListener("change", function () {
-        const arquivo = this.files[0];
-        const leitor = new FileReader();
-        leitor.onload = function () {
-            perfilImagemUsuario.src = leitor.result;
-        };
-        leitor.readAsDataURL(arquivo);
-    });
-}
+//     perfilImagemInput.addEventListener("change", function () {
+//         const arquivo = this.files[0];
+//         const leitor = new FileReader();
+//         leitor.onload = function () {
+//             perfilImagemUsuario.src = leitor.result;
+//         };
+//         leitor.readAsDataURL(arquivo);
+//     });
+// }
