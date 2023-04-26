@@ -565,7 +565,6 @@
     });
 
 
-
     var contextoChave = document.getElementById('canvLine').getContext('2d');
         contextoChave.canvas.width = 300;
         contextoChave.canvas.height = 100;
@@ -631,22 +630,11 @@
 
         var paginacao = {};
         var tempo = {};
-        var online = true;
         function obterDados(grafico, endpoint) {
-            var valores;
-            if (online) {
-                try {
-                    var http = new XMLHttpRequest();
-                    http.open('GET', 'http://localhost:3000/sensores/' + endpoint, false);
-                    http.send(null);
-                    valores = JSON.parse(http.responseText);
-                } catch (error) {
-                    online = false;
-                    valores = [0,0,0,0,0,0,0,0,0,0];
-                }
-            } else {
-                valores = [0,0,0,0,0,0,0,0,0,0];
-            }
+            var http = new XMLHttpRequest();
+            http.open('GET', 'http://localhost:3000/sensores/' + endpoint, false);
+            http.send(null);
+            var valores = JSON.parse(http.responseText);
 
             if (paginacao[endpoint] == null) {
                 paginacao[endpoint] = 0;
@@ -657,7 +645,7 @@
             // Exibir à partir do último elemento exibido anteriormente
             var ultimaPaginacao = paginacao[endpoint];
             paginacao[endpoint] = valores.length;
-            var valores = valores.slice(ultimaPaginacao);
+            valores = valores.slice(ultimaPaginacao);
             valores.forEach((valor) => {
                 //Máximo de 60 itens exibidos no gráfico
                 if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
@@ -665,11 +653,7 @@
                     grafico.data.datasets[0].data.shift();
                 }
 
-                if (online) {
-                    grafico.data.labels.push(tempo[endpoint]++);
-                } else {
-                    grafico.data.labels.push('-');
-                }
+                grafico.data.labels.push(tempo[endpoint]++);
                 grafico.data.datasets[0].data.push(parseFloat(valor));
                 grafico.update();
             })
@@ -678,7 +662,4 @@
         setInterval(() => {
             obterDados(chave, 'chave');
         }, 1000);
-        setInterval(() => {
-            online = true;
-        }, 60000);
 </script>
