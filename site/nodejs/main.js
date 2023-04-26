@@ -1,10 +1,10 @@
-const serialport = require('serialport');
-const express = require('express');
-const mysql = require('mysql2');
+    const serialport = require('serialport');
+    const express = require('express');
+    const mysql = require('mysql2');
 
-const SERIAL_BAUD_RATE = 9600;
-const SERVIDOR_PORTA = 3000;
-const HABILITAR_OPERACAO_INSERIR = false;
+    const SERIAL_BAUD_RATE = 9600;
+    const SERVIDOR_PORTA = 3000;
+    const HABILITAR_OPERACAO_INSERIR = false;
 
 const serial = async (
     valoresDht11Umidade,
@@ -45,7 +45,7 @@ const serial = async (
         const luminosidade = parseFloat(valores[2]);
         const lm35Temperatura = parseFloat(valores[3]);
         const chave = parseInt(valores[0]);
-
+a
         valoresDht11Umidade.push(dht11Umidade);
         valoresDht11Temperatura.push(dht11Temperatura);
         valoresLuminosidade.push(luminosidade);
