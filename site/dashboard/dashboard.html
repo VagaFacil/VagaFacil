@@ -50,15 +50,15 @@
 
 
     <div class="dashboard">
-        <div class="containerDados">
-            <div class="fundo">
+        <div class="containerFiltros">
+            <div class="titulo">
                 <h2>Filtros</h2>
             </div>
             <div class="endereco">
                 Endereço<br>
                 <input type="text" id="inpEndereco" class="inputWide">
             </div>
-            <div class="dashContainer">
+            <div class="cardContainer">
                 <div class="card">
                     <div>Tipo de dia 
                         <label class="switch">
@@ -124,15 +124,15 @@
                     </select>
                 </div>
             </div>
-            <div class="graphContainer">
-                <div class="gaugeCard">
-                    <canvas id="canvGauge1" class="canvasGauge"></canvas>
-                    <canvas id="canvGauge2" class="canvasGauge"></canvas>
-                </div>
-                <div class="graphCard">
-                    <canvas id="canvLine"></canvas>
-                    <cavas id="canvMap"></cavas>
-                </div>
+        </div>
+        <div class="containerGraficos">
+            <div class="cardGauge">
+                <canvas id="canvGauge1" class="canvasGauge"></canvas>
+                <canvas id="canvGauge2" class="canvasGauge"></canvas>
+            </div>
+            <div class="cardGrafico">
+                <canvas id="canvLine"></canvas>
+                <cavas id="canvMap"></cavas>
             </div>
         </div>
     </div>
