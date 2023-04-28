@@ -469,6 +469,8 @@ function prosseguir() {
             borderWidth: 1
         }]
         graficoOcupacao.options.plugins.subtitle.text = `45%`;
+        graficoOcupacao.options.plugins.subtitle.color = `yellow`;
+        graficoOcupacao.options.backgroundColor = ['yellow', '#0C243C'];
         graficoOcupacao.update();
     }
     if (endereco.value == "2") {
