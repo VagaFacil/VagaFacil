@@ -182,7 +182,10 @@ function prosseguir() {
         Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.274684984538!2d-46.668392624888874!3d-23.558576161489462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce582b4e2bfa55%3A0x57bab3e2fa19f3ca!2sR.%20da%20Consola%C3%A7%C3%A3o%2C%202905%20-%20Cerqueira%20C%C3%A9sar%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001416-001!5e0!3m2!1spt-BR!2sbr!4v1681769345226!5m2!1spt-BR!2sbr"
     }
     //final da definição dos mapas
-    //organização dos dados do gráfico de linha
+
+
+
+    /* Começo do gráfico de ocupação da rua */
     if (endereco.value == "1") {
         dadosLinha = [4, 10, 5, 6, 10, 15, 45, 14, 10, 8, 7, 12, 14, 24, 53, 40, 38, 35, 35, 30, 21, 44, 10, 8];
         graficoLinha.data.datasets = [{
@@ -304,8 +307,9 @@ function prosseguir() {
         ]
         graficoLinha.update();
     }
+    /* Final do gráfico de ocupação da rua */
+
     /*Graficos de Pizza*/
- 
     // gráfico do tempo de permanência
     if (endereco.value == "1") {
         dadosPizza = [10, 110];
@@ -468,6 +472,9 @@ function prosseguir() {
             data: [45,55],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `yellow`;
+        graficoOcupacao.options.plugins.subtitle.color = `yellow`;
+        graficoOcupacao.options.backgroundColor = ['yellow', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `45%`;
         graficoOcupacao.update();
     }
@@ -477,6 +484,9 @@ function prosseguir() {
             data: [75,25],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `green`;
+        graficoOcupacao.options.plugins.subtitle.color = `green`;
+        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `75%`;
         graficoOcupacao.update();
     }  if (endereco.value == "3") {
@@ -493,6 +503,9 @@ function prosseguir() {
             data: [33,67],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `red`;
+        graficoOcupacao.options.plugins.subtitle.color = `red`;
+        graficoOcupacao.options.backgroundColor = ['red', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `33%`;
         graficoOcupacao.update();
     }  if (endereco.value == "5") {
@@ -501,6 +514,9 @@ function prosseguir() {
             data: [50,50],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `yellow`;
+        graficoOcupacao.options.plugins.subtitle.color = `yellow`;
+        graficoOcupacao.options.backgroundColor = ['yellow', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `50%`;
         graficoOcupacao.update();
     }  if (endereco.value == "6") {
@@ -509,6 +525,9 @@ function prosseguir() {
             data: [80,20],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `green`;
+        graficoOcupacao.options.plugins.subtitle.color = `green`;
+        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `80%`;
         graficoOcupacao.update();
     }  if (endereco.value == "7") {
@@ -517,6 +536,9 @@ function prosseguir() {
             data: [66,44],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `green`;
+        graficoOcupacao.options.plugins.subtitle.color = `green`;
+        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `66%`;
         graficoOcupacao.update();
     }  if (endereco.value == "8") {
@@ -525,6 +547,9 @@ function prosseguir() {
             data: [90,10],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `#1c7c94`;
+        graficoOcupacao.options.plugins.subtitle.color = `#1c7c94`;
+        graficoOcupacao.options.backgroundColor = ['#1c7c94', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `90%`;
         graficoOcupacao.update();
 
@@ -534,6 +559,9 @@ function prosseguir() {
             data: [83,17],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `green`;
+        graficoOcupacao.options.plugins.subtitle.color = `green`;
+        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `83%`;
         graficoOcupacao.update();
 
@@ -543,6 +571,9 @@ function prosseguir() {
             data: [88,12],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `green`;
+        graficoOcupacao.options.plugins.subtitle.color = `green`;
+        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `88%`;
         graficoOcupacao.update();
 
@@ -552,6 +583,9 @@ function prosseguir() {
             data: [72,28],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `green`;
+        graficoOcupacao.options.plugins.subtitle.color = `green`;
+        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `72%`;
         graficoOcupacao.update();
     }  if (endereco.value == "12") {
@@ -560,6 +594,9 @@ function prosseguir() {
             data: [98,2],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `#1c7c94`;
+        graficoOcupacao.options.plugins.subtitle.color = `#1c7c94`;
+        graficoOcupacao.options.backgroundColor = ['#1c7c94', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `98%`;
         graficoOcupacao.update();
     }  if (endereco.value == "13") {
@@ -568,6 +605,9 @@ function prosseguir() {
             data: [40,60],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `#F49C24`;
+        graficoOcupacao.options.plugins.subtitle.color = `#F49C24`;
+        graficoOcupacao.options.backgroundColor = ['#F49C24', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `40%`;
         graficoOcupacao.update();
     }  if (endereco.value == "14") {
@@ -576,6 +616,10 @@ function prosseguir() {
             data: [95,5],
             borderWidth: 1
         }]
+        //#F49C24
+        graficoOcupacao.options.plugins.title.color = `#1c7c94`;
+        graficoOcupacao.options.plugins.subtitle.color = `#1c7c94`;
+        graficoOcupacao.options.backgroundColor = ['#1c7c94', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `95%`;
         graficoOcupacao.update();
     }  if (endereco.value == "15") {
@@ -584,6 +628,9 @@ function prosseguir() {
             data: [10,90],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `red`;
+        graficoOcupacao.options.plugins.subtitle.color = `red`;
+        graficoOcupacao.options.backgroundColor = ['red', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `10%`;
         graficoOcupacao.update();
     }

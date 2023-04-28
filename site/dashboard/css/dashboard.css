@@ -5,43 +5,41 @@ html {
 /* Início do dashboard */
 
 .dashboard {
+  margin: auto;
   margin-top: 110px;
+  width:90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
 }
 
-.dashboard .containerDados {
-    width:90%;
-    margin: auto;
+.dashboard .containerFiltros {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
-}
-
-.dashboard .containerDados h2 {
-  font-size: x-large;
-  font-weight: bold;
-  margin: 10px;
-}
-
-.dashboard .containerDados .dashContainer {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin: 10px auto;
     background-color: #0C243C;
     border-radius: 20px;
 }
 
-.dashboard .endereco, .fundo {
-    width: 60%;
+.dashboard .endereco, .titulo {
+    width: 70%;
     margin: auto;
-    text-align: center;
+}
+
+.dashboard h2 {
+  font-size: xx-large;
+  font-weight: bold;
+  margin: 10px;
+  text-align: center;
 }
 
 .dashboard .inputWide {
     width: 100%;
-    margin: auto;
+    margin: 10px auto;
 }
 
 .dashboard input, select {
@@ -50,15 +48,25 @@ html {
     margin-top: 5px;
 }
 
+.dashboard .containerFiltros .cardContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 70%;
+}
+
 .dashboard .card {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    width:15%;
+    width:20%;
     gap:50%;
 }
 
-.dashboard .graphContainer {
+.dashboard .card select {
+  width: 100%;
+}
+
+.dashboard .containerGraficos {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,14 +79,14 @@ html {
     margin-bottom: 30px;
 }
 
-.dashboard .graphCard {
+.dashboard .cardGrafico {
     display: flex;
-    width: 60%;
+    width: 50%;
     justify-content: space-between;
     margin: auto;
 }
 
-.dashboard .gaugeCard {
+.dashboard .cardGauge {
     display: flex;
     width: 30%;
     gap:20%;

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/expandir.css">
     <link rel="stylesheet" href="css/footer.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/menuH.js"></script>
     <script src="js/usuarios.js"></script>
     <title>Vaga Fácil</title>
@@ -23,11 +24,11 @@
             <a href=""><img class="logo" src="img/logo.png" alt="Home"></a>
 
             <img class="menuH" onclick="menuH()" src="img/menuH.png" alt="Menu Hamburguer">
-            
+
             <div id="listaMenuH">
                 <img onclick="seta()" src="img/seta.png" alt="">
                 <ul class="itens-menuH">
-                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <!-- <li><a href="dashboard.html">Dashboard</a></li> -->
                     <li><a href="acompanhar.html">Acompanhar</a></li>
                     <li><a href="expandir.html">Expandir</a></li>
                     <li><a href="perfil.html">Perfil</a></li>
@@ -50,11 +51,12 @@
     <div class="dashboard">
         <div class="containerBairro" id="divBairro">
             <div class="bairroFiltros">
+                <h2>Filtros</h2>
                 <div>
                     Região: <label class="switch">
                         <input type="checkbox" onclick="changeDisabled('selRegiaoBairro'); filtrarRegiao();">
                         <span class="slider"></span>
-                        </label>
+                    </label>
                 </div>
                 <select id="selRegiaoBairro" onchange="filtrarRegiao()" disabled="true">
                     <option value="-">- Selecione uma região -</option>
@@ -64,12 +66,12 @@
                     <option value="O">Oeste</option>
                     <option value="C">Centro</option>
                 </select>
-                
+
                 <div>
                     Faixa de Renda: <label class="switch">
                         <input type="checkbox" onclick="changeDisabled('selRendaBairro'); filtrarRenda();">
                         <span class="slider"></span>
-                        </label>
+                    </label>
                 </div>
                 <select id="selRendaBairro" onchange="filtrarRenda()" disabled="true">
                     <option value="-">- Selecione uma faixa -</option>
@@ -77,22 +79,22 @@
                     <option value="2">Média</option>
                     <option value="3">Alta</option>
                 </select>
-                
+
                 <div>
                     Faixa Etária: <label class="switch">
                         <input type="checkbox" onclick="changeDisabled('selIdadeBairro'); filtrarIdade();">
                         <span class="slider"></span>
-                        </label>
-                        </div>
-                    <select id="selIdadeBairro" onchange="filtrarIdade()" disabled="true">
-                        <option value="-">- Selecione uma faixa -</option>
-                        <option value="1">Adolescente</option>
-                        <option value="2">Jovem adulto</option>
-                        <option value="3">Adulto</option>
-                        <option value="4">Idoso</option>
-                    </select>
-
+                    </label>
+                </div>
+                <select id="selIdadeBairro" onchange="filtrarIdade()" disabled="true">
+                    <option value="-">- Selecione uma faixa -</option>
+                    <option value="1">Adolescente</option>
+                    <option value="2">Jovem adulto</option>
+                    <option value="3">Adulto</option>
+                    <option value="4">Idoso</option>
+                </select>
             </div>
+
             <div class="bairroLista">
                 <div class="bairroCard" id="cardBelaVista" onclick="mostrarRuas()">
                     <img src="img/bairros/belaVista.png">
@@ -145,69 +147,65 @@
 
         <div class="containerRua" id="divRua">
             <div class="ruaFiltros">
+                <h2>Filtros</h2>
                 <div>
-                    Região:
-                    <select id="selRegiaoRua" onchange="filtrarRegiaoRua()">
-                        <option value="-">- Selecione uma região -</option>
-                        <option value="N">Norte</option>
-                        <option value="S">Sul</option>
-                        <option value="L">Leste</option>
-                        <option value="O">Oeste</option>
-                        <option value="C">Centro</option>
-                    </select>
+                    Faixa de Renda: <label class="switch">
+                        <input type="checkbox" onclick="changeDisabled('selRendaRua'); filtrarRendaRua();">
+                        <span class="slider"></span>
+                    </label>
                 </div>
+                <select id="selRendaRua" onchange="filtrarRendaRua()" disabled="true">
+                    <option value="1">Baixa</option>
+                    <option value="2">Média</option>
+                    <option value="3">Alta</option>
+                </select>
                 <div>
-                    Faixa de Renda:
-                    <select id="selRendaRua" onchange="filtrarRendaRua()">
-                        <option value="1">Baixa</option>
-                        <option value="2">Média</option>
-                        <option value="3">Alta</option>
-                    </select>
+                    Faixa Etária: <label class="switch">
+                        <input type="checkbox" onclick="changeDisabled('selIdadeRua'); filtrarIdadeRua();">
+                        <span class="slider"></span>
+                    </label>
                 </div>
-                <div>
-                    Faixa Etária:
-                    <select id="selIdadeRua" onchange="filtrarIdadeRua()">
-                        <option value="1">Adolescente</option>
-                        <option value="2">Jovem adulto</option>
-                        <option value="3">Adulto</option>
-                        <option value="4">Idoso</option>
-                    </select>
-                </div>
-
+                <select id="selIdadeRua" onchange="filtrarIdadeRua()" disabled="true">
+                    <option value="1">Adolescente</option>
+                    <option value="2">Jovem adulto</option>
+                    <option value="3">Adulto</option>
+                    <option value="4">Idoso</option>
+                </select>
             </div>
             <div class="ruaLista">
-                <div onclick="mostrarDados()" class="ruaCard" id="rua1">Alameda Joaquim Eugênio de Lima, 1394 - Jardim Paulista</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua2">Rua Pamplona, 726 - Jardim Paulista</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua3">Rua Peixoto Gomide, 167 - Jardim Paulista</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua4">Alameda Santos, 211 - Cerqueira César</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua5">Rua Haddock Lobo, 595 - Cerqueira César</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua6">Rua Padre João Manuel, 755 - Cerqueira César</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua7">Avenida Paulista, 1374 - Bela Vista</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua8">Rua Pamplona, 145 - Bela Vista</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua9">Rua São Carlos do Pinhal, 424 - Bela Vista</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua10">Rua Bela Cintra, 1200 - Consolação</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua11">Rua Frei Caneca, 569 - Consolação</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua12">Rua Augusta, 129 - Consolação </div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua13">Rua Estados Unidos, 1585 - Jardins</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua14">Alameda Lorena, 1821 - Jardins</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua15">Rua da Consolação, 2905 - Cerqueira César</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua1">Alameda Joaquim Eugênio de Lima - Jardim
+                    Paulista</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua2">Rua Pamplona - Jardim Paulista</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua3">Rua Peixoto Gomide - Jardim Paulista</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua4">Alameda Santos - Cerqueira César</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua5">Rua Haddock Lobo - Cerqueira César</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua6">Rua Padre João Manuel - Cerqueira César</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua7">Avenida Paulista - Bela Vista</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua8">Rua Pamplona - Bela Vista</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua9">Rua São Carlos do Pinhal - Bela Vista</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua10">Rua Bela Cintra - Consolação</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua11">Rua Frei Caneca - Consolação</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua12">Rua Augusta - Consolação </div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua13">Rua Estados Unidos - Jardins</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua14">Alameda Lorena - Jardins</div>
+                <div onclick="mostrarDados()" class="ruaCard" id="rua15">Rua da Consolação - Cerqueira César</div>
             </div>
         </div>
 
         <div class="containerDados" id="divDados">
-            <div class="fundo">
-                <h2>Vaga Fácil</h2>
+            <div class="titulo">
+                <h2>Filtros</h2>
             </div>
             <div class="endereco">
                 Endereço<br>
                 <input type="text" id="inpEndereco" class="inputWide">
             </div>
-            <div class="dashContainer">
+            <div class="cardContainer">
                 <div class="card">
-                    <div>Tipo de dia 
+                    <div>Tipo de dia
                         <label class="switch">
-                        <input type="checkbox" onclick="changeDisabled('selTipo')">
-                        <span class="slider"></span>
+                            <input type="checkbox" onclick="changeDisabled('selTipo')">
+                            <span class="slider"></span>
                         </label>
                     </div>
                     <select id="selTipo" disabled="true">
@@ -217,10 +215,10 @@
                     </select>
                 </div>
                 <div class="card">
-                    <div>Dia da semana                     
+                    <div>Dia da semana
                         <label class="switch">
-                        <input type="checkbox" onclick="changeDisabled('selSemana')">
-                        <span class="slider"></span>
+                            <input type="checkbox" onclick="changeDisabled('selSemana')">
+                            <span class="slider"></span>
                         </label>
                     </div>
                     <select id="selSemana" disabled="true">
@@ -234,10 +232,10 @@
                     </select>
                 </div>
                 <div class="card">
-                    <div>Mês                     
+                    <div>Mês
                         <label class="switch">
-                        <input type="checkbox" onclick="changeDisabled('selMes')">
-                        <span class="slider"></span>
+                            <input type="checkbox" onclick="changeDisabled('selMes')">
+                            <span class="slider"></span>
                         </label>
                     </div>
                     <select id="selMes" disabled="true">
@@ -256,11 +254,12 @@
                     </select>
                 </div>
                 <div class="card">
-                    <div>Vaga                     
+                    <div>Vaga
                         <label class="switch">
-                        <input type="checkbox" onclick="changeDisabled('selVaga')">
-                        <span class="slider"></span>
-                        </label></div>
+                            <input type="checkbox" onclick="changeDisabled('selVaga')">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
                     <select id="selVaga" disabled="true">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -268,12 +267,12 @@
                     </select>
                 </div>
             </div>
-            <div class="graphContainer">
-                <div class="gaugeCard">
+            <div class="containerGraficos">
+                <div class="cardGauge">
                     <canvas id="canvGauge1" class="canvasGauge"></canvas>
                     <canvas id="canvGauge2" class="canvasGauge"></canvas>
                 </div>
-                <div class="graphCard">
+                <div class="cardGrafico">
                     <canvas id="canvLine"></canvas>
                     <cavas id="canvMap"></cavas>
                 </div>
@@ -292,9 +291,9 @@
                 </div>
                 <div class="cardFooterCentral">
                     <ul>
-                        <li>
+                        <!-- <li>
                             <a href="dashboard.html">Dashboard</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="Acompanhar.html">Acompanhar</a>
                         </li>
@@ -329,15 +328,16 @@
 </html>
 
 <script>
-    var cards = [{bairro: 'Bela Vista', zona: 'C', fluxo: 1399.9675, adolescente: 11.7524, jovemAdulto: 37.3423, adulto: 135.9402, idoso: 48.2816, baixa: 86.2817, media: 126.1465, alta: 49.7127, card: cardBelaVista},
-        {bairro: 'Casa Verde', zona: 'N', fluxo: 274.8794, adolescente: 10.6285, jovemAdulto: 19.1434, adulto: 53.1315, idoso: 20.9573, baixa: 64.6413, media: 44.1204, alta: 11.1584, card: cardCasaVerde},
-        {bairro: 'Consolação', zona: 'C', fluxo: 881.3238, adolescente: 5.0696, jovemAdulto: 23.9223, adulto: 77.4689, idoso: 33.1550, baixa: 37.9716, media: 59.2960, alta: 54.0841, card: cardConsolacao},
-        {bairro: 'Guaianases', zona: 'L', fluxo: 170.1894, adolescente: 12.1617, jovemAdulto: 27.1466, adulto: 47.2799, idoso: 14.8391, baixa: 88.7966, media: 32.7180, alta: 0.0000, card: cardGuaianases},
-        {bairro: 'Itaim Bibi', zona: 'O', fluxo: 592.4852, adolescente: 5.1743, jovemAdulto: 11.1305, adulto: 47.3278, idoso: 22.1495, baixa: 10.9992, media: 48.3891, alta: 36.5763, card: cardItaimBibi},
-        {bairro: 'Penha', zona: 'L', fluxo: 240.5230, adolescente: 9.4914, jovemAdulto: 18.3281, adulto: 48.3499, idoso: 22.8408, baixa: 69.1325, media: 30.2277, alta: 13.2080, card: cardPenha},
-        {bairro: 'República', zona: 'C', fluxo: 1608.6098, adolescente: 16.7818, jovemAdulto: 37.1776, adulto: 126.6192, idoso: 53.9079, baixa: 165.9556, media: 66.6981, alta: 29.3103, card: cardRepublica},
-        {bairro: 'Santana', zona: 'N', fluxo: 307.2974, adolescente: 5.2185, jovemAdulto: 13.5873, adulto: 37.7952, idoso: 21.4771, baixa: 28.2796, media: 33.4486, alta: 25.3265, card: cardSantana},
-        {bairro: 'Sé', zona: 'C', fluxo: 1652.0939, adolescente: 8.3894, jovemAdulto: 21.2916, adulto: 52.4830, idoso: 17.4791, baixa: 83.0976, media: 29.0585, alta: 7.2406, card: cardSe}];
+    // Início de tela de filtros de bairro
+    var cards = [{ bairro: 'Bela Vista', zona: 'C', fluxo: 1399.9675, adolescente: 11.7524, jovemAdulto: 37.3423, adulto: 135.9402, idoso: 48.2816, baixa: 86.2817, media: 126.1465, alta: 49.7127, card: cardBelaVista },
+    { bairro: 'Casa Verde', zona: 'N', fluxo: 274.8794, adolescente: 10.6285, jovemAdulto: 19.1434, adulto: 53.1315, idoso: 20.9573, baixa: 64.6413, media: 44.1204, alta: 11.1584, card: cardCasaVerde },
+    { bairro: 'Consolação', zona: 'C', fluxo: 881.3238, adolescente: 5.0696, jovemAdulto: 23.9223, adulto: 77.4689, idoso: 33.1550, baixa: 37.9716, media: 59.2960, alta: 54.0841, card: cardConsolacao },
+    { bairro: 'Guaianases', zona: 'L', fluxo: 170.1894, adolescente: 12.1617, jovemAdulto: 27.1466, adulto: 47.2799, idoso: 14.8391, baixa: 88.7966, media: 32.7180, alta: 0.0000, card: cardGuaianases },
+    { bairro: 'Itaim Bibi', zona: 'O', fluxo: 592.4852, adolescente: 5.1743, jovemAdulto: 11.1305, adulto: 47.3278, idoso: 22.1495, baixa: 10.9992, media: 48.3891, alta: 36.5763, card: cardItaimBibi },
+    { bairro: 'Penha', zona: 'L', fluxo: 240.5230, adolescente: 9.4914, jovemAdulto: 18.3281, adulto: 48.3499, idoso: 22.8408, baixa: 69.1325, media: 30.2277, alta: 13.2080, card: cardPenha },
+    { bairro: 'República', zona: 'C', fluxo: 1608.6098, adolescente: 16.7818, jovemAdulto: 37.1776, adulto: 126.6192, idoso: 53.9079, baixa: 165.9556, media: 66.6981, alta: 29.3103, card: cardRepublica },
+    { bairro: 'Santana', zona: 'N', fluxo: 307.2974, adolescente: 5.2185, jovemAdulto: 13.5873, adulto: 37.7952, idoso: 21.4771, baixa: 28.2796, media: 33.4486, alta: 25.3265, card: cardSantana },
+    { bairro: 'Sé', zona: 'C', fluxo: 1652.0939, adolescente: 8.3894, jovemAdulto: 21.2916, adulto: 52.4830, idoso: 17.4791, baixa: 83.0976, media: 29.0585, alta: 7.2406, card: cardSe }];
 
     function filtrarRegiao() {
         var regiao = selRegiaoBairro.value;
@@ -355,8 +355,8 @@
                 } else {
                     cards[i].card.style.display = 'none';
                 }
-            }  
-        } 
+            }
+        }
     }
 
     function filtrarRenda() {
@@ -364,9 +364,9 @@
         if (selRendaBairro.disabled) {
             renda = '-';
         }
-        
+
         if (renda == '-') {
-            cards.sort((a,b) => a.fluxo - b.fluxo);
+            cards.sort((a, b) => a.fluxo - b.fluxo);
         } else if (renda == '1') {
             cards.sort((a, b) => a.baixa - b.baixa);
         } else if (renda == '2') {
@@ -376,7 +376,7 @@
         }
 
         for (var i = 1; i <= cards.length; i++) {
-            cards[i-1].card.style.order = i;
+            cards[i - 1].card.style.order = i;
         }
     }
 
@@ -388,7 +388,7 @@
         }
 
         if (idade == '-') {
-            cards.sort((a,b) => a.fluxo - b.fluxo);
+            cards.sort((a, b) => a.fluxo - b.fluxo);
         } else if (idade == '1') {
             cards.sort((a, b) => a.adolescente - b.adolescente);
         } else if (idade == '2') {
@@ -400,10 +400,12 @@
         }
 
         for (var i = 1; i <= cards.length; i++) {
-            cards[i-1].card.style.order = i;
+            cards[i - 1].card.style.order = i;
         }
     }
+    // Fim de tela de filtro de bairros
 
+    // Início de tela de filtro de ruas
     var ruas = [rua1, rua2, rua3, rua4, rua5, rua6, rua7, rua8, rua9, rua10, rua11, rua12, rua13, rua14, rua15];
 
     function mostrarRuas() {
@@ -411,27 +413,16 @@
         divBairro.style.display = 'none';
     }
 
-    function filtrarIdadeRua () {
-        ruas = ruas.sort((a,b) => 0.5 - Math.random());
-        for (var i = 0; i < ruas.length; i++){
+    function filtrarIdadeRua() {
+        ruas = ruas.sort((a, b) => 0.5 - Math.random());
+        for (var i = 0; i < ruas.length; i++) {
             ruas[i].style.order = i;
         }
     }
 
-    function filtrarRegiaoRua() {
-        var regiao = selRegiaoRua.value;
-        for (var i = 0; i < ruas.length; i++){
-            if (Math.random() < 0.5 || regiao == '-') {
-                ruas[i].style.display = 'flex';
-            } else {
-                ruas[i].style.display = 'none';
-            }
-        }
-    }
-
     function filtrarRendaRua() {
-        ruas = ruas.sort((a,b) => 0.5 - Math.random());
-        for (var i = 0; i < ruas.length; i++){
+        ruas = ruas.sort((a, b) => 0.5 - Math.random());
+        for (var i = 0; i < ruas.length; i++) {
             ruas[i].style.order = i;
         }
     }
@@ -440,55 +431,14 @@
         divDados.style.display = 'flex';
         divRua.style.display = 'none';
     }
-</script>
+    // Fim de tela de filtro de ruas
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
     function changeDisabled(elemento) {
         var disabled = document.getElementById(elemento).disabled
         document.getElementById(elemento).disabled = !disabled;
     }
 
-    // const chartLine = document.getElementById('canvLine');
-    // new Chart(chartLine, {
-    //     type: 'line',
-    //     data: {
-    //         datasets: [{
-    //             data: [4,4,5,6,10,15,13,14,10,8,7,12,18,24,32,40,38,41,35,30,21,15,10,8],
-    //         }],
-    //         labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],            
-    //     },
-    //     options: {
-    //         plugins: {
-    //             title: {
-    //                 display: true,
-    //                 text: 'Ocupação total da rua',
-    //                 color: '#F49C24',
-    //                 font: {
-    //                     size: 20
-    //                 }
-    //             },
-    //             legend: {
-    //                 display: false
-    //             }
-    //         },
-    //         scales: {
-    //             y: {
-    //                 beginAtZero: true,
-    //                 ticks: {
-    //                     color: '#F49C24',
-    //                 }
-    //             },
-    //             x: {
-    //                 ticks: {
-    //                     color: '#F49C24',
-    //                 }
-    //             }
-    //         },
-    //         backgroundColor: '#F49C24',
-    //         borderColor: '#F49C24',
-    //     }
-    // });
+    // Início de tela de dados
 
     const chartGauge1 = document.getElementById('canvGauge1');
     new Chart(chartGauge1, {
@@ -566,100 +516,102 @@
 
 
     var contextoChave = document.getElementById('canvLine').getContext('2d');
-        contextoChave.canvas.width = 300;
-        contextoChave.canvas.height = 100;
-        var cores = ['#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24'];
-        var chave = new Chart(
-            contextoChave,
-            {
-                type: 'bar',
-                data: {
-                    datasets: [{
-                        label: 'Chave',
-                        type: 'bar',
-                        borderColor: cores,
-                        backgroundColor: cores,
-                    }],
-                },
-                options: {
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Ocupação Recente',
-                            color: '#F49C24',
-                            font: {
-                                size: 20
-                            }
-                        },
-                        legend: {
-                            display: false
+    contextoChave.canvas.width = 300;
+    contextoChave.canvas.height = 100;
+    var cores = ['#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24'];
+    var chave = new Chart(
+        contextoChave,
+        {
+            type: 'bar',
+            data: {
+                datasets: [{
+                    label: 'Chave',
+                    type: 'bar',
+                    borderColor: cores,
+                    backgroundColor: cores,
+                }],
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Ocupação Recente',
+                        color: '#F49C24',
+                        font: {
+                            size: 20
                         }
                     },
-                    scales: {
-                        y: {
-                            ticks: {
-                                color: '#F49C24',
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                color: '#F49C24',
-                            },
-                        },
-                        xAxes: [{
-                            distribution: 'series',
-                            ticks: {
-                                beginAtZero: true,
-                            },
-                            barPercentage: 1,
-                            categoryPercentage: 1
-                        }],
-                        yAxes: [{
-                            ticks: {
-                                display: true,
-                                beginAtZero: true,
-                            }
-                        }]
-                    },
-                    animation: {
-                        duration: 0
+                    legend: {
+                        display: false
                     }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            color: '#F49C24',
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#F49C24',
+                        },
+                    },
+                    xAxes: [{
+                        distribution: 'series',
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                        barPercentage: 1,
+                        categoryPercentage: 1
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            display: true,
+                            beginAtZero: true,
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 0
                 }
             }
-        );
-
-        var paginacao = {};
-        var tempo = {};
-        function obterDados(grafico, endpoint) {
-            var http = new XMLHttpRequest();
-            http.open('GET', 'http://localhost:3000/sensores/' + endpoint, false);
-            http.send(null);
-            var valores = JSON.parse(http.responseText);
-
-            if (paginacao[endpoint] == null) {
-                paginacao[endpoint] = 0;
-            }
-            if (tempo[endpoint] == null) {
-                tempo[endpoint] = 0;
-            }
-            // Exibir à partir do último elemento exibido anteriormente
-            var ultimaPaginacao = paginacao[endpoint];
-            paginacao[endpoint] = valores.length;
-            valores = valores.slice(ultimaPaginacao);
-            valores.forEach((valor) => {
-                //Máximo de 60 itens exibidos no gráfico
-                if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
-                    grafico.data.labels.shift();
-                    grafico.data.datasets[0].data.shift();
-                }
-
-                grafico.data.labels.push(tempo[endpoint]++);
-                grafico.data.datasets[0].data.push(parseFloat(valor));
-                grafico.update();
-            })
         }
+    );
 
-        setInterval(() => {
-            obterDados(chave, 'chave');
-        }, 1000);
+    var paginacao = {};
+    var tempo = {};
+    function obterDados(grafico, endpoint) {
+        var http = new XMLHttpRequest();
+        http.open('GET', 'http://localhost:3000/sensores/' + endpoint, false);
+        http.send(null);
+        var valores = JSON.parse(http.responseText);
+
+        if (paginacao[endpoint] == null) {
+            paginacao[endpoint] = 0;
+        }
+        if (tempo[endpoint] == null) {
+            tempo[endpoint] = 0;
+        }
+        // Exibir à partir do último elemento exibido anteriormente
+        var ultimaPaginacao = paginacao[endpoint];
+        paginacao[endpoint] = valores.length;
+        valores = valores.slice(ultimaPaginacao);
+        valores.forEach((valor) => {
+            //Máximo de 60 itens exibidos no gráfico
+            if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                grafico.data.labels.shift();
+                grafico.data.datasets[0].data.shift();
+            }
+
+            grafico.data.labels.push(tempo[endpoint]++);
+            grafico.data.datasets[0].data.push(parseFloat(valor));
+            grafico.update();
+        })
+    }
+
+    setInterval(() => {
+        obterDados(chave, 'chave');
+    }, 1000);
+
+    // Fim de tela de dados
 </script>
