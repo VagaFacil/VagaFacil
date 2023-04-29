@@ -484,9 +484,9 @@ function prosseguir() {
             data: [75,25],
             borderWidth: 1
         }]
-        graficoOcupacao.options.plugins.title.color = `green`;
-        graficoOcupacao.options.plugins.subtitle.color = `green`;
-        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
+        graficoOcupacao.options.plugins.title.color = `yellowgreen`;
+        graficoOcupacao.options.plugins.subtitle.color = `yellowgreen`;
+        graficoOcupacao.options.backgroundColor = ['yellowgreen', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `75%`;
         graficoOcupacao.update();
     }  if (endereco.value == "3") {
@@ -495,6 +495,9 @@ function prosseguir() {
             data: [70,30],
             borderWidth: 1
         }]
+        graficoOcupacao.options.plugins.title.color = `yellowgreen`;
+        graficoOcupacao.options.plugins.subtitle.color = `yellowgreen`;
+        graficoOcupacao.options.backgroundColor = ['yellowgreen', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `70%`;
         graficoOcupacao.update();
     }  if (endereco.value == "4") {
@@ -525,9 +528,9 @@ function prosseguir() {
             data: [80,20],
             borderWidth: 1
         }]
-        graficoOcupacao.options.plugins.title.color = `green`;
-        graficoOcupacao.options.plugins.subtitle.color = `green`;
-        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
+        graficoOcupacao.options.plugins.title.color = `yellowgreen`;
+        graficoOcupacao.options.plugins.subtitle.color = `yellowgreen`;
+        graficoOcupacao.options.backgroundColor = ['yellowgreen', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `80%`;
         graficoOcupacao.update();
     }  if (endereco.value == "7") {
@@ -536,9 +539,9 @@ function prosseguir() {
             data: [66,44],
             borderWidth: 1
         }]
-        graficoOcupacao.options.plugins.title.color = `green`;
-        graficoOcupacao.options.plugins.subtitle.color = `green`;
-        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
+        graficoOcupacao.options.plugins.title.color = `yellowgreen`;
+        graficoOcupacao.options.plugins.subtitle.color = `yellowgreen`;
+        graficoOcupacao.options.backgroundColor = ['yellowgreen', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `66%`;
         graficoOcupacao.update();
     }  if (endereco.value == "8") {
@@ -547,9 +550,9 @@ function prosseguir() {
             data: [90,10],
             borderWidth: 1
         }]
-        graficoOcupacao.options.plugins.title.color = `#1c7c94`;
-        graficoOcupacao.options.plugins.subtitle.color = `#1c7c94`;
-        graficoOcupacao.options.backgroundColor = ['#1c7c94', '#0C243C'];
+        graficoOcupacao.options.plugins.title.color = `green`;
+        graficoOcupacao.options.plugins.subtitle.color = `green`;
+        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `90%`;
         graficoOcupacao.update();
 
@@ -559,9 +562,9 @@ function prosseguir() {
             data: [83,17],
             borderWidth: 1
         }]
-        graficoOcupacao.options.plugins.title.color = `green`;
-        graficoOcupacao.options.plugins.subtitle.color = `green`;
-        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
+        graficoOcupacao.options.plugins.title.color = `yellowgreen`;
+        graficoOcupacao.options.plugins.subtitle.color = `yellowgreen`;
+        graficoOcupacao.options.backgroundColor = ['yellowgreen', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `83%`;
         graficoOcupacao.update();
 
@@ -571,9 +574,9 @@ function prosseguir() {
             data: [88,12],
             borderWidth: 1
         }]
-        graficoOcupacao.options.plugins.title.color = `green`;
-        graficoOcupacao.options.plugins.subtitle.color = `green`;
-        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
+        graficoOcupacao.options.plugins.title.color = `yellowgreen`;
+        graficoOcupacao.options.plugins.subtitle.color = `yellowgreen`;
+        graficoOcupacao.options.backgroundColor = ['yellowgreen', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `88%`;
         graficoOcupacao.update();
 
@@ -583,9 +586,9 @@ function prosseguir() {
             data: [72,28],
             borderWidth: 1
         }]
-        graficoOcupacao.options.plugins.title.color = `green`;
-        graficoOcupacao.options.plugins.subtitle.color = `green`;
-        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
+        graficoOcupacao.options.plugins.title.color = `yellowgreen`;
+        graficoOcupacao.options.plugins.subtitle.color = `yellowgreen`;
+        graficoOcupacao.options.backgroundColor = ['yellowgreen', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `72%`;
         graficoOcupacao.update();
     }  if (endereco.value == "12") {
@@ -594,9 +597,9 @@ function prosseguir() {
             data: [98,2],
             borderWidth: 1
         }]
-        graficoOcupacao.options.plugins.title.color = `#1c7c94`;
-        graficoOcupacao.options.plugins.subtitle.color = `#1c7c94`;
-        graficoOcupacao.options.backgroundColor = ['#1c7c94', '#0C243C'];
+        graficoOcupacao.options.plugins.title.color = `green`;
+        graficoOcupacao.options.plugins.subtitle.color = `green`;
+        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `98%`;
         graficoOcupacao.update();
     }  if (endereco.value == "13") {
@@ -605,9 +608,9 @@ function prosseguir() {
             data: [40,60],
             borderWidth: 1
         }]
-        graficoOcupacao.options.plugins.title.color = `#F49C24`;
-        graficoOcupacao.options.plugins.subtitle.color = `#F49C24`;
-        graficoOcupacao.options.backgroundColor = ['#F49C24', '#0C243C'];
+        graficoOcupacao.options.plugins.title.color = `yellow`;
+        graficoOcupacao.options.plugins.subtitle.color = `yellow`;
+        graficoOcupacao.options.backgroundColor = ['yellow', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `40%`;
         graficoOcupacao.update();
     }  if (endereco.value == "14") {
@@ -617,9 +620,9 @@ function prosseguir() {
             borderWidth: 1
         }]
         //#F49C24
-        graficoOcupacao.options.plugins.title.color = `#1c7c94`;
-        graficoOcupacao.options.plugins.subtitle.color = `#1c7c94`;
-        graficoOcupacao.options.backgroundColor = ['#1c7c94', '#0C243C'];
+        graficoOcupacao.options.plugins.title.color = `green`;
+        graficoOcupacao.options.plugins.subtitle.color = `green`;
+        graficoOcupacao.options.backgroundColor = ['green', '#0C243C'];
         graficoOcupacao.options.plugins.subtitle.text = `95%`;
         graficoOcupacao.update();
     }  if (endereco.value == "15") {

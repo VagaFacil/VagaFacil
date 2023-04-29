@@ -68,14 +68,13 @@ p{
     margin: auto;
 }
 .img1 img{
-   
     width: 100%;
 }
 
 .grafPizza{
     display: flex;
     justify-content: space-between;
-    width: 44%;
+    width: 50%;
 }
 .card {
     margin-top: 50px;
