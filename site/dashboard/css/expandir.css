@@ -9,11 +9,18 @@ html {
 }
 
 .dashboard h2 {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
   font-size: xx-large;
   font-weight: bold;
   margin: 10px 0px;
   padding-bottom: 5px;
   border-bottom: 1px solid #FCF4EC;
+}
+
+.dashboard img {
+  width: 30px;
 }
 
 /* Início da tela de bairro */
@@ -35,7 +42,7 @@ html {
   padding: 0px 10px;
 }
 
-.dashboard .bairroFiltros select {
+.dashboard .bairroFiltros select, input {
   margin-bottom: 20px;
 }
 
@@ -60,7 +67,8 @@ html {
 
 .dashboard .bairroCard img {
   height: 200px;
-  width: 90%;
+  width: 98%;
+  height: auto;
   align-self: center;
 }
 
@@ -116,8 +124,21 @@ html {
 /* Fim da tela de ruas */
 
 /* Início da tela de dados */
+
 .dashboard .containerDados {
+  margin: auto;
+  width: 90%;
   display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard .containerDados h2 {
+  justify-content: space-between;
+}
+
+.dashboard .containerDadosFiltros {
+  display: flex;
   flex-direction: column;
   align-items: center;
   width: 90%;
@@ -127,13 +148,12 @@ html {
   border-radius: 20px;
 }
 
-.dashboard .containerDados h2 {
+.dashboard .containerDadosFiltros h2 {
   text-align: center;
   border-bottom: none;
 }
 
-.dashboard .endereco,
-.titulo {
+.dashboard .endereco,.titulo {
   width: 70%;
   margin: auto;
 }
@@ -143,14 +163,13 @@ html {
   margin: 10px auto;
 }
 
-.dashboard input,
-select {
+.dashboard input,select {
   padding: 5px;
   border-radius: 10px;
   margin-top: 5px;
 }
 
-.dashboard .containerDados .cardContainer {
+.dashboard .containerDadosFiltros .cardContainer {
   display: flex;
   justify-content: space-between;
   padding: 10px;

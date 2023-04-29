@@ -51,14 +51,18 @@
     <div class="dashboard">
         <div class="containerBairro" id="divBairro">
             <div class="bairroFiltros">
-                <h2>Filtros</h2>
+                <h2><a href="Acompanhar.html"><img src="img/seta_voltar.png" alt="Retornar para página de acompanhamento"></a>Filtros</h2>
+                <div>
+                    Procurar um bairro:
+                </div>
+                <input id="inpPesquisaBairro" onkeyup="filtrarNomeERegiao()">
                 <div>
                     Região: <label class="switch">
-                        <input type="checkbox" onclick="changeDisabled('selRegiaoBairro'); filtrarRegiao();">
+                        <input type="checkbox" onclick="changeDisabled('selRegiaoBairro'); filtrarNomeERegiao();">
                         <span class="slider"></span>
                     </label>
                 </div>
-                <select id="selRegiaoBairro" onchange="filtrarRegiao()" disabled="true">
+                <select id="selRegiaoBairro" onchange="filtrarNomeERegiao()" disabled="true">
                     <option value="-">- Selecione uma região -</option>
                     <option value="N">Norte</option>
                     <option value="S">Sul</option>
@@ -147,7 +151,11 @@
 
         <div class="containerRua" id="divRua">
             <div class="ruaFiltros">
-                <h2>Filtros</h2>
+                <h2><img src="img/seta_voltar.png" alt="Retornar para a lista de bairros" onclick="mostrarBairros()">Filtros</h2>
+                <div>
+                    Procurar uma rua:
+                </div>
+                <input id="inpPesquisaRua" onkeyup="filtrarNomeRua()">
                 <div>
                     Faixa de Renda: <label class="switch">
                         <input type="checkbox" onclick="changeDisabled('selRendaRua'); filtrarRendaRua();">
@@ -193,80 +201,82 @@
         </div>
 
         <div class="containerDados" id="divDados">
-            <div class="titulo">
-                <h2>Filtros</h2>
-            </div>
-            <div class="endereco">
-                Endereço<br>
-                <input type="text" id="inpEndereco" class="inputWide">
-            </div>
-            <div class="cardContainer">
-                <div class="card">
-                    <div>Tipo de dia
-                        <label class="switch">
-                            <input type="checkbox" onclick="changeDisabled('selTipo')">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <select id="selTipo" disabled="true">
-                        <option value="semana">Dia de Semana</option>
-                        <option value="fimSemana">Fim de Semana</option>
-                        <option value="feriado">Feriado</option>
-                    </select>
+            <div class="containerDadosFiltros">
+                <div class="titulo">
+                    <h2><img src="img/seta_voltar.png" alt="Retornar para a lista de ruas" onclick="mostrarRuas()">Filtros<span></span></h2>
                 </div>
-                <div class="card">
-                    <div>Dia da semana
-                        <label class="switch">
-                            <input type="checkbox" onclick="changeDisabled('selSemana')">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <select id="selSemana" disabled="true">
-                        <option value="2">Segunda</option>
-                        <option value="3">Terça</option>
-                        <option value="4">Quarta</option>
-                        <option value="5">Quinta</option>
-                        <option value="6">Sexta</option>
-                        <option value="7">Sabado</option>
-                        <option value="1">Domingo</option>
-                    </select>
+                <div class="endereco">
+                    Endereço<br>
+                    <input type="text" id="inpEndereco" class="inputWide">
                 </div>
-                <div class="card">
-                    <div>Mês
-                        <label class="switch">
-                            <input type="checkbox" onclick="changeDisabled('selMes')">
-                            <span class="slider"></span>
-                        </label>
+                <div class="cardContainer">
+                    <div class="card">
+                        <div>Tipo de dia
+                            <label class="switch">
+                                <input type="checkbox" onclick="changeDisabled('selTipo')">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <select id="selTipo" disabled="true">
+                            <option value="semana">Dia de Semana</option>
+                            <option value="fimSemana">Fim de Semana</option>
+                            <option value="feriado">Feriado</option>
+                        </select>
                     </div>
-                    <select id="selMes" disabled="true">
-                        <option value="1">Janeiro</option>
-                        <option value="2">Fevereiro</option>
-                        <option value="3">Março</option>
-                        <option value="4">Abril</option>
-                        <option value="5">Maio</option>
-                        <option value="6">Junho</option>
-                        <option value="7">Julho</option>
-                        <option value="8">Agosto</option>
-                        <option value="9">Setembro</option>
-                        <option value="10">Outubro</option>
-                        <option value="11">Novembro</option>
-                        <option value="12">Dezembro</option>
-                    </select>
-                </div>
-                <div class="card">
-                    <div>Vaga
-                        <label class="switch">
-                            <input type="checkbox" onclick="changeDisabled('selVaga')">
-                            <span class="slider"></span>
-                        </label>
+                    <div class="card">
+                        <div>Dia da semana
+                            <label class="switch">
+                                <input type="checkbox" onclick="changeDisabled('selSemana')">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <select id="selSemana" disabled="true">
+                            <option value="2">Segunda</option>
+                            <option value="3">Terça</option>
+                            <option value="4">Quarta</option>
+                            <option value="5">Quinta</option>
+                            <option value="6">Sexta</option>
+                            <option value="7">Sabado</option>
+                            <option value="1">Domingo</option>
+                        </select>
                     </div>
-                    <select id="selVaga" disabled="true">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
+                    <div class="card">
+                        <div>Mês
+                            <label class="switch">
+                                <input type="checkbox" onclick="changeDisabled('selMes')">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <select id="selMes" disabled="true">
+                            <option value="1">Janeiro</option>
+                            <option value="2">Fevereiro</option>
+                            <option value="3">Março</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Maio</option>
+                            <option value="6">Junho</option>
+                            <option value="7">Julho</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Setembro</option>
+                            <option value="10">Outubro</option>
+                            <option value="11">Novembro</option>
+                            <option value="12">Dezembro</option>
+                        </select>
+                    </div>
+                    <div class="card">
+                        <div>Vaga
+                            <label class="switch">
+                                <input type="checkbox" onclick="changeDisabled('selVaga')">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <select id="selVaga" disabled="true">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
+            </div>    
             <div class="containerGraficos">
                 <div class="cardGauge">
                     <canvas id="canvGauge1" class="canvasGauge"></canvas>
@@ -339,22 +349,17 @@
     { bairro: 'Santana', zona: 'N', fluxo: 307.2974, adolescente: 5.2185, jovemAdulto: 13.5873, adulto: 37.7952, idoso: 21.4771, baixa: 28.2796, media: 33.4486, alta: 25.3265, card: cardSantana },
     { bairro: 'Sé', zona: 'C', fluxo: 1652.0939, adolescente: 8.3894, jovemAdulto: 21.2916, adulto: 52.4830, idoso: 17.4791, baixa: 83.0976, media: 29.0585, alta: 7.2406, card: cardSe }];
 
-    function filtrarRegiao() {
+    function filtrarNomeERegiao() {
+        var nome = inpPesquisaBairro.value.toLowerCase();
         var regiao = selRegiaoBairro.value;
         if (selRegiaoBairro.disabled) {
             regiao = '-';
         }
-        if (regiao == '-') {
-            for (var i = 0; i < cards.length; i++) {
+        for (var i = 0; i < cards.length; i++) {
+            if (cards[i].bairro.toLowerCase().indexOf(nome) > -1 && (cards[i].zona == regiao || regiao == '-')) {
                 cards[i].card.style.display = 'flex';
-            }
-        } else {
-            for (var i = 0; i < cards.length; i++) {
-                if (cards[i].zona == regiao) {
-                    cards[i].card.style.display = 'flex';
-                } else {
-                    cards[i].card.style.display = 'none';
-                }
+            } else {
+                cards[i].card.style.display = 'none';
             }
         }
     }
@@ -403,6 +408,11 @@
             cards[i - 1].card.style.order = i;
         }
     }
+
+    function mostrarBairros() {
+        divBairro.style.display = 'flex';
+        divRua.style.display = 'none';
+    }
     // Fim de tela de filtro de bairros
 
     // Início de tela de filtro de ruas
@@ -411,6 +421,18 @@
     function mostrarRuas() {
         divRua.style.display = 'flex';
         divBairro.style.display = 'none';
+        divDados.style.display = 'none';
+    }
+
+    function filtrarNomeRua() {
+        var nome = inpPesquisaRua.value.toLowerCase();
+        for (var i = 0; i < ruas.length; i++){
+            if (ruas[i].innerHTML.toLowerCase().indexOf(nome) > -1) {
+                ruas[i].style.display = 'flex';
+            } else {
+                ruas[i].style.display = 'none';
+            }
+        }
     }
 
     function filtrarIdadeRua() {
@@ -611,7 +633,7 @@
 
     setInterval(() => {
         obterDados(chave, 'chave');
-    }, 1000);
+    }, 100000);
 
     // Fim de tela de dados
 </script>
