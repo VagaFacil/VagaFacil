@@ -57,68 +57,16 @@ function exibir(usuario) {
 }
 
 function pesquisa() {
-    var Pesquisa = ['anizio', 'bruno', 'daniel', 'gabriel', 'henrique', 'lucas'];
-    var valor = ipt_pesquisa.value;
+    var usuarios = [{nome:'anizio mesquita', usuario: div_anizio,},{nome:'bruno lima', usuario:div_bruno}, 
+                    {nome:'daniel yuzo', usuario:div_daniel},{nome:'gabriel branco', usuario:div_gabriel},
+                    {nome:'henrique bechis', usuario:div_henrique},{nome:'lucas neves', usuario:div_lucas}];
+    var valor = ipt_pesquisa.value.toLowerCase();
 
-    for (var index = 0; index < Pesquisa.length; index++) {
-        if (Pesquisa[0].startsWith(valor)) {
-            div_anizio.style = "display: grid;";
-            div_bruno.style = "display: none;";
-            div_daniel.style = "display: none;";
-            div_gabriel.style = "display: none;";
-            div_henrique.style = "display: none;";
-            div_lucas.style = "display: none;";
-        }
-
-        if (Pesquisa[1].startsWith(valor)) {
-            div_anizio.style = "display: none;";
-            div_bruno.style = "display: grid;";
-            div_daniel.style = "display: none;";
-            div_gabriel.style = "display: none;";
-            div_henrique.style = "display: none;";
-            div_lucas.style = "display: none;";
-        }
-
-        if (Pesquisa[2].startsWith(valor)) {
-            div_anizio.style = "display: none;";
-            div_bruno.style = "display: none;";
-            div_daniel.style = "display: grid;";
-            div_gabriel.style = "display: none;";
-            div_henrique.style = "display: none;";
-            div_lucas.style = "display: none;";
-        }
-        if (Pesquisa[3].startsWith(valor)) {
-            div_anizio.style = "display: none;";
-            div_bruno.style = "display: none;";
-            div_daniel.style = "display: none;";
-            div_gabriel.style = "display: grid;";
-            div_henrique.style = "display: none;";
-            div_lucas.style = "display: none;";
-        }
-        if (Pesquisa[4].startsWith(valor)) {
-            div_anizio.style = "display: none;";
-            div_bruno.style = "display: none;";
-            div_daniel.style = "display: none;";
-            div_gabriel.style = "display: none;";
-            div_henrique.style = "display: grid;";
-            div_lucas.style = "display: none;";
-        }
-        if (Pesquisa[5].startsWith(valor)) {
-            div_anizio.style = "display: none;";
-            div_bruno.style = "display: none;";
-            div_daniel.style = "display: none;";
-            div_gabriel.style = "display: none;";
-            div_henrique.style = "display: none;";
-            div_lucas.style = "display: grid;";
-        }
-
-        if (valor == "") {
-            div_anizio.style = "display: grid;";
-            div_bruno.style = "display: grid;";
-            div_daniel.style = "display: grid;";
-            div_gabriel.style = "display: grid;";
-            div_henrique.style = "display: grid;";
-            div_lucas.style = "display: grid;"; 
-        }
+    for (var i = 0; i < usuarios.length; i++) {
+        if (usuarios[i].nome.toLowerCase().indexOf(valor) !== -1) {
+            usuarios[i].usuario.style.display = "grid";
+        } else {
+            usuarios[i].usuario.style.display = "none";
+        } 
     }
 }
