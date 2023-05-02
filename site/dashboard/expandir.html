@@ -281,7 +281,20 @@
                 <div class="cardGauge">
                     <canvas id="canvGauge1" class="canvasGauge"></canvas>
                     <canvas id="canvGauge2" class="canvasGauge"></canvas>
-                </div>
+                </div>  <div class="kpi">
+                    <div class="kpiCritico">
+                        Critico
+                    </div>
+                    <div class="kpiAlerta">
+                        Alerta
+                    </div>
+                    <div class="kpiIdeal">
+                        Bom
+                    </div>
+                    <div class="kpiPerfeito">
+                        Ideal
+                    </div>
+                </div>  
                 <div class="cardGrafico">
                     <canvas id="canvLine"></canvas>
                     <cavas id="canvMap"></cavas>
@@ -513,7 +526,7 @@
                 title: {
                     display: true,
                     text: 'Ocupação média',
-                    color: '#F49C24',
+                    color: 'yellow',
                     font: {
                         size: 20
                     }
@@ -521,14 +534,14 @@
                 subtitle: {
                     display: true,
                     text: '55%',
-                    color: '#F49C24',
+                    color: 'yellow',
                     padding: 0,
                     font: {
                         size: 16
                     }
                 },
             },
-            backgroundColor: ['#F49C24', '#0C243C'],
+            backgroundColor: ['yellow', '#0C243C'],
             borderColor: '#FCF4EC',
             circumference: 180,
             rotation: -90,

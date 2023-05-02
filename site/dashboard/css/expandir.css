@@ -273,3 +273,49 @@ input:checked+.slider:before {
   -ms-transform: translateX(13px);
   transform: translateX(13px);
 }
+.kpi{
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  color: black;
+}
+.kpiCritico{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  height: 40px;
+  width: 60px;
+  border-radius: 5px;
+  border: solid;
+}
+.kpiAlerta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: yellow;
+  height: 40px;
+  width: 60px;
+  border-radius: 5px;
+  border: solid;
+}
+.kpiIdeal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: yellowgreen;
+  height: 40px;
+  width: 60px;
+  border-radius: 5px;
+  border: solid;
+}
+.kpiPerfeito {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+  height: 40px;  
+  width: 60px;
+  border-radius: 5px;
+  border: solid;  
+}
