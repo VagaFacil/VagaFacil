@@ -45,7 +45,7 @@ const serial = async (
         const luminosidade = parseFloat(valores[2]);
         const lm35Temperatura = parseFloat(valores[3]);
         const chave = parseInt(valores[0]);
-a
+
         valoresDht11Umidade.push(dht11Umidade);
         valoresDht11Temperatura.push(dht11Temperatura);
         valoresLuminosidade.push(luminosidade);

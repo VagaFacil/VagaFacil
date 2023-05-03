@@ -73,6 +73,6 @@ function logar() {
     if (erro == false && email == vaga && senha == facil) {
         ipt_email.style = 'border-color: #32a7b1';
         ipt_senha.style = 'border-color: #32a7b1';
-        location.href = '../dashboard/acompanhar.html';
+        location.href = 'dashboard/Acompanhar.html';
     }
 }
