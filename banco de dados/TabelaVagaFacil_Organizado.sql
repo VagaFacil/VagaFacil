@@ -34,6 +34,7 @@ insert into filial values (null,'04709-000','R. Arquiteto Olavo Redig de Campos'
 create table usuario (
 		idUsuario int primary key auto_increment,
         nome varchar(50),
+        cargo varchar(45),
         email varchar(100),
         senha varchar(18),
         telefone char(14),
@@ -42,11 +43,11 @@ create table usuario (
 )auto_increment = 100000;
 
 -- Dados referentes aos usuarios
-insert into usuario values (null,'felipe alves santos','felipe@gmail.com','felipe123','55011972311126',50000),
-						   (null,'luciano neves','luciano@outlook.com','luciano123','55011962322128',50001),
-                           (null,'gabriel neves','gabriel@outlook.com','gabriel123','55011934322144',50002),
-                           (null,'diego costa','diego@sptech.com','diego123','55011923322189',50003),
-                           (null,'rogério ceni','rogério@gmail.com','rogério123','55011914578156',50003);
+insert into usuario values (null,'felipe alves santos', 'Gestor','felipe@gmail.com','felipe123','55011972311126',50000),
+						   (null,'luciano neves','Gerente','luciano@outlook.com','luciano123','55011962322128',50001),
+                           (null,'gabriel neves', 'Desenvolvedor','gabriel@outlook.com','gabriel123','55011934322144',50002),
+                           (null,'diego costa', 'Supervisor','diego@sptech.com','diego123','55011923322189',50003),
+                           (null,'rogério ceni', 'CEO','rogério@gmail.com','rogério123','55011914578156',50003);
 
 create table bairro(
 		idBairro int primary key auto_increment,
@@ -299,13 +300,32 @@ select * from rua;
 select * from sensor;
 select * from dados;
 select * from bairro;
- select * from bairro where nome in ('Jardim Paulista', 'Cerqueira César', 'Jabaquara', 'Pinheiros', 'Saúde');
+select * from bairro where nome in ('Jardim Paulista', 'Cerqueira César', 'Jabaquara', 'Pinheiros', 'Saúde');
 -- select das tabelas relacionadas
 
+-- select tabela empresa e filial
 select * from empresa join filial on fkEmpresa = idEmpresa;
+
+-- select tabela filial e usuario
 select * from filial join usuario on fkFilial = idFilial;
+
+-- select tabela empresa, filial e usuario
 select * from empresa join filial join usuario on fkEmpresa = idEmpresa and fkFilial = idFilial;
+
+-- select tabela rua e sensor
 select * from rua join sensor on fkRua = idRua;
+
+-- select tabela sensor e dados
 select * from sensor join dados on fkSensor = idSensor;
+
+-- select tabela rua, sensor e dados
 select * from rua join sensor join dados on fkRua = idRua and fkSensor = idSensor; 
-drop database vagafacil;
+
+-- select tabela bairro, sensor, dados e rua 
+select * from bairro join sensor join dados join rua on fkRua = idRua and fkSensor = idSensor and idBairro = fkBairro;
+
+-- select tabela bairro, bairroRenda, bairroIdade e bairroPopulacao
+select * from bairro join bairroRenda join bairroIdade join bairroPopulacao on bairro.idBairro = bairroRenda.idBairro 
+                            and bairro.idBairro = bairroIdade.idBairro and bairro.idBairro = bairroPopulacao.idBairro;
+
+-- drop database vagafacil;
