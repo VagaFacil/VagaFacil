@@ -38,16 +38,18 @@ create table usuario (
         email varchar(100),
         senha varchar(18),
         telefone char(14),
+        cpf char(11),
+        dataNascimento date,
         fkFilial int,
         foreign key (fkFilial) references filial(idFilial)
 )auto_increment = 100000;
 
 -- Dados referentes aos usuarios
-insert into usuario values (null,'felipe alves santos', 'Gestor','felipe@gmail.com','felipe123','55011972311126',50000),
-						   (null,'luciano neves','Gerente','luciano@outlook.com','luciano123','55011962322128',50001),
-                           (null,'gabriel neves', 'Desenvolvedor','gabriel@outlook.com','gabriel123','55011934322144',50002),
-                           (null,'diego costa', 'Supervisor','diego@sptech.com','diego123','55011923322189',50003),
-                           (null,'rogério ceni', 'CEO','rogério@gmail.com','rogério123','55011914578156',50003);
+insert into usuario values (null,'felipe alves santos', 'Gestor','felipe@gmail.com','felipe123','55011972311126','59862178956','2003-03-24',50000),
+						   (null,'luciano neves','Gerente','luciano@outlook.com','luciano123','55011962322128','56418965487','1997-04-24',50001),
+                           (null,'gabriel neves', 'Desenvolvedor','gabriel@outlook.com','gabriel123','55011934322144','45698765230','1975-08-1',50002),
+                           (null,'diego costa', 'Supervisor','diego@sptech.com','diego123','55011923322189','45698732156','2005-10-25',50003),
+                           (null,'rogério ceni', 'CEO','rogério@gmail.com','rogério123','55011914578156','12345689751','1960-09-08',50003);
 
 create table bairro(
 		idBairro int primary key auto_increment,
