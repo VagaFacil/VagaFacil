@@ -73,7 +73,7 @@
 /* final do primeiro card */
 
 /* Erros card1 */
-#vNome, #vSobrenome, #vDataN, #vCpf, #vTelefone {
+#vNome, #vCargo, #vDataN, #vCpf, #vTelefone {
     display: none   ;
     color: red;
     font-size: 14px;
