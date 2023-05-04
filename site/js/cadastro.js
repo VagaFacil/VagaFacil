@@ -2,7 +2,7 @@
 
 // card1
 var erroNome = false;
-var erroSobrenome = false;
+var erroCargo = false;
 var erroDatan = false;
 var erroCpf = false;
 var erroTelefone = false;
@@ -42,20 +42,20 @@ function cadastrar() {
         erroNome = false;
     }
     // sobrenome
-    if (ipt_sobrenome.value.length < 3) {
-        vSobrenome.style.display = 'block';
-        ipt_sobrenome.style = 'border-color: red';
-        erroSobrenome = true;;
+    if (ipt_cargo.value.length < 3) {
+        vCargo.style.display = 'block';
+        ipt_cargo.style = 'border-color: red';
+        erroCargo = true;
     } else {
-        vSobrenome.style.display = 'none';
-        ipt_sobrenome.style = 'border-color: #32a7b1';
-        erroSobrenome = false;
+        vCargo.style.display = 'none';
+        ipt_cargo.style = 'border-color: #32a7b1';
+        erroCargo = false;
     }
     // data de nascimento
     // cpf
     // telefone
     // tem erro no card?
-    validarCard1 = erroNome == false && erroSobrenome == false && erroDatan == false && erroCpf == false && erroTelefone == false;
+    validarCard1 = erroNome == false && erroCargo == false && erroDatan == false && erroCpf == false && erroTelefone == false;
     
     // card2
     // razão
