@@ -17,22 +17,27 @@ insert into empresa values (null,'coca-cola','45.997.418/0001-53'),
 
 create table filial (
 		idFilial int primary key auto_increment,
-        cep char(9),
-        rua varchar(60),
-        numero decimal(4,0),
+        numero int,
         complemento varchar(45),
         fkEmpresa int,
-        foreign key (fkEmpresa) references empresa(idEmpresa)
+        foreign key (fkEmpresa) references empresa(idEmpresa),
+        fkEndereco int,
+        foreign key (fkEndereco) references endereco(idEndereco)
 )auto_increment = 50000;
 
--- Dados referentes as filiais
-insert into filial values (null,'04709-000','R. Arquiteto Olavo Redig de Campos','105','Chácara Santo Antônio (Zona Sul)',1),
-						  (null,'04344-020','R. Volkswagen','100','Jabaquara, São Paulo)',2),
-                          (null,'05690-000',' R. George Eastman','213','Vila Tramontano, São Paulo - SP',3),
-                          (null,'07042-010','Av. Sen. Adolf Schindling','131','Vila Endres, Guarulhos - SP',4);
 
-create table usuario (
-		idUsuario int primary key auto_increment,
+
+
+-- Dados referentes as filiais
+insert into filial values (null, 105,'Chácara Santo Antônio (Zona Sul)',1,150000),
+						  (null, 100,'Jabaquara, São Paulo)',2, 150001),
+                          (null, 213,'Vila Tramontano, São Paulo - SP',3, 150002),
+                          (null, 131,'Vila Endres, Guarulhos - SP',4, 15003);
+
+
+
+create table funcionario (
+		idFuncionario int primary key auto_increment,
         nome varchar(50),
         cargo varchar(45),
         email varchar(100),
@@ -40,16 +45,35 @@ create table usuario (
         telefone char(14),
         cpf char(11),
         dataNascimento date,
-        fkFilial int,
-        foreign key (fkFilial) references filial(idFilial)
+        fkSuperior int,
+        foreign key (fkSuperior) references funcionario(idFuncionario)
 )auto_increment = 100000;
 
 -- Dados referentes aos usuarios
-insert into usuario values (null,'felipe alves santos', 'Gestor','felipe@gmail.com','felipe123','55011972311126','59862178956','2003-03-24',50000),
-						   (null,'luciano neves','Gerente','luciano@outlook.com','luciano123','55011962322128','56418965487','1997-04-24',50001),
-                           (null,'gabriel neves', 'Desenvolvedor','gabriel@outlook.com','gabriel123','55011934322144','45698765230','1975-08-1',50002),
-                           (null,'diego costa', 'Supervisor','diego@sptech.com','diego123','55011923322189','45698732156','2005-10-25',50003),
-                           (null,'rogério ceni', 'CEO','rogério@gmail.com','rogério123','55011914578156','12345689751','1960-09-08',50003);
+insert into funcionario values (null,'rogério ceni', 'CEO','rogério@gmail.com','rogério123','55011914578156','12345689751','1960-09-08',null),
+                           (null,'diego costa', 'Supervisor','diego@sptech.com','diego123','55011923322189','45698732156','2005-10-25',100000),
+						   (null,'felipe alves santos', 'Gestor','felipe@gmail.com','felipe123','55011972311126','59862178956','2003-03-24',100001),
+						   (null,'luciano neves','Gerente','luciano@outlook.com','luciano123','55011962322128','56418965487','1997-04-24',100002),
+                           (null,'gabriel neves', 'Desenvolvedor','gabriel@outlook.com','gabriel123','55011934322144','45698765230','1975-08-1',100003);
+                           
+
+
+-- Tabela Filial e Funcionários (muitos para muitos)
+create table filialFuncionario (
+fkFilial int,
+foreign key (fkFilial) references filial(idFilial),
+fkFuncionario int,
+foreign key (fkFuncionario) references Funcionario(idFuncionario),
+Primary key (fkFilial, fkFuncionario)
+);
+
+
+-- Inserir valores na tabela filiaFuncionario
+insert into filialFuncionario values (50000,100000),
+									 (50001,100001),
+									 (50002,100002),
+									 (50003,100003);
+
 
 create table bairro(
 		idBairro int primary key auto_increment,
@@ -57,6 +81,8 @@ create table bairro(
 		regiao varchar(10),
 		area decimal(7,2)
 );
+
+
 
 INSERT INTO bairro VALUES (null, 'Água Rasa', 'Leste', 715.05), (null, 'Alto de Pinheiros', 'Oeste', 751.27), (null, 'Anhanguera', 'Oeste', 3339.95), (null, 'Aricanduva', 'Leste', 686.27),
                           (null, 'Artur Alvim', 'Leste', 653.04), (null, 'Barra Funda', 'Centro', 589.81), (null, 'Bela Vista', 'Centro', 276.71), (null, 'Belém', 'Leste', 613.55),
@@ -184,25 +210,25 @@ INSERT INTO bairroRenda VALUES (1, 57.1932, 47.0499, 12.1096), (2, 8.9715, 19.50
                                (93, 79.2010, 31.5674, 7.5392), (94, 93.5469, 48.7579, 15.5779), (95, 66.1859, 33.8683, 8.9264), (96, 54.4991, 32.0654, 31.4439);
 
 -- criação da tabela rua e inserção de valores 
-create table rua (
-		idRua int primary key auto_increment,
+create table Endereco (
+		idEndereco int primary key auto_increment,
         logradouro varchar(45), 
-        fkBairro int,
         cep char(9),
+        fkBairro int,
         foreign key (fkBairro) references bairro(idBairro)
 )auto_increment = 150000;
 
 -- Dados referentes as ruas
-insert into rua values (null, 'Rua Antonio Bento', 44, '01432-000'),
-					   (null, 'Rua Consolação', 26, '01416-003'),
-                       (null, 'Avenida Doutor Luís Rocha Miranda', 37, '04344-010'),
-                       (null, 'Rua dos Pinheiros', 63, '05422-000'),
-                       (null, 'Alameda Itupiranga', 79, '04294-090');
+insert into Endereco values (null, 'Rua Antonio Bento', '01432-000', 44),
+					   (null, 'Rua Consolação', '01416-003',26),
+                       (null, 'Avenida Doutor Luís Rocha Miranda', '04344-010',37),
+                       (null, 'Rua dos Pinheiros','05422-000', 63),
+                       (null, 'Alameda Itupiranga', '04294-090', 79);
 
 create table sensor(
 		idSensor int primary key auto_increment,
-		fkRua int,
-        foreign key (fkRua) references rua(idRua),
+		fkEndereco int,
+        foreign key (fkEndereco) references Endereco(idEndereco),
 		numRua varchar(45),
 		numSensor varchar(45)
 )auto_increment=200000;
@@ -330,4 +356,4 @@ select * from bairro join sensor join dados join rua on fkRua = idRua and fkSens
 select * from bairro join bairroRenda join bairroIdade join bairroPopulacao on bairro.idBairro = bairroRenda.idBairro 
                             and bairro.idBairro = bairroIdade.idBairro and bairro.idBairro = bairroPopulacao.idBairro;
 
--- drop database vagafacil;
+drop database vagafacil;
