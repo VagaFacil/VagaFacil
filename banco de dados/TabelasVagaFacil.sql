@@ -1,4 +1,5 @@
 create database VagaFacil;
+create database vagafacil;
 use VagaFacil;
 
 -- Criação da tabela empresa e inserção de valores 
@@ -15,6 +16,7 @@ insert into empresa values (null,'coca-cola','45.997.418/0001-53'),
                            (null,'carrefour','45.543.915/0001-81'), 
                            (null,'continental','48.754.139/0001-57');
 select * from empresa;
+
 
 -- Criação da tabela filial e inserção de valores 
 create table filial (
@@ -379,4 +381,4 @@ select * from rua join sensor on fkRua = idRua;
 select * from sensor join dados on fkSensor = idSensor;
 
 select * from rua join sensor join dados on fkRua = idRua and fkSensor = idSensor; 
-drop database vagafacil;
+-- drop database vagafacil;
