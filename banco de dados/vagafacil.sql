@@ -1,6 +1,7 @@
 create database VagaFacil;
 use VagaFacil;
 
+-- Criação da  tabela empresa 
 create table empresa (
 		idEmpresa int primary key auto_increment,
         razao varchar(45),
@@ -15,27 +16,76 @@ insert into empresa values (null,'coca-cola','45.997.418/0001-53'),
                            (null,'carrefour','45.543.915/0001-81'), 
                            (null,'continental','48.754.139/0001-57');
 
+-- Criação tabela bairro
+create table bairro(
+		idBairro int primary key auto_increment,
+		nome varchar(45),
+		regiao varchar(10),
+		area decimal(7,2)
+);
+
+-- Inserindo dados na tebela bairro
+INSERT INTO bairro VALUES (null, 'Água Rasa', 'Leste', 715.05), (null, 'Alto de Pinheiros', 'Oeste', 751.27), (null, 'Anhanguera', 'Oeste', 3339.95), (null, 'Aricanduva', 'Leste', 686.27),
+                          (null, 'Artur Alvim', 'Leste', 653.04), (null, 'Barra Funda', 'Centro', 589.81), (null, 'Bela Vista', 'Centro', 276.71), (null, 'Belém', 'Leste', 613.55),
+                          (null, 'Bom Retiro', 'Centro', 427.39), (null, 'Brás', 'Centro', 364.61), (null, 'Brasilândia', 'Oeste', 2106.12), (null, 'Butantã', 'Oeste', 1291.72),
+                          (null, 'Cachoeirinha', 'Oeste', 1358.87), (null, 'Cambuci', 'Sul', 394.18), (null, 'Campo Belo', 'Sul', 886.26), (null, 'Campo Grande', 'Sul', 1302.09),
+                          (null, 'Campo Limpo', 'Sul', 1260.86), (null, 'Cangaíba', 'Leste', 1379.12), (null, 'Capão Redondo', 'Sul', 1382.30), (null, 'Carrão', 'Leste', 780.32),
+                          (null, 'Casa Verde', 'Norte', 717.22), (null, 'Cidade Ademar', 'Sul', 1226.23), (null, 'Cidade Dutra', 'Sul', 2778.57), (null, 'Cidade Líder', 'Leste', 1058.20),
+                          (null, 'Cidade Tiradentes', 'Leste', 1494.89), (null, 'Consolação', 'Centro', 379.52), (null, 'Cursino', 'Sul', 1207.65), (null, 'Ermelino Matarazzo', 'Leste', 943.48),
+                          (null, 'Freguesia do Ó', 'Oeste', 1106.34), (null, 'Grajaú', 'Sul', 9278.51), (null, 'Guaianases', 'Sul', 891.16), (null, 'Iguatemi', 'Leste', 1957.99),
+                          (null, 'Ipiranga', 'Sul', 1105.16), (null, 'Itaim Bibi', 'Sul', 1005.35), (null, 'Itaim Paulista', 'Leste', 1224.54), (null, 'Itaquera', 'Leste', 1473.24),
+                          (null, 'Jabaquara', 'Sul', 1407.80), (null, 'Jaçanã', 'Norte', 750.72), (null, 'Jaguara', 'Norte', 454.34), (null, 'Jaguaré', 'Oeste', 656.82),
+                          (null, 'Jaraguá', 'Oeste', 2820.14), (null, 'Jardim Ângela', 'Sul', 3682.12), (null, 'Jardim Helena', 'Leste', 915.44), (null, 'Jardim Paulista', 'Sul', 626.66),
+                          (null, 'Jardim São Luís', 'Sul', 2596.99), (null, 'José Bonifácio', 'Leste', 1445.00), (null, 'Lajeado', 'Leste', 892.28), (null, 'Lapa', 'Oeste', 1029.95),
+                          (null, 'Liberdade', 'Centro', 364.40), (null, 'Limão', 'Oeste', 642.49), (null, 'Mandaqui', 'Norte', 1323.30), (null, 'Marsilac', 'Sul', 20795.96),
+                          (null, 'Moema', 'Sul', 912.62), (null, 'Mooca', 'Sul', 794.86), (null, 'Morumbi', 'Sul', 1148.85), (null, 'Parelheiros', 'Sul', 15179.77),
+                          (null, 'Pari', 'Centro', 272.62), (null, 'Parque do Carmo', 'Leste', 1560.72), (null, 'Pedreira', 'Sul', 1851.35), (null, 'Penha', 'Leste', 1145.67),
+                          (null, 'Perdizes', 'Oeste', 633.05), (null, 'Perus', 'Oeste', 2369.13), (null, 'Pinheiros', 'Oeste', 828.89), (null, 'Pirituba', 'Oeste', 1709.14),
+                          (null, 'Ponte Rasa', 'Leste', 656.99), (null, 'Raposo Tavares', 'Oeste', 1219.19), (null, 'República', 'Centro', 232.99), (null, 'Rio Pequeno', 'Oeste', 977.81),
+                          (null, 'Sacomã', 'Sul', 1464.39), (null, 'Santa Cecília', 'Centro', 371.02), (null, 'Santana', 'Norte', 1313.21), (null, 'Santo Amaro', 'Sul', 1597.39),
+                          (null, 'São Domingos', 'Oeste', 993.73), (null, 'São Lucas', 'Leste', 968.71), (null, 'São Mateus', 'Leste', 1279.01), (null, 'São Miguel', 'Leste', 867.85),
+                          (null, 'São Rafael', 'Leste', 1303.03), (null, 'Sapopemba', 'Leste', 1364.89), (null, 'Saúde', 'Sul', 925.83), (null, 'Sé', 'Centro', 218.49),
+                          (null, 'Socorro', 'Sul', 1228.92), (null, 'Tatuapé', 'Leste', 850.78), (null, 'Tremembé', 'Norte', 5782.64), (null, 'Tucuruvi', 'Norte', 946.97),
+                          (null, 'Vila Andrade', 'Sul', 1032.63), (null, 'Vila Curuçá', 'Leste', 952.36), (null, 'Vila Formosa', 'Leste', 751.52), (null, 'Vila Guilherme', 'Leste', 724.79),
+                          (null, 'Vila Jacuí', 'Leste', 823.01), (null, 'Vila Leopoldina', 'Oeste', 700.48), (null, 'Vila Maria', 'Norte', 1181.71), (null, 'Vila Mariana', 'Sul', 854.26),
+                          (null, 'Vila Matilde', 'Leste', 891.87), (null, 'Vila Medeiros', 'Norte', 789.39), (null, 'Vila Prudente', 'Leste', 960.19), (null, 'Vila Sônia', 'Sul', 1008.97);
+
+
+-- criação da tabela endereco e inserção de valores 
+create table Endereco (
+		idEndereco int primary key auto_increment,
+        logradouro varchar(45), 
+        fkBairro int,
+        foreign key (fkBairro) references bairro(idBairro)
+)auto_increment = 150000;
+
+-- Dados referentes as ruas
+insert into Endereco values (null, 'Rua Antonio Bento',  44),
+					   (null, 'Rua Consolação', 26),
+                       (null, 'Avenida Doutor Luís Rocha Miranda', 37),
+                       (null, 'Rua dos Pinheiros', 63),
+                       (null, 'Alameda Itupiranga', 79);
+
+-- Criação tabela Filial
 create table filial (
 		idFilial int primary key auto_increment,
         numero int,
+        cep char(9),
         complemento varchar(45),
         fkEmpresa int,
         foreign key (fkEmpresa) references empresa(idEmpresa),
         fkEndereco int,
-        foreign key (fkEndereco) references endereco(idEndereco)
+        foreign key (fkEndereco) references Endereco(idEndereco)
 )auto_increment = 50000;
 
-
-
-
+desc filial;
 -- Dados referentes as filiais
-insert into filial values (null, 105,'Chácara Santo Antônio (Zona Sul)',1,150000),
-						  (null, 100,'Jabaquara, São Paulo)',2, 150001),
-                          (null, 213,'Vila Tramontano, São Paulo - SP',3, 150002),
-                          (null, 131,'Vila Endres, Guarulhos - SP',4, 15003);
+insert into filial values (50000, 105, '01432-000', 'Chácara Santo Antônio (Zona Sul)',1,150000);
+insert into filial values (50001, 100, '01416-003', 'Jabaquara, São Paulo)',2, 150001);
+-- insert into filial values (50002, 213, '04344-010', 'Vila Tramontano, São Paulo - SP',3, 15000);
+-- insert into filial values (50003, 131, '05422-000', 'Vila Endres, Guarulhos - SP',4, 15003);
 
-
-
+-- Criação do Funcionário
 create table funcionario (
 		idFuncionario int primary key auto_increment,
         nome varchar(50),
@@ -70,44 +120,12 @@ Primary key (fkFilial, fkFuncionario)
 
 -- Inserir valores na tabela filiaFuncionario
 insert into filialFuncionario values (50000,100000),
-									 (50001,100001),
-									 (50002,100002),
-									 (50003,100003);
-
-
-create table bairro(
-		idBairro int primary key auto_increment,
-		nome varchar(45),
-		regiao varchar(10),
-		area decimal(7,2)
-);
+									 (50001,100001);
+									 -- (50002,100002),
+									 -- (50003,100003);
 
 
 
-INSERT INTO bairro VALUES (null, 'Água Rasa', 'Leste', 715.05), (null, 'Alto de Pinheiros', 'Oeste', 751.27), (null, 'Anhanguera', 'Oeste', 3339.95), (null, 'Aricanduva', 'Leste', 686.27),
-                          (null, 'Artur Alvim', 'Leste', 653.04), (null, 'Barra Funda', 'Centro', 589.81), (null, 'Bela Vista', 'Centro', 276.71), (null, 'Belém', 'Leste', 613.55),
-                          (null, 'Bom Retiro', 'Centro', 427.39), (null, 'Brás', 'Centro', 364.61), (null, 'Brasilândia', 'Oeste', 2106.12), (null, 'Butantã', 'Oeste', 1291.72),
-                          (null, 'Cachoeirinha', 'Oeste', 1358.87), (null, 'Cambuci', 'Sul', 394.18), (null, 'Campo Belo', 'Sul', 886.26), (null, 'Campo Grande', 'Sul', 1302.09),
-                          (null, 'Campo Limpo', 'Sul', 1260.86), (null, 'Cangaíba', 'Leste', 1379.12), (null, 'Capão Redondo', 'Sul', 1382.30), (null, 'Carrão', 'Leste', 780.32),
-                          (null, 'Casa Verde', 'Norte', 717.22), (null, 'Cidade Ademar', 'Sul', 1226.23), (null, 'Cidade Dutra', 'Sul', 2778.57), (null, 'Cidade Líder', 'Leste', 1058.20),
-                          (null, 'Cidade Tiradentes', 'Leste', 1494.89), (null, 'Consolação', 'Centro', 379.52), (null, 'Cursino', 'Sul', 1207.65), (null, 'Ermelino Matarazzo', 'Leste', 943.48),
-                          (null, 'Freguesia do Ó', 'Oeste', 1106.34), (null, 'Grajaú', 'Sul', 9278.51), (null, 'Guaianases', 'Sul', 891.16), (null, 'Iguatemi', 'Leste', 1957.99),
-                          (null, 'Ipiranga', 'Sul', 1105.16), (null, 'Itaim Bibi', 'Sul', 1005.35), (null, 'Itaim Paulista', 'Leste', 1224.54), (null, 'Itaquera', 'Leste', 1473.24),
-                          (null, 'Jabaquara', 'Sul', 1407.80), (null, 'Jaçanã', 'Norte', 750.72), (null, 'Jaguara', 'Norte', 454.34), (null, 'Jaguaré', 'Oeste', 656.82),
-                          (null, 'Jaraguá', 'Oeste', 2820.14), (null, 'Jardim Ângela', 'Sul', 3682.12), (null, 'Jardim Helena', 'Leste', 915.44), (null, 'Jardim Paulista', 'Sul', 626.66),
-                          (null, 'Jardim São Luís', 'Sul', 2596.99), (null, 'José Bonifácio', 'Leste', 1445.00), (null, 'Lajeado', 'Leste', 892.28), (null, 'Lapa', 'Oeste', 1029.95),
-                          (null, 'Liberdade', 'Centro', 364.40), (null, 'Limão', 'Oeste', 642.49), (null, 'Mandaqui', 'Norte', 1323.30), (null, 'Marsilac', 'Sul', 20795.96),
-                          (null, 'Moema', 'Sul', 912.62), (null, 'Mooca', 'Sul', 794.86), (null, 'Morumbi', 'Sul', 1148.85), (null, 'Parelheiros', 'Sul', 15179.77),
-                          (null, 'Pari', 'Centro', 272.62), (null, 'Parque do Carmo', 'Leste', 1560.72), (null, 'Pedreira', 'Sul', 1851.35), (null, 'Penha', 'Leste', 1145.67),
-                          (null, 'Perdizes', 'Oeste', 633.05), (null, 'Perus', 'Oeste', 2369.13), (null, 'Pinheiros', 'Oeste', 828.89), (null, 'Pirituba', 'Oeste', 1709.14),
-                          (null, 'Ponte Rasa', 'Leste', 656.99), (null, 'Raposo Tavares', 'Oeste', 1219.19), (null, 'República', 'Centro', 232.99), (null, 'Rio Pequeno', 'Oeste', 977.81),
-                          (null, 'Sacomã', 'Sul', 1464.39), (null, 'Santa Cecília', 'Centro', 371.02), (null, 'Santana', 'Norte', 1313.21), (null, 'Santo Amaro', 'Sul', 1597.39),
-                          (null, 'São Domingos', 'Oeste', 993.73), (null, 'São Lucas', 'Leste', 968.71), (null, 'São Mateus', 'Leste', 1279.01), (null, 'São Miguel', 'Leste', 867.85),
-                          (null, 'São Rafael', 'Leste', 1303.03), (null, 'Sapopemba', 'Leste', 1364.89), (null, 'Saúde', 'Sul', 925.83), (null, 'Sé', 'Centro', 218.49),
-                          (null, 'Socorro', 'Sul', 1228.92), (null, 'Tatuapé', 'Leste', 850.78), (null, 'Tremembé', 'Norte', 5782.64), (null, 'Tucuruvi', 'Norte', 946.97),
-                          (null, 'Vila Andrade', 'Sul', 1032.63), (null, 'Vila Curuçá', 'Leste', 952.36), (null, 'Vila Formosa', 'Leste', 751.52), (null, 'Vila Guilherme', 'Leste', 724.79),
-                          (null, 'Vila Jacuí', 'Leste', 823.01), (null, 'Vila Leopoldina', 'Oeste', 700.48), (null, 'Vila Maria', 'Norte', 1181.71), (null, 'Vila Mariana', 'Sul', 854.26),
-                          (null, 'Vila Matilde', 'Leste', 891.87), (null, 'Vila Medeiros', 'Norte', 789.39), (null, 'Vila Prudente', 'Leste', 960.19), (null, 'Vila Sônia', 'Sul', 1008.97);
 
 create table bairroPopulacao(
 		idBairro int primary key,
@@ -209,21 +227,7 @@ INSERT INTO bairroRenda VALUES (1, 57.1932, 47.0499, 12.1096), (2, 8.9715, 19.50
                                (89, 146.1914, 25.2075, 4.7168), (90, 15.2567, 19.8849, 27.7995), (91, 70.6696, 16.3737, 9.2671), (92, 32.3848, 66.7291, 55.3953),
                                (93, 79.2010, 31.5674, 7.5392), (94, 93.5469, 48.7579, 15.5779), (95, 66.1859, 33.8683, 8.9264), (96, 54.4991, 32.0654, 31.4439);
 
--- criação da tabela rua e inserção de valores 
-create table Endereco (
-		idEndereco int primary key auto_increment,
-        logradouro varchar(45), 
-        cep char(9),
-        fkBairro int,
-        foreign key (fkBairro) references bairro(idBairro)
-)auto_increment = 150000;
 
--- Dados referentes as ruas
-insert into Endereco values (null, 'Rua Antonio Bento', '01432-000', 44),
-					   (null, 'Rua Consolação', '01416-003',26),
-                       (null, 'Avenida Doutor Luís Rocha Miranda', '04344-010',37),
-                       (null, 'Rua dos Pinheiros','05422-000', 63),
-                       (null, 'Alameda Itupiranga', '04294-090', 79);
 
 create table sensor(
 		idSensor int primary key auto_increment,
@@ -323,8 +327,8 @@ insert into dados values (null, '2023-04-10 07:00:00', '0', 200000), (null, '202
 -- select das tabelas simples
 select * from empresa;
 select * from filial;
-select * from usuario;
-select * from rua;
+select * from funcionario;
+select * from endereco;
 select * from sensor;
 select * from dados;
 select * from bairro;
@@ -335,25 +339,25 @@ select * from bairro where nome in ('Jardim Paulista', 'Cerqueira César', 'Jaba
 select * from empresa join filial on fkEmpresa = idEmpresa;
 
 -- select tabela filial e usuario
-select * from filial join usuario on fkFilial = idFilial;
+-- select * from filial join funcionario on fkFilial = idFilial;
 
 -- select tabela empresa, filial e usuario
-select * from empresa join filial join usuario on fkEmpresa = idEmpresa and fkFilial = idFilial;
+-- select * from empresa join filial join funcionario on fkEmpresa = idEmpresa and fkFilial = idFilial;
 
 -- select tabela rua e sensor
-select * from rua join sensor on fkRua = idRua;
+select * from endereco join sensor on fkEndereco = idEndereco;
 
 -- select tabela sensor e dados
 select * from sensor join dados on fkSensor = idSensor;
 
 -- select tabela rua, sensor e dados
-select * from rua join sensor join dados on fkRua = idRua and fkSensor = idSensor; 
+select * from endereco join sensor join dados on fkEndereco = idEndereco and fkSensor = idSensor; 
 
 -- select tabela bairro, sensor, dados e rua 
-select * from bairro join sensor join dados join rua on fkRua = idRua and fkSensor = idSensor and idBairro = fkBairro;
+select * from bairro join sensor join dados join endereco on fkEndereco = idEndereco and fkSensor = idSensor and idBairro = fkBairro;
 
 -- select tabela bairro, bairroRenda, bairroIdade e bairroPopulacao
 select * from bairro join bairroRenda join bairroIdade join bairroPopulacao on bairro.idBairro = bairroRenda.idBairro 
                             and bairro.idBairro = bairroIdade.idBairro and bairro.idBairro = bairroPopulacao.idBairro;
 
-drop database vagafacil;
+-- drop database vagafacil;
