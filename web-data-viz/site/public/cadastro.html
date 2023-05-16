@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/mediaQueries.css">
+    <script src="js/cadastro.js"></script>
+    <title>Vaga Fácil</title>
+</head>
+
+<body>
+    <!--Começo do Header-->
+    <header>
+        <nav class="nav">
+
+            <a href=""><img class="logo" src="img/nav/logo-home.png" alt=""></a>
+
+            <ul class="nav-lista">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobrenos.html">Sobre Nós</a></li>
+                <li><a href="calculadora.html">Calculadora</a></li>
+                <li><a href="faleconosco.html">Fale Conosco</a></li>
+                <li><a class="btn-login" href="login.html"><img src="img/nav/login.png" alt=""></a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Fim do Header -->
+    <!-- Começo do titulo login-->
+    <div class="box_mensagem">
+        <div class="mensagem">
+            <h1>Cadastro</h1>
+        </div>
+    </div>
+    <!-- Final do titulo login -->
+    <!-- Começo do Banner -->
+    <div class="container">
+        <div class="banner">
+            <div class="coluna">
+                <div class="card1">
+                    <div class="card-titulo">
+                        <h1>Informações pessoais</h1>
+                    </div>
+                    <div class="ul">
+                        <li>
+                            <p>Nome Completo</p>
+                            <input id="ipt_nome" type="text">
+                            <div id="vNome">Informe um nome válido</div>
+                            <!-- v de validar -->
+                        </li>
+                        <li>
+                            <p>Cargo</p>
+                            <input id="ipt_cargo" type="text">
+                            <div id="vCargo">Informe um cargo válido</div>
+                        </li>
+                        <li>
+                            <p>Data de nascimento</p>
+                            <input id="ipt_dataN" type="text" placeholder="00/00/0000" maxlength="10">
+                            <div id="vDataN">Informe um data válida</div>
+                        </li>
+                        <li>
+                            <p>CPF</p>
+                            <input id="ipt_cpf" type="text" placeholder="000-000-000-94">
+                            <div id="vCpf">Informe um CPF válido</div>
+
+                        </li>
+                        <li>
+                            <p>Telefone</p>
+                            <input id="ipt_telefone" type="text" placeholder="(00) 90000-0000">
+                            <div id="vTelefone">Informe um telefone válido</div>
+                        </li>
+                    </div>
+                </div>
+            </div>
+            <div class="coluna">
+                <div class="card2">
+                    <div class="card-titulo">
+                        <h1>Informações da empresa</h1>
+                    </div>
+                    <ul class="card2-space">
+                        <li>
+                            <p>Razão</p>
+                            <input id="ipt_razao" type="text">
+                            <div id="vRazao">Informe uma razão válida</div>
+                        </li>
+                        <li>
+                            <p>CNPJ</p>
+                            <input id="ipt_cnpj" type="text">
+                            <div id="vCnpj">Informe um CNPJ válido</div>
+                        </li>
+                        <li>
+                            <p>CEP</p>
+                            <input id="ipt_cep" type="text" onkeyup="ver_cep()">
+                            <div id="vCep">Informe um cep válido</div>
+                        </li>
+                    </ul>
+                    </li>
+                    <ul>
+                        <li>
+                            <p>Endereço</p>
+                            <input id="ipt_endereco" type="text">
+                            <div id="vEndereco">Informe um endereço válido</div>
+                        </li>
+                    </ul>
+                    <ul class="card2-space">
+                        <li>
+                            <p>Número</p>
+                            <input id="ipt_numero" type="text">
+                            <div id="vNumero">Informe um número válido</div>
+                        </li>
+                        <li>
+                            <p>Complemento</p>
+                            <input id="ipt_comp" type="text">
+                        </li>
+                        <li>
+                            <p>Bairro</p>
+                            <input id="ipt_bairro" type="text">
+                            <div id="vBairro">Informe um bairro válido</div>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="card3">
+                    <div class="card-titulo">
+                        <h1>Informações de login</h1>
+                    </div>
+                    <ul>
+                        <li>
+                            <p>Email</p>
+                            <input id="ipt_email" type="email">
+                            <div id="vEmail">Informe um email válido</div>
+                        </li>
+                    </ul>
+
+                    <ul class="card2-space">
+                        <li>
+                            <p>Senha</p>
+                            <input id="ipt_senha" type="senha">
+                            <div id="vSenha">Informe uma senha válida</div>
+                        </li>
+                        <li>
+                            <p>Confirmar senha</p>
+                            <input id="ipt_confirmarSenha" type="confirmação" id="ipt_senha" oninput="cadastro()">
+                            <div id="vSenhaRep">Informe uma senha válida</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- final do banner -->
+        <!-- Começo do cadastrar -->
+    </div>
+    <div class="boxCadastro">
+        <button class="cadastro" onclick="cadastrar()">Cadastrar</button>
+    </div>
+
+    <footer>
+        <div class="rodape">
+            <div class="container">
+                <div class="cardFooter">
+                    <img src="img/logo.png" id="logoFooter">
+                </div>
+                <div class="cardFooterCentral">
+                    <ul>
+                        <li>
+                            <a href="index.html">Início</a>
+                        </li>
+                        <li>
+                            <a href="sobrenos.html">Sobre Nós</a>
+                        </li>
+                        <li>
+                            <a href="calculadora.html">Simule Aqui</a>
+                        </li>
+                        <li>
+                            <a href="faleconosco.html">Fale Conosco</a>
+                        </li>
+                        <li>
+                            <a href="login.html">Acessar o Sistema</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cardFooter">
+                    <a href=""><img src="img/instagram.png" alt="Link para nossa página no instagram"></a>
+                    <a href=""><img src="img/facebook.png" alt="Link para nossa página no FaceBook"></a>
+                    <a href=""><img src="img/twitter.png" alt="Link para nossa página no Twitter"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<script>
+    function cadastrar() {
+        var nomeVar = ipt_nome.value;
+        var cargoVar = ipt_cargo.value;
+        var telefoneVar = ipt_telefone.value;
+        var cpfVar = ipt_cpf.value;
+        var dataNascimentoVar = ipt_dataN.value;
+        // var fkSuperiorVar = null;
+
+        var razaoVar = ipt_razao.value;
+        var cnpjVar = ipt_cnpj.value;
+        var cepVar = ipt_cep.value;
+        var numeroVar = ipt_numero.value;
+        var compVar = ipt_comp.value;
+        var bairroVar = ipt_bairro.value;
+
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+        var confirmarSenhaVar = ipt_confirmarSenha.value;
+
+        var erroNome = false;
+        var erroCargo = false;
+        var erroDatan = false;
+        var erroCpf = false;
+        var erroTelefone = false;
+        var erroRazao = false;
+        var erroCnpj = false;
+        var erroCep = false;
+        var erroEndereco = false;
+        var erroNumero = false;
+        var erroComp = false;
+        var erroBairro = false;
+        var erroEmail = false;
+        var erroSenha = false;
+        var erroSenhaRep = false;
+        var validarCard1 = false;
+        var validarCard2 = false;
+        var validarCard3 = false;
+
+        if (nomeVar.length < 3) {
+            vNome.style.display = 'block';
+            ipt_nome.style = 'border-color: red';
+            erroNome = true;
+        } else {
+            vNome.style.display = 'none';
+            ipt_nome.style = 'border-color: #32a7b1';
+            erroNome = false;
+        }
+        if (cargoVar.length < 3) {
+            vCargo.style.display = 'block';
+            ipt_cargo.style = 'border-color: red';
+            erroCargo = true;
+        } else {
+            vCargo.style.display = 'none';
+            ipt_cargo.style = 'border-color: #32a7b1';
+            erroCargo = false;
+        }
+        validarCard1 = erroNome == false && erroCargo == false && erroDatan == false && erroCpf == false && erroTelefone == false;
+
+        if (razaoVar.length < 3) {
+            vNome.style.display = 'block';
+            ipt_razao.style = 'border-color: red';
+            erroNome = true;;
+        } else {
+            vNome.style.display = 'none';
+            ipt_razao.style = 'border-color: #32a7b1';
+            erroNome = false;
+        }
+        validarCard2 = erroRazao == false && erroCnpj == false && erroCep == false && erroEndereco == false && erroNumero == false && erroComp == false && erroBairro == false;
+
+        if (emailVar.indexOf('@') < 0 && emailVar.indexOf('.com') < 0) {
+            vEmail.style.display = 'block';
+            ipt_email.style = 'border-color: red';
+            erroEmail = true;;
+        } else {
+            vEmail.style.display = 'none';
+            ipt_email.style = 'border-color: #32a7b1';
+            erroEmail = false;
+        }
+        validarCard3 = erroEmail == false && erroSenha == false && erroSenhaRep == false;
+
+
+        if (validarCard1 == false || validarCard2 == false || validarCard3 == false) {
+            return false;
+        }
+        else {
+            // Enviando o valor da nova input
+            fetch("/funcionario/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/funcionario.js
+                    nomeServer: nomeVar,
+                    cargoServer: cargoVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                    telefoneServer: telefoneVar,
+                    cpfServer: cpfVar,
+                    dataNascimentoServer: dataNascimentoVar
+                    // fkSuperiorServer: fkSuperiorVar
+                })
+            }).then(function (resposta) {
+                console.log("resposta: ", resposta);
+                if (resposta.ok) {
+                    cardErro.style.display = "block";
+
+                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000")
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+            return false;
+        }
+
+    }
+</script>

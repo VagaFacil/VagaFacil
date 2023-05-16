@@ -1,0 +1,202 @@
+/* Início do titulo */
+.box_mensagem {
+    width: auto;
+    height: 100px;
+    display: flex;
+    justify-content: center; 
+    margin: 70px 0 0 0;
+}
+
+.mensagem{
+    width: 500px;
+    background-color: #F49C24;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    display: flex;
+    justify-content: center;
+    color: #0C243C;
+    font-size: 30px;
+    font-family: 'fonte';
+}.mensagem h1 {
+    padding-top: 30px;
+}
+/* Final do titulo */
+/* Começo do primeiro banner */
+/* Primeiro card */
+.container {
+    width: 90%;
+    margin: auto;
+}
+.banner {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.card1 {
+    background-color: #0C243C;
+    width: 370px;
+    list-style: none;
+    padding:40px ;
+    border-radius: 20px;
+    font-size: 20px;
+    height: 100%;
+}
+.ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%;
+}
+.coluna h1 {
+    color: #F49C24;
+    font-size: 25px;
+    font-weight: 700;
+}
+.card-titulo {
+    text-align: center;
+}
+.card1 li {
+    margin-top: 20px;
+    width: 90%;
+}
+.card1 p {
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+.card1 input{
+    padding: 10px;
+    border-radius: 15px;
+    outline: none;
+    border-color: #32a7b1;
+    width: 100%;
+}
+/* final do primeiro card */
+
+/* Erros card1 */
+#vNome, #vCargo, #vDataN, #vCpf, #vTelefone {
+    display: none   ;
+    color: red;
+    font-size: 14px;
+    padding: 0 0 0 10px;
+}
+
+/* Começo card2 */
+.coluna {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card2-space {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card2 {
+    background-color: #0C243C;
+    width: auto;
+    height: auto;
+    list-style: none;
+    padding:40px ;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.card2 ul li {
+    width: auto;
+    margin: 10px 10px 0 0;
+}
+.card2 p {
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+.card2 input {
+    width: 85%;
+    padding: 10px;
+    border-radius: 15px;
+    outline: none;
+    border-color: #32a7b1;
+}    
+#ipt_endereco {
+    width: 95%;
+}
+/* Final card2 */
+
+/* Erros card1 */
+#vRazao, #vCnpj, #vCep, #vEndereco, #vNumero, #vBairro {
+    display: none   ;
+    color: red;
+    font-size: 14px;
+    padding: 0 0 0 10px;
+}
+
+/* Começo card3 */
+.card3 {
+    background-color: #0C243C;
+    width: auto;
+    height: auto;
+    list-style: none;
+    padding: 40px 68px 40px 40px;
+    border-radius: 20px;
+    font-size: 20px;
+
+}
+
+.card3 ul li {
+    width: auto;
+    margin: 10px 10px 0 0;
+
+}
+.card3 p {
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+.card3 input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    outline: none;
+    border-color: #32a7b1;
+}
+#ipt_email{
+    width: 100%;
+}
+
+/* Final do segundo e terceiro card */
+#vEmail, #vSenha, #vSenhaRep {
+    display: none   ;
+    color: red;
+    font-size: 14px;
+    padding: 0 0 0 10px;
+}
+
+
+/* Cadastrar */
+
+.boxCadastro {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 30px auto;
+}
+.boxCadastro button {
+    background-color: #F49C24;
+    color: #0C243C;
+    width: 30%;
+    height: auto;
+    border-radius: 20px;
+    font-family: 'fonte';
+    margin: 10px auto 10px auto;
+    padding: 10px 30px 10px 30px;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 2px 4px black;
+} .boxCadastro button:hover {
+    background-color: #FCF4EC;
+    transition: .3s;
+    box-shadow: 0 4px 8px black;
+}

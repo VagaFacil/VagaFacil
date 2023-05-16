@@ -1,0 +1,48 @@
+/* Início do rodapé */
+
+.rodape {
+    height:200px;
+    width:100%;
+    background-color: #0C243C;
+}
+
+.rodape .container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.rodape .container .cardFooter, .cardFooterCentral {
+    width: 25%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.rodape .container .cardFooterCentral {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+.rodape .container .cardFooterCentral li {
+    margin: 10px;
+}
+
+.rodape .container img {
+    width: 50px;
+    height: auto;
+    margin-left: 10px;
+}
+
+.rodape .container #logoFooter {
+    width: 120px;
+    height: 120px;
+}
+
+a{
+    color: #F49C24;
+    text-decoration: none;
+    font-family: 'fonte';
+}

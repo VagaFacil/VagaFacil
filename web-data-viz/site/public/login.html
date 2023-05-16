@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/mediaQueries.css">
+    <title>Vaga Fácil</title>
+</head>
+
+<body>
+    <!--Começo do Header-->
+    <header>
+        <nav class="nav">
+
+            <a href=""><img class="logo" src="img/nav/logo-home.png" alt=""></a>
+
+            <ul class="nav-lista">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobrenos.html">Sobre Nós</a></li>
+                <li><a href="calculadora.html">Calculadora</a></li>
+                <li><a href="faleconosco.html">Fale Conosco</a></li>
+                <li><a class="btn-login" href="login.html"><img src="img/nav/login.png" alt=""></a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <!--Inicio mensagem "login"-->
+    <div class="mensagem">
+        <h1>Login</h1>
+    </div>
+    <!--Fim mensagem "login"-->
+
+
+
+    <!--Início banner -->
+
+    <div class="banner">
+        <div class="container">
+            <div class="form">
+                <h1>Insira seu Email</h1>
+                <input type="email" id="ipt_email">
+                <div id="erroE1">Insira dados válidos</div>
+                <div id="erroE2">Insira um email válido</div>
+                <div id="erroE3">Email não cadastrado</div>
+
+                <h1>Insira sua Senha</h1>
+                <input type="password" id="ipt_senha">
+                <div id="erroS1">Insira dados válidos</div>
+                <div id="erroS2">Senha incorreta</div>
+
+                <a href="rec-senha.html">Esqueci minha senha</a>
+
+                <button onclick="entrar()">Login</button>
+
+                <a href="cadastro.html">Não tem conta? Crie uma</a>
+
+            </div>
+        </div>
+    </div>
+    <!--Fim do banner-->
+    <footer>
+        <div class="rodape">
+            <div class="container">
+                <div class="cardFooter">
+                    <img src="img/logo.png" id="logoFooter">
+                </div>
+                <div class="cardFooterCentral">
+                    <ul>
+                        <li>
+                            <a href="index.html">Início</a>
+                        </li>
+                        <li>
+                            <a href="sobrenos.html">Sobre Nós</a>
+                        </li>
+                        <li>
+                            <a href="calculadora.html">Simule Aqui</a>
+                        </li>
+                        <li>
+                            <a href="faleconosco.html">Fale Conosco</a>
+                        </li>
+                        <li>
+                            <a href="login.html">Acessar o Sistema</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cardFooter">
+                    <a href=""><img src="img/instagram.png" alt="Link para nossa página no instagram"></a>
+                    <a href=""><img src="img/facebook.png" alt="Link para nossa página no FaceBook"></a>
+                    <a href=""><img src="img/twitter.png" alt="Link para nossa página no Twitter"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+<script src="js/login.js"></script>
+<script src="js/funcoes.js"></script>
+<script>
+    function entrar() {
+
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+        var erroEntrar = false
+
+        if (emailVar == '') {
+            erroEntrar = true;
+        } else {
+
+        }
+        if (senhaVar == '') {
+            erroEntrar = true;
+        } else {
+
+        }
+
+        if (erroEntrar == true) {
+
+            return false;
+        }
+        else {
+            // setInterval(sumirMensagem, 5000)
+
+            console.log("FORM LOGIN: ", emailVar);
+            console.log("FORM SENHA: ", senhaVar);
+
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.id;
+
+                        setTimeout(function () {
+                            window.location = "./dashboard/cards.html";
+                        }, 1000); // apenas para exibir o loading
+
+                    });
+
+                } else {
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            return false;
+        }
+    }
+
+
+</script>
