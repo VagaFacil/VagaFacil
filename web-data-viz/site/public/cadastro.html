@@ -205,7 +205,7 @@
         var telefoneVar = ipt_telefone.value;
         var cpfVar = ipt_cpf.value;
         var dataNascimentoVar = ipt_dataN.value;
-        // var fkSuperiorVar = null;
+        var fkSuperiorVar = null;
 
         var razaoVar = ipt_razao.value;
         var cnpjVar = ipt_cnpj.value;
@@ -258,11 +258,11 @@
         validarCard1 = erroNome == false && erroCargo == false && erroDatan == false && erroCpf == false && erroTelefone == false;
 
         if (razaoVar.length < 3) {
-            vNome.style.display = 'block';
+            vRazao.style.display = 'block';
             ipt_razao.style = 'border-color: red';
             erroNome = true;;
         } else {
-            vNome.style.display = 'none';
+            vRazao.style.display = 'none';
             ipt_razao.style = 'border-color: #32a7b1';
             erroNome = false;
         }
@@ -299,16 +299,12 @@
                     senhaServer: senhaVar,
                     telefoneServer: telefoneVar,
                     cpfServer: cpfVar,
-                    dataNascimentoServer: dataNascimentoVar
-                    // fkSuperiorServer: fkSuperiorVar
+                    dataNascimentoServer: dataNascimentoVar,
+                    fkSuperiorServer: fkSuperiorVar
                 })
             }).then(function (resposta) {
                 console.log("resposta: ", resposta);
                 if (resposta.ok) {
-                    cardErro.style.display = "block";
-
-                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
                     setTimeout(() => {
                         window.location = "login.html";
                     }, "2000")

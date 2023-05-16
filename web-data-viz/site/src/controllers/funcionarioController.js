@@ -71,6 +71,8 @@ function cadastrar(req, res) {
     var dataNascimento = req.body.dataNascimentoServer;
     var fkSuperior = req.body.fkSuperiorServer;
 
+    console.log(`${nome} ${cargo} ${email} ${senha} ${telefone} ${cpf} ${dataNascimento} ${fkSuperior}`);
+
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -86,7 +88,7 @@ function cadastrar(req, res) {
         res.status(400).send("Seu CPF está undefined!");
     } else if (dataNascimento == undefined) {
         res.status(400).send("Sua data de nascimento está undefined!");
-    } else if (fkSuperior == undefined) {
+    } else if (fkSuperior === undefined) {
         res.status(400).send("Seu superior está undefined!");
     } 
     else {
