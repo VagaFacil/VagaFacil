@@ -32,7 +32,7 @@ function atualizarFormulario(idFuncionario) {
                     // spanSeta.innerHTML = ;
                     var divFuncionario = document.createElement("div_funcionario")
                     divFuncionario.className = "usuarios"
-                    divFuncionario.setAttribute("onclick", `exibir(${publicacao.funcionarios})`)
+                    divFuncionario.setAttribute("onclick", `exibir(${publicacao.funcionario})`)
 
                     divFuncionario.appendChild(spanImg)
                     divFuncionario.appendChild(spanNome)
