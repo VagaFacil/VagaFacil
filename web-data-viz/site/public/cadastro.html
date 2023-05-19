@@ -66,7 +66,7 @@
                         </li>
                         <li>
                             <p>CPF</p>
-                            <input id="ipt_cpf" type="text" placeholder="000-000-000-94">
+                            <input onkeydown="cpf(ipt_cpf.value)" id="ipt_cpf" type="text" placeholder="000-000-000-94">
                             <div id="vCpf">Informe um CPF válido</div>
 
                         </li>
@@ -91,7 +91,7 @@
                         </li>
                         <li>
                             <p>CNPJ</p>
-                            <input id="ipt_cnpj" type="text">
+                            <input onkeydown="cnpj(ipt_cnpj.value)" id="ipt_cnpj" type="text">
                             <div id="vCnpj">Informe um CNPJ válido</div>
                         </li>
                         <li>
@@ -147,8 +147,8 @@
                         </li>
                         <li>
                             <p>Confirmar senha</p>
-                            <input id="ipt_confirmarSenha" type="confirmação" id="ipt_senha" oninput="cadastro()">
-                            <div id="vSenhaRep">Informe uma senha válida</div>
+                            <input id="ipt_confirmarSenha" type="confirmação">
+                            <div id="vConfirmarSenha">Senhas diferentes</div>
                         </li>
                     </ul>
                 </div>
@@ -218,69 +218,100 @@
         var senhaVar = ipt_senha.value;
         var confirmarSenhaVar = ipt_confirmarSenha.value;
 
-        var erroNome = false;
-        var erroCargo = false;
-        var erroDatan = false;
-        var erroCpf = false;
-        var erroTelefone = false;
-        var erroRazao = false;
-        var erroCnpj = false;
-        var erroCep = false;
-        var erroEndereco = false;
-        var erroNumero = false;
-        var erroComp = false;
-        var erroBairro = false;
-        var erroEmail = false;
-        var erroSenha = false;
-        var erroSenhaRep = false;
-        var validarCard1 = false;
-        var validarCard2 = false;
-        var validarCard3 = false;
+        var erroCadastro = false;
 
         if (nomeVar.length < 3) {
             vNome.style.display = 'block';
             ipt_nome.style = 'border-color: red';
-            erroNome = true;
+            erroCadastro = true;
         } else {
             vNome.style.display = 'none';
             ipt_nome.style = 'border-color: #32a7b1';
-            erroNome = false;
         }
         if (cargoVar.length < 3) {
             vCargo.style.display = 'block';
             ipt_cargo.style = 'border-color: red';
-            erroCargo = true;
+            erroCadastro = true;
         } else {
             vCargo.style.display = 'none';
             ipt_cargo.style = 'border-color: #32a7b1';
-            erroCargo = false;
         }
-        validarCard1 = erroNome == false && erroCargo == false && erroDatan == false && erroCpf == false && erroTelefone == false;
+        if (telefoneVar.length > 14 || telefoneVar.length < 13) {
+            vTelefone.style.display = 'block';
+            ipt_telefone.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vTelefone.style.display = 'none';
+            ipt_telefone.style = 'border-color: #32a7b1';
+        }
+        if (cpfVar.length != 13 ) {
+            vCpf.style.display = 'block';
+            ipt_cpf.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vCpf.style.display = 'none';
+            ipt_cpf.style = 'border-color: #32a7b1';
+        }
+        if (dataNascimentoVar.length < 10) {
+            vDataN.style.display = 'block';
+            ipt_dataN.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vDataN.style.display = 'none';
+            ipt_dataN.style = 'border-color: #32a7b1';
+        }
 
         if (razaoVar.length < 3) {
             vRazao.style.display = 'block';
             ipt_razao.style = 'border-color: red';
-            erroNome = true;;
+            erroCadastro = true;;
         } else {
             vRazao.style.display = 'none';
             ipt_razao.style = 'border-color: #32a7b1';
-            erroNome = false;
         }
-        validarCard2 = erroRazao == false && erroCnpj == false && erroCep == false && erroEndereco == false && erroNumero == false && erroComp == false && erroBairro == false;
+        if (cnpjVar.length < 3) {
+            vCnpj.style.display = 'block';
+            ipt_cnpj.style = 'border-color: red';
+            erroCadastro = true;;
+        } else {
+            vCnpj.style.display = 'none';
+            ipt_cnpj.style = 'border-color: #32a7b1';
+        }
+        if (cepVar.length != 9) {
+            vCep.style.display = 'block';
+            ipt_cep.style = 'border-color: red';
+            erroCadastro = true;;
+        } else {
+            vCep.style.display = 'none';
+            ipt_cep.style = 'border-color: #32a7b1';
+        }
 
         if (emailVar.indexOf('@') < 0 && emailVar.indexOf('.com') < 0) {
             vEmail.style.display = 'block';
             ipt_email.style = 'border-color: red';
-            erroEmail = true;;
+            erroCadastro = true;;
         } else {
             vEmail.style.display = 'none';
             ipt_email.style = 'border-color: #32a7b1';
-            erroEmail = false;
         }
-        validarCard3 = erroEmail == false && erroSenha == false && erroSenhaRep == false;
+        if (senhaVar.length < 6) {
+            vSenha.style.display = 'block';
+            ipt_senha.style = 'border-color: red';
+            erroCadastro = true;;
+        } else {
+            vSenha.style.display = 'none';
+            ipt_senha.style = 'border-color: #32a7b1';
+        }
+        if (confirmarSenhaVar != senhaVar) {
+            vConfirmarSenha.style.display = 'block';
+            ipt_confirmarSenha.style = 'border-color: red';
+            erroCadastro = true;;
+        } else {
+            vConfirmarSenha.style.display = 'none';
+            ipt_confirmarSenha.style = 'border-color: #32a7b1';
+        }
 
-
-        if (validarCard1 == false || validarCard2 == false || validarCard3 == false) {
+        if (erroCadastro) {
             return false;
         }
         else {

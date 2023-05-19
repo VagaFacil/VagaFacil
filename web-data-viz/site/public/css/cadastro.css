@@ -164,7 +164,7 @@
 }
 
 /* Final do segundo e terceiro card */
-#vEmail, #vSenha, #vSenhaRep {
+#vEmail, #vSenha, #vConfirmarSenha {
     display: none   ;
     color: red;
     font-size: 14px;
@@ -199,4 +199,4 @@
     background-color: #FCF4EC;
     transition: .3s;
     box-shadow: 0 4px 8px black;
-}
+} 
