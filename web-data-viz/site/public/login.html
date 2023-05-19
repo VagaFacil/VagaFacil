@@ -31,37 +31,29 @@
 
         </nav>
     </header>
-
-    <!--Inicio mensagem "login"-->
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErroLogin">
+            <span id="mensagem_erroLogin"></span>
+        </div>
+    </div>
     <div class="mensagem">
         <h1>Login</h1>
     </div>
-    <!--Fim mensagem "login"-->
-
-
-
-    <!--Início banner -->
-
     <div class="banner">
         <div class="container">
             <div class="form">
                 <h1>Insira seu Email</h1>
                 <input type="email" id="ipt_email">
-                <div id="erroE1">Insira dados válidos</div>
-                <div id="erroE2">Insira um email válido</div>
-                <div id="erroE3">Email não cadastrado</div>
-
+                <div id="erroE1">Insira um email válido</div>
                 <h1>Insira sua Senha</h1>
                 <input type="password" id="ipt_senha">
-                <div id="erroS1">Insira dados válidos</div>
-                <div id="erroS2">Senha incorreta</div>
-
+                <div id="erroS1">Insira uma senha válida</div>
                 <a href="rec-senha.html">Esqueci minha senha</a>
-
                 <button onclick="entrar()">Login</button>
-
                 <a href="cadastro.html">Não tem conta? Crie uma</a>
-
+                <div id="div_aguardar" class="loading-div">
+                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                </div>
             </div>
         </div>
     </div>
@@ -74,21 +66,11 @@
                 </div>
                 <div class="cardFooterCentral">
                     <ul>
-                        <li>
-                            <a href="index.html">Início</a>
-                        </li>
-                        <li>
-                            <a href="sobrenos.html">Sobre Nós</a>
-                        </li>
-                        <li>
-                            <a href="calculadora.html">Simule Aqui</a>
-                        </li>
-                        <li>
-                            <a href="faleconosco.html">Fale Conosco</a>
-                        </li>
-                        <li>
-                            <a href="login.html">Acessar o Sistema</a>
-                        </li>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobrenos.html">Sobre Nós</a></li>
+                        <li><a href="calculadora.html">Simule Aqui</a></li>
+                        <li><a href="faleconosco.html">Fale Conosco</a></li>
+                        <li><a href="login.html">Acessar o Sistema</a></li>
                     </ul>
                 </div>
                 <div class="cardFooter">
@@ -106,28 +88,35 @@
 <script src="js/funcoes.js"></script>
 <script>
     function entrar() {
-
+        aguardar();
+        
         var emailVar = ipt_email.value;
         var senhaVar = ipt_senha.value;
         var erroEntrar = false
 
-        if (emailVar == '') {
+        if (emailVar == '' || emailVar.indexOf('@') == -1 || emailVar.indexOf('.') == -1 ) {
             erroEntrar = true;
+            erroE1.style.display = 'block';
+            ipt_email.style.border = '2px solid red';
         } else {
-
+            erroE1.style.display = 'none';
+            ipt_email.style.border = '2px solid #32a7b1';
         }
-        if (senhaVar == '') {
+        if (senhaVar == '' || senhaVar.length < 6) {
             erroEntrar = true;
+            erroS1.style.display = 'block';
+            ipt_senha.style.border = '2px solid red';
         } else {
-
+            erroS1.style.display = 'none';
+            ipt_senha.style.border = '2px solid #32a7b1';
         }
 
         if (erroEntrar == true) {
-
+            finalizarAguardar();
             return false;
         }
         else {
-            // setInterval(sumirMensagem, 5000)
+            setInterval(sumirMensagem, 5000)
 
             console.log("FORM LOGIN: ", emailVar);
             console.log("FORM SENHA: ", senhaVar);
@@ -159,16 +148,24 @@
 
                         setTimeout(function () {
                             window.location = "./dashboard/usuarios.html";
-                        }, 1000); // apenas para exibir o loading
+                        }, 2000); // apenas para exibir o loading
 
                     });
-
+                    cardErroLogin.style.display = "block"
+                    cardErroLogin.style.border = "2px solid greenyellow"
+                    cardErroLogin.style.color = "greenyellow"
+                    mensagem_erroLogin.innerHTML = "✅Entrando! Aguarde...✅";
                 } else {
-
+                    cardErroLogin.style.display = "block"
+                    cardErroLogin.style.border = "2px solid red"
+                    cardErroLogin.style.color = "red"
+                    mensagem_erroLogin.innerHTML = "❌Conta não cadastrada❌";
+                
                     console.log("Houve um erro ao tentar realizar o login!");
 
                     resposta.text().then(texto => {
                         console.error(texto);
+                        finalizarAguardar(texto);
                     });
                 }
 
@@ -178,6 +175,10 @@
 
             return false;
         }
+    }
+
+    function sumirMensagem() {
+        cardErroLogin.style.display = "none"
     }
 
 
