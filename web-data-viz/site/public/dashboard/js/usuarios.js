@@ -1,5 +1,5 @@
 function atualizarFormulario(idFuncionario) {
-    //aguardar();
+    aguardar();
     fetch(`/listaUsuario/exibirUsuarios/${idFuncionario}`).then(function (resposta) {
         if (resposta.ok) {
             if (resposta.status == 204) {
@@ -23,13 +23,13 @@ function atualizarFormulario(idFuncionario) {
                     // criando e manipulando elementos do HTML via JavaScript
                     var spanImg = document.createElement("img");
                     spanImg.className = "foto";
-                    // spanImg.innerHTML = ;
+                    spanImg.setAttribute("src", `${publicacao.foto}`)
                     var spanNome = document.createElement("h1");
                     spanNome.className = "nome";
                     spanNome.innerHTML = publicacao.nome;
                     var spanSeta = document.createElement("img");
                     spanSeta.className = "seta";
-                    // spanSeta.innerHTML = ;
+                    spanSeta.setAttribute("src", `https://cdn-icons-png.flaticon.com/512/4028/4028647.png`)
                     var divFuncionario = document.createElement("div_funcionario")
                     divFuncionario.className = "usuarios"
                     divFuncionario.setAttribute("onclick", `exibir(${publicacao.funcionario})`)
@@ -40,14 +40,14 @@ function atualizarFormulario(idFuncionario) {
                     lista.appendChild(divFuncionario);
                 }
 
-                // finalizarAguardar();
+                finalizarAguardar();
             });
         } else {
             throw ('Houve um erro na API!');
         }
     }).catch(function (resposta) {
         console.error(resposta);
-        // finalizarAguardar();
+        finalizarAguardar();
     });
 }
 
@@ -96,5 +96,21 @@ function pesquisa() {
         } else {
             usuarios[i].usuario.style.display = "none";
         }
+    }
+}
+
+function aguardar() {
+    var divAguardar = document.getElementById("div_aguardar");
+    divAguardar.style.display = "flex";
+}
+
+function finalizarAguardar(texto) {
+    var divAguardar = document.getElementById("div_aguardar");
+    divAguardar.style.display = "none";
+
+    var divErrosLogin = document.getElementById("div_erros_login");
+    if (texto) {
+        divErrosLogin.style.display = "flex";
+        divErrosLogin.innerHTML = texto;
     }
 }

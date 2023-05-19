@@ -96,15 +96,16 @@ create table funcionario (
         cpf char(11),
         dataNascimento date,
         fkSuperior int,
-        foreign key (fkSuperior) references funcionario(idFuncionario)
+        foreign key (fkSuperior) references funcionario(idFuncionario),
+        foto varchar(300)
 )auto_increment = 100000;
 
 -- Dados referentes aos usuarios
-insert into funcionario values (null,'rogério ceni', 'CEO','rogério@gmail.com','rogério123','55011914578156','12345689751','1960-09-08',null),
-                           (null,'diego costa', 'Supervisor','diego@sptech.com','diego123','55011923322189','45698732156','2005-10-25',100000),
-						   (null,'felipe alves santos', 'Gestor','felipe@gmail.com','felipe123','55011972311126','59862178956','2003-03-24',100001),
-						   (null,'luciano neves','Gerente','luciano@outlook.com','luciano123','55011962322128','56418965487','1997-04-24',100002),
-                           (null,'gabriel neves', 'Desenvolvedor','gabriel@outlook.com','gabriel123','55011934322144','45698765230','1975-08-1',100003);
+insert into funcionario values (null,'Rogério Ceni', 'CEO','rogério@gmail.com','rogério123','55011914578156','12345689751','1960-09-08',null,'https://moodle.sptech.school/pluginfile.php/20865/user/icon/degrade/f1?rev=2149080'),
+                           (null,'Diego Costa', 'Supervisor','diego@sptech.com','diego123','55011923322189','45698732156','2005-10-25',100000,'https://moodle.sptech.school/pluginfile.php/20865/user/icon/degrade/f1?rev=2149080'),
+						   (null,'Felipe Alves', 'Gestor','felipe@gmail.com','felipe123','55011972311126','59862178956','2003-03-24',100001,'https://moodle.sptech.school/pluginfile.php/20865/user/icon/degrade/f1?rev=2149080'),
+						   (null,'Luciano Neves','Gerente','luciano@outlook.com','luciano123','55011962322128','56418965487','1997-04-24',100002,'https://moodle.sptech.school/pluginfile.php/20865/user/icon/degrade/f1?rev=2149080'),
+                           (null,'Gabriel Neves', 'Desenvolvedor','gabriel@outlook.com','gabriel123','55011934322144','45698765230','1975-08-1',100003,'https://moodle.sptech.school/pluginfile.php/20865/user/icon/degrade/f1?rev=2149080');
                            
 
 

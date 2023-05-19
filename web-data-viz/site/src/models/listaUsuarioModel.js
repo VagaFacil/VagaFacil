@@ -5,7 +5,8 @@ function exibirUsuarios(idFuncionario) {
     var instrucao = `
     SELECT sup.idFuncionario AS superior,
         func.idFuncionario AS funcionario,
-        func.nome
+        func.nome,
+        func.foto
             FROM funcionario AS sup JOIN funcionario AS func 
                 ON func.fkSuperior = sup.idFuncionario
                     WHERE sup.idFuncionario = ${idFuncionario};
