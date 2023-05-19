@@ -55,36 +55,7 @@
                     <input id="ipt_pesquisa" type="text" placeholder="Pesquisar usuário" oninput="pesquisa()">
                 </div>
                 <div id="scroll">
-                    <div class="usuarios" onclick="exibir(anizio)" id="div_anizio">
-                        <img class="img" src="../img/sobrenos/anizio.jpg" alt="">
-                        <h1 class="nome">Anízio Mesquita</h1>
-                        <img class="seta" src="img/seta.png" alt="">
-                    </div>
-                    <div class="usuarios" onclick="exibir(bruno)" id="div_bruno">
-                        <img class="img" src="../img/sobrenos/bruno.png" alt="">
-                        <h1 class="nome">Bruno Lima</h1>
-                        <img class="seta" src="img/seta.png" alt="">
-                    </div>
-                    <div class="usuarios" onclick="exibir(daniel)" id="div_daniel">
-                        <img class="img" src="../img/sobrenos/daniel.jpg" alt="">
-                        <h1 class="nome">Daniel Yuzo</h1>
-                        <img class="seta" src="img/seta.png" alt="">
-                    </div>
-                    <div class="usuarios" onclick="exibir(gabriel)" id="div_gabriel">
-                        <img class="img" src="../img/sobrenos/gabriel.jpg" alt="">
-                        <h1 class="nome">Gabriel Branco</h1>
-                        <img class="seta" src="img/seta.png" alt="">
-                    </div>
-                    <div class="usuarios" onclick="exibir(henrique)" id="div_henrique">
-                        <img class="img" src="../img/sobrenos/henrique.jpg" alt="">
-                        <h1 class="nome">Henrique Bechis</h1>
-                        <img class="seta" src="img/seta.png" alt="">
-                    </div>
-                    <div class="usuarios" onclick="exibir(lucas)" id="div_lucas">
-                        <img class="img" src="../img/sobrenos/lucas.jpg" alt="">
-                        <h1 class="nome">Lucas Neves</h1>
-                        <img class="seta" src="img/seta.png" alt="">
-                    </div>
+                    
                 </div>
             </div>
             <div class="campo-info">
@@ -98,14 +69,14 @@
                         <p>Telefone</p>
                         <p>Email</p>
                     </div>
-                    <div class="respostas">
-                        <p id="nome">-</p>
-                        <p id="sobrenome">-</p>
-                        <p id="dataN">-</p>
-                        <p id="cpf">-</p>
-                        <p id="telefone">-</p>
-                        <p id="email">-</p>
-                    </div>
+                    <form class="respostas" id="form_infos">
+                        <p id="nome" name="nome">-</p>
+                        <p id="sobrenome" name="">-</p>
+                        <p id="dataN" name="">-</p>
+                        <p id="cpf" name="">-</p>
+                        <p id="telefone" name="">-</p>
+                        <p id="email" name="">-</p>
+                    </form>
                 </div>
                 <div class="space-btn">
                     <button id="btn-excluir">Excluir usuário</button>
@@ -113,9 +84,6 @@
             </div>
         </div>
     </main>
-
-
-    <!--Início Footer-->
     <footer>
         <div class="rodape">
             <div class="container">
@@ -155,86 +123,12 @@
             </div>
         </div>
     </footer>
-    <!--Fim do Footer-->
 </body>
-
 </html>
 <script>
         var idFuncionario = sessionStorage.ID_FUNCIONARIO;
 
-        function atualizarFeed() {
-        //aguardar();
-        fetch("/listaUsuario/exibirUsuarios").then(function (resposta) {
-            if (resposta.ok) {
-                if (resposta.status == 204) {
-                    var feed = document.getElementById("feed_container");
-                    var mensagem = document.createElement("span");
-                    mensagem.innerHTML = "Nenhum resultado encontrado."
-                    feed.appendChild(mensagem);
-                    throw "Nenhum resultado encontrado!!";
-                }
+        atualizarFormulario(idFuncionario)
 
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-                    var feed = document.getElementById("feed_container");
-                    feed.innerHTML = "";
-                    for (let i = 0; i < resposta.length; i++) {
-                        var publicacao = resposta[i];
-
-                        // criando e manipulando elementos do HTML via JavaScript
-                        var divPublicacao = document.createElement("div");
-                        var spanID = document.createElement("span");
-                        var spanTitulo = document.createElement("span");
-                        var spanNome = document.createElement("span");
-                        var divDescricao = document.createElement("div");
-                        var divButtons = document.createElement("div");
-                        var btnEditar = document.createElement("button");
-                        var btnDeletar = document.createElement("button");
-
-
-                        spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
-                        spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
-                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
-                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
-                        btnEditar.innerHTML = "Editar";
-                        btnDeletar.innerHTML = "Deletar";
-
-                        divPublicacao.className = "publicacao";
-                        spanTitulo.id = "inputNumero" + publicacao.idAviso;
-                        spanNome.className = "publicacao-nome";
-                        spanTitulo.className = "publicacao-titulo";
-                        divDescricao.className = "publicacao-descricao";
-
-                        divButtons.className = "div-buttons"
-
-                        btnEditar.className = "publicacao-btn-editar"
-                        btnEditar.id = "btnEditar" + publicacao.idAviso;
-                        btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
-
-                        btnDeletar.className = "publicacao-btn-editar"
-                        btnDeletar.id = "btnDeletar" + publicacao.idAviso;
-                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
-
-                        divPublicacao.appendChild(spanID);
-                        divPublicacao.appendChild(spanNome);
-                        divPublicacao.appendChild(spanTitulo);
-                        divPublicacao.appendChild(divDescricao);
-                        divPublicacao.appendChild(divButtons);
-                        divButtons.appendChild(btnEditar);
-                        divButtons.appendChild(btnDeletar);
-                        feed.appendChild(divPublicacao);
-                    }
-
-                    finalizarAguardar();
-                });
-            } else {
-                throw ('Houve um erro na API!');
-            }
-        }).catch(function (resposta) {
-            console.error(resposta);
-            finalizarAguardar();
-        });
-    }
 
 </script>

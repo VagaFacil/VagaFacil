@@ -1,11 +1,28 @@
 var database = require("../database/config");
 
 function exibirUsuarios(idFuncionario) {
-    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarUsuarios()");
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function exibirUsuarios()");
     var instrucao = `
     SELECT sup.idFuncionario AS superior,
         func.idFuncionario AS funcionarios,
         func.nome
+            FROM funcionario AS sup JOIN funcionario AS func 
+                ON func.fkSuperior = sup.idFuncionario
+                    WHERE sup.idFuncionario = ${idFuncionario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function exibirInfos(idFuncionario) {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function exibirInfos()");
+    var instrucao = `
+    SELECT func.idFuncionario AS funcionarios,
+        func.nome AS nome,
+        func.dataNascimento AS nascimento,
+        func.cpf AS cpf,
+        func.telefone AS telefone,
+        func.email AS email
             FROM funcionario AS sup JOIN funcionario AS func 
                 ON func.fkSuperior = sup.idFuncionario
                     WHERE sup.idFuncionario = ${idFuncionario};
@@ -25,5 +42,6 @@ function deletarUsuario(idFuncionario) {
 
 module.exports = {
     exibirUsuarios,
+    exibirInfos,
     deletarUsuario
 }

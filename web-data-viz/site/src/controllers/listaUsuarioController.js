@@ -6,7 +6,25 @@ function testar(req, res) {
 }
 
 function exibirUsuarios(req, res) {
-    listaUsuarioModel.exibirUsuarios().then(function (resultado) {
+    var idFuncionario = req.params.idFuncionario;
+
+    listaUsuarioModel.exibirUsuarios(idFuncionario).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function exibirInfos(req, res) {
+    var idFuncionario = req.params.idFuncionario;
+
+    listaUsuarioModel.exibirInfos(idFuncionario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -40,5 +58,6 @@ function deletarUsuario(req, res) {
 module.exports = {
     testar,
     exibirUsuarios,
+    exibirInfos,
     deletarUsuario
 }
