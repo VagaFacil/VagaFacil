@@ -258,7 +258,6 @@ create table dados(
 		fkSensor int,
 		foreign key(fksensor) references sensor(idSensor)
 )auto_increment=250000;
-
 -- Dados referenter aos dados do sensor
 insert into dados values (null, '2023-04-10 07:00:00', '0', 200000), (null, '2023-04-10 07:30:00', '0', 200000), (null, '2023-04-10 08:00:00', '0', 200000), (null, '2023-04-10 08:30:00', '1', 200000),
                          (null, '2023-04-10 09:00:00', '1', 200000), (null, '2023-04-10 09:30:00', '1', 200000), (null, '2023-04-10 10:00:00', '1', 200000), (null, '2023-04-10 10:30:00', '1', 200000),
@@ -325,7 +324,7 @@ insert into dados values (null, '2023-04-10 07:00:00', '0', 200000), (null, '202
                          (null, '2023-04-10 18:30:00', '1', 200009), (null, '2023-04-10 19:00:00', '0', 200009);
                          
 -- select dataHora, SUM(valor) FROM dados group by dataHora;
-
+SELECT valor FROM dados WHERE idDados = 250000;
 -- select das tabelas simples
 -- select * from empresa;
 -- select * from filial;

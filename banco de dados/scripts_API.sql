@@ -10,7 +10,7 @@ select * from endereco;
 select * from sensor;
 select * from dados;
 select * from bairro;
-
+desc funcionario;
 --
 select sup.idFuncionario as superior,
  func.idFuncionario as funcionarios,
