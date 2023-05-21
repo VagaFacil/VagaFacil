@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/mediaQueries.css">
+    <script src="js/menuH.js"></script>
+    <script src="js/usuarios.js"></script>
+    <script src="js/perfil.js"></script>
+    <title>Vaga Fácil</title>
+</head>
+
+<body>
+    <!-- Começo do Header -->
+    <header>
+        <nav class="nav">
+
+            <a href=""><img class="logo" src="img/logo.png" alt="Home"></a>
+
+            <img class="menuH" onclick="menuH()" src="img/menuH.png" alt="Menu Hamburguer">
+
+            <div id="listaMenuH">
+                <img onclick="seta()" src="img/seta.png" alt="">
+                <ul class="itens-menuH">
+                    <!-- <li><a href="dashboard.html">Dashboard</a></li> -->
+                    <li><a href="acompanhar.html">Acompanhar</a></li>
+                    <li><a href="expandir.html">Expandir</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="usuarios.html">Lista de usuários</a></li>
+                    <li><a href="adicionarUsuario.html">Adicionar usuário</a></li>
+                    <button class="btn-site" onclick="sair()">Site Institucional</button>
+                </ul>
+            </div>
+        </nav>
+        <div id="alertSair">
+            <div class="caixa">
+                <h1>Deseja voltar para o Site Institucional?</h1>
+                <button onclick="sim()">Sim</button>
+                <button onclick="nao()">Não</button>
+            </div>
+        </div>
+    </header>
+    <!-- Fim do Header -->
+    <div class="container">
+        <div class="usuario">
+            <div class="menu" id="menu">
+                <img src="../img/sobrenos/lucas.jpg" id="usuario">
+                <p id="nomeUsuario">Lucas Neves Rocha</p>
+                <div class="campos">
+                    <button onclick="exibir_informacaoPessoal()">Dados Pessoais</button>
+                    <button onclick="exibir_comercial()">Dados Empresariais</button>
+                    <button onclick="exibir_atuacao()">Atuação</button>
+                    <button onclick="exibir_personalizar()">Personalizar usuario</button>
+                </div>
+            </div>
+            <div class="informacaoPessoal" id="pessoal">
+                <h1>Nome e Sobrenome</h1>
+                <p id="nomePessoal">Lucas Neves Rocha</p>
+                <h1>Data de nascimento</h1>
+                <p>03/07/1999</p>
+                <h1>CPF</h1>
+                <p>547.555.736-44</p>
+                <h1>Telefone</h1>
+                <p>(11)91234-4321</p>
+                <h1>Email</h1>
+                <p>lucas123@gmail.com</p>
+            </div>
+            <div class="comercial" id="comercial">
+                <h1>Nome da empresa</h1>
+                <p>Vaga Fácil</p>
+                <h1>CEP</h1>
+                <p>01414-001</p>
+                <h1>Localização</h1>
+                <p> Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP</p>
+                <h1>CNPJ</h1>
+                <p>42.591.681/0031-43</p>
+            </div>
+            <div class="atuacao" id="atuacao">
+                <h1>Setor</h1>
+                <p>Desenvolvimento</p>
+                <h1>Cargo</h1>
+                <p>Desenvolvedor JR</p>
+                <h1>Area de Atuação</h1>
+                <p>Back-end</p>
+                <h1>Jornada de trabalho</h1>
+                <p>Jornada comercial- 45 Horas semanais</p>
+            </div>
+            <div class="personalizar" id="personalizar">
+                <h1>Alterar imagem de perfil</h1>
+                <input type="file" id="img" accept="image/**" onclick="novaImagem()">
+                <!-- <input type="submit"> -->
+                <h1>Alterar Nome</h1>
+                <input type="text" id="alterarNome">
+                <button onclick="mudar()">Alterar Nome</button>
+                <p id="validacaoNome"></p>
+            </div>
+        </div>
+    </div>
+
+    <!--Início Footer-->
+    <footer>
+        <div class="rodape">
+            <div class="container">
+                <div class="cardFooter">
+                    <img src="img/logo.png" id="logoFooter">
+                </div>
+                <div class="cardFooterCentral">
+                    <ul>
+                        <!-- <li>
+                            <a href="dashboard.html">Dashboard</a>
+                        </li> -->
+                        <li>
+                            <a href="Acompanhar.html">Acompanhar</a>
+                        </li>
+                        <li>
+                            <a href="expandir.html">Expandir</a>
+                        </li>
+                        <li>
+                            <a href="perfil.html">Perfil</a>
+                        </li>
+                        <li>
+                            <a href="usuarios.html">Lista de usuários</a>
+                        </li>
+                        <li>
+                            <a href="adicionarUsuario.html">Adicionar usuário</a>
+                        </li>
+                        <li>
+                            <a href="../index.html">Site Institucional</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cardFooter">
+                    <a href=""><img src="../img/instagram.png" alt="Link para nossa página no instagram"></a>
+                    <a href=""><img src="../img/facebook.png" alt="Link para nossa página no FaceBook"></a>
+                    <a href=""><img src="../img/twitter.png" alt="Link para nossa página no Twitter"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Fim do Footer-->
+</body>
+
+</html>
