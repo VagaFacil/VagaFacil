@@ -182,40 +182,40 @@
 
     // verificar_autenticacao();
 
-   /*  function alterarTitulo(idDados) {
-        var tituloAquario = document.getElementById(`tituloAquario${idDados}`)
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idDados + "</span>"
-    } */
+    /*  function alterarTitulo(idDados) {
+         var tituloAquario = document.getElementById(`tituloAquario${idDados}`)
+         tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idDados + "</span>"
+     } */
 
     function exibirAquario(idDados) {
         banner2.style.display = "block"
-       /*  let todosOsGraficos = document.getElementById("img1")
-
-        for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
-            // exibindo - ou não - o gráfico
-            let elementoAtual = document.getElementById(`grafico${i}`)
-            if (elementoAtual.classList.contains("display-block")) {
-                elementoAtual.classList.remove("display-block")
-            }
-            elementoAtual.classList.add("display-none")
-            
-            // alterando estilo do botão
-            let btnAtual = document.getElementById(`btnAquario${i}`)
-            if (btnAtual.classList.contains("btn-pink")) {
-                btnAtual.classList.remove("btn-pink")
-            }
-            btnAtual.classList.add("btn-white")
-        }
-        
-        // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${idDados}`)
-        graficoExibir.classList.remove("display-none")
-        graficoExibir.classList.add("display-block")
-        
-        // alterando estilo do botão
-        let btnExibir = document.getElementById(`btnAquario${idDados}`)
-        btnExibir.classList.remove("btn-white")
-        btnExibir.classList.add("btn-pink") */
+        /*  let todosOsGraficos = document.getElementById("img1")
+ 
+         for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
+             // exibindo - ou não - o gráfico
+             let elementoAtual = document.getElementById(`grafico${i}`)
+             if (elementoAtual.classList.contains("display-block")) {
+                 elementoAtual.classList.remove("display-block")
+             }
+             elementoAtual.classList.add("display-none")
+             
+             // alterando estilo do botão
+             let btnAtual = document.getElementById(`btnAquario${i}`)
+             if (btnAtual.classList.contains("btn-pink")) {
+                 btnAtual.classList.remove("btn-pink")
+             }
+             btnAtual.classList.add("btn-white")
+         }
+         
+         // exibindo - ou não - o gráfico
+         let graficoExibir = document.getElementById(`grafico${idDados}`)
+         graficoExibir.classList.remove("display-none")
+         graficoExibir.classList.add("display-block")
+         
+         // alterando estilo do botão
+         let btnExibir = document.getElementById(`btnAquario${idDados}`)
+         btnExibir.classList.remove("btn-white")
+         btnExibir.classList.add("btn-pink") */
     }
 
     // O gráfico é construído com três funções:
@@ -262,23 +262,18 @@
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
-        let labels = [];
+        let labels = [ ];
 
         // Criando estrutura para plotar gráfico - dados
         let dados = {
+
             labels: labels,
-            datasets: [{
-                label: 'Umidade',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            },
+            datasets: [
             {
                 label: 'Temperatura',
                 data: [],
                 fill: false,
-                borderColor: 'rgb(199, 52, 52)',
+                borderColor: '#F49C24',
                 tension: 0.1
             }]
         };
@@ -290,9 +285,10 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
-            dados.datasets[1].data.push(registro.temperatura);
+            var hora = new Date(registro.dataHora);
+            labels.push(hora.getHours() + ':' + hora.getMinutes());
+            // dados.datasets[0].data.push(registro.umidade);
+            dados.datasets[0].data.push(registro.valor);
         }
 
         console.log('----------------------------------------------')
@@ -306,6 +302,21 @@
         // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'line',
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Ocupação total da rua',
+                        color: '#F49C24',
+                        font:{
+                            size: 20
+                        }
+                    },
+                    legend:{
+                        display: false
+                    }
+                }
+            },
             data: dados,
         };
 
@@ -328,7 +339,7 @@
 
 
 
-        fetch(`/medidas/tempo-real/${idDados}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/acompanhar/tempo-real/${idDados}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
