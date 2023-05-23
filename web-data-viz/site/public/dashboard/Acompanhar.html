@@ -364,12 +364,14 @@
                     } else {
                         // tirando e colocando valores no gráfico
                         dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].dataHora); // incluir um novo momento
+                        var hora = new Date(novoRegistro[0].dataHora);
+                        dados.labels.push(hora.getHours() + `:` + hora.getMinutes()); // incluir um novo momento
 
                        /*  dados.datasets[0].data.shift();  // apagar o primeiro de umidade
                         dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
  */
                         dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                        
                         dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de temperatura
 
                         myChart.update();
