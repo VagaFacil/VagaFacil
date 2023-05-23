@@ -323,7 +323,8 @@ insert into dados values (null, '2023-04-10 07:00:00', '1', 200000), (null, '202
                          (null, '2023-04-10 14:30:00', '1', 200009), (null, '2023-04-10 15:00:00', '1', 200009), (null, '2023-04-10 15:30:00', '1', 200009), (null, '2023-04-10 16:00:00', '1', 200009),
                          (null, '2023-04-10 16:30:00', '1', 200009), (null, '2023-04-10 17:00:00', '1', 200009), (null, '2023-04-10 17:30:00', '1', 200009), (null, '2023-04-10 18:00:00', '0', 200009),
                          (null, '2023-04-10 18:30:00', '1', 200009), (null, '2023-04-10 19:00:00', '0', 200009);
-                         
+SELECT * FROM dados;
+TRUNCATE TABLE dados;
 select dataHora, SUM(valor) FROM dados group by dataHora;
 select SUM(valor) FROM dados group by dataHora;
 SELECT valor FROM dados WHERE idDados = 250000;

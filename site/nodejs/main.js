@@ -37,17 +37,15 @@ const serial = async (
     arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', async (data) => {
         const valores = data.split(';');
 
-        const chave = parseInt(valores[0]);
+        const idSensor = parseInt(valores[0]);
+        const chave = parseInt(valores[1]);
 
         valoresChave.push(chave);
 
         if (HABILITAR_OPERACAO_INSERIR) {
-            var now = new Date();
-            var dataHora = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()} ${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}`;
-            console.log(dataHora);
             await poolBancoDados.execute(
-                'INSERT INTO dados (dataHora, valor, fkSensor) VALUES (?, ?, 200000)',
-                [dataHora, chave]
+                'INSERT INTO dados (dataHora, valor, fkSensor) VALUES (now(), ?, ?)',
+                [chave, idSensor]
             )
         }
 
