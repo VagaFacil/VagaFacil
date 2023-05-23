@@ -52,7 +52,7 @@ INSERT INTO bairro VALUES (null, 'Água Rasa', 'Leste', 715.05), (null, 'Alto de
 
 
 -- criação da tabela endereco e inserção de valores 
-create table Endereco (
+create table endereco (
 		idEndereco int primary key auto_increment,
         logradouro varchar(45), 
         fkBairro int,
@@ -60,7 +60,7 @@ create table Endereco (
 )auto_increment = 150000;
 
 -- Dados referentes as ruas
-insert into Endereco values (null, 'Rua Antonio Bento',  44),
+insert into endereco values (null, 'Rua Antonio Bento',  44),
 					   (null, 'Rua Consolação', 26),
                        (null, 'Avenida Doutor Luís Rocha Miranda', 37),
                        (null, 'Rua dos Pinheiros', 63),
@@ -75,7 +75,7 @@ create table filial (
         fkEmpresa int,
         foreign key (fkEmpresa) references empresa(idEmpresa),
         fkEndereco int,
-        foreign key (fkEndereco) references Endereco(idEndereco)
+        foreign key (fkEndereco) references endereco(idEndereco)
 )auto_increment = 50000;
 
 desc filial;
@@ -111,17 +111,17 @@ insert into funcionario values (null,'Fernando Brandão', 'CEO','fernando@gmail.
 
 
 -- Tabela Filial e Funcionários (muitos para muitos)
-create table filialFuncionario (
+create table FilialFuncionario (
 fkFilial int,
 foreign key (fkFilial) references filial(idFilial),
 fkFuncionario int,
-foreign key (fkFuncionario) references Funcionario(idFuncionario),
+foreign key (fkFuncionario) references funcionario(idFuncionario),
 Primary key (fkFilial, fkFuncionario)
 );
 
 
 -- Inserir valores na tabela filiaFuncionario
-insert into filialFuncionario values (50000,100000),
+insert into FilialFuncionario values (50000,100000),
 									 (50001,100001);
 									 -- (50002,100002),
 									 -- (50003,100003);
@@ -234,7 +234,7 @@ SELECT * FROM funcionario;
 create table sensor(
 		idSensor int primary key auto_increment,
 		fkEndereco int,
-        foreign key (fkEndereco) references Endereco(idEndereco),
+        foreign key (fkEndereco) references endereco(idEndereco),
 		numRua varchar(45),
 		numSensor varchar(45)
 )auto_increment=200000;
@@ -363,4 +363,4 @@ SELECT valor FROM dados WHERE idDados = 250000;
 -- select * from bairro join bairroRenda join bairroIdade join bairroPopulacao on bairro.idBairro = bairroRenda.idBairro 
 --                             and bairro.idBairro = bairroIdade.idBairro and bairro.idBairro = bairroPopulacao.idBairro;
 
--- drop database vagafacil;
+drop database VagaFacil;

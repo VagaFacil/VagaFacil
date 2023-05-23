@@ -55,9 +55,9 @@ function exibirDadosEmpresariais(req, res) {
 
 function alterarNome(req, res) {
     var idFuncionario = req.params.idFuncionario;
-    // var nomeNovo = req.params.alterarNome.value;
+    var nomeNovo = req.params.nomeNovo;
 
-    perfilModel.alterarNome(idFuncionario).then(function (resultado) {
+    perfilModel.alterarNome(nomeNovo, idFuncionario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

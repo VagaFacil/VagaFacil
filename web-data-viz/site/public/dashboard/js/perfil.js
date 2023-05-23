@@ -92,9 +92,10 @@ function exibir_personalizar() {
 }
 
 function mudarNome(nomeNovo, idFuncionario) {
-    fetch(`/perfil/alterarNome/${idFuncionario}`).then(function (resposta) {
+    // var nomeNovo = document.getElementById("outroNome");
+    fetch(`/perfil/alterarNome/${idFuncionario}, ${nomeNovo}`).then(function (resposta) {
         if (resposta.ok) {
-            if (alterarNome.value.length >= 5) {
+            if (outroNome.value.length >= 5) {
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
                     infos = resposta[0]
@@ -108,7 +109,7 @@ function mudarNome(nomeNovo, idFuncionario) {
                 });
             } else {
                 validacaoNome.innerHTML = "O seu novo nome tem que ter no mínimo <u>5</u> caracteres";
-                alterarNome.style = "border-color: red;";
+                nomeNovo.style = "border-color: red;";
             }
         } else {
             throw ('Houve um erro na API!');
