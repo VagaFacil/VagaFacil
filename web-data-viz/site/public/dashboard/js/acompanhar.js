@@ -187,7 +187,7 @@ function prosseguir() {
 
     /* Começo do gráfico de ocupação da rua */
     if (endereco.value == "1") {
-        dadosLinha = [4, 10, 5, 6, 10, 15, 45, 14, 10, 8, 7, 12, 14, 24, 53, 40, 38, 35, 35, 30, 21, 44, 10, 8];
+        dadosLinha = [1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1,1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1];
         graficoLinha.data.datasets = [{
             data: dadosLinha,
         }]

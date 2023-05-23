@@ -12,7 +12,9 @@ var indexRouter = require("./src/routes/index");
 var funcionarioRouter = require("./src/routes/funcionario");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
+var acompanharRouter = require("./src/routes/acompanhar");
 var listaUsuarioRouter = require("./src/routes/listaUsuario");
+var perfilRouter = require("./src/routes/perfil");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -25,7 +27,9 @@ app.use("/funcionario", funcionarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/listaUsuario", listaUsuarioRouter)
 app.use("/medidas", medidasRouter)
+app.use("/acompanhar", acompanharRouter)
 
+app.use("/perfil", perfilRouter)
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
     Você está rodando sua aplicação em Ambiente de ${process.env.AMBIENTE_PROCESSO} \n

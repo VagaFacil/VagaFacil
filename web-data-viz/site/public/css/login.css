@@ -27,7 +27,33 @@ a {
 
 /*  Final da frase "login" */
 
-
+.card_erro {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    top: 80px;
+    right: 20px;
+    border: 2px solid var(--laranja);
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.393);
+    backdrop-filter: blur(10px);
+    color: var(--laranja);
+    font-family: 'fonte';
+    border-radius: 10px;
+}
+.card_erro #mensagem_erro {
+    font-weight: 500;
+    font-size: 25px;
+}
+.loading-div {
+    width: 50px;
+    margin: auto;
+    display: none;
+}
+.loading-div img {
+    height: 50px;
+    width: 50px;
+}
 
 
 /*Início do banner*/

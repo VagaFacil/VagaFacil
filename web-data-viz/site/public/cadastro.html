@@ -26,7 +26,7 @@
                 <li><a href="index.html">Início</a></li>
                 <li><a href="sobrenos.html">Sobre Nós</a></li>
                 <li><a href="calculadora.html">Calculadora</a></li>
-                <li><a href="faleconosco.html">Fale Conosco</a></li>
+                <li><a href="https://vaga-facil.atlassian.net/servicedesk/customer/portal/1/user/login?destination=portal%2F1">Fale Conosco</a></li>
                 <li><a class="btn-login" href="login.html"><img src="img/nav/login.png" alt=""></a></li>
             </ul>
         </nav>
@@ -66,7 +66,7 @@
                         </li>
                         <li>
                             <p>CPF</p>
-                            <input id="ipt_cpf" type="text" placeholder="000-000-000-94">
+                            <input onkeydown="cpf(ipt_cpf.value)" id="ipt_cpf" type="text" placeholder="000-000-000-94">
                             <div id="vCpf">Informe um CPF válido</div>
 
                         </li>
@@ -91,7 +91,7 @@
                         </li>
                         <li>
                             <p>CNPJ</p>
-                            <input id="ipt_cnpj" type="text">
+                            <input onkeydown="cnpj(ipt_cnpj.value)" id="ipt_cnpj" type="text">
                             <div id="vCnpj">Informe um CNPJ válido</div>
                         </li>
                         <li>
@@ -147,8 +147,8 @@
                         </li>
                         <li>
                             <p>Confirmar senha</p>
-                            <input id="ipt_confirmarSenha" type="confirmação" id="ipt_senha" oninput="cadastro()">
-                            <div id="vSenhaRep">Informe uma senha válida</div>
+                            <input id="ipt_confirmarSenha" type="confirmação">
+                            <div id="vConfirmarSenha">Senhas diferentes</div>
                         </li>
                     </ul>
                 </div>
@@ -197,125 +197,3 @@
 </body>
 
 </html>
-
-<script>
-    function cadastrar() {
-        var nomeVar = ipt_nome.value;
-        var cargoVar = ipt_cargo.value;
-        var telefoneVar = ipt_telefone.value;
-        var cpfVar = ipt_cpf.value;
-        var dataNascimentoVar = ipt_dataN.value;
-        var fkSuperiorVar = null;
-
-        var razaoVar = ipt_razao.value;
-        var cnpjVar = ipt_cnpj.value;
-        var cepVar = ipt_cep.value;
-        var numeroVar = ipt_numero.value;
-        var compVar = ipt_comp.value;
-        var bairroVar = ipt_bairro.value;
-
-        var emailVar = ipt_email.value;
-        var senhaVar = ipt_senha.value;
-        var confirmarSenhaVar = ipt_confirmarSenha.value;
-
-        var erroNome = false;
-        var erroCargo = false;
-        var erroDatan = false;
-        var erroCpf = false;
-        var erroTelefone = false;
-        var erroRazao = false;
-        var erroCnpj = false;
-        var erroCep = false;
-        var erroEndereco = false;
-        var erroNumero = false;
-        var erroComp = false;
-        var erroBairro = false;
-        var erroEmail = false;
-        var erroSenha = false;
-        var erroSenhaRep = false;
-        var validarCard1 = false;
-        var validarCard2 = false;
-        var validarCard3 = false;
-
-        if (nomeVar.length < 3) {
-            vNome.style.display = 'block';
-            ipt_nome.style = 'border-color: red';
-            erroNome = true;
-        } else {
-            vNome.style.display = 'none';
-            ipt_nome.style = 'border-color: #32a7b1';
-            erroNome = false;
-        }
-        if (cargoVar.length < 3) {
-            vCargo.style.display = 'block';
-            ipt_cargo.style = 'border-color: red';
-            erroCargo = true;
-        } else {
-            vCargo.style.display = 'none';
-            ipt_cargo.style = 'border-color: #32a7b1';
-            erroCargo = false;
-        }
-        validarCard1 = erroNome == false && erroCargo == false && erroDatan == false && erroCpf == false && erroTelefone == false;
-
-        if (razaoVar.length < 3) {
-            vRazao.style.display = 'block';
-            ipt_razao.style = 'border-color: red';
-            erroNome = true;;
-        } else {
-            vRazao.style.display = 'none';
-            ipt_razao.style = 'border-color: #32a7b1';
-            erroNome = false;
-        }
-        validarCard2 = erroRazao == false && erroCnpj == false && erroCep == false && erroEndereco == false && erroNumero == false && erroComp == false && erroBairro == false;
-
-        if (emailVar.indexOf('@') < 0 && emailVar.indexOf('.com') < 0) {
-            vEmail.style.display = 'block';
-            ipt_email.style = 'border-color: red';
-            erroEmail = true;;
-        } else {
-            vEmail.style.display = 'none';
-            ipt_email.style = 'border-color: #32a7b1';
-            erroEmail = false;
-        }
-        validarCard3 = erroEmail == false && erroSenha == false && erroSenhaRep == false;
-
-
-        if (validarCard1 == false || validarCard2 == false || validarCard3 == false) {
-            return false;
-        }
-        else {
-            // Enviando o valor da nova input
-            fetch("/funcionario/cadastrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/funcionario.js
-                    nomeServer: nomeVar,
-                    cargoServer: cargoVar,
-                    emailServer: emailVar,
-                    senhaServer: senhaVar,
-                    telefoneServer: telefoneVar,
-                    cpfServer: cpfVar,
-                    dataNascimentoServer: dataNascimentoVar,
-                    fkSuperiorServer: fkSuperiorVar
-                })
-            }).then(function (resposta) {
-                console.log("resposta: ", resposta);
-                if (resposta.ok) {
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, "2000")
-                } else {
-                    throw ("Houve um erro ao tentar realizar o cadastro!");
-                }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-            return false;
-        }
-
-    }
-</script>

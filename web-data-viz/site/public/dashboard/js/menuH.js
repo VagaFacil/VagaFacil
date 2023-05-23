@@ -13,7 +13,8 @@ function sair() {
 }
 
 function sim() {
-    location.href = '../index.html'
+    sessionStorage.clear();
+    location.href = '../login.html'
     alertSair.style.display = 'none';
 }
 

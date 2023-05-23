@@ -81,9 +81,6 @@ function exibir(idFuncionario) {
 }
 
 
-
-
-
 function pesquisa() {
     var usuarios = [{ nome: 'anizio mesquita', usuario: div_anizio, }, { nome: 'bruno lima', usuario: div_bruno },
     { nome: 'daniel yuzo', usuario: div_daniel }, { nome: 'gabriel branco', usuario: div_gabriel },
