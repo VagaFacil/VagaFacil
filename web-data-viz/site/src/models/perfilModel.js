@@ -49,8 +49,8 @@ function exibirDadosEmpresariais(idFuncionario) {
 function alterarNome(idFuncionario) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function exibirInfos()");
     var instrucao = `
-    select cargo 
-    from funcionario WHERE idFuncionario = ${idFuncionario};
+    UPDATE funcionario SET nome = 'nome' WHERE idFuncionario = ${idFuncionario};
+    SELECT nome FROM funcionario WHERE idFuncionario = ${idFuncionario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

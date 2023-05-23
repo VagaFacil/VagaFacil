@@ -92,7 +92,7 @@ function exibir_personalizar() {
 }
 
 function mudarNome(nomeNovo, idFuncionario) {
-    fetch(`/perfil/alterarNome/${nomeNovo},${idFuncionario}`).then(function (resposta) {
+    fetch(`/perfil/alterarNome/${idFuncionario}`).then(function (resposta) {
         if (resposta.ok) {
             if (alterarNome.value.length >= 5) {
                 resposta.json().then(function (resposta) {
