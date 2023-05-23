@@ -19,8 +19,8 @@ router.get("/exibirDadosEmpresariais/:idFuncionario", function (req, res) {
     perfilController.exibirDadosEmpresariais(req, res);
 });
 
-router.get("/exibirAtuacao/:idFuncionario", function (req, res) {
-    perfilController.exibirAtuacao(req, res);
+router.get("/alterarNome/:nomeNovo,idFuncionario", function (req, res) {
+    perfilController.alterarNome(req, res);
 });
 
 module.exports = router;
