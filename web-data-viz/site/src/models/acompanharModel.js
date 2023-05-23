@@ -40,7 +40,7 @@ function buscarMedidasEmTempoReal(idDados) {
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
-        select SUM(valor) FROM dados group by dataHora`;
+        select dataHora, SUM(valor) as valor FROM dados group by dataHora`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
