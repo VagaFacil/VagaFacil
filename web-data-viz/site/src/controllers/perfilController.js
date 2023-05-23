@@ -40,7 +40,7 @@ function exibirDadosPessoais(req, res) {
 function exibirDadosEmpresariais(req, res) {
     var idFuncionario = req.params.idFuncionario;
 
-    listaUsuarioModel.exibirDadosEmpresariais(idFuncionario).then(function (resultado) {
+    perfilModel.exibirDadosEmpresariais(idFuncionario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -53,10 +53,11 @@ function exibirDadosEmpresariais(req, res) {
     });
 }
 
-function exibirAtuacao(req, res) {
+function alterarNome(req, res) {
     var idFuncionario = req.params.idFuncionario;
+    var nomeNovo = req.params.alterarNome.value;
 
-    listaUsuarioModel.exibirAtuacao(idFuncionario).then(function (resultado) {
+    perfilModel.alterarNome(nomeNovo,idFuncionario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -74,5 +75,5 @@ module.exports = {
     exibirPerfil,
     exibirDadosPessoais,
     exibirDadosEmpresariais,
-    exibirAtuacao,
+    alterarNome,
 }

@@ -10,9 +10,8 @@
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/perfil.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/mediaQueries.css">
+    <!-- <link rel="stylesheet" href="css/mediaQueries.css"> -->
     <script src="js/menuH.js"></script>
-    <script src="js/usuarios.js"></script>
     <script src="js/perfil.js"></script>
     <title>Vaga Fácil</title>
 </head>
@@ -51,54 +50,55 @@
     <div class="container">
         <div class="usuario">
             <div class="menu" id="menu">
-                <img src="../img/sobrenos/lucas.jpg" id="usuario">
-                <p id="nomeUsuario">Lucas Neves Rocha</p>
+                <img src="" id="usuarioFoto">
+                <p id="nomeUsuario"></p>
                 <div class="campos">
-                    <button onclick="exibir_informacaoPessoal()">Dados Pessoais</button>
-                    <button onclick="exibir_comercial()">Dados Empresariais</button>
-                    <button onclick="exibir_atuacao()">Atuação</button>
-                    <button onclick="exibir_personalizar()">Personalizar usuario</button>
+                    <button onclick="exibir_informacaoPessoal(idFuncionario)">Dados Pessoais</button>
+                    <button onclick="exibir_comercial(idFuncionario)">Dados Empresariais</button>
+                    <!-- <button onclick="exibir_atuacao()">Atuação</button> -->
+                    <button onclick="exibir_personalizar(idFuncionario)">Personalizar usuario</button>
                 </div>
             </div>
-            <div class="informacaoPessoal" id="pessoal">
+            <div class="informacao" id="pessoal">
                 <h1>Nome e Sobrenome</h1>
-                <p id="nomePessoal">Lucas Neves Rocha</p>
+                <p id="nomePessoal"></p>
                 <h1>Data de nascimento</h1>
-                <p>03/07/1999</p>
+                <p id="dataN"></p>
                 <h1>CPF</h1>
-                <p>547.555.736-44</p>
+                <p id="cpf"></p>
                 <h1>Telefone</h1>
-                <p>(11)91234-4321</p>
+                <p id="telefone"></p>
                 <h1>Email</h1>
-                <p>lucas123@gmail.com</p>
+                <p id="email"></p>
             </div>
-            <div class="comercial" id="comercial">
+            <div class="informacao" id="comercial">
                 <h1>Nome da empresa</h1>
-                <p>Vaga Fácil</p>
+                <p id="nomeEmpresa"></p>
                 <h1>CEP</h1>
-                <p>01414-001</p>
+                <p id="cep">01414-001</p>
                 <h1>Localização</h1>
-                <p> Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP</p>
+                <p id="logradouro"></p>
                 <h1>CNPJ</h1>
-                <p>42.591.681/0031-43</p>
+                <p id="cnpj"></p>
+                <h1>Cargo</h1>
+                <p id="cargo"></p>
             </div>
-            <div class="atuacao" id="atuacao">
+            <!-- <div class="atuacao" id="atuacao">
                 <h1>Setor</h1>
                 <p>Desenvolvimento</p>
-                <h1>Cargo</h1>
-                <p>Desenvolvedor JR</p>
+                
                 <h1>Area de Atuação</h1>
                 <p>Back-end</p>
                 <h1>Jornada de trabalho</h1>
                 <p>Jornada comercial- 45 Horas semanais</p>
-            </div>
+            </div> -->
             <div class="personalizar" id="personalizar">
                 <h1>Alterar imagem de perfil</h1>
                 <input type="file" id="img" accept="image/**" onclick="novaImagem()">
                 <!-- <input type="submit"> -->
                 <h1>Alterar Nome</h1>
-                <input type="text" id="alterarNome">
-                <button onclick="mudar()">Alterar Nome</button>
+                <input type="text" id="outroNome">
+                <button onclick="mudarNome(nomeNovo, idFuncionario)">Alterar Nome</button>
                 <p id="validacaoNome"></p>
             </div>
         </div>
@@ -148,3 +148,7 @@
 </body>
 
 </html>
+<script>
+    var idFuncionario = sessionStorage.ID_FUNCIONARIO;
+    carregarPagina(idFuncionario)
+</script>
