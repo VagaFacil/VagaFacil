@@ -101,11 +101,11 @@ create table funcionario (
 )auto_increment = 100000;
 
 -- Dados referentes aos usuarios
-insert into funcionario values (null,'Fernando Brandão', 'CEO','fernando@gmail.com','fernando123','(11)91234-4321','123.456.897-51','1960-09-08',null,''),
+insert into funcionario values (null,'Fernando Brandão', 'CEO','fernando@gmail.com','fernando123','(11)91234-4321','123.456.897-51','1960-09-08',null,'https://cdn-icons-png.flaticon.com/128/1077/1077114.png'),
                            (null,'Bruno Lima', 'Desenvolvedor','bruno@gmail.com','bruno123','(11)93456-6543','456.987.321-56','2005-10-25',100000,'https://moodle.sptech.school/pluginfile.php/20865/user/icon/degrade/f1?rev=2149080'),
-                           (null,'Daniel Yuzo', 'Desenvolvedor','daniel@gmail.com','daniel123','(11)94567-7654','456.987.321-56','2005-10-25',100000,''),
-						   (null,'Gabriel Branco', 'Desenvolvedor','gabriel@gmail.com','gabriel123','(11)95678-8765','598.621.789-56','2003-03-24',100000,''),
-						   (null,'Henrique Bechis','Desenvolvedor','henrique@gmail.com','henrique123','(11)96789-9876','564.189.654-87','1997-04-24',100000,''),
+                           (null,'Daniel Yuzo', 'Desenvolvedor','daniel@gmail.com','daniel123','(11)94567-7654','456.987.321-56','2005-10-25',100000,'https://cdn-icons-png.flaticon.com/128/1077/1077114.png'),
+						   (null,'Gabriel Branco', 'Desenvolvedor','gabriel@gmail.com','gabriel123','(11)95678-8765','598.621.789-56','2003-03-24',100000,'https://cdn-icons-png.flaticon.com/128/1077/1077114.png'),
+						   (null,'Henrique Bechis','Desenvolvedor','henrique@gmail.com','henrique123','(11)96789-9876','564.189.654-87','1997-04-24',100000,'https://cdn-icons-png.flaticon.com/128/1077/1077114.png'),
                            (null,'Lucas Neves', 'Desenvolvedor','lucas@gmail.com','lucas123','(11)97890-0987','456.987.652-30','1975-08-1',100000,'https://moodle.sptech.school/pluginfile.php/20658/user/icon/degrade/f1?rev=2790193');
                            
 
@@ -122,9 +122,11 @@ Primary key (fkFilial, fkFuncionario)
 
 -- Inserir valores na tabela filiaFuncionario
 insert into FilialFuncionario values (50000,100000),
-									 (50001,100001);
-									 -- (50002,100002),
-									 -- (50003,100003);
+									 (50001,100001),
+									 (50001,100002),
+									 (50001,100003),
+									 (50001,100004),
+									 (50001,100005);
 
 
 
@@ -342,10 +344,10 @@ SELECT valor FROM dados WHERE idDados = 250000;
 -- select tabela empresa e filial
 -- select * from empresa join filial on fkEmpresa = idEmpresa;
 
--- select tabela filial e usuario
--- select * from filial join funcionario on fkFilial = idFilial;
-
--- select tabela empresa, filial e usuario
+-- select tabela filial e funcionario
+-- select * from filial join filialFuncionario join funcionario on fkFilial = idFilial and fkFilial = idFilial;
+-- select * from filialFuncionario;
+-- select tabela empresa, filial e funcionario
 -- select * from empresa join filial join funcionario on fkEmpresa = idEmpresa and fkFilial = idFilial;
 
 -- select tabela rua e sensor
@@ -364,4 +366,4 @@ SELECT valor FROM dados WHERE idDados = 250000;
 -- select * from bairro join bairroRenda join bairroIdade join bairroPopulacao on bairro.idBairro = bairroRenda.idBairro 
 --                             and bairro.idBairro = bairroIdade.idBairro and bairro.idBairro = bairroPopulacao.idBairro;
 
-drop database VagaFacil;
+-- drop database VagaFacil;

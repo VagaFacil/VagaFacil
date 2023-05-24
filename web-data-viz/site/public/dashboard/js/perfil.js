@@ -9,14 +9,14 @@ function carregarPagina(idFuncionario) {
                 nome.innerHTML = infos.nome;
                 var Foto = document.getElementById("usuarioFoto");
                 Foto.src = infos.foto;
-                // finalizarAguardar();
+
             });
         } else {
             throw ('Houve um erro na API!');
         }
     }).catch(function (resposta) {
         console.error(resposta);
-        // finalizarAguardar();
+
     });
 }
 
@@ -41,14 +41,13 @@ function exibir_informacaoPessoal(idFuncionario) {
                 comercial.style = "display: none;";
                 personalizar.style = "display: none;";
                 // atuacao.style = "display: none;";
-                // finalizarAguardar();
+
             });
         } else {
             throw ('Houve um erro na API!');
         }
     }).catch(function (resposta) {
         console.error(resposta);
-        // finalizarAguardar();
     });
 }
 
@@ -73,62 +72,56 @@ function exibir_comercial(idFuncionario) {
                 comercial.style = "display: flex;";
                 personalizar.style = "display: none;";
                 // atuacao.style = "display: none;";
-                // finalizarAguardar();
             });
         } else {
             throw ('Houve um erro na API!');
         }
     }).catch(function (resposta) {
         console.error(resposta);
-        // finalizarAguardar();
     });
 }
 
 function exibir_personalizar() {
     pessoal.style = "display: none;";
     comercial.style = "display: none;";
-    // atuacao.style = "display: none;";
     personalizar.style = "display: flex;";
+    // atuacao.style = "display: none;";
 }
-
-function mudarNome(nomeNovo, idFuncionario) {
-    // var nomeNovo = document.getElementById("outroNome");
-    fetch(`/perfil/alterarNome/${idFuncionario}, ${nomeNovo}`).then(function (resposta) {
+function mudarNome() {
+    fetch(`/perfil/alterarNome/${nomeNovo}, ${sessionStorage.getItem("ID_FUNCIONARIO")}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            descricao: nomeNovo.value
+        })
+    }).then(function (resposta) {
+        console.log(resposta)
         if (resposta.ok) {
             if (outroNome.value.length >= 5) {
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-                    infos = resposta[0]
-                    var nomeNovo = document.getElementById("outroNome");
-                    var nomePessoal = document.getElementById("nomePessoal");
-                    var nome = document.getElementById("nomeUsuario");
-                    nome.innerHTML = infos.nome;
-                    nomePessoal.innerHTML = infos.nome;
-                    nomeNovo.innerHTML = infos.nome;
-                    // finalizarAguardar();
-                });
+                infos = resposta[0]
+                var nomeP = document.getElementById("nomePessoal");
+
+                carregarPagina(idFuncionario);
             } else {
                 validacaoNome.innerHTML = "O seu novo nome tem que ter no mínimo <u>5</u> caracteres";
-                nomeNovo.style = "border-color: red;";
+                outroNome.style = "border-color: red;";
             }
+        } else if (resposta.status == 404) {
+            window.alert("Deu 404!");
         } else {
-            throw ('Houve um erro na API!');
+            throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
         }
     }).catch(function (resposta) {
-        console.error(resposta);
-        // finalizarAguardar();
+        console.log(`#ERRO: ${resposta}`);
     });
 }
-// function exibir_atuacao() {
-//     pessoal.style = "display: none;";
-//     comercial.style = "display: none;";
-//     atuacao.style = "display: flex;";
-//     personalizar.style = "display: none;";
-// }
+
 
 // function novaImagem() {
 //     const perfilImagemInput = document.getElementById('img');
-//     const perfilImagemUsuario = document.getElementById('usuario');
+//     const perfilImagemUsuario = document.getElementById('usuarioFoto');
 
 //     perfilImagemInput.addEventListener("change", function () {
 //         const arquivo = this.files[0];

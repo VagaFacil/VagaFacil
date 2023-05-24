@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/perfil.css">
     <link rel="stylesheet" href="css/footer.css">
+    <script src="../js/funcoes.js"></script>
     <!-- <link rel="stylesheet" href="css/mediaQueries.css"> -->
     <script src="js/menuH.js"></script>
     <script src="js/perfil.js"></script>
@@ -98,7 +99,7 @@
                 <!-- <input type="submit"> -->
                 <h1>Alterar Nome</h1>
                 <input type="text" id="outroNome">
-                <button onclick="mudarNome(idFuncionario, nomeNovo)">Alterar Nome</button>
+                <button onclick="mudarNome()">Alterar Nome</button>
                 <p id="validacaoNome"></p>
             </div>
         </div>
@@ -150,7 +151,7 @@
 </html>
 <script>
     var idFuncionario = sessionStorage.ID_FUNCIONARIO;
-    var nomeNovo = outroNome.value;
-    
+    var nomeNovo = document.getElementById("outroNome");
+
     carregarPagina(idFuncionario)
 </script>
