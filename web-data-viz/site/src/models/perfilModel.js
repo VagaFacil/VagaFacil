@@ -47,7 +47,7 @@ function exibirDadosEmpresariais(idFuncionario) {
 }
 
 function alterarNome(nomeNovo, idFuncionario) {
-    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function alterarNome(): ", nomeNovo, idFuncionario);
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function alterarNome():", nomeNovo, idFuncionario);
     var instrucao = `
     UPDATE funcionario SET nome = '${nomeNovo}' WHERE idFuncionario = ${idFuncionario};
     `;

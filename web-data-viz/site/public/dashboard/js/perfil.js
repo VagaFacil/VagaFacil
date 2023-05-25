@@ -87,22 +87,22 @@ function exibir_personalizar() {
     personalizar.style = "display: flex;";
     // atuacao.style = "display: none;";
 }
+
 function mudarNome() {
-    fetch(`/perfil/alterarNome/${nomeNovo}, ${sessionStorage.getItem("ID_FUNCIONARIO")}`, {
+    var nomeNovo = outroNome.value;
+    fetch(`/perfil/alterarNome/${sessionStorage.getItem("ID_FUNCIONARIO")}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            descricao: nomeNovo.value
+            nome: nomeNovo
         })
     }).then(function (resposta) {
         console.log(resposta)
         if (resposta.ok) {
-            if (outroNome.value.length >= 5) {
+            if (nomeNovo.length >= 5) {
                 infos = resposta[0]
-                var nomeP = document.getElementById("nomePessoal");
-
                 carregarPagina(idFuncionario);
             } else {
                 validacaoNome.innerHTML = "O seu novo nome tem que ter no mínimo <u>5</u> caracteres";
