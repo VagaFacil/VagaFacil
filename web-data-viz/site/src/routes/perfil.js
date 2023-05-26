@@ -19,7 +19,7 @@ router.get("/exibirDadosEmpresariais/:idFuncionario", function (req, res) {
     perfilController.exibirDadosEmpresariais(req, res);
 });
 
-router.get("/alterarNome/idFuncionario", function (req, res) {
+router.put("/alterarNome/:idFuncionario", function (req, res) {
     perfilController.alterarNome(req, res);
 });
 
