@@ -11,7 +11,7 @@ router.get("/listarBairro", function (req, res) {
     expandirController.listarBairro(req, res);
 });
 
-router.get("/listarRuas", function (req, res) {
+router.get("/listarRuas/:idBairro", function (req, res) {
     expandirController.listarRuas(req, res);
 });
 

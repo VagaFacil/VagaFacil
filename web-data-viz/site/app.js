@@ -15,6 +15,7 @@ var medidasRouter = require("./src/routes/medidas");
 var acompanharRouter = require("./src/routes/acompanhar");
 var listaUsuarioRouter = require("./src/routes/listaUsuario");
 var perfilRouter = require("./src/routes/perfil");
+var expandirRouter = require("./src/routes/expandir");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,6 +29,7 @@ app.use("/avisos", avisosRouter);
 app.use("/listaUsuario", listaUsuarioRouter)
 app.use("/medidas", medidasRouter)
 app.use("/acompanhar", acompanharRouter)
+app.use("/expandir", expandirRouter)
 
 app.use("/perfil", perfilRouter)
 app.listen(PORTA, function () {
