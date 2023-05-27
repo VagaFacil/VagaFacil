@@ -491,13 +491,41 @@
         }
     }
 
-    var dadosHistorico = [];
+    var dadosHistorico = {};
     var dadosTempoReal = [];
 
     function mostrarDados(idRua) {
         divDados.style.display = 'flex';
         divRua.style.display = 'none';
-        
+        fetch('/expandir/historicoMensal/' + idRua).then((response) => {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                   dadosHistorico.mensal = resposta; 
+                });
+            }
+        }).catch((erro) => {
+            dadosHistorico.mensal = '';
+        });
+
+        fetch('/expandir/historicoSemanal/' + idRua).then((response) => {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                   dadosHistorico.semanal = resposta; 
+                });
+            }
+        }).catch((erro) => {
+            dadosHistorico.semanal = '';
+        });
+
+        fetch('/expandir/historicoDiario/' + idRua).then((response) => {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                   dadosHistorico.diario = resposta; 
+                });
+            }
+        }).catch((erro) => {
+            dadosHistorico.diario = '';
+        });
     }
     // Fim de tela de filtro de ruas
 
