@@ -54,20 +54,20 @@ function exibirDadosEmpresariais(req, res) {
 }
 
 function alterarNome(req, res) {
+    var nomeNovo = req.body.descricao;
     var idFuncionario = req.params.idFuncionario;
-    // var nomeNovo = req.params.alterarNome.value;
 
-    perfilModel.alterarNome(idFuncionario).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
+    perfilModel.alterarNome(nomeNovo, idFuncionario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 module.exports = {

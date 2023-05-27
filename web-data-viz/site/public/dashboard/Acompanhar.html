@@ -350,12 +350,12 @@
 
                     let avisoCaptura = document.getElementById(`avisoCaptura${idDados}`)
                     // avisoCaptura.innerHTML = ""
+                     var hora = new Date(novoRegistro[0].dataHora);
 
-
-                    if (novoRegistro[0].dataHora == dados.labels[dados.labels.length - 1]) {
+                    if ((hora.getHours() + `:` + hora.getMinutes()) == dados.labels[dados.labels.length - 1]) {
                         console.log("---------------------------------------------------------------")
                         console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                         console.log("Horário do novo dado capturado:")
                         console.log(novoRegistro[0].dataHora)
                         console.log("Horário do último dado capturado:")
@@ -364,7 +364,7 @@
                     } else {
                         // tirando e colocando valores no gráfico
                         dados.labels.shift(); // apagar o primeiro
-                        var hora = new Date(novoRegistro[0].dataHora);
+                       
                         dados.labels.push(hora.getHours() + `:` + hora.getMinutes()); // incluir um novo momento
 
                        /*  dados.datasets[0].data.shift();  // apagar o primeiro de umidade

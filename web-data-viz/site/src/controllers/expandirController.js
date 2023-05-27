@@ -3,7 +3,11 @@ var expandirModel = require("../models/expandirModel");
 var sessoes = [];
 
 function testar(req, res) {
+<<<<<<< HEAD
     console.log("ENTRAMOS NA expandirController");
+=======
+    console.log("ENTRAMOS NA funcionarioController");
+>>>>>>> 4a8eb8619165e0ba7ab7a2a89c711b367691bb58
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
@@ -24,6 +28,26 @@ function listarBairro(req, res) {
         );
 }
 
+<<<<<<< HEAD
+=======
+function listarRuas(req, res) {
+    expandirModel.listarRuas()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+>>>>>>> 4a8eb8619165e0ba7ab7a2a89c711b367691bb58
 function entrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
@@ -90,7 +114,11 @@ function cadastrar(req, res) {
         res.status(400).send("Sua data de nascimento está undefined!");
     } else if (fkSuperior === undefined) {
         res.status(400).send("Seu superior está undefined!");
+<<<<<<< HEAD
     }
+=======
+    } 
+>>>>>>> 4a8eb8619165e0ba7ab7a2a89c711b367691bb58
     else {
         // Passe os valores como parâmetro e vá para o arquivo expandirModel.js
         expandirModel.cadastrar(nome, cargo, email, senha, telefone, cpf, dataNascimento, fkSuperior)
@@ -116,5 +144,9 @@ function cadastrar(req, res) {
 
 module.exports = {
     listarBairro,
+<<<<<<< HEAD
+=======
+    listarRuas,
+>>>>>>> 4a8eb8619165e0ba7ab7a2a89c711b367691bb58
     testar
 }
