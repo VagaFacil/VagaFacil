@@ -11,6 +11,7 @@ router.get("/listarBairro", function (req, res) {
     expandirController.listarBairro(req, res);
 });
 
+router.get("/listarRuas/:idBairro", function (req, res) {
 <<<<<<< HEAD
 //Recebendo os dados do html e direcionando para a função cadastrar de expandirController.js
 /* router.post("/cadastrar", function (req, res) {

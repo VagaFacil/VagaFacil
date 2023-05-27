@@ -17,7 +17,7 @@ function listarBairro(req, res) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
             } else {
-                res.status(204).send("Nenhum resultado encontrado!")
+                res.status(204).send("Nenhum resultado encontrado!");
             }
         }).catch(
             function (erro) {
@@ -31,12 +31,14 @@ function listarBairro(req, res) {
 <<<<<<< HEAD
 =======
 function listarRuas(req, res) {
-    expandirModel.listarRuas()
+    var idBairro = req.params.idBairro;
+
+    expandirModel.listarRuas(idBairro)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
             } else {
-                res.status(204).send("Nenhum resultado encontrado!")
+                res.status(204).send("Nenhum resultado encontrado!");
             }
         }).catch(
             function (erro) {

@@ -16,7 +16,7 @@ function listarBairro() {
 =======
     console.log("ACESSEI O expandir MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-            select b.nome AS 'bairro', b.regiao AS 'zona', bp.fluxo, bi.adolescente, bi.jovemAdulto, 
+            select b.idBairro, b.nome AS 'bairro', b.regiao AS 'zona', bp.fluxo, bi.adolescente, bi.jovemAdulto, 
                 bi.adulto, bi.idoso, br.baixa, br.media, br.alta
                 from bairro AS b join bairroRenda AS br join bairroIdade AS bi 
                 join bairroPopulacao AS bp on b.idBairro = br.idBairro 
@@ -30,7 +30,7 @@ function listarBairro() {
 function listarRuas(idBairro) {
     console.log("ACESSEI O expandir MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarRuas()", idBairro);
     var instrucao = `
-            select e.logradouro FROM endereco e JOIN bairro b ON b.idBairro = e.fkBairro
+            select e.idEndereco, e.logradouro FROM endereco e JOIN bairro b ON b.idBairro = e.fkBairro
                 WHERE b.idBairro = ${idBairro} AND EXISTS (SELECT idSensor FROM sensor s WHERE e.idEndereco = s.fkEndereco);
 >>>>>>> 4a8eb8619165e0ba7ab7a2a89c711b367691bb58
     `;
