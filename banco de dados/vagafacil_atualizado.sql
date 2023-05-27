@@ -1,7 +1,6 @@
 create database VagaFacil;
 use VagaFacil;
 
--- Criação da  tabela empresa 
 create table empresa (
 		idEmpresa int primary key auto_increment,
         razao varchar(45),
@@ -16,7 +15,66 @@ insert into empresa values (null,'coca-cola','45.997.418/0001-53'),
                            (null,'carrefour','45.543.915/0001-81'), 
                            (null,'continental','48.754.139/0001-57');
 
--- Criação tabela bairro
+create table filial (
+		idFilial int primary key auto_increment,
+        numero int,
+        complemento varchar(45),
+        fkEmpresa int,
+        foreign key (fkEmpresa) references empresa(idEmpresa),
+        fkEndereco int,
+        foreign key (fkEndereco) references endereco(idEndereco)
+)auto_increment = 50000;
+
+
+
+
+-- Dados referentes as filiais
+insert into filial values (null, 105,'Chácara Santo Antônio (Zona Sul)',1,150000),
+						  (null, 100,'Jabaquara, São Paulo)',2, 150001),
+                          (null, 213,'Vila Tramontano, São Paulo - SP',3, 150002),
+                          (null, 131,'Vila Endres, Guarulhos - SP',4, 15003);
+
+
+
+create table funcionario (
+		idFuncionario int primary key auto_increment,
+        nome varchar(50),
+        cargo varchar(45),
+        email varchar(100),
+        senha varchar(18),
+        telefone char(14),
+        cpf char(11),
+        dataNascimento date,
+        fkSuperior int,
+        foreign key (fkSuperior) references funcionario(idFuncionario)
+)auto_increment = 100000;
+
+-- Dados referentes aos usuarios
+insert into funcionario values (null,'rogério ceni', 'CEO','rogério@gmail.com','rogério123','55011914578156','12345689751','1960-09-08',null),
+                           (null,'diego costa', 'Supervisor','diego@sptech.com','diego123','55011923322189','45698732156','2005-10-25',100000),
+						   (null,'felipe alves santos', 'Gestor','felipe@gmail.com','felipe123','55011972311126','59862178956','2003-03-24',100001),
+						   (null,'luciano neves','Gerente','luciano@outlook.com','luciano123','55011962322128','56418965487','1997-04-24',100002),
+                           (null,'gabriel neves', 'Desenvolvedor','gabriel@outlook.com','gabriel123','55011934322144','45698765230','1975-08-1',100003);
+                           
+
+
+-- Tabela Filial e Funcionários (muitos para muitos)
+create table filialFuncionario (
+fkFilial int,
+foreign key (fkFilial) references filial(idFilial),
+fkFuncionario int,
+foreign key (fkFuncionario) references Funcionario(idFuncionario),
+Primary key (fkFilial, fkFuncionario)
+);
+
+
+-- Inserir valores na tabela filiaFuncionario
+insert into filialFuncionario values (50000,100000),
+									 (50001,100001),
+									 (50002,100002),
+									 (50003,100003);
+
+
 create table bairro(
 		idBairro int primary key auto_increment,
 		nome varchar(45),
@@ -24,7 +82,8 @@ create table bairro(
 		area decimal(7,2)
 );
 
--- Inserindo dados na tebela bairro
+
+
 INSERT INTO bairro VALUES (null, 'Água Rasa', 'Leste', 715.05), (null, 'Alto de Pinheiros', 'Oeste', 751.27), (null, 'Anhanguera', 'Oeste', 3339.95), (null, 'Aricanduva', 'Leste', 686.27),
                           (null, 'Artur Alvim', 'Leste', 653.04), (null, 'Barra Funda', 'Centro', 589.81), (null, 'Bela Vista', 'Centro', 276.71), (null, 'Belém', 'Leste', 613.55),
                           (null, 'Bom Retiro', 'Centro', 427.39), (null, 'Brás', 'Centro', 364.61), (null, 'Brasilândia', 'Oeste', 2106.12), (null, 'Butantã', 'Oeste', 1291.72),
@@ -49,87 +108,6 @@ INSERT INTO bairro VALUES (null, 'Água Rasa', 'Leste', 715.05), (null, 'Alto de
                           (null, 'Vila Andrade', 'Sul', 1032.63), (null, 'Vila Curuçá', 'Leste', 952.36), (null, 'Vila Formosa', 'Leste', 751.52), (null, 'Vila Guilherme', 'Leste', 724.79),
                           (null, 'Vila Jacuí', 'Leste', 823.01), (null, 'Vila Leopoldina', 'Oeste', 700.48), (null, 'Vila Maria', 'Norte', 1181.71), (null, 'Vila Mariana', 'Sul', 854.26),
                           (null, 'Vila Matilde', 'Leste', 891.87), (null, 'Vila Medeiros', 'Norte', 789.39), (null, 'Vila Prudente', 'Leste', 960.19), (null, 'Vila Sônia', 'Sul', 1008.97);
-
-
--- criação da tabela endereco e inserção de valores 
-create table endereco (
-		idEndereco int primary key auto_increment,
-        logradouro varchar(45), 
-        fkBairro int,
-        foreign key (fkBairro) references bairro(idBairro)
-)auto_increment = 150000;
-
--- Dados referentes as ruas
-insert into endereco values (null, 'Rua Antonio Bento',  44),
-					   (null, 'Rua Consolação', 26),
-                       (null, 'Avenida Doutor Luís Rocha Miranda', 37),
-                       (null, 'Rua dos Pinheiros', 63),
-                       (null, 'Alameda Itupiranga', 79);
-
--- Criação tabela Filial
-create table filial (
-		idFilial int primary key auto_increment,
-        numero int,
-        cep char(9),
-        complemento varchar(45),
-        fkEmpresa int,
-        foreign key (fkEmpresa) references empresa(idEmpresa),
-        fkEndereco int,
-        foreign key (fkEndereco) references endereco(idEndereco)
-)auto_increment = 50000;
-
-desc filial;
--- Dados referentes as filiais
-insert into filial values (50000, 105, '01432-000', 'Chácara Santo Antônio (Zona Sul)',1,150000);
-insert into filial values (50001, 100, '01416-003', 'Jabaquara, São Paulo)',2, 150001);
--- insert into filial values (50002, 213, '04344-010', 'Vila Tramontano, São Paulo - SP',3, 15000);
--- insert into filial values (50003, 131, '05422-000', 'Vila Endres, Guarulhos - SP',4, 15003);
-
--- Criação do Funcionário
-create table funcionario (
-		idFuncionario int primary key auto_increment,
-        nome varchar(50),
-        cargo varchar(45),
-        email varchar(100),
-        senha varchar(18),
-        telefone char(14),
-        cpf char(14),
-        dataNascimento date,
-        fkSuperior int,
-        foreign key (fkSuperior) references funcionario(idFuncionario),
-        foto varchar(300)
-)auto_increment = 100000;
-
--- Dados referentes aos usuarios
-insert into funcionario values (null,'Fernando Brandão', 'CEO','fernando@gmail.com','fernando123','(11)91234-4321','123.456.897-51','1960-09-08',null,'https://cdn-icons-png.flaticon.com/128/1077/1077114.png'),
-                           (null,'Bruno Lima', 'Desenvolvedor','bruno@gmail.com','bruno123','(11)93456-6543','456.987.321-56','2005-10-25',100000,'https://moodle.sptech.school/pluginfile.php/20865/user/icon/degrade/f1?rev=2149080'),
-                           (null,'Daniel Yuzo', 'Desenvolvedor','daniel@gmail.com','daniel123','(11)94567-7654','456.987.321-56','2005-10-25',100000,'https://cdn-icons-png.flaticon.com/128/1077/1077114.png'),
-						   (null,'Gabriel Branco', 'Desenvolvedor','gabriel@gmail.com','gabriel123','(11)95678-8765','598.621.789-56','2003-03-24',100000,'https://cdn-icons-png.flaticon.com/128/1077/1077114.png'),
-						   (null,'Henrique Bechis','Desenvolvedor','henrique@gmail.com','henrique123','(11)96789-9876','564.189.654-87','1997-04-24',100000,'https://cdn-icons-png.flaticon.com/128/1077/1077114.png'),
-                           (null,'Lucas Neves', 'Desenvolvedor','lucas@gmail.com','lucas123','(11)97890-0987','456.987.652-30','1975-08-1',100000,'https://moodle.sptech.school/pluginfile.php/20658/user/icon/degrade/f1?rev=2790193');
-                           
-
-
--- Tabela Filial e Funcionários (muitos para muitos)
-create table FilialFuncionario (
-fkFilial int,
-foreign key (fkFilial) references filial(idFilial),
-fkFuncionario int,
-foreign key (fkFuncionario) references funcionario(idFuncionario),
-Primary key (fkFilial, fkFuncionario)
-);
-
-
--- Inserir valores na tabela filiaFuncionario
-insert into FilialFuncionario values (50000,100000),
-									 (50001,100001),
-									 (50001,100002),
-									 (50001,100003),
-									 (50001,100004),
-									 (50001,100005);
-
-
-
 
 create table bairroPopulacao(
 		idBairro int primary key,
@@ -231,12 +209,26 @@ INSERT INTO bairroRenda VALUES (1, 57.1932, 47.0499, 12.1096), (2, 8.9715, 19.50
                                (89, 146.1914, 25.2075, 4.7168), (90, 15.2567, 19.8849, 27.7995), (91, 70.6696, 16.3737, 9.2671), (92, 32.3848, 66.7291, 55.3953),
                                (93, 79.2010, 31.5674, 7.5392), (94, 93.5469, 48.7579, 15.5779), (95, 66.1859, 33.8683, 8.9264), (96, 54.4991, 32.0654, 31.4439);
 
-SELECT * FROM funcionario;
+-- criação da tabela rua e inserção de valores 
+create table Endereco (
+		idEndereco int primary key auto_increment,
+        logradouro varchar(45), 
+        cep char(9),
+        fkBairro int,
+        foreign key (fkBairro) references bairro(idBairro)
+)auto_increment = 150000;
+
+-- Dados referentes as ruas
+insert into Endereco values (null, 'Rua Antonio Bento', '01432-000', 44),
+					   (null, 'Rua Consolação', '01416-003',26),
+                       (null, 'Avenida Doutor Luís Rocha Miranda', '04344-010',37),
+                       (null, 'Rua dos Pinheiros','05422-000', 63),
+                       (null, 'Alameda Itupiranga', '04294-090', 79);
 
 create table sensor(
 		idSensor int primary key auto_increment,
 		fkEndereco int,
-        foreign key (fkEndereco) references endereco(idEndereco),
+        foreign key (fkEndereco) references Endereco(idEndereco),
 		numRua varchar(45),
 		numSensor varchar(45)
 )auto_increment=200000;
@@ -252,118 +244,116 @@ insert into sensor values (null, 150000, '202', '1'),
                           (null, 150000, '604', '8'),
                           (null, 150002, '200', '9'),
                           (null, 150002, '578', '10');
-    USE vagaFacil;
-dados(
+
+create table dados(
 		idDados int primary key auto_increment,
 		dataHora datetime,
 		valor char(1),
 		fkSensor int,
 		foreign key(fksensor) references sensor(idSensor)
 )auto_increment=250000;
-USE vagaFacil;
+
 -- Dados referenter aos dados do sensor
-insert into dados values (null, '2023-04-10 07:00:00', '0', 200000), (null, '2023-04-10 07:30:00', '0', 200000), (null, '2023-04-10 08:00:00', '0', 200000), (null, '2023-04-10 08:30:00', '1', 200000),
-                         (null, '2023-04-10 09:00:00', '0', 200000), (null, '2023-04-10 09:30:00', '1', 200000), (null, '2023-04-10 10:00:00', '1', 200000), (null, '2023-04-10 10:30:00', '1', 200000),
+insert into dados values (null, now(), '1', 200000), (null, '2023-04-10 07:30:00', '0', 200000), (null, '2023-04-10 08:00:00', '0', 200000), (null, '2023-04-10 08:30:00', '1', 200000),
+                         (null, '2023-04-10 09:00:00', '1', 200000), (null, '2023-04-10 09:30:00', '1', 200000), (null, '2023-04-10 10:00:00', '1', 200000), (null, '2023-04-10 10:30:00', '1', 200000),
                          (null, '2023-04-10 11:00:00', '0', 200000), (null, '2023-04-10 11:30:00', '0', 200000), (null, '2023-04-10 12:00:00', '1', 200000), (null, '2023-04-10 12:30:00', '1', 200000),
-                         (null, '2023-04-10 13:00:00', '0', 200000), (null, '2023-04-10 13:30:00', '1', 200000), (null, '2023-04-10 14:00:00', '1', 200000), (null, '2023-04-10 14:30:00', '1', 200000),
-                         (null, '2023-04-10 15:00:00', '0', 200000), (null, '2023-04-10 15:30:00', '0', 200000), (null, '2023-04-10 16:00:00', '0', 200000), (null, '2023-04-10 16:30:00', '0', 200000),
+                         (null, '2023-04-10 13:00:00', '1', 200000), (null, '2023-04-10 13:30:00', '1', 200000), (null, '2023-04-10 14:00:00', '1', 200000), (null, '2023-04-10 14:30:00', '1', 200000),
+                         (null, '2023-04-10 15:00:00', '1', 200000), (null, '2023-04-10 15:30:00', '0', 200000), (null, '2023-04-10 16:00:00', '0', 200000), (null, '2023-04-10 16:30:00', '0', 200000),
                          (null, '2023-04-10 17:00:00', '0', 200000), (null, '2023-04-10 17:30:00', '1', 200000), (null, '2023-04-10 18:00:00', '1', 200000), (null, '2023-04-10 18:30:00', '1', 200000),
-                         (null, '2023-04-10 19:00:00', '0', 200000), (null, '2023-04-10 07:00:00', '1', 200001), (null, '2023-04-10 07:30:00', '1', 200001), (null, '2023-04-10 08:00:00', '0', 200001),
+                         (null, '2023-04-10 19:00:00', '1', 200000), (null, now(), '1', 200001), (null, '2023-04-10 07:30:00', '1', 200001), (null, '2023-04-10 08:00:00', '0', 200001),
                          (null, '2023-04-10 08:30:00', '0', 200001), (null, '2023-04-10 09:00:00', '0', 200001), (null, '2023-04-10 09:30:00', '1', 200001), (null, '2023-04-10 10:00:00', '1', 200001),
                          (null, '2023-04-10 10:30:00', '1', 200001), (null, '2023-04-10 11:00:00', '0', 200001), (null, '2023-04-10 11:30:00', '1', 200001), (null, '2023-04-10 12:00:00', '1', 200001),
                          (null, '2023-04-10 12:30:00', '1', 200001), (null, '2023-04-10 13:00:00', '1', 200001), (null, '2023-04-10 13:30:00', '1', 200001), (null, '2023-04-10 14:00:00', '1', 200001),
-                         (null, '2023-04-10 14:30:00', '0', 200001), (null, '2023-04-10 15:00:00', '1', 200001), (null, '2023-04-10 15:30:00', '1', 200001), (null, '2023-04-10 16:00:00', '0', 200001), 
+                         (null, '2023-04-10 14:30:00', '1', 200001), (null, '2023-04-10 15:00:00', '1', 200001), (null, '2023-04-10 15:30:00', '1', 200001), (null, '2023-04-10 16:00:00', '0', 200001), 
                          (null, '2023-04-10 16:30:00', '0', 200001), (null, '2023-04-10 17:00:00', '0', 200001), (null, '2023-04-10 17:30:00', '1', 200001), (null, '2023-04-10 18:00:00', '1', 200001),
-                         (null, '2023-04-10 18:30:00', '0', 200001), (null, '2023-04-10 19:00:00', '0', 200001), (null, '2023-04-10 07:00:00', '1', 200002), (null, '2023-04-10 07:30:00', '1', 200002),
+                         (null, '2023-04-10 18:30:00', '1', 200001), (null, '2023-04-10 19:00:00', '0', 200001), (null, now(), '0', 200002), (null, '2023-04-10 07:30:00', '1', 200002),
                          (null, '2023-04-10 08:00:00', '0', 200002), (null, '2023-04-10 08:30:00', '1', 200002), (null, '2023-04-10 09:00:00', '0', 200002), (null, '2023-04-10 09:30:00', '1', 200002), 
                          (null, '2023-04-10 10:00:00', '1', 200002), (null, '2023-04-10 10:30:00', '1', 200002), (null, '2023-04-10 11:00:00', '0', 200002), (null, '2023-04-10 11:30:00', '1', 200002),
-                         (null, '2023-04-10 12:00:00', '0', 200002), (null, '2023-04-10 12:30:00', '1', 200002), (null, '2023-04-10 13:00:00', '0', 200002), (null, '2023-04-10 13:30:00', '1', 200002),
+                         (null, '2023-04-10 12:00:00', '1', 200002), (null, '2023-04-10 12:30:00', '1', 200002), (null, '2023-04-10 13:00:00', '0', 200002), (null, '2023-04-10 13:30:00', '1', 200002),
                          (null, '2023-04-10 14:00:00', '1', 200002), (null, '2023-04-10 14:30:00', '1', 200002), (null, '2023-04-10 15:00:00', '0', 200002), (null, '2023-04-10 15:30:00', '1', 200002),
                          (null, '2023-04-10 16:00:00', '0', 200002), (null, '2023-04-10 16:30:00', '0', 200002), (null, '2023-04-10 17:00:00', '1', 200002), (null, '2023-04-10 17:30:00', '1', 200002),
-                         (null, '2023-04-10 18:00:00', '1', 200002), (null, '2023-04-10 18:30:00', '1', 200002), (null, '2023-04-10 19:00:00', '0', 200002), (null, '2023-04-10 07:00:00', '1', 200003),
+                         (null, '2023-04-10 18:00:00', '1', 200002), (null, '2023-04-10 18:30:00', '1', 200002), (null, '2023-04-10 19:00:00', '0', 200002), (null, now(), '1', 200003),
 						 (null, '2023-04-10 07:30:00', '1', 200003), (null, '2023-04-10 08:00:00', '0', 200003), (null, '2023-04-10 08:30:00', '1', 200003), (null, '2023-04-10 09:00:00', '0', 200003),
-                         (null, '2023-04-10 09:30:00', '1', 200003), (null, '2023-04-10 10:00:00', '1', 200003), (null, '2023-04-10 10:30:00', '1', 200003), (null, '2023-04-10 11:00:00', '0', 200003),
+                         (null, '2023-04-10 09:30:00', '0', 200003), (null, '2023-04-10 10:00:00', '1', 200003), (null, '2023-04-10 10:30:00', '1', 200003), (null, '2023-04-10 11:00:00', '0', 200003),
                          (null, '2023-04-10 11:30:00', '1', 200003), (null, '2023-04-10 12:00:00', '0', 200003), (null, '2023-04-10 12:30:00', '1', 200003), (null, '2023-04-10 13:00:00', '0', 200003),
                          (null, '2023-04-10 13:30:00', '1', 200003), (null, '2023-04-10 14:00:00', '1', 200003), (null, '2023-04-10 14:30:00', '0', 200003), (null, '2023-04-10 15:00:00', '0', 200003),
-                         (null, '2023-04-10 15:30:00', '0', 200003), (null, '2023-04-10 16:00:00', '0', 200003), (null, '2023-04-10 16:30:00', '0', 200003), (null, '2023-04-10 17:00:00', '1', 200003),
-                         (null, '2023-04-10 17:30:00', '0', 200003), (null, '2023-04-10 18:00:00', '0', 200003), (null, '2023-04-10 18:30:00', '1', 200003), (null, '2023-04-10 19:00:00', '1', 200003), 
-                         (null, '2023-04-10 07:00:00', '1', 200004), (null, '2023-04-10 07:30:00', '1', 200004), (null, '2023-04-10 08:00:00', '1', 200004), (null, '2023-04-10 08:30:00', '1', 200004),
-                         (null, '2023-04-10 09:00:00', '0', 200004), (null, '2023-04-10 09:30:00', '0', 200004), (null, '2023-04-10 10:00:00', '1', 200004), (null, '2023-04-10 10:30:00', '1', 200004),
-                         (null, '2023-04-10 11:00:00', '1', 200004), (null, '2023-04-10 11:30:00', '1', 200004), (null, '2023-04-10 12:00:00', '0', 200004), (null, '2023-04-10 12:30:00', '1', 200004),
+                         (null, '2023-04-10 15:30:00', '1', 200003), (null, '2023-04-10 16:00:00', '0', 200003), (null, '2023-04-10 16:30:00', '0', 200003), (null, '2023-04-10 17:00:00', '1', 200003),
+                         (null, '2023-04-10 17:30:00', '1', 200003), (null, '2023-04-10 18:00:00', '0', 200003), (null, '2023-04-10 18:30:00', '1', 200003), (null, '2023-04-10 19:00:00', '1', 200003), 
+                         (null, now(), '1', 200004), (null, '2023-04-10 07:30:00', '1', 200004), (null, '2023-04-10 08:00:00', '1', 200004), (null, '2023-04-10 08:30:00', '1', 200004),
+                         (null, '2023-04-10 09:00:00', '1', 200004), (null, '2023-04-10 09:30:00', '0', 200004), (null, '2023-04-10 10:00:00', '1', 200004), (null, '2023-04-10 10:30:00', '1', 200004),
+                         (null, '2023-04-10 11:00:00', '0', 200004), (null, '2023-04-10 11:30:00', '1', 200004), (null, '2023-04-10 12:00:00', '0', 200004), (null, '2023-04-10 12:30:00', '1', 200004),
                          (null, '2023-04-10 13:00:00', '0', 200004), (null, '2023-04-10 13:30:00', '1', 200004), (null, '2023-04-10 14:00:00', '1', 200004), (null, '2023-04-10 14:30:00', '0', 200004),
-                         (null, '2023-04-10 15:00:00', '1', 200004), (null, '2023-04-10 15:30:00', '1', 200004), (null, '2023-04-10 16:00:00', '0', 200004), (null, '2023-04-10 16:30:00', '1', 200004),
+                         (null, '2023-04-10 15:00:00', '0', 200004), (null, '2023-04-10 15:30:00', '1', 200004), (null, '2023-04-10 16:00:00', '0', 200004), (null, '2023-04-10 16:30:00', '1', 200004),
                          (null, '2023-04-10 17:00:00', '1', 200004), (null, '2023-04-10 17:30:00', '1', 200004), (null, '2023-04-10 18:00:00', '1', 200004), (null, '2023-04-10 18:30:00', '1', 200004),
-                         (null, '2023-04-10 19:00:00', '0', 200004), (null, '2023-04-10 07:00:00', '1', 200005), (null, '2023-04-10 07:30:00', '1', 200005), (null, '2023-04-10 08:00:00', '1', 200005),
-                         (null, '2023-04-10 08:30:00', '0', 200005), (null, '2023-04-10 09:00:00', '1', 200005), (null, '2023-04-10 09:30:00', '0', 200005), (null, '2023-04-10 10:00:00', '1', 200005),
+                         (null, '2023-04-10 19:00:00', '1', 200004), (null, now(), '1', 200005), (null, '2023-04-10 07:30:00', '1', 200005), (null, '2023-04-10 08:00:00', '1', 200005),
+                         (null, '2023-04-10 08:30:00', '1', 200005), (null, '2023-04-10 09:00:00', '1', 200005), (null, '2023-04-10 09:30:00', '0', 200005), (null, '2023-04-10 10:00:00', '1', 200005),
                          (null, '2023-04-10 10:30:00', '1', 200005), (null, '2023-04-10 11:00:00', '0', 200005), (null, '2023-04-10 11:30:00', '1', 200005), (null, '2023-04-10 12:00:00', '0', 200005),
                          (null, '2023-04-10 12:30:00', '1', 200005), (null, '2023-04-10 13:00:00', '0', 200005), (null, '2023-04-10 13:30:00', '1', 200005), (null, '2023-04-10 14:00:00', '1', 200005),
                          (null, '2023-04-10 14:30:00', '0', 200005), (null, '2023-04-10 15:00:00', '0', 200005), (null, '2023-04-10 15:30:00', '1', 200005), (null, '2023-04-10 16:00:00', '0', 200005),
                          (null, '2023-04-10 16:30:00', '1', 200005), (null, '2023-04-10 17:00:00', '1', 200005), (null, '2023-04-10 17:30:00', '1', 200005), (null, '2023-04-10 18:00:00', '1', 200005),
-                         (null, '2023-04-10 18:30:00', '1', 200005), (null, '2023-04-10 19:00:00', '1', 200005), (null, '2023-04-10 07:00:00', '0', 200006), (null, '2023-04-10 07:30:00', '1', 200006),
+                         (null, '2023-04-10 18:30:00', '1', 200005), (null, '2023-04-10 19:00:00', '1', 200005), (null, now(), '0', 200006), (null, '2023-04-10 07:30:00', '1', 200006),
                          (null, '2023-04-10 08:00:00', '1', 200006), (null, '2023-04-10 08:30:00', '0', 200006), (null, '2023-04-10 09:00:00', '1', 200006), (null, '2023-04-10 09:30:00', '0', 200006),
                          (null, '2023-04-10 10:00:00', '1', 200006), (null, '2023-04-10 10:30:00', '1', 200006), (null, '2023-04-10 11:00:00', '0', 200006), (null, '2023-04-10 11:30:00', '1', 200006),
-                         (null, '2023-04-10 12:00:00', '0', 200006), (null, '2023-04-10 12:30:00', '1', 200006), (null, '2023-04-10 13:00:00', '0', 200006), (null, '2023-04-10 13:30:00', '0', 200006),
+                         (null, '2023-04-10 12:00:00', '1', 200006), (null, '2023-04-10 12:30:00', '1', 200006), (null, '2023-04-10 13:00:00', '0', 200006), (null, '2023-04-10 13:30:00', '0', 200006),
                          (null, '2023-04-10 14:00:00', '1', 200006), (null, '2023-04-10 14:30:00', '0', 200006), (null, '2023-04-10 15:00:00', '0', 200006), (null, '2023-04-10 15:30:00', '1', 200006),
                          (null, '2023-04-10 16:00:00', '0', 200006), (null, '2023-04-10 16:30:00', '1', 200006), (null, '2023-04-10 17:00:00', '1', 200006), (null, '2023-04-10 17:30:00', '0', 200006),
-                         (null, '2023-04-10 18:00:00', '0', 200006), (null, '2023-04-10 18:30:00', '1', 200006), (null, '2023-04-10 19:00:00', '1', 200006), (null, '2023-04-10 07:00:00', '0', 200007),
+                         (null, '2023-04-10 18:00:00', '0', 200006), (null, '2023-04-10 18:30:00', '1', 200006), (null, '2023-04-10 19:00:00', '1', 200006), (null, now(), '0', 200007),
 						 (null, '2023-04-10 07:30:00', '0', 200007), (null, '2023-04-10 08:00:00', '1', 200007), (null, '2023-04-10 08:30:00', '0', 200007), (null, '2023-04-10 09:00:00', '1', 200007),
                          (null, '2023-04-10 09:30:00', '0', 200007), (null, '2023-04-10 10:00:00', '1', 200007), (null, '2023-04-10 10:30:00', '1', 200007), (null, '2023-04-10 11:00:00', '0', 200007),
                          (null, '2023-04-10 11:30:00', '1', 200007), (null, '2023-04-10 12:00:00', '1', 200007), (null, '2023-04-10 12:30:00', '1', 200007), (null, '2023-04-10 13:00:00', '1', 200007),
                          (null, '2023-04-10 13:30:00', '0', 200007), (null, '2023-04-10 14:00:00', '1', 200007), (null, '2023-04-10 14:30:00', '0', 200007), (null, '2023-04-10 15:00:00', '0', 200007),
                          (null, '2023-04-10 15:30:00', '0', 200007), (null, '2023-04-10 16:00:00', '1', 200007), (null, '2023-04-10 16:30:00', '1', 200007), (null, '2023-04-10 17:00:00', '1', 200007),
                          (null, '2023-04-10 17:30:00', '0', 200007), (null, '2023-04-10 18:00:00', '0', 200007), (null, '2023-04-10 18:30:00', '1', 200007), (null, '2023-04-10 19:00:00', '1', 200007),
-                         (null, '2023-04-10 07:00:00', '1', 200008), (null, '2023-04-10 07:30:00', '0', 200008), (null, '2023-04-10 08:00:00', '1', 200008), (null, '2023-04-10 08:30:00', '0', 200008),
+                         (null, now(), '1', 200008), (null, '2023-04-10 07:30:00', '0', 200008), (null, '2023-04-10 08:00:00', '1', 200008), (null, '2023-04-10 08:30:00', '0', 200008),
                          (null, '2023-04-10 09:00:00', '0', 200008), (null, '2023-04-10 09:30:00', '0', 200008), (null, '2023-04-10 10:00:00', '1', 200008), (null, '2023-04-10 10:30:00', '1', 200008),
-                         (null, '2023-04-10 11:00:00', '0', 200008), (null, '2023-04-10 11:30:00', '1', 200008), (null, '2023-04-10 12:00:00', '1', 200008), (null, '2023-04-10 12:30:00', '1', 200008),
+                         (null, '2023-04-10 11:00:00', '1', 200008), (null, '2023-04-10 11:30:00', '1', 200008), (null, '2023-04-10 12:00:00', '1', 200008), (null, '2023-04-10 12:30:00', '1', 200008),
                          (null, '2023-04-10 13:00:00', '0', 200008), (null, '2023-04-10 13:30:00', '0', 200008), (null, '2023-04-10 14:00:00', '1', 200008), (null, '2023-04-10 14:30:00', '0', 200008),
                          (null, '2023-04-10 15:00:00', '0', 200008), (null, '2023-04-10 15:30:00', '1', 200008), (null, '2023-04-10 16:00:00', '1', 200008), (null, '2023-04-10 16:30:00', '1', 200008),
                          (null, '2023-04-10 17:00:00', '1', 200008), (null, '2023-04-10 17:30:00', '0', 200008), (null, '2023-04-10 18:00:00', '0', 200008), (null, '2023-04-10 18:30:00', '1', 200008),
-                         (null, '2023-04-10 19:00:00', '1', 200008), (null, '2023-04-10 07:00:00', '1', 200009), (null, '2023-04-10 07:30:00', '0', 200009), (null, '2023-04-10 08:00:00', '1', 200009),
+                         (null, '2023-04-10 19:00:00', '1', 200008), (null, now(), '1', 200009), (null, '2023-04-10 07:30:00', '0', 200009), (null, '2023-04-10 08:00:00', '1', 200009),
                          (null, '2023-04-10 08:30:00', '0', 200009), (null, '2023-04-10 09:00:00', '0', 200009), (null, '2023-04-10 09:30:00', '0', 200009), (null, '2023-04-10 10:00:00', '1', 200009),
                          (null, '2023-04-10 10:30:00', '1', 200009), (null, '2023-04-10 11:00:00', '0', 200009), (null, '2023-04-10 11:30:00', '0', 200009), (null, '2023-04-10 12:00:00', '1', 200009),
                          (null, '2023-04-10 12:30:00', '1', 200009), (null, '2023-04-10 13:00:00', '0', 200009), (null, '2023-04-10 13:30:00', '0', 200009), (null, '2023-04-10 14:00:00', '1', 200009),
-                         (null, '2023-04-10 14:30:00', '1', 200009), (null, '2023-04-10 15:00:00', '1', 200009), (null, '2023-04-10 15:30:00', '1', 200009), (null, '2023-04-10 16:00:00', '1', 200009),
+                         (null, '2023-04-10 14:30:00', '0', 200009), (null, '2023-04-10 15:00:00', '1', 200009), (null, '2023-04-10 15:30:00', '1', 200009), (null, '2023-04-10 16:00:00', '1', 200009),
                          (null, '2023-04-10 16:30:00', '1', 200009), (null, '2023-04-10 17:00:00', '1', 200009), (null, '2023-04-10 17:30:00', '1', 200009), (null, '2023-04-10 18:00:00', '0', 200009),
                          (null, '2023-04-10 18:30:00', '1', 200009), (null, '2023-04-10 19:00:00', '0', 200009);
-SELECT * FROM dados;
-TRUNCATE TABLE dados;
-select dataHora, SUM(valor) FROM dados group by dataHora;
-select SUM(valor) FROM dados group by dataHora;
-SELECT valor FROM dados WHERE idDados = 250000;
+                         
+-- select dataHora, SUM(valor) FROM dados group by dataHora;
+
 -- select das tabelas simples
--- select * from empresa;
--- select * from filial;
--- select * from funcionario;
--- select * from endereco;
--- select * from sensor;
--- select * from dados;
--- select * from bairro;
--- select * from bairro where nome in ('Jardim Paulista', 'Cerqueira César', 'Jabaquara', 'Pinheiros', 'Saúde');
+select * from empresa;
+select * from filial;
+select * from usuario;
+select * from rua;
+select * from sensor;
+select * from dados;
+select * from bairro;
+select * from bairro where nome in ('Jardim Paulista', 'Cerqueira César', 'Jabaquara', 'Pinheiros', 'Saúde');
 -- select das tabelas relacionadas
 
 -- select tabela empresa e filial
--- select * from empresa join filial on fkEmpresa = idEmpresa;
+select * from empresa join filial on fkEmpresa = idEmpresa;
 
--- select tabela filial e funcionario
--- select * from filial join filialFuncionario join funcionario on fkFilial = idFilial and fkFilial = idFilial;
--- select * from filialFuncionario;
--- select tabela empresa, filial e funcionario
--- select * from empresa join filial join funcionario on fkEmpresa = idEmpresa and fkFilial = idFilial;
+-- select tabela filial e usuario
+select * from filial join usuario on fkFilial = idFilial;
+
+-- select tabela empresa, filial e usuario
+select * from empresa join filial join usuario on fkEmpresa = idEmpresa and fkFilial = idFilial;
 
 -- select tabela rua e sensor
--- select * from endereco join sensor on fkEndereco = idEndereco;
+select * from rua join sensor on fkRua = idRua;
 
 -- select tabela sensor e dados
--- select * from sensor join dados on fkSensor = idSensor;
+select * from sensor join dados on fkSensor = idSensor;
 
 -- select tabela rua, sensor e dados
--- select * from endereco join sensor join dados on fkEndereco = idEndereco and fkSensor = idSensor; 
+select * from rua join sensor join dados on fkRua = idRua and fkSensor = idSensor; 
 
 -- select tabela bairro, sensor, dados e rua 
--- select * from bairro join sensor join dados join endereco on fkEndereco = idEndereco and fkSensor = idSensor and idBairro = fkBairro;
+select * from bairro join sensor join dados join rua on fkRua = idRua and fkSensor = idSensor and idBairro = fkBairro;
 
 -- select tabela bairro, bairroRenda, bairroIdade e bairroPopulacao
--- select * from bairro join bairroRenda join bairroIdade join bairroPopulacao on bairro.idBairro = bairroRenda.idBairro 
---                             and bairro.idBairro = bairroIdade.idBairro and bairro.idBairro = bairroPopulacao.idBairro;
+select * from bairro join bairroRenda join bairroIdade join bairroPopulacao on bairro.idBairro = bairroRenda.idBairro 
+                            and bairro.idBairro = bairroIdade.idBairro and bairro.idBairro = bairroPopulacao.idBairro;
 
--- drop database VagaFacil;
+drop database vagafacil;

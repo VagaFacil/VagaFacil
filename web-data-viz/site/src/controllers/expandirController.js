@@ -3,7 +3,7 @@ var expandirModel = require("../models/expandirModel");
 var sessoes = [];
 
 function testar(req, res) {
-    console.log("ENTRAMOS NA funcionarioController");
+    console.log("ENTRAMOS NA expandirController");
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
@@ -163,7 +163,7 @@ function cadastrar(req, res) {
         res.status(400).send("Sua data de nascimento está undefined!");
     } else if (fkSuperior === undefined) {
         res.status(400).send("Seu superior está undefined!");
-    } 
+    }
     else {
         // Passe os valores como parâmetro e vá para o arquivo expandirModel.js
         expandirModel.cadastrar(nome, cargo, email, senha, telefone, cpf, dataNascimento, fkSuperior)
