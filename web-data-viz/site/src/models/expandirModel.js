@@ -24,6 +24,21 @@ function listarRuas(idBairro) {
     return database.executar(instrucao);
 }
 
+function historicoMensal(idRua) {
+    var instrucao = `SELECT MONTH(dataHora), SUM(valor) FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor WHERE fkEndereco = ${idRua} GROUP BY MONTH(dataHora);`;
+    return database.executar(instrucao);
+}
+
+function historicoSemanal(idRua) {
+    var instrucao = `SELECT DAYOFWEEK(dataHora), SUM(valor) FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor WHERE fkEndereco = ${idRua} GROUP BY DAYOFWEEK(dataHora);`;
+    return database.executar(instrucao);
+}
+
+function historicoDiario(idRua) {
+    var instrucao = `SELECT HOUR(dataHora), SUM(valor) FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor WHERE fkEndereco = ${idRua} GROUP BY HOUR(dataHora);`;
+    return database.executar(instrucao);
+}
+
 function entrar(email, senha) {
     console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
@@ -49,5 +64,8 @@ function cadastrar(nome, cargo, email, senha, telefone, cpf, dataNascimento, fkS
 
 module.exports = {
     listarBairro,
-    listarRuas
+    listarRuas,
+    historicoMensal,
+    historicoSemanal,
+    historicoDiario
 };

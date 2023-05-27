@@ -353,16 +353,6 @@
 <script>
     // Início de tela de filtros de bairro
     var cards = [];
-    // [{ bairro: 'Bela Vista', zona: 'C', fluxo: 1399.9675, adolescente: 11.7524, jovemAdulto: 37.3423, adulto: 135.9402, idoso: 48.2816, baixa: 86.2817, media: 126.1465, alta: 49.7127, card: cardBelaVista },
-    // { bairro: 'Casa Verde', zona: 'N', fluxo: 274.8794, adolescente: 10.6285, jovemAdulto: 19.1434, adulto: 53.1315, idoso: 20.9573, baixa: 64.6413, media: 44.1204, alta: 11.1584, card: cardCasaVerde },
-    // { bairro: 'Consolação', zona: 'C', fluxo: 881.3238, adolescente: 5.0696, jovemAdulto: 23.9223, adulto: 77.4689, idoso: 33.1550, baixa: 37.9716, media: 59.2960, alta: 54.0841, card: cardConsolacao },
-    // { bairro: 'Guaianases', zona: 'L', fluxo: 170.1894, adolescente: 12.1617, jovemAdulto: 27.1466, adulto: 47.2799, idoso: 14.8391, baixa: 88.7966, media: 32.7180, alta: 0.0000, card: cardGuaianases },
-    // { bairro: 'Itaim Bibi', zona: 'O', fluxo: 592.4852, adolescente: 5.1743, jovemAdulto: 11.1305, adulto: 47.3278, idoso: 22.1495, baixa: 10.9992, media: 48.3891, alta: 36.5763, card: cardItaimBibi },
-    // { bairro: 'Penha', zona: 'L', fluxo: 240.5230, adolescente: 9.4914, jovemAdulto: 18.3281, adulto: 48.3499, idoso: 22.8408, baixa: 69.1325, media: 30.2277, alta: 13.2080, card: cardPenha },
-    // { bairro: 'República', zona: 'C', fluxo: 1608.6098, adolescente: 16.7818, jovemAdulto: 37.1776, adulto: 126.6192, idoso: 53.9079, baixa: 165.9556, media: 66.6981, alta: 29.3103, card: cardRepublica },
-    // { bairro: 'Santana', zona: 'N', fluxo: 307.2974, adolescente: 5.2185, jovemAdulto: 13.5873, adulto: 37.7952, idoso: 21.4771, baixa: 28.2796, media: 33.4486, alta: 25.3265, card: cardSantana },
-    // { bairro: 'Sé', zona: 'C', fluxo: 1652.0939, adolescente: 8.3894, jovemAdulto: 21.2916, adulto: 52.4830, idoso: 17.4791, baixa: 83.0976, media: 29.0585, alta: 7.2406, card: cardSe }];
-
 
     fetch('/expandir/listarBairro').then(function (response) {
         if (response.ok) {
@@ -452,7 +442,6 @@
     // Fim de tela de filtro de bairros
 
     // Início de tela de filtro de ruas
-    // var ruas = [rua1, rua2, rua3, rua4, rua5, rua6, rua7, rua8, rua9, rua10, rua11, rua12, rua13, rua14, rua15];
     var ruas = [];
 
     function mostrarRuas(idBairro) {
@@ -502,9 +491,13 @@
         }
     }
 
-    function mostrarDados() {
+    var dadosHistorico = [];
+    var dadosTempoReal = [];
+
+    function mostrarDados(idRua) {
         divDados.style.display = 'flex';
         divRua.style.display = 'none';
+        
     }
     // Fim de tela de filtro de ruas
 
@@ -588,7 +581,6 @@
             cutout: '70%'
         }
     });
-
 
     var contextoChave = document.getElementById('canvLine').getContext('2d');
     contextoChave.canvas.width = 300;
