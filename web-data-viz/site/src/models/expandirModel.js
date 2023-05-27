@@ -51,26 +51,19 @@ function historicoDiario(idRua) {
     return database.executar(instrucao);
 }
 
-function entrar(email, senha) {
-    console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
-    var instrucao = `
-        SELECT * FROM funcionario WHERE email = '${email}' AND senha = '${senha}';
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
+function buscarUltimasMedidas(idRua) {
+    var instrucao = `SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
+        WHERE dataHora > CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 24`
+
     return database.executar(instrucao);
 }
 
-// Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-function cadastrar(nome, cargo, email, senha, telefone, cpf, dataNascimento, fkSuperior) {
-    console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():",nome, cargo, email, senha, telefone, cpf, dataNascimento, fkSuperior);
-    
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
-    var instrucao = `
-        INSERT INTO funcionario (nome, cargo, email, senha, telefone, cpf, dataNascimento, fkSuperior) 
-        VALUES ('${nome}', '${cargo}','${email}', '${senha}', '${telefone}','${cpf}', '${dataNascimento}', ${fkSuperior});
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
+function buscarMedidasEmTempoReal(idRua) {
+    var instrucao = `SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
+        WHERE dataHora > CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 1`
+
     return database.executar(instrucao);
 }
 
@@ -79,5 +72,7 @@ module.exports = {
     listarRuas,
     historicoMensal,
     historicoSemanal,
-    historicoDiario
+    historicoDiario,
+    buscarUltimasMedidas,
+    buscarMedidasEmTempoReal
 };

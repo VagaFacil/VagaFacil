@@ -27,13 +27,12 @@ router.get("/historicoDiario/:idRua", function (req, res) {
     expandirController.historicoDiario(req, res);
 });
 
-//Recebendo os dados do html e direcionando para a função cadastrar de expandirController.js
-// router.post("/cadastrar", function (req, res) {
-//     expandirController.cadastrar(req, res);
-// })
+router.get("/ultimas/:idRua", function (req, res) {
+    expandirController.buscarUltimasMedidas(req, res);
+});
 
-// router.post("/autenticar", function (req, res) {
-//     expandirController.entrar(req, res);
-// });
+router.get("/tempo-real/:idRua", function (req, res) {
+    expandirController.buscarMedidasEmTempoReal(req, res);
+})
 
 module.exports = router;
