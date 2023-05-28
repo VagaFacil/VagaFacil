@@ -27,6 +27,10 @@ router.get("/historicoDiario/:idRua", function (req, res) {
     expandirController.historicoDiario(req, res);
 });
 
+router.get("/ocupacao/:idRua", function (req, res) {
+    expandirController.buscarOcupacao(req, res);
+});
+
 router.get("/ultimas/:idRua", function (req, res) {
     expandirController.buscarUltimasMedidas(req, res);
 });

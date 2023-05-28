@@ -51,6 +51,11 @@ function historicoDiario(idRua) {
     return database.executar(instrucao);
 }
 
+function buscarOcupacao(idRua) {
+    var instrucao = `SELECT SUM(valor) / COUNT(valor) AS ocupacao FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor WHERE fkEndereco = ${idRua}`;
+    return database.executar(instrucao);
+}
+
 function buscarUltimasMedidas(idRua) {
     var instrucao = `SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
@@ -73,6 +78,7 @@ module.exports = {
     historicoMensal,
     historicoSemanal,
     historicoDiario,
+    buscarOcupacao,
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal
 };

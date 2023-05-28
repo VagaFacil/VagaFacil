@@ -112,6 +112,21 @@ function historicoDiario(req, res) {
         );
 }
 
+function buscarOcupacao(req, res) {
+    var idRua = req.params.idRua;
+    expandirModel.buscarOcupacao(idRua).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!");
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar a ocupação", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function buscarUltimasMedidas(req, res) {
     var idRua = req.params.idRua;
     expandirModel.buscarUltimasMedidas(idRua).then(function (resultado) {
@@ -150,6 +165,7 @@ module.exports = {
     historicoMensal,
     historicoSemanal,
     historicoDiario,
+    buscarOcupacao,
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     testar
