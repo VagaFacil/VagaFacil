@@ -23,7 +23,7 @@ function atualizarFormulario(idFuncionario) {
                     // criando e manipulando elementos do HTML via JavaScript
                     var spanImg = document.createElement("img");
                     spanImg.className = "foto";
-                    spanImg.setAttribute("src", `${publicacao.foto}`)
+                    spanImg.setAttribute("src", `../assets/${publicacao.foto}`)
                     var spanNome = document.createElement("h1");
                     spanNome.className = "nome";
                     spanNome.innerHTML = publicacao.nome;

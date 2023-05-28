@@ -95,11 +95,13 @@
             </div> -->
             <div class="personalizar" id="personalizar">
                 <h1>Alterar imagem de perfil</h1>
-                <input type="file" id="img" accept="image/**" onclick="novaImagem()">
-                <!-- <input type="submit"> -->
+                <!-- <form action="/alterarImagem" method="POST" enctype="multipart/form-data"> -->
+                    <input type="file" id="imgNova" name="imgNova">
+                    <input type="submit" onclick="novaImagem(idFuncionario)">
+                <!-- </form> -->
                 <h1>Alterar Nome</h1>
                 <input type="text" id="outroNome">
-                <button onclick="mudarNome()">Alterar Nome</button>
+                <button onclick="mudarNome(idFuncionario)">Alterar Nome</button>
                 <p id="validacaoNome"></p>
             </div>
         </div>

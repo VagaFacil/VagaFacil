@@ -1,5 +1,5 @@
 function carregarPagina(idFuncionario) {
-    fetch(`/perfil/exibirPerfil/${idFuncionario}`).then(function (resposta) {
+    fetch(`/perfil/Perfil/${idFuncionario}`).then(function (resposta) {
         if (resposta.ok) {
 
             resposta.json().then(function (resposta) {
@@ -8,7 +8,7 @@ function carregarPagina(idFuncionario) {
                 var nome = document.getElementById("nomeUsuario");
                 nome.innerHTML = infos.nome;
                 var Foto = document.getElementById("usuarioFoto");
-                Foto.src = infos.foto;
+                Foto.src = `../assets/${infos.foto}`;
 
             });
         } else {
@@ -27,13 +27,19 @@ function exibir_informacaoPessoal(idFuncionario) {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
                 infos = resposta[0]
+                const datetime = new Date(infos.dataNascimento);
+                const dia = datetime.getDate().toString().padStart(2, '0');
+                const mes = (datetime.getMonth() + 1).toString().padStart(2, '0'); // Lembrando que os meses começam em 0
+                const ano = datetime.getFullYear().toString();
+                const dataCompleta = `${dia}/${mes}/${ano}`;
+
                 var nome = document.getElementById("nomePessoal");
                 var dataN = document.getElementById("dataN");
                 var cpf = document.getElementById("cpf");
                 var telefone = document.getElementById("telefone");
                 var email = document.getElementById("email");
                 nome.innerHTML = infos.nome;
-                dataN.innerHTML = infos.dataNascimento;
+                dataN.innerHTML = dataCompleta;
                 cpf.innerHTML = infos.cpf;
                 telefone.innerHTML = infos.telefone;
                 email.innerHTML = infos.email;
@@ -88,9 +94,10 @@ function exibir_personalizar() {
     // atuacao.style = "display: none;";
 }
 
-function mudarNome() {
+function mudarNome(idFuncionario) {
     var nomeNovo = outroNome.value;
-    fetch(`/perfil/alterarNome/${sessionStorage.getItem("ID_FUNCIONARIO")}`, {
+
+    fetch(`/perfil/alterarNome/${idFuncionario}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -118,6 +125,21 @@ function mudarNome() {
     });
 }
 
+function novaImagem(idFuncionario) {
+    const formData = new FormData();
+    formData.append('imgNova', imgNova.files[0])
+
+    fetch(`/perfil/alterarImagem/${idFuncionario}`, {
+        method: "POST",
+        body: formData
+    })
+        .then(res => {  
+                carregarPagina(idFuncionario);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
 
 // function novaImagem() {
 //     const perfilImagemInput = document.getElementById('img');
