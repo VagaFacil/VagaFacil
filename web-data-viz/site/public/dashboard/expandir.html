@@ -101,51 +101,6 @@
             </div>
 
             <div class="bairroLista" id="divBairroLista">
-                <!-- <div class="bairroCard" id="cardBelaVista" onclick="mostrarRuas()">
-                    <img src="img/bairros/belaVista.png">
-                    <h3>Bela Vista</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <div class="bairroCard" id="cardCasaVerde" onclick="mostrarRuas()">
-                    <img src="img/bairros/casaVerde.png">
-                    <h3>Casa Verde</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <div class="bairroCard" id="cardConsolacao" onclick="mostrarRuas()">
-                    <img src="img/bairros/consolacao.png">
-                    <h3>Consolação</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <div class="bairroCard" id="cardGuaianases" onclick="mostrarRuas()">
-                    <img src="img/bairros/guaianases.png">
-                    <h3>Guaianases</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <div class="bairroCard" id="cardItaimBibi" onclick="mostrarRuas()">
-                    <img src="img/bairros/itaimBibi.png">
-                    <h3>Itaim Bibi</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <div class="bairroCard" id="cardPenha" onclick="mostrarRuas()">
-                    <img src="img/bairros/penha.png">
-                    <h3>Penha</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <div class="bairroCard" id="cardRepublica" onclick="mostrarRuas()">
-                    <img src="img/bairros/republica.png">
-                    <h3>República</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <div class="bairroCard" id="cardSantana" onclick="mostrarRuas()">
-                    <img src="img/bairros/santana.png">
-                    <h3>Santana</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <div class="bairroCard" id="cardSe" onclick="mostrarRuas()">
-                    <img src="img/bairros/se.png">
-                    <h3>Sé</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div> -->
 
             </div>
         </div>
@@ -183,22 +138,6 @@
                 </select>
             </div>
             <div class="ruaLista" id="divRuaLista">
-                <!-- <div onclick="mostrarDados()" class="ruaCard" id="rua1">Alameda Joaquim Eugênio de Lima - Jardim
-                    Paulista</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua2">Rua Pamplona - Jardim Paulista</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua3">Rua Peixoto Gomide - Jardim Paulista</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua4">Alameda Santos - Cerqueira César</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua5">Rua Haddock Lobo - Cerqueira César</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua6">Rua Padre João Manuel - Cerqueira César</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua7">Avenida Paulista - Bela Vista</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua8">Rua Pamplona - Bela Vista</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua9">Rua São Carlos do Pinhal - Bela Vista</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua10">Rua Bela Cintra - Consolação</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua11">Rua Frei Caneca - Consolação</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua12">Rua Augusta - Consolação </div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua13">Rua Estados Unidos - Jardins</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua14">Alameda Lorena - Jardins</div>
-                <div onclick="mostrarDados()" class="ruaCard" id="rua15">Rua da Consolação - Cerqueira César</div> -->
             </div>
         </div>
 
@@ -214,16 +153,17 @@
                 </div>
                 <div class="cardContainer">
                     <div class="card">
-                        <div>Tipo de dia
+                        <div>Dados
                             <label class="switch">
                                 <input type="checkbox" onclick="changeDisabled('selTipo')">
                                 <span class="slider"></span>
                             </label>
                         </div>
-                        <select id="selTipo" disabled="true">
-                            <option value="semana">Dia de Semana</option>
-                            <option value="fimSemana">Fim de Semana</option>
-                            <option value="feriado">Feriado</option>
+                        <select id="selTipo" onchange="mudarTipoGrafico()" disabled="true">
+                            <option value="tempoReal">Tempo Real</option>
+                            <option value="anual">Histórico Anual</option>
+                            <option value="semanal">Histórico Semanal</option>
+                            <option value="diario">Histórico Diário</option>
                         </select>
                     </div>
                     <div class="card">
@@ -504,7 +444,25 @@
         fetch('/expandir/historicoMensal/' + idRua).then((response) => {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    dadosHistorico.mensal = resposta;
+                    var labels = [];
+                    // Criando estrutura para plotar gráfico - dados
+                    var dados = {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Mês',
+                            data: [],
+                            fill: false,
+                            borderColor: '#F49C24',
+                            tension: 0.1
+                        }]
+                    };
+                    // Inserindo valores recebidos em estrutura para plotar o gráfico
+                    for (i = 0; i < resposta.length; i++) {
+                        var registro = resposta[i];
+                        labels.push(registro.mes);
+                        dados.datasets[0].data.push(registro.valor);
+                    }
+                    dadosHistorico.mensal = dados;
                 });
             }
         }).catch((erro) => {
@@ -514,7 +472,26 @@
         fetch('/expandir/historicoSemanal/' + idRua).then((response) => {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    dadosHistorico.semanal = resposta;
+                    
+                    var labels = [];
+                    // Criando estrutura para plotar gráfico - dados
+                    var dados = {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Dia',
+                            data: [],
+                            fill: false,
+                            borderColor: '#F49C24',
+                            tension: 0.1
+                        }]
+                    };
+                    // Inserindo valores recebidos em estrutura para plotar o gráfico
+                    for (i = 0; i < resposta.length; i++) {
+                        var registro = resposta[i];
+                        labels.push(registro.dia);
+                        dados.datasets[0].data.push(registro.valor);
+                    }
+                    dadosHistorico.semanal = dados;
                 });
             }
         }).catch((erro) => {
@@ -524,7 +501,26 @@
         fetch('/expandir/historicoDiario/' + idRua).then((response) => {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    dadosHistorico.diario = resposta;
+                    
+                    var labels = [];
+                    // Criando estrutura para plotar gráfico - dados
+                    var dados = {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Hora',
+                            data: [],
+                            fill: false,
+                            borderColor: '#F49C24',
+                            tension: 0.1
+                        }]
+                    };
+                    // Inserindo valores recebidos em estrutura para plotar o gráfico
+                    for (i = 0; i < resposta.length; i++) {
+                        var registro = resposta[i];
+                        labels.push(registro.hora);
+                        dados.datasets[0].data.push(registro.valor);
+                    }
+                    dadosHistorico.diario = dados;
                 });
             }
         }).catch((erro) => {
@@ -533,6 +529,7 @@
         plotarTempoMedio(idRua);
         plotarOcupacao(idRua);
         obterDadosGrafico(idRua);
+        idAtual = idRua;
     }
     // Fim de tela de filtro de ruas
 
@@ -542,6 +539,8 @@
     }
 
     // Início de tela de dados
+
+    var idAtual = -1;
 
     const chartGauge1 = document.getElementById('canvGauge1');
     var chartTempoMedio = new Chart(chartGauge1, {
@@ -741,55 +740,27 @@
         }
     );
 
-    var paginacao = {};
-    var tempo = {};
-    var apiOnline = true;
-    function obterDados(grafico, endpoint) {
-        if (apiOnline) {
-            try {
-                var http = new XMLHttpRequest();
-                http.open('GET', 'http://localhost:3000/sensores/' + endpoint, false);
-                http.send(null);
-                var valores = JSON.parse(http.responseText);
-            } catch (erro) {
-                apiOnline = false;
-                valores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                setTimeout(() => { apiOnline = true; }, 60000);
-            }
+    function mudarTipoGrafico() {
+        var tipo = selTipo.value;
+        if (tipo == 'tempoReal') {
+            obterDadosGrafico(idAtual);
+        } else if (tipo == "diario") {
+
+            chartLinha.data = dadosHistorico.diario;
+            chartLinha.options.plugins.title.text = 'Historico Diario';
+            chartLinha.update();
+        } else if (tipo == "semanal") {
+
+            chartLinha.data = dadosHistorico.semanal;
+            chartLinha.options.plugins.title.text = 'Historico Semanal';
+            chartLinha.update();
         } else {
-            valores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        }
 
-        if (paginacao[endpoint] == null) {
-            paginacao[endpoint] = 0;
+            chartLinha.data = dadosHistorico.mensal;
+            chartLinha.options.plugins.title.text = 'Historico Anual';
+            chartLinha.update();
         }
-        if (tempo[endpoint] == null) {
-            tempo[endpoint] = 0;
-        }
-        // Exibir à partir do último elemento exibido anteriormente
-        var ultimaPaginacao = paginacao[endpoint];
-        paginacao[endpoint] = valores.length;
-        valores = valores.slice(ultimaPaginacao);
-        valores.forEach((valor) => {
-            //Máximo de 60 itens exibidos no gráfico
-            if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
-                grafico.data.labels.shift();
-                grafico.data.datasets[0].data.shift();
-            }
-
-            if (apiOnline) {
-                grafico.data.labels.push(tempo[endpoint]++);
-            } else {
-                grafico.data.labels.push('');
-            }
-            grafico.data.datasets[0].data.push(parseFloat(valor));
-            grafico.update();
-        })
     }
-
-    // setInterval(() => {
-    //     obterDados(chave, 'chave');
-    // }, 1000);
 
     let proximaAtualizacao;
 
@@ -869,11 +840,11 @@
         //     config
         // );
         chartLinha.data = dados;
+        chartLinha.options.plugins.title.text = 'Ocupação Recente';
         chartLinha.update();
 
         setTimeout(() => atualizarGrafico(idRua, dados), 2000);
     }
-
 
     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
     // buscando a última medida inserida em tabela contendo as capturas, 

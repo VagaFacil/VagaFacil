@@ -30,7 +30,7 @@ function listarRuas(idBairro) {
 function historicoMensal(idRua) {
     var instrucao = `SELECT MONTH(dataHora) AS mes, SUM(valor) AS valor 
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
-        WHERE fkEndereco = ${idRua} GROUP BY MONTH(dataHora);
+        WHERE fkEndereco = ${idRua} GROUP BY mes ORDER BY mes;
     `;
     return database.executar(instrucao);
 }
@@ -38,7 +38,7 @@ function historicoMensal(idRua) {
 function historicoSemanal(idRua) {
     var instrucao = `SELECT DAYOFWEEK(dataHora) AS dia, SUM(valor) AS valor 
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
-        WHERE fkEndereco = ${idRua} GROUP BY DAYOFWEEK(dataHora);
+        WHERE fkEndereco = ${idRua} GROUP BY dia ORDER BY dia;
     `;
     return database.executar(instrucao);
 }
@@ -46,7 +46,7 @@ function historicoSemanal(idRua) {
 function historicoDiario(idRua) {
     var instrucao = `SELECT HOUR(dataHora) AS hora, SUM(valor) AS valor
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
-        WHERE fkEndereco = ${idRua} GROUP BY HOUR(dataHora);
+        WHERE fkEndereco = ${idRua} GROUP BY hora ORDER BY hora;
     `;
     return database.executar(instrucao);
 }
