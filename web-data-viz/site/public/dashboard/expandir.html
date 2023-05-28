@@ -579,6 +579,43 @@
         }
     });
 
+    const chartGauge2 = document.getElementById('canvGauge2');
+    var chartOcupacao = new Chart(chartGauge2, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [0, 100],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Ocupação média',
+                    color: '#FCF4EC',
+                    font: {
+                        size: 20
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: '0%',
+                    color: '#FCF4EC',
+                    padding: 0,
+                    font: {
+                        size: 16
+                    }
+                },
+            },
+            backgroundColor: ['#FCF4EC', '#0C243C'],
+            borderColor: '#FCF4EC',
+            circumference: 180,
+            rotation: -90,
+            cutout: '70%'
+        }
+    });
+
     function plotarOcupacao(idRua) {
         fetch('/expandir/ocupacao/' + idRua, { cache: 'no-store' }).then((response) => {
             if (response.ok) {
@@ -595,42 +632,12 @@
                     } else {
                         cor = 'green';
                     }
-                    const chartGauge2 = document.getElementById('canvGauge2');
-                    new Chart(chartGauge2, {
-                        type: 'doughnut',
-                        data: {
-                            datasets: [{
-                                data: [ocupacao, 100-ocupacao],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            plugins: {
-                                title: {
-                                    display: true,
-                                    text: 'Ocupação média',
-                                    color: cor,
-                                    font: {
-                                        size: 20
-                                    }
-                                },
-                                subtitle: {
-                                    display: true,
-                                    text: ocupacao + '%',
-                                    color: cor,
-                                    padding: 0,
-                                    font: {
-                                        size: 16
-                                    }
-                                },
-                            },
-                            backgroundColor: [cor, '#0C243C'],
-                            borderColor: '#FCF4EC',
-                            circumference: 180,
-                            rotation: -90,
-                            cutout: '70%'
-                        }
-                    });
+                    chartOcupacao.data.datasets[0].data = [ocupacao, 100 - ocupacao];
+                    chartOcupacao.options.plugins.title.color = cor;
+                    chartOcupacao.options.plugins.subtitle.color = cor;
+                    chartOcupacao.options.plugins.subtitle.text = ocupacao + '%';
+                    chartOcupacao.options.backgroundColor = [cor, '#0C243C'];
+                    chartOcupacao.update();
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
