@@ -51,7 +51,8 @@
     <div class="dashboard">
         <div class="containerBairro" id="divBairro">
             <div class="bairroFiltros">
-                <h2><a href="Acompanhar.html"><img src="img/seta_voltar.png" alt="Retornar para página de acompanhamento"></a>Filtros</h2>
+                <h2><a href="Acompanhar.html"><img src="img/seta_voltar.png"
+                            alt="Retornar para página de acompanhamento"></a>Filtros</h2>
                 <div>
                     Procurar um bairro:
                 </div>
@@ -151,7 +152,8 @@
 
         <div class="containerRua" id="divRua">
             <div class="ruaFiltros">
-                <h2><img src="img/seta_voltar.png" alt="Retornar para a lista de bairros" onclick="mostrarBairros()">Filtros</h2>
+                <h2><img src="img/seta_voltar.png" alt="Retornar para a lista de bairros"
+                        onclick="mostrarBairros()">Filtros</h2>
                 <div>
                     Procurar uma rua:
                 </div>
@@ -203,7 +205,8 @@
         <div class="containerDados" id="divDados">
             <div class="containerDadosFiltros">
                 <div class="titulo">
-                    <h2><img src="img/seta_voltar.png" alt="Retornar para a lista de ruas" onclick="mostrarRuas()">Filtros<span></span></h2>
+                    <h2><img src="img/seta_voltar.png" alt="Retornar para a lista de ruas"
+                            onclick="mostrarRuas()">Filtros<span></span></h2>
                 </div>
                 <div class="endereco">
                     Endereço<br>
@@ -276,12 +279,13 @@
                         </select>
                     </div>
                 </div>
-            </div>    
+            </div>
             <div class="containerGraficos">
                 <div class="cardGauge">
                     <canvas id="canvGauge1" class="canvasGauge"></canvas>
                     <canvas id="canvGauge2" class="canvasGauge"></canvas>
-                </div>  <div class="kpi">
+                </div>
+                <div class="kpi">
                     <div class="kpiCritico">
                         Critico
                     </div>
@@ -294,7 +298,7 @@
                     <div class="kpiPerfeito">
                         Ideal
                     </div>
-                </div>  
+                </div>
                 <div class="cardGrafico">
                     <canvas id="canvLine"></canvas>
                     <cavas id="canvMap"></cavas>
@@ -353,34 +357,24 @@
 <script>
     // Início de tela de filtros de bairro
     var cards = [];
-    // [{ bairro: 'Bela Vista', zona: 'C', fluxo: 1399.9675, adolescente: 11.7524, jovemAdulto: 37.3423, adulto: 135.9402, idoso: 48.2816, baixa: 86.2817, media: 126.1465, alta: 49.7127, card: cardBelaVista },
-    // { bairro: 'Casa Verde', zona: 'N', fluxo: 274.8794, adolescente: 10.6285, jovemAdulto: 19.1434, adulto: 53.1315, idoso: 20.9573, baixa: 64.6413, media: 44.1204, alta: 11.1584, card: cardCasaVerde },
-    // { bairro: 'Consolação', zona: 'C', fluxo: 881.3238, adolescente: 5.0696, jovemAdulto: 23.9223, adulto: 77.4689, idoso: 33.1550, baixa: 37.9716, media: 59.2960, alta: 54.0841, card: cardConsolacao },
-    // { bairro: 'Guaianases', zona: 'L', fluxo: 170.1894, adolescente: 12.1617, jovemAdulto: 27.1466, adulto: 47.2799, idoso: 14.8391, baixa: 88.7966, media: 32.7180, alta: 0.0000, card: cardGuaianases },
-    // { bairro: 'Itaim Bibi', zona: 'O', fluxo: 592.4852, adolescente: 5.1743, jovemAdulto: 11.1305, adulto: 47.3278, idoso: 22.1495, baixa: 10.9992, media: 48.3891, alta: 36.5763, card: cardItaimBibi },
-    // { bairro: 'Penha', zona: 'L', fluxo: 240.5230, adolescente: 9.4914, jovemAdulto: 18.3281, adulto: 48.3499, idoso: 22.8408, baixa: 69.1325, media: 30.2277, alta: 13.2080, card: cardPenha },
-    // { bairro: 'República', zona: 'C', fluxo: 1608.6098, adolescente: 16.7818, jovemAdulto: 37.1776, adulto: 126.6192, idoso: 53.9079, baixa: 165.9556, media: 66.6981, alta: 29.3103, card: cardRepublica },
-    // { bairro: 'Santana', zona: 'N', fluxo: 307.2974, adolescente: 5.2185, jovemAdulto: 13.5873, adulto: 37.7952, idoso: 21.4771, baixa: 28.2796, media: 33.4486, alta: 25.3265, card: cardSantana },
-    // { bairro: 'Sé', zona: 'C', fluxo: 1652.0939, adolescente: 8.3894, jovemAdulto: 21.2916, adulto: 52.4830, idoso: 17.4791, baixa: 83.0976, media: 29.0585, alta: 7.2406, card: cardSe }];
-
 
     fetch('/expandir/listarBairro').then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    cards = resposta;
-                    for (var i = 0; i < resposta.length; i++) {
-                        divBairroLista.innerHTML += `<div class="bairroCard" id="card${cards[i].idBairro}" onclick="mostrarRuas(${cards[i].idBairro})">
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                cards = resposta;
+                for (var i = 0; i < resposta.length; i++) {
+                    divBairroLista.innerHTML += `<div class="bairroCard" id="card${cards[i].idBairro}" onclick="mostrarRuas(${cards[i].idBairro})">
                                 <img src="img/bairros/${cards[i].idBairro}.png">
                                 <h3>${cards[i].bairro}</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             </div>`;
-                        cards[i].card ='card' + cards[i].idBairro;
-                    }
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
+                    cards[i].card = 'card' + cards[i].idBairro;
+                }
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
     }).catch(function (error) {
         console.error(`Erro na obtenção dos dados p/ lista: ${error.message}`);
     });
@@ -417,7 +411,7 @@
         }
 
         for (var i = 1; i <= cards.length; i++) {
-            document.getElementById(cards[i-1].card).style.order = i;
+            document.getElementById(cards[i - 1].card).style.order = i;
         }
     }
 
@@ -441,7 +435,7 @@
         }
 
         for (var i = 1; i <= cards.length; i++) {
-            document.getElementById(cards[i-1].card).style.order = i;
+            document.getElementById(cards[i - 1].card).style.order = i;
         }
     }
 
@@ -452,7 +446,6 @@
     // Fim de tela de filtro de bairros
 
     // Início de tela de filtro de ruas
-    // var ruas = [rua1, rua2, rua3, rua4, rua5, rua6, rua7, rua8, rua9, rua10, rua11, rua12, rua13, rua14, rua15];
     var ruas = [];
 
     function mostrarRuas(idBairro) {
@@ -479,7 +472,7 @@
 
     function filtrarNomeRua() {
         var nome = inpPesquisaRua.value.toLowerCase();
-        for (var i = 0; i < ruas.length; i++){
+        for (var i = 0; i < ruas.length; i++) {
             if (ruas[i].innerHTML.toLowerCase().indexOf(nome) > -1) {
                 ruas[i].style.display = 'flex';
             } else {
@@ -502,9 +495,43 @@
         }
     }
 
-    function mostrarDados() {
+    var dadosHistorico = {};
+    var dadosTempoReal = [];
+
+    function mostrarDados(idRua) {
         divDados.style.display = 'flex';
         divRua.style.display = 'none';
+        fetch('/expandir/historicoMensal/' + idRua).then((response) => {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    dadosHistorico.mensal = resposta;
+                });
+            }
+        }).catch((erro) => {
+            dadosHistorico.mensal = '';
+        });
+
+        fetch('/expandir/historicoSemanal/' + idRua).then((response) => {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    dadosHistorico.semanal = resposta;
+                });
+            }
+        }).catch((erro) => {
+            dadosHistorico.semanal = '';
+        });
+
+        fetch('/expandir/historicoDiario/' + idRua).then((response) => {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    dadosHistorico.diario = resposta;
+                });
+            }
+        }).catch((erro) => {
+            dadosHistorico.diario = '';
+        });
+        plotarOcupacao(idRua);
+        obterDadosGrafico(idRua);
     }
     // Fim de tela de filtro de ruas
 
@@ -553,11 +580,11 @@
     });
 
     const chartGauge2 = document.getElementById('canvGauge2');
-    new Chart(chartGauge2, {
+    var chartOcupacao = new Chart(chartGauge2, {
         type: 'doughnut',
         data: {
             datasets: [{
-                data: [55, 45],
+                data: [0, 100],
                 borderWidth: 1
             }]
         },
@@ -566,22 +593,22 @@
                 title: {
                     display: true,
                     text: 'Ocupação média',
-                    color: 'yellow',
+                    color: '#FCF4EC',
                     font: {
                         size: 20
                     }
                 },
                 subtitle: {
                     display: true,
-                    text: '55%',
-                    color: 'yellow',
+                    text: '0%',
+                    color: '#FCF4EC',
                     padding: 0,
                     font: {
                         size: 16
                     }
                 },
             },
-            backgroundColor: ['yellow', '#0C243C'],
+            backgroundColor: ['#FCF4EC', '#0C243C'],
             borderColor: '#FCF4EC',
             circumference: 180,
             rotation: -90,
@@ -589,69 +616,101 @@
         }
     });
 
-
-    var contextoChave = document.getElementById('canvLine').getContext('2d');
-    contextoChave.canvas.width = 300;
-    contextoChave.canvas.height = 100;
-    var cores = ['#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24'];
-    var chave = new Chart(
-        contextoChave,
-        {
-            type: 'bar',
-            data: {
-                datasets: [{
-                    label: 'Chave',
-                    type: 'bar',
-                    borderColor: cores,
-                    backgroundColor: cores,
-                }],
-            },
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Ocupação Recente',
-                        color: '#F49C24',
-                        font: {
-                            size: 20
-                        }
-                    },
-                    legend: {
-                        display: false
+    function plotarOcupacao(idRua) {
+        fetch('/expandir/ocupacao/' + idRua, { cache: 'no-store' }).then((response) => {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    var ocupacao = Math.floor(100 * resposta[0].ocupacao);
+                    var cor = '';
+                    if (ocupacao < 35) {
+                        cor = 'red';
+                    } else if (ocupacao < 60) {
+                        cor = 'yellow';
+                    } else if (ocupacao < 90) {
+                        cor = 'limegreen';
+                    } else {
+                        cor = 'green';
                     }
-                },
-                scales: {
-                    y: {
-                        ticks: {
-                            color: '#F49C24',
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            color: '#F49C24',
-                        },
-                    },
-                    xAxes: [{
-                        distribution: 'series',
-                        ticks: {
-                            beginAtZero: true,
-                        },
-                        barPercentage: 1,
-                        categoryPercentage: 1
-                    }],
-                    yAxes: [{
-                        ticks: {
-                            display: true,
-                            beginAtZero: true,
-                        }
-                    }]
-                },
-                animation: {
-                    duration: 0
-                }
+                    chartOcupacao.data.datasets[0].data = [ocupacao, 100 - ocupacao];
+                    chartOcupacao.options.plugins.title.color = cor;
+                    chartOcupacao.options.plugins.subtitle.color = cor;
+                    chartOcupacao.options.plugins.subtitle.text = ocupacao + '%';
+                    chartOcupacao.options.backgroundColor = [cor, '#0C243C'];
+                    chartOcupacao.update();
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
             }
-        }
-    );
+        }).catch((erro) => {
+
+        });
+
+    }
+
+
+    // var contextoChave = document.getElementById('canvLine').getContext('2d');
+    // contextoChave.canvas.width = 300;
+    // contextoChave.canvas.height = 100;
+    // var cores = ['#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24'];
+    // var chave = new Chart(
+    //     contextoChave,
+    //     {
+    //         type: 'bar',
+    //         data: {
+    //             datasets: [{
+    //                 label: 'Chave',
+    //                 type: 'bar',
+    //                 borderColor: cores,
+    //                 backgroundColor: cores,
+    //             }],
+    //         },
+    //         options: {
+    //             plugins: {
+    //                 title: {
+    //                     display: true,
+    //                     text: 'Ocupação Recente',
+    //                     color: '#F49C24',
+    //                     font: {
+    //                         size: 20
+    //                     }
+    //                 },
+    //                 legend: {
+    //                     display: false
+    //                 }
+    //             },
+    //             scales: {
+    //                 y: {
+    //                     ticks: {
+    //                         color: '#F49C24',
+    //                     }
+    //                 },
+    //                 x: {
+    //                     ticks: {
+    //                         color: '#F49C24',
+    //                     },
+    //                 },
+    //                 xAxes: [{
+    //                     distribution: 'series',
+    //                     ticks: {
+    //                         beginAtZero: true,
+    //                     },
+    //                     barPercentage: 1,
+    //                     categoryPercentage: 1
+    //                 }],
+    //                 yAxes: [{
+    //                     ticks: {
+    //                         display: true,
+    //                         beginAtZero: true,
+    //                     }
+    //                 }]
+    //             },
+    //             animation: {
+    //                 duration: 0
+    //             }
+    //         }
+    //     }
+    // );
 
     var paginacao = {};
     var tempo = {};
@@ -665,11 +724,11 @@
                 var valores = JSON.parse(http.responseText);
             } catch (erro) {
                 apiOnline = false;
-                valores = [0,0,0,0,0,0,0,0,0,0];
-                setTimeout(() => {apiOnline = true;}, 60000);
+                valores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                setTimeout(() => { apiOnline = true; }, 60000);
             }
         } else {
-            valores = [0,0,0,0,0,0,0,0,0,0];
+            valores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         }
 
         if (paginacao[endpoint] == null) {
@@ -699,9 +758,142 @@
         })
     }
 
-    setInterval(() => {
-        obterDados(chave, 'chave');
-    }, 1000);
+    // setInterval(() => {
+    //     obterDados(chave, 'chave');
+    // }, 1000);
+
+    let proximaAtualizacao;
+
+    function obterDadosGrafico(idRua) {
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/expandir/ultimas/${idRua}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idRua);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta, idRua) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Hora',
+                data: [],
+                fill: false,
+                borderColor: '#F49C24',
+                tension: 0.1
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.hora);
+            dados.datasets[0].data.push(registro.valor);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'line',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`canvLine`),
+            config
+        );
+
+        setTimeout(() => atualizarGrafico(idRua, dados, myChart), 2000);
+    }
+
+
+    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // buscando a última medida inserida em tabela contendo as capturas, 
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function atualizarGrafico(idRua, dados, myChart) {
+
+        fetch(`/expandir/tempo-real/${idRua}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+
+                    if (novoRegistro[0].hora == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].hora)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].hora); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
+
+                        myChart.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idRua, dados, myChart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idRua, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
 
     // Fim de tela de dados
 </script>

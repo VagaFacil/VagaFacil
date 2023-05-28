@@ -4,7 +4,9 @@ var sessoes = [];
 
 function testar(req, res) {
     console.log("ENTRAMOS NA expandirController");
+=======
     console.log("ENTRAMOS NA funcionarioController");
+>>>>>>> 4a8eb8619165e0ba7ab7a2a89c711b367691bb58
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
@@ -44,6 +46,7 @@ function listarRuas(req, res) {
         );
 }
 
+>>>>>>> 4a8eb8619165e0ba7ab7a2a89c711b367691bb58
 function entrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
@@ -69,15 +72,40 @@ function entrar(req, res) {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                     }
                 }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
+function historicoSemanal(req, res) {
+    var idRua = req.params.idRua;
+    expandirModel.historicoSemanal(idRua)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                for (var i = 1; i <= 7; i++) {
+                    if (resultado[i-1] == undefined || resultado[i-1].dia > i) {
+                        resultado.splice(i-1, 0, {dia: i, valor: 0});
+                    }
+                }
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 }
 
 function cadastrar(req, res) {
@@ -110,7 +138,11 @@ function cadastrar(req, res) {
         res.status(400).send("Sua data de nascimento está undefined!");
     } else if (fkSuperior === undefined) {
         res.status(400).send("Seu superior está undefined!");
+<<<<<<< HEAD
     }
+=======
+    } 
+>>>>>>> 4a8eb8619165e0ba7ab7a2a89c711b367691bb58
     else {
         // Passe os valores como parâmetro e vá para o arquivo expandirModel.js
         expandirModel.cadastrar(nome, cargo, email, senha, telefone, cpf, dataNascimento, fkSuperior)
@@ -118,23 +150,71 @@ function cadastrar(req, res) {
                 function (resultado) {
                     res.json(resultado);
                 }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-
-    }
-
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 }
 
+function buscarOcupacao(req, res) {
+    var idRua = req.params.idRua;
+    expandirModel.buscarOcupacao(idRua).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!");
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar a ocupação", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function buscarUltimasMedidas(req, res) {
+    var idRua = req.params.idRua;
+    expandirModel.buscarUltimasMedidas(idRua).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function buscarMedidasEmTempoReal(req, res) {
+
+    var idRua = req.params.idRua;
+
+    expandirModel.buscarMedidasEmTempoReal(idRua).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 module.exports = {
     listarBairro,
+<<<<<<< HEAD
+=======
+    listarRuas,
+>>>>>>> 4a8eb8619165e0ba7ab7a2a89c711b367691bb58
     testar
 }

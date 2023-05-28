@@ -3,11 +3,14 @@ var database = require("../database/config")
 function listarBairro() {
     console.log("ACESSEI O expandir MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-            select b.idBairro, b.nome AS 'bairro', b.regiao AS 'zona', bp.fluxo, bi.adolescente, bi.jovemAdulto, 
-                bi.adulto, bi.idoso, br.baixa, br.media, br.alta
-                from bairro AS b join bairroRenda AS br join bairroIdade AS bi 
-                join bairroPopulacao AS bp on b.idBairro = br.idBairro 
-                and b.idBairro = bi.idBairro and b.idBairro = bp.idBairro
+            select b.idBairro, b.nome AS 'bairro', b.regiao AS 'zona', bp.fluxo, 
+                bi.adolescente, bi.jovemAdulto, bi.adulto, bi.idoso, 
+                br.baixa, br.media, br.alta
+                from bairro AS b 
+                join bairroRenda AS br 
+                join bairroIdade AS bi 
+                join bairroPopulacao AS bp 
+                on b.idBairro = br.idBairro and b.idBairro = bi.idBairro and b.idBairro = bp.idBairro
                 WHERE EXISTS (SELECT idEndereco FROM endereco e WHERE b.idBairro = e.fkBairro);
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -24,30 +27,62 @@ function listarRuas(idBairro) {
     return database.executar(instrucao);
 }
 
-function entrar(email, senha) {
-    console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
-    var instrucao = `
-        SELECT * FROM funcionario WHERE email = '${email}' AND senha = '${senha}';
+function historicoMensal(idRua) {
+    var instrucao = `SELECT MONTH(dataHora) AS mes, SUM(valor) AS valor 
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
+        WHERE fkEndereco = ${idRua} GROUP BY MONTH(dataHora);
     `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-// Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-function cadastrar(nome, cargo, email, senha, telefone, cpf, dataNascimento, fkSuperior) {
-    console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():",nome, cargo, email, senha, telefone, cpf, dataNascimento, fkSuperior);
-    
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
-    var instrucao = `
-        INSERT INTO funcionario (nome, cargo, email, senha, telefone, cpf, dataNascimento, fkSuperior) 
-        VALUES ('${nome}', '${cargo}','${email}', '${senha}', '${telefone}','${cpf}', '${dataNascimento}', ${fkSuperior});
+function historicoSemanal(idRua) {
+    var instrucao = `SELECT DAYOFWEEK(dataHora) AS dia, SUM(valor) AS valor 
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
+        WHERE fkEndereco = ${idRua} GROUP BY DAYOFWEEK(dataHora);
     `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function historicoDiario(idRua) {
+    var instrucao = `SELECT HOUR(dataHora) AS hora, SUM(valor) AS valor
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
+        WHERE fkEndereco = ${idRua} GROUP BY HOUR(dataHora);
+    `;
+    return database.executar(instrucao);
+}
+
+function buscarOcupacao(idRua) {
+    var instrucao = `SELECT SUM(valor) / COUNT(valor) AS ocupacao FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor WHERE fkEndereco = ${idRua}`;
+    return database.executar(instrucao);
+}
+
+function buscarUltimasMedidas(idRua) {
+    var instrucao = `SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
+        WHERE dataHora > CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 24`
+
+    return database.executar(instrucao);
+}
+
+function buscarMedidasEmTempoReal(idRua) {
+    var instrucao = `SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
+        WHERE dataHora > CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 1`
+
     return database.executar(instrucao);
 }
 
 module.exports = {
     listarBairro,
+<<<<<<< HEAD
     listarRuas
+=======
+    listarRuas,
+    historicoMensal,
+    historicoSemanal,
+    historicoDiario,
+    buscarOcupacao,
+    buscarUltimasMedidas,
+    buscarMedidasEmTempoReal
+>>>>>>> b4f8300e559e265f1d7c190f9b49614a43e742b4
 };
