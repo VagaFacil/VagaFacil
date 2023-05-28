@@ -1,5 +1,6 @@
 var perfilModel = require("../models/perfilModel");
 
+
 function testar(req, res) {
     console.log("ENTRAMOS NO avisoController");
     res.send("ENTRAMOS NO AVISO CONTROLLER");
@@ -70,10 +71,24 @@ function alterarNome(req, res) {
         });
 }
 
+function alterarImagem(req, res) {
+    var foto = req.file.filename;
+    var idFuncionario = req.params.idFuncionario;
+
+    perfilModel.alterarImagem(foto, idFuncionario)
+    .then(resultado => {
+        // res.status(201).send("foto alterada com sucesso");
+        res.json(resultado);
+      }).catch(err => {
+        res.status(500).send(err);
+      });
+}
+
 module.exports = {
     testar,
     exibirPerfil,
     exibirDadosPessoais,
     exibirDadosEmpresariais,
     alterarNome,
+    alterarImagem
 }

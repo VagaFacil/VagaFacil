@@ -252,15 +252,15 @@ insert into sensor values (null, 150000, '202', '1'),
                           (null, 150000, '604', '8'),
                           (null, 150002, '200', '9'),
                           (null, 150002, '578', '10');
-    USE vagaFacil;
-dados(
+
+create table dados(
 		idDados int primary key auto_increment,
 		dataHora datetime,
 		valor char(1),
 		fkSensor int,
 		foreign key(fksensor) references sensor(idSensor)
 )auto_increment=250000;
-USE vagaFacil;
+
 -- Dados referenter aos dados do sensor
 insert into dados values (null, '2023-04-10 07:00:00', '0', 200000), (null, '2023-04-10 07:30:00', '0', 200000), (null, '2023-04-10 08:00:00', '0', 200000), (null, '2023-04-10 08:30:00', '1', 200000),
                          (null, '2023-04-10 09:00:00', '0', 200000), (null, '2023-04-10 09:30:00', '1', 200000), (null, '2023-04-10 10:00:00', '1', 200000), (null, '2023-04-10 10:30:00', '1', 200000),
@@ -334,12 +334,15 @@ SELECT valor FROM dados WHERE idDados = 250000;
 -- select * from empresa;
 -- select * from filial;
 -- select * from funcionario;
+-- use vagaFacil;
 -- select * from endereco;
 -- select * from sensor;
 -- select * from dados;
 -- select * from bairro;
 -- select * from bairro where nome in ('Jardim Paulista', 'Cerqueira César', 'Jabaquara', 'Pinheiros', 'Saúde');
 -- select das tabelas relacionadas
+
+-- UPDATE funcionario SET foto = 'usuarioPadrao.png' WHERE idFuncionario = 100000;
 
 -- select tabela empresa e filial
 -- select * from empresa join filial on fkEmpresa = idEmpresa;
@@ -365,5 +368,6 @@ SELECT valor FROM dados WHERE idDados = 250000;
 -- select tabela bairro, bairroRenda, bairroIdade e bairroPopulacao
 -- select * from bairro join bairroRenda join bairroIdade join bairroPopulacao on bairro.idBairro = bairroRenda.idBairro 
 --                             and bairro.idBairro = bairroIdade.idBairro and bairro.idBairro = bairroPopulacao.idBairro;
+
 
 -- drop database VagaFacil;
