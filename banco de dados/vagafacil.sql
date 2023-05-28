@@ -101,12 +101,12 @@ create table funcionario (
 )auto_increment = 100000;
 
 -- Dados referentes aos usuarios
-insert into funcionario values (null,'Fernando Brandão', 'CEO','fernando@gmail.com','fernando123','(11)91234-4321','123.456.897-51','1960-09-08',null,'https://cdn-icons-png.flaticon.com/128/1077/1077114.png'),
-                           (null,'Bruno Lima', 'Desenvolvedor','bruno@gmail.com','bruno123','(11)93456-6543','456.987.321-56','2005-10-25',100000,'https://moodle.sptech.school/pluginfile.php/20865/user/icon/degrade/f1?rev=2149080'),
-                           (null,'Daniel Yuzo', 'Desenvolvedor','daniel@gmail.com','daniel123','(11)94567-7654','456.987.321-56','2005-10-25',100000,'https://cdn-icons-png.flaticon.com/128/1077/1077114.png'),
-						   (null,'Gabriel Branco', 'Desenvolvedor','gabriel@gmail.com','gabriel123','(11)95678-8765','598.621.789-56','2003-03-24',100000,'https://cdn-icons-png.flaticon.com/128/1077/1077114.png'),
-						   (null,'Henrique Bechis','Desenvolvedor','henrique@gmail.com','henrique123','(11)96789-9876','564.189.654-87','1997-04-24',100000,'https://cdn-icons-png.flaticon.com/128/1077/1077114.png'),
-                           (null,'Lucas Neves', 'Desenvolvedor','lucas@gmail.com','lucas123','(11)97890-0987','456.987.652-30','1975-08-1',100000,'https://moodle.sptech.school/pluginfile.php/20658/user/icon/degrade/f1?rev=2790193');
+insert into funcionario values (null,'Fernando Brandão', 'CEO','fernando@gmail.com','fernando123','(11)91234-4321','123.456.897-51','1960-09-08',null,'usuarioPadrao.png'),
+                           (null,'Bruno Lima', 'Desenvolvedor','bruno@gmail.com','bruno123','(11)93456-6543','456.987.321-56','2005-10-25',100000,'usuarioPadrao.png'),
+                           (null,'Daniel Yuzo', 'Desenvolvedor','daniel@gmail.com','daniel123','(11)94567-7654','456.987.321-56','2005-10-25',100000,'usuarioPadrao.png'),
+						   (null,'Gabriel Branco', 'Desenvolvedor','gabriel@gmail.com','gabriel123','(11)95678-8765','598.621.789-56','2003-03-24',100000,'usuarioPadrao.png'),
+						   (null,'Henrique Bechis','Desenvolvedor','henrique@gmail.com','henrique123','(11)96789-9876','564.189.654-87','1997-04-24',100000,'usuarioPadrao.png'),
+                           (null,'Lucas Neves', 'Desenvolvedor','lucas@gmail.com','lucas123','(11)97890-0987','456.987.652-30','1975-08-1',100000,'usuarioPadrao.png');
                            
 
 
