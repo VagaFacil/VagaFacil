@@ -96,6 +96,12 @@ function pesquisa() {
     }
 }
 
+
+
+
+
+
+
 function aguardar() {
     var divAguardar = document.getElementById("div_aguardar");
     divAguardar.style.display = "flex";

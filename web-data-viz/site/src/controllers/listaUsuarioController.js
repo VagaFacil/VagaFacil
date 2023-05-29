@@ -38,9 +38,9 @@ function exibirInfos(req, res) {
 }
 
 function deletarUsuario(req, res) {
-    var fkSuperior = req.params.fkSuperior;
+    var idFuncionario = req.params.idFuncionario;
 
-    listaUsuarioModel.deletarUsuario(fkSuperior)
+    listaUsuarioModel.deletarUsuario(idFuncionario)
         .then(
             function (resultado) {
                 res.json(resultado);
