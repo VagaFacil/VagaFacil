@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idDados, limite_linhas) {
+function buscarUltimasMedidas(idRua, limite_linhas) {
 
     instrucaoSql = ''
 
@@ -17,6 +17,7 @@ function buscarUltimasMedidas(idDados, limite_linhas) {
         instrucaoSql = `
         SELECT HOUR(dataHora) AS hora, SUM(valor) AS valor
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
+        WHERE fkEndereco = ${idRua}
         GROUP BY hora ORDER BY hora;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -27,7 +28,7 @@ function buscarUltimasMedidas(idDados, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idDados) {
+function buscarMedidasEmTempoReal(idRua) {
 
     instrucaoSql = ''
 
@@ -44,6 +45,7 @@ function buscarMedidasEmTempoReal(idDados) {
         instrucaoSql = `
         SELECT HOUR(dataHora) AS hora, SUM(valor) AS valor
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
+        WHERE fkEndereco = ${idRua}
         GROUP BY hora ORDER BY hora;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");

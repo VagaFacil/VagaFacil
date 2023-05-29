@@ -25,7 +25,7 @@ var graficoLinha = new Chart(chartLine, {
         plugins: {
             title: {
                 display: true,
-                text: 'Ocupação total da rua',
+                text: 'Oua',
                 color: '#F49C24',
                 font: {
                     size: 20
