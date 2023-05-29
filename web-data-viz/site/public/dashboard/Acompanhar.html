@@ -88,7 +88,7 @@
                 <div class="img1">
                     <!--Começo do grafico de linha-->
                     <div class="graphCard">
-                        <canvas id="myChartCanvas250000"></canvas>
+                        <canvas id="canvLine"></canvas>
                     </div>
                     <!--final-->
                 </div>
@@ -177,17 +177,17 @@
     window.onload = obterDadosGraficos();
 
     function obterDadosGraficos() {
-        obterDadosGrafico(250000)
+        obterDadosGrafico(150001)
     }
 
     // verificar_autenticacao();
 
-    /*  function alterarTitulo(idDados) {
-         var tituloAquario = document.getElementById(`tituloAquario${idDados}`)
-         tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idDados + "</span>"
+    /*  function alterarTitulo(idRua) {
+         var tituloAquario = document.getElementById(`tituloAquario${idRua}`)
+         tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idRua + "</span>"
      } */
 
-    function exibirAquario(idDados) {
+    function exibirAquario(idRua) {
         banner2.style.display = "block"
         /*  let todosOsGraficos = document.getElementById("img1")
  
@@ -208,12 +208,12 @@
          }
          
          // exibindo - ou não - o gráfico
-         let graficoExibir = document.getElementById(`grafico${idDados}`)
+         let graficoExibir = document.getElementById(`grafico${idRua}`)
          graficoExibir.classList.remove("display-none")
          graficoExibir.classList.add("display-block")
          
          // alterando estilo do botão
-         let btnExibir = document.getElementById(`btnAquario${idDados}`)
+         let btnExibir = document.getElementById(`btnAquario${idRua}`)
          btnExibir.classList.remove("btn-white")
          btnExibir.classList.add("btn-pink") */
     }
@@ -229,21 +229,21 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(idDados) {
+    function obterDadosGrafico(idRua) {
 
-        // alterarTitulo(idDados)
+        // alterarTitulo(idRua)
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/acompanhar/ultimas/${idDados}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/acompanhar/ultimas/${idRua}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idDados);
+                    plotarGrafico(resposta, idRua);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -257,7 +257,64 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idDados) {
+    var contextoChave = document.getElementById('canvLine');//.getContext('2d');
+    // contextoChave.canvas.width = 300;
+    // contextoChave.canvas.height = 100;
+    var chartLinha = new Chart(
+        contextoChave,
+        {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Chave',
+                    type: 'line',
+                    borderColor: '#F49C24',
+                    backgroundColor: '#F49C24',
+                }],
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Ocupação Recente',
+                        color: '#F49C24',
+                        font: {
+                            size: 20
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            color: '#F49C24',
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#F49C24',
+                        },
+                    },
+                    xAxes: [{
+                        distribution: 'series',
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            display: true,
+                            beginAtZero: true,
+                        }
+                    }]
+                }
+            }
+        }
+    );
+
+    function plotarGrafico(resposta, idRua) {
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -266,18 +323,17 @@
 
         // Criando estrutura para plotar gráfico - dados
         let dados = {
-
             labels: labels,
             datasets: [
             {
-                label: 'Temperatura',
+                label: 'hora',
                 data: [],
                 fill: false,
                 borderColor: '#F49C24',
                 tension: 0.1
             }]
         };
-
+      
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
@@ -285,8 +341,8 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            var hora = new Date(registro.hora);
-            labels.push(hora.getHours() + ':' + hora.getMinutes());
+            
+            labels.push(registro.hora);
             // dados.datasets[0].data.push(registro.umidade);
             dados.datasets[0].data.push(registro.valor);
         }
@@ -300,33 +356,36 @@
         console.log('----------------------------------------------')
 
         // Criando estrutura para plotar gráfico - config
-        const config = {
-            type: 'line',
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Ocupação total da rua',
-                        color: '#F49C24',
-                        font:{
-                            size: 20
-                        }
-                    },
-                    legend:{
-                        display: false
-                    }
-                }
-            },
-            data: dados,
-        };
+        // const config = {
+        //     type: 'line',
+        //     options: {
+        //         plugins: {
+        //             title: {
+        //                 display: true,
+        //                 text: 'Ocupação total da rua',
+        //                 color: '#F49C24',
+        //                 font:{
+        //                     size: 20
+        //                 }
+        //             },
+        //             legend:{
+        //                 display: false
+        //             }
+        //         }
+        //     },
+        //     data: dados,
+        // };
 
         // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChartCanvas${idDados}`),
-            config
-        );
+        // let myChart = new Chart(
+        //     document.getElementById(`myChartCanvas${idRua}`),
+        //     config
+        // );
+        chartLinha.data = dados;
+        chartLinha.options.plugins.title.text = 'Ocupação Recente';
+        chartLinha.update();
 
-        setTimeout(() => atualizarGrafico(idDados, dados, myChart), 2000);
+        setTimeout(() => atualizarGrafico(idRua, dados, myChart), 2000);
     }
 
 
@@ -335,11 +394,11 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idDados, dados, myChart) {
+    function atualizarGrafico(idRua, dados, myChart) {
 
 
 
-        fetch(`/acompanhar/tempo-real/${idDados}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/acompanhar/tempo-real/${idRua}`, { cache: 'no-store' }).then(function (response) {
             console.log(response)
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
@@ -348,7 +407,7 @@
                     console.log(`Dados atuais do gráfico:`);
                     console.log(dados);
 
-                    let avisoCaptura = document.getElementById(`avisoCaptura${idDados}`)
+                    let avisoCaptura = document.getElementById(`avisoCaptura${idRua}`)
                     // avisoCaptura.innerHTML = ""
                      var hora = new Date(novoRegistro[0].hora);
 
@@ -357,7 +416,7 @@
                         console.log("Como não há dados novos para captura, o gráfico não atualizará.")
                         // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                         console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].dataHora)
+                        console.log(novoRegistro[0].hora)
                         console.log("Horário do último dado capturado:")
                         console.log(dados.labels[dados.labels.length - 1])
                         console.log("---------------------------------------------------------------")
@@ -378,12 +437,12 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idDados, dados, myChart), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idRua, dados, myChart), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idDados, dados, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idRua, dados, myChart), 2000);
             }
         })
             .catch(function (error) {

@@ -58,7 +58,7 @@ create table endereco (
         fkBairro int,
         foreign key (fkBairro) references bairro(idBairro)
 )auto_increment = 150000;
-
+SELECT * FROM endereco;
 -- Dados referentes as ruas
 insert into endereco values (null, 'Rua Antonio Bento',  44),
 					   (null, 'Rua Consolação', 26),
@@ -260,7 +260,7 @@ create table dados(
 		fkSensor int,
 		foreign key(fksensor) references sensor(idSensor)
 )auto_increment=250000;
-
+USE vagaFacil;
 -- Dados referenter aos dados do sensor
 insert into dados values (null, '2023-04-10 07:00:00', '0', 200000), (null, '2023-04-10 07:30:00', '0', 200000), (null, '2023-04-10 08:00:00', '0', 200000), (null, '2023-04-10 08:30:00', '1', 200000),
                          (null, '2023-04-10 09:00:00', '0', 200000), (null, '2023-04-10 09:30:00', '1', 200000), (null, '2023-04-10 10:00:00', '1', 200000), (null, '2023-04-10 10:30:00', '1', 200000),
@@ -326,6 +326,7 @@ insert into dados values (null, '2023-04-10 07:00:00', '0', 200000), (null, '202
                          (null, '2023-04-10 16:30:00', '1', 200009), (null, '2023-04-10 17:00:00', '1', 200009), (null, '2023-04-10 17:30:00', '1', 200009), (null, '2023-04-10 18:00:00', '0', 200009),
                          (null, '2023-04-10 18:30:00', '1', 200009), (null, '2023-04-10 19:00:00', '0', 200009);
 SELECT * FROM dados;
+
 TRUNCATE TABLE dados;
 select dataHora, SUM(valor) FROM dados group by dataHora;
 select SUM(valor) FROM dados group by dataHora;
@@ -342,7 +343,7 @@ SELECT valor FROM dados WHERE idDados = 250000;
 -- select * from bairro where nome in ('Jardim Paulista', 'Cerqueira César', 'Jabaquara', 'Pinheiros', 'Saúde');
 -- select das tabelas relacionadas
 
--- UPDATE funcionario SET foto = 'usuarioPadrao.png' WHERE idFuncionario = 100000;
+-- UPDATE funcionario SET foto = 'usuarioPadrao.png' WHERE idFuncionario = 100005;
 
 -- select tabela empresa e filial
 -- select * from empresa join filial on fkEmpresa = idEmpresa;
