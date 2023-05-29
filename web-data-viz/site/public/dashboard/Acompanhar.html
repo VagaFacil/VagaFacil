@@ -285,7 +285,7 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            var hora = new Date(registro.dataHora);
+            var hora = new Date(registro.hora);
             labels.push(hora.getHours() + ':' + hora.getMinutes());
             // dados.datasets[0].data.push(registro.umidade);
             dados.datasets[0].data.push(registro.valor);
@@ -350,7 +350,7 @@
 
                     let avisoCaptura = document.getElementById(`avisoCaptura${idDados}`)
                     // avisoCaptura.innerHTML = ""
-                     var hora = new Date(novoRegistro[0].dataHora);
+                     var hora = new Date(novoRegistro[0].hora);
 
                     if ((hora.getHours() + `:` + hora.getMinutes()) == dados.labels[dados.labels.length - 1]) {
                         console.log("---------------------------------------------------------------")

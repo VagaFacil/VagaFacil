@@ -15,7 +15,9 @@ function buscarUltimasMedidas(idDados, limite_linhas) {
                     order by id desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
-        select dataHora, SUM(valor) as valor FROM dados WHERE dataHora > CURDATE() group by dataHora order by dataHora DESC`;
+        SELECT HOUR(dataHora) AS hora, SUM(valor) AS valor
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
+        GROUP BY hora ORDER BY hora;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -40,7 +42,9 @@ function buscarMedidasEmTempoReal(idDados) {
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
-        select dataHora, SUM(valor) as valor FROM dados WHERE dataHora > CURDATE() group by dataHora order by dataHora DESC LIMIT 1`;
+        SELECT HOUR(dataHora) AS hora, SUM(valor) AS valor
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
+        GROUP BY hora ORDER BY hora;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
