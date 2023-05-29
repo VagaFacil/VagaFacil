@@ -18,7 +18,7 @@ function exibirUsuarios(idFuncionario) {
 function exibirInfos(idFuncionario) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function exibirInfos()");
     var instrucao = `
-    SELECT idFuncionario AS funcionario,
+    SELECT idFuncionario AS funcExibido,
         nome AS nome,
         dataNascimento AS nascimento,
         cpf AS cpf,
@@ -34,7 +34,7 @@ function exibirInfos(idFuncionario) {
 function deletarUsuario(idFuncionario) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function exibirInfos()");
     var instrucao = `
-    DELETE FROM funcionario WHERE idFuncionario = ${idFuncionario}
+    DELETE FROM funcionario WHERE idFuncionario = ${idFuncionario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

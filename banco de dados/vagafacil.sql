@@ -1,6 +1,7 @@
 create database VagaFacil;
 use VagaFacil;
 
+
 -- Criação da  tabela empresa 
 create table empresa (
 		idEmpresa int primary key auto_increment,
@@ -115,7 +116,7 @@ create table FilialFuncionario (
 fkFilial int,
 foreign key (fkFilial) references filial(idFilial),
 fkFuncionario int,
-foreign key (fkFuncionario) references funcionario(idFuncionario),
+foreign key (fkFuncionario) references funcionario(idFuncionario) ON DELETE CASCADE, 
 Primary key (fkFilial, fkFuncionario)
 );
 
@@ -371,3 +372,9 @@ SELECT valor FROM dados WHERE idDados = 250000;
 
 
 -- drop database VagaFacil;
+
+-- grant delete on vagafacil.* to 'vaga'@'localhost';
+-- flush privileges;
+insert into funcionario values
+	(null,'Henrique Bechis','Desenvolvedor','henrique@gmail.com','henrique123','(11)96789-9876','564.189.654-87','1997-04-24',100000,'usuarioPadrao.png');
+select * from funcionario;

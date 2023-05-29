@@ -78,7 +78,7 @@
                     </form>
                 </div>
                 <div class="space-btn">
-                    <button id="btn-excluir">Excluir usuário</button>
+                    <button style="display: none;" id="btn-excluir" onclick="deletarUsuario(funcExibido)">Excluir usuário</button>
                 </div>
             </div>
         </div>
@@ -126,7 +126,7 @@
 </html>
 <script>
         var idFuncionario = sessionStorage.ID_FUNCIONARIO;
-
+        var funcExibido = 0;
         atualizarFormulario(idFuncionario)
 
 
