@@ -17,7 +17,7 @@ function buscarUltimasMedidas(idRua, limite_linhas) {
         instrucaoSql = `
         SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
-        WHERE dataHora > CURDATE() GROUP BY hora ORDER BY hora DESC LIMIT 24`;
+        WHERE dataHora <= CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 24`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -44,7 +44,7 @@ function buscarMedidasEmTempoReal(idRua) {
         instrucaoSql = `
         SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
-        WHERE dataHora > CURDATE()  GROUP BY hora ORDER BY hora DESC LIMIT 1`;
+        WHERE dataHora <= CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 1`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return

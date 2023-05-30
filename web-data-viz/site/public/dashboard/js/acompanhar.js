@@ -7,7 +7,7 @@
     window.onload = obterDadosGraficos();
 
     function obterDadosGraficos() {
-        obterDadosGrafico(150001)
+        obterDadosGrafico(150000)
     }
 
     // verificar_autenticacao();
@@ -19,33 +19,6 @@
 
     function exibirAquario(idRua) {
         banner2.style.display = "block"
-        /*  let todosOsGraficos = document.getElementById("img1")
- 
-         for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
-             // exibindo - ou não - o gráfico
-             let elementoAtual = document.getElementById(`grafico${i}`)
-             if (elementoAtual.classList.contains("display-block")) {
-                 elementoAtual.classList.remove("display-block")
-             }
-             elementoAtual.classList.add("display-none")
-             
-             // alterando estilo do botão
-             let btnAtual = document.getElementById(`btnAquario${i}`)
-             if (btnAtual.classList.contains("btn-pink")) {
-                 btnAtual.classList.remove("btn-pink")
-             }
-             btnAtual.classList.add("btn-white")
-         }
-         
-         // exibindo - ou não - o gráfico
-         let graficoExibir = document.getElementById(`grafico${idRua}`)
-         graficoExibir.classList.remove("display-none")
-         graficoExibir.classList.add("display-block")
-         
-         // alterando estilo do botão
-         let btnExibir = document.getElementById(`btnAquario${idRua}`)
-         btnExibir.classList.remove("btn-white")
-         btnExibir.classList.add("btn-pink") */
     }
     var contextoChave = document.getElementById('canvLine').getContext('2d');
     // contextoChave.canvas.width = 300;
@@ -78,6 +51,7 @@
                 },
                 scales: {
                     y: {
+                        beginAtZero: true,
                         ticks: {
                             color: '#F49C24',
                         }
@@ -85,23 +59,12 @@
                     x: {
                         ticks: {
                             color: '#F49C24',
-                        },
-                    },
-                    xAxes: [{
-                        distribution: 'series',
-                        ticks: {
-                            beginAtZero: true,
-                        },
-                    }],
-                    yAxes: [{
-                        ticks: {
-                            display: true,
-                            beginAtZero: true,
                         }
-                    }]
+                    }
+                },
                 }
             }
-        }
+        
     );
 
     // O gráfico é construído com três funções:
@@ -374,18 +337,18 @@ function changeDisabled(elemento) {
 //             }
 //         },
 //         scales: {
-//             y: {
-//                 beginAtZero: true,
-//                 ticks: {
-//                     color: '#F49C24',
-//                 }
-//             },
-//             x: {
-//                 ticks: {
-//                     color: '#F49C24',
-//                 }
-//             }
-//         },
+        //     y: {
+        //         beginAtZero: true,
+        //         ticks: {
+        //             color: '#F49C24',
+        //         }
+        //     },
+        //     x: {
+        //         ticks: {
+        //             color: '#F49C24',
+        //         }
+        //     }
+        // },
 //         backgroundColor: '#F49C24',
 //         borderColor: '#F49C24',
 //     }
