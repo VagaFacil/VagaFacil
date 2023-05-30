@@ -15,7 +15,7 @@ router.get("/exibirInfos/:idFuncionario", function (req, res) {
     listaUsuarioController.exibirInfos(req, res);
 });
 
-router.delete("/deletar/:idAviso", function (req, res) {
+router.delete("/deletarUsuario/:idFuncionario", function (req, res) {
     listaUsuarioController.deletarUsuario(req, res);
 });
 

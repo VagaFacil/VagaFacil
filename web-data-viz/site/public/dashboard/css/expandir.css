@@ -135,6 +135,14 @@ html {
 
 .dashboard .containerDados h2 {
   justify-content: space-between;
+  text-align: center;
+  border-bottom: none;
+  width: 80%;
+  align-items: center;
+}
+
+.dashboard .containerDados .btnCadastrar {
+  margin: 0px;
 }
 
 .dashboard .containerDadosFiltros {
@@ -148,15 +156,10 @@ html {
   border-radius: 20px;
 }
 
-.dashboard .containerDadosFiltros h2 {
-  text-align: center;
-  border-bottom: none;
-}
-
-.dashboard .endereco,.titulo {
-  width: 70%;
+/* .dashboard .endereco,.titulo {
+  width: 90%;
   margin: auto;
-}
+} */
 
 .dashboard .inputWide {
   width: 100%;
@@ -178,13 +181,13 @@ html {
 
 .dashboard .card {
   display: flex;
-  flex-wrap: wrap;
-  width: 20%;
-  gap: 50%;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
 }
 
 .dashboard .card select {
-  width: 100%;
+  width: 60%;
 }
 
 .dashboard .containerGraficos {
@@ -202,9 +205,14 @@ html {
 
 .dashboard .cardGrafico {
   display: flex;
-  width: 50%;
+  width: 70%;
   justify-content: space-between;
   margin: auto;
+  height: 40vh;
+}
+
+.dashboard .cardGrafico canvas {
+  width: 50%;
 }
 
 .dashboard .cardGauge {

@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idDados, limite_linhas) {
+function buscarUltimasMedidas(idRua, limite_linhas) {
 
     instrucaoSql = ''
 
@@ -15,7 +15,9 @@ function buscarUltimasMedidas(idDados, limite_linhas) {
                     order by id desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
-        select dataHora, SUM(valor) as valor FROM dados WHERE dataHora > CURDATE() group by dataHora order by dataHora DESC`;
+        SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
+        WHERE dataHora > CURDATE() GROUP BY hora ORDER BY hora DESC LIMIT 24`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -25,7 +27,7 @@ function buscarUltimasMedidas(idDados, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idDados) {
+function buscarMedidasEmTempoReal(idRua) {
 
     instrucaoSql = ''
 
@@ -40,7 +42,9 @@ function buscarMedidasEmTempoReal(idDados) {
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
-        select dataHora, SUM(valor) as valor FROM dados WHERE dataHora > CURDATE() group by dataHora order by dataHora DESC LIMIT 1`;
+        SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
+        WHERE dataHora > CURDATE()  GROUP BY hora ORDER BY hora DESC LIMIT 1`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return

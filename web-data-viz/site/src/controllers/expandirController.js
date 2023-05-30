@@ -4,9 +4,6 @@ var sessoes = [];
 
 function testar(req, res) {
     console.log("ENTRAMOS NA expandirController");
-=======
-    console.log("ENTRAMOS NA funcionarioController");
->>>>>>> 4a8eb8619165e0ba7ab7a2a89c711b367691bb58
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
@@ -46,30 +43,14 @@ function listarRuas(req, res) {
         );
 }
 
->>>>>>> 4a8eb8619165e0ba7ab7a2a89c711b367691bb58
-function entrar(req, res) {
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
-
-    if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
-    } else {
-
-        expandirModel.entrar(email, senha)
-            .then(
-                function (resultado) {
-                    console.log(`\nResultados encontrados: ${resultado.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
-
-                    if (resultado.length == 1) {
-                        console.log(resultado);
-                        res.json(resultado[0]);
-                    } else if (resultado.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+function historicoMensal(req, res) {
+    var idRua = req.params.idRua;
+    expandirModel.historicoMensal(idRua)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                for (var i = 1; i <= 12; i++) {
+                    if (resultado[i-1] == undefined || resultado[i-1].mes > i) {
+                        resultado.splice(i-1, 0, {mes: i, valor: 0});
                     }
                 }
                 res.status(200).json(resultado);
@@ -108,47 +89,15 @@ function historicoSemanal(req, res) {
         );
 }
 
-function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nome = req.body.nomeServer;
-    var cargo = req.body.cargoServer;
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
-    var telefone = req.body.telefoneServer;
-    var cpf = req.body.cpfServer;
-    var dataNascimento = req.body.dataNascimentoServer;
-    var fkSuperior = req.body.fkSuperiorServer;
-
-    console.log(`${nome} ${cargo} ${email} ${senha} ${telefone} ${cpf} ${dataNascimento} ${fkSuperior}`);
-
-    // Faça as validações dos valores
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (cargo == undefined) {
-        res.status(400).send("Seu cargo está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else if (telefone == undefined) {
-        res.status(400).send("Seu telefone está undefined!");
-    } else if (cpf == undefined) {
-        res.status(400).send("Seu CPF está undefined!");
-    } else if (dataNascimento == undefined) {
-        res.status(400).send("Sua data de nascimento está undefined!");
-    } else if (fkSuperior === undefined) {
-        res.status(400).send("Seu superior está undefined!");
-<<<<<<< HEAD
-    }
-=======
-    } 
->>>>>>> 4a8eb8619165e0ba7ab7a2a89c711b367691bb58
-    else {
-        // Passe os valores como parâmetro e vá para o arquivo expandirModel.js
-        expandirModel.cadastrar(nome, cargo, email, senha, telefone, cpf, dataNascimento, fkSuperior)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
+function historicoDiario(req, res) {
+    var idRua = req.params.idRua;
+    expandirModel.historicoDiario(idRua)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                for (var i = 0; i <= 23; i++) {
+                    if (resultado[i] == undefined || resultado[i].hora > i) {
+                        resultado.splice(i, 0, {hora: i, valor: 0});
+                    }
                 }
                 res.status(200).json(resultado);
             } else {
@@ -161,6 +110,27 @@ function cadastrar(req, res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
+}
+
+function buscarTempoMedio(req, res) {
+    var idRua = req.params.idRua;
+    expandirModel.buscarTempoMedio(idRua).then(function (resultado) {
+        if (resultado.length > 0) {
+            var contagem = 0;
+            var divisoes = 0;
+            for (var i  = 0; i < resultado.length; i++) {
+                contagem += resultado[i].tempo.split('1').length - 1;
+                divisoes += resultado[i].tempo.split(/1+/).length - 1;
+            }
+            res.status(200).json({tempoMedio: (contagem * 5 / divisoes)});
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!");
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar a ocupação", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
 }
 
 function buscarOcupacao(req, res) {
@@ -212,9 +182,13 @@ function buscarMedidasEmTempoReal(req, res) {
 
 module.exports = {
     listarBairro,
-<<<<<<< HEAD
-=======
     listarRuas,
->>>>>>> 4a8eb8619165e0ba7ab7a2a89c711b367691bb58
+    historicoMensal,
+    historicoSemanal,
+    historicoDiario,
+    buscarTempoMedio,
+    buscarOcupacao,
+    buscarUltimasMedidas,
+    buscarMedidasEmTempoReal,
     testar
 }

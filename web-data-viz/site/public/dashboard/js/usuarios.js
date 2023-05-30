@@ -70,6 +70,8 @@ function exibir(idFuncionario) {
                 telefone.innerHTML = infos.telefone;
                 email.innerHTML = infos.email;
                 // finalizarAguardar();
+                funcExibido = infos.funcExibido;
+                btnExcluir.style.display = 'block';
             });
         } else {
             throw ('Houve um erro na API!');
@@ -78,6 +80,47 @@ function exibir(idFuncionario) {
         console.error(resposta);
         // finalizarAguardar();
     });
+}
+
+
+function deletarUsuario(funcExibido) {
+    fetch(`/listaUsuario/deletarUsuario/${funcExibido}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({})
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO deletarUsuario()!")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+            });
+            // cardErroDelete.style.display = "block"
+            // cardErroDelete.style.border = "2px solid greenyellow"
+            // cardErroDelete.style.color = "greenyellow"
+            // mensagem_erroDelete.innerHTML = "Usuário deletado com sucesso✅";
+        } else {
+            // cardErroDelete.style.display = "block"
+            // cardErroDelete.style.border = "2px solid red"
+            // cardErroDelete.style.color = "red"
+            // mensagem_erroDelete.innerHTML = "❌Usuário não cadastrado❌";
+
+            console.log("Houve um erro ao tentar deletar o usuário!");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
 }
 
 
@@ -95,6 +138,12 @@ function pesquisa() {
         }
     }
 }
+
+
+
+
+
+
 
 function aguardar() {
     var divAguardar = document.getElementById("div_aguardar");
