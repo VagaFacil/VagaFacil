@@ -9,14 +9,23 @@ var database = require("../database/config")
 //     return database.executar(instrucao);
 // }
 
-// function entrar(email, senha) {
-//     console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
-//     var instrucao = `
-//         SELECT * FROM funcionario WHERE email = '${email}' AND senha = '${senha}';
-//     `;
-//     console.log("Executando a instrução SQL: \n" + instrucao);
-//     return database.executar(instrucao);
-// }
+function listarEmpresa(idFilial) {
+    console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
+    var instrucao = `
+        SELECT e.razao, e.cnpj FROM empresa e INNER JOIN filial f ON f.fkEmpresa = e.idEmpresa WHERE f.idFilial = ${idFilial};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function entrar(email, senha) {
+    console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
+    var instrucao = `
+        SELECT f.*, GROUP_CONCAT(ff.fkFilial) AS filiais FROM funcionario f JOIN filialFuncionario ff ON f.idFuncionario = ff.fkFuncionario WHERE f.email = '${email}' AND f.senha = '${senha}' GROUP BY f.idFuncionario;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrarFuncionario(idFuncionario, nome, cargo, email, senha, telefone, cpf, dataNascimento, foto) {
@@ -107,7 +116,8 @@ function cadastrarFilialFuncionario(idFilial,numero, complemento, fkEmpresa, fkE
 
 
 module.exports = {
-    // entrar,
+    entrar,
+    listarEmpresa,
     cadastrarFuncionario,
     cadastrarEmpresa,
     cadastrarFilial,

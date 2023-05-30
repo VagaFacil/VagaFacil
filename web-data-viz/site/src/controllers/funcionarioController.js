@@ -7,6 +7,25 @@ function testar(req, res) {
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
+function listarEmpresa(req, res) {
+    var idFilial = req.params.idFilial;
+
+    funcionarioModel.listarEmpresa(idFilial)
+    .then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
 function listar(req, res) {
     funcionarioModel.listar()
         .then(function (resultado) {
@@ -138,5 +157,6 @@ module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    testar,
+    listarEmpresa
 }
