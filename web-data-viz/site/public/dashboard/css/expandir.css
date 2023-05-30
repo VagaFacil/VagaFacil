@@ -135,6 +135,14 @@ html {
 
 .dashboard .containerDados h2 {
   justify-content: space-between;
+  text-align: center;
+  border-bottom: none;
+  width: 80%;
+  align-items: center;
+}
+
+.dashboard .containerDados .btnCadastrar {
+  margin: 0px;
 }
 
 .dashboard .containerDadosFiltros {
@@ -148,15 +156,10 @@ html {
   border-radius: 20px;
 }
 
-.dashboard .containerDadosFiltros h2 {
-  text-align: center;
-  border-bottom: none;
-}
-
-.dashboard .endereco,.titulo {
-  width: 70%;
+/* .dashboard .endereco,.titulo {
+  width: 90%;
   margin: auto;
-}
+} */
 
 .dashboard .inputWide {
   width: 100%;
