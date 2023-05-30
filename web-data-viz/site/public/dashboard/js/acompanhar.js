@@ -1,4 +1,342 @@
 
+    /* b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_cpf.innerHTML = sessionStorage.CPF_USUARIO; */
+
+    let proximaAtualizacao;
+
+    window.onload = obterDadosGraficos();
+
+    function obterDadosGraficos() {
+        obterDadosGrafico(150001)
+    }
+
+    // verificar_autenticacao();
+
+    /*  function alterarTitulo(idRua) {
+         var tituloAquario = document.getElementById(`tituloAquario${idRua}`)
+         tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idRua + "</span>"
+     } */
+
+    function exibirAquario(idRua) {
+        banner2.style.display = "block"
+        /*  let todosOsGraficos = document.getElementById("img1")
+ 
+         for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
+             // exibindo - ou não - o gráfico
+             let elementoAtual = document.getElementById(`grafico${i}`)
+             if (elementoAtual.classList.contains("display-block")) {
+                 elementoAtual.classList.remove("display-block")
+             }
+             elementoAtual.classList.add("display-none")
+             
+             // alterando estilo do botão
+             let btnAtual = document.getElementById(`btnAquario${i}`)
+             if (btnAtual.classList.contains("btn-pink")) {
+                 btnAtual.classList.remove("btn-pink")
+             }
+             btnAtual.classList.add("btn-white")
+         }
+         
+         // exibindo - ou não - o gráfico
+         let graficoExibir = document.getElementById(`grafico${idRua}`)
+         graficoExibir.classList.remove("display-none")
+         graficoExibir.classList.add("display-block")
+         
+         // alterando estilo do botão
+         let btnExibir = document.getElementById(`btnAquario${idRua}`)
+         btnExibir.classList.remove("btn-white")
+         btnExibir.classList.add("btn-pink") */
+    }
+    var contextoChave = document.getElementById('canvLine').getContext('2d');
+    // contextoChave.canvas.width = 300;
+    // contextoChave.canvas.height = 100;
+    var chartLinha = new Chart(
+        contextoChave,
+        {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Chave',
+                    type: 'line',
+                    borderColor: '#F49C24',
+                    backgroundColor: '#F49C24',
+                }],
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Ocupação Recente',
+                        color: '#F49C24',
+                        font: {
+                            size: 20
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            color: '#F49C24',
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#F49C24',
+                        },
+                    },
+                    xAxes: [{
+                        distribution: 'series',
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            display: true,
+                            beginAtZero: true,
+                        }
+                    }]
+                }
+            }
+        }
+    );
+
+    // O gráfico é construído com três funções:
+    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function obterDadosGrafico(idRua) {
+
+        // alterarTitulo(idRua)
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/acompanhar/ultimas/${idRua}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idRua);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+
+
+    function plotarGrafico(resposta, idRua) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [ ];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [
+            {
+                label: 'hora',
+                data: [],
+                fill: false,
+                borderColor: '#F49C24',
+                tension: 0.1
+            }]
+        };
+      
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.hora);
+            dados.datasets[0].data.push(registro.valor);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        // const config = {
+        //     type: 'line',
+        //     options: {
+        //         plugins: {
+        //             title: {
+        //                 display: true,
+        //                 text: 'Ocupação total da rua',
+        //                 color: '#F49C24',
+        //                 font:{
+        //                     size: 20
+        //                 }
+        //             },
+        //             legend:{
+        //                 display: false
+        //             }
+        //         }
+        //     },
+        //     data: dados,
+        // };
+
+        // Adicionando gráfico criado em div na tela
+        // let chartLinha = new Chart(
+        //     document.getElementById(`chartLinhaCanvas${idRua}`),
+        //     config
+        // );
+        chartLinha.data = dados;
+        chartLinha.options.plugins.title.text = 'Ocupação Recente';
+        chartLinha.update();
+
+        setTimeout(() => atualizarGrafico(idRua, dados/* , chartLinha */), 2000);
+    }
+
+
+    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // buscando a última medida inserida em tabela contendo as capturas, 
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function atualizarGrafico(idRua, dados/* , chartLinha */) {
+
+
+
+        fetch(`/acompanhar/tempo-real/${idRua}`, { cache: 'no-store' }).then(function (response) {
+            console.log(response)
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    // let avisoCaptura = document.getElementById(`avisoCaptura${idRua}`)
+                    // avisoCaptura.innerHTML = ""
+                     var hora = new Date(novoRegistro[0].hora);
+
+                    if (novoRegistro[0].hora == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].hora)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].hora); // incluir um novo momento
+
+                       /*  dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+ */
+                        dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                        
+                        dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de temperatura
+
+                        chartLinha.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idRua, dados/* , chartLinha */), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idRua, dados/* , chartLinha */), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+ */
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+
+// 
+
 var dadosLinha = 0;
 var dadosPizza = 0;
 var dadosOcupacao = 0;
@@ -11,47 +349,47 @@ function changeDisabled(elemento) {
     document.getElementById(elemento).disabled = !disabled;
 }
 
-const chartLine = document.getElementById('canvLine');
-/*Começo do gráfico de linha*/
-var graficoLinha = new Chart(chartLine, {
-    type: 'line',
-    data: {
-        datasets: [{
-            data: dadosLinha,
-        }],
-        labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
-    },
-    options: {
-        plugins: {
-            title: {
-                display: true,
-                text: 'Oua',
-                color: '#F49C24',
-                font: {
-                    size: 20
-                }
-            },
-            legend: {
-                display: false
-            }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                ticks: {
-                    color: '#F49C24',
-                }
-            },
-            x: {
-                ticks: {
-                    color: '#F49C24',
-                }
-            }
-        },
-        backgroundColor: '#F49C24',
-        borderColor: '#F49C24',
-    }
-});
+// const chartLine = document.getElementById('canvLine');
+// /*Começo do gráfico de linha*/
+// var graficoLinha = new Chart(chartLine, {
+//     type: 'line',
+//     data: {
+//         datasets: [{
+//             data: dadosLinha,
+//         }],
+//         labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
+//     },
+//     options: {
+//         plugins: {
+//             title: {
+//                 display: true,
+//                 text: 'Oua',
+//                 color: '#F49C24',
+//                 font: {
+//                     size: 20
+//                 }
+//             },
+//             legend: {
+//                 display: false
+//             }
+//         },
+//         scales: {
+//             y: {
+//                 beginAtZero: true,
+//                 ticks: {
+//                     color: '#F49C24',
+//                 }
+//             },
+//             x: {
+//                 ticks: {
+//                     color: '#F49C24',
+//                 }
+//             }
+//         },
+//         backgroundColor: '#F49C24',
+//         borderColor: '#F49C24',
+//     }
+// });
 /*Final do grafico de linha*/
 
 /*Começo dos gráficos de pizza*/
