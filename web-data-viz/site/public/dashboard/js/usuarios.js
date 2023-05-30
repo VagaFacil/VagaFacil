@@ -59,13 +59,19 @@ function exibir(idFuncionario) {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
                 infos = resposta[0]
+
+                const datetime = new Date(infos.nascimento);
+                const dia = datetime.getDate().toString().padStart(2, '0');
+                const mes = (datetime.getMonth() + 1).toString().padStart(2, '0'); // Lembrando que os meses começam em 0
+                const ano = datetime.getFullYear().toString();
+                const dataCompleta = `${dia}/${mes}/${ano}`;
+
                 var nome = document.getElementById("nome");
-                var dataN = document.getElementById("dataN");
                 var cpf = document.getElementById("cpf");
                 var telefone = document.getElementById("telefone");
                 var email = document.getElementById("email");
                 nome.innerHTML = infos.nome;
-                dataN.innerHTML = infos.nascimento;
+                dataN.innerHTML = dataCompleta;
                 cpf.innerHTML = infos.cpf;
                 telefone.innerHTML = infos.telefone;
                 email.innerHTML = infos.email;

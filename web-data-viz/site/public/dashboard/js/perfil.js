@@ -27,6 +27,7 @@ function exibir_informacaoPessoal(idFuncionario) {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
                 infos = resposta[0]
+
                 const datetime = new Date(infos.dataNascimento);
                 const dia = datetime.getDate().toString().padStart(2, '0');
                 const mes = (datetime.getMonth() + 1).toString().padStart(2, '0'); // Lembrando que os meses começam em 0
@@ -34,7 +35,6 @@ function exibir_informacaoPessoal(idFuncionario) {
                 const dataCompleta = `${dia}/${mes}/${ano}`;
 
                 var nome = document.getElementById("nomePessoal");
-                var dataN = document.getElementById("dataN");
                 var cpf = document.getElementById("cpf");
                 var telefone = document.getElementById("telefone");
                 var email = document.getElementById("email");
@@ -46,7 +46,6 @@ function exibir_informacaoPessoal(idFuncionario) {
                 pessoal.style = "display: flex;";
                 comercial.style = "display: none;";
                 personalizar.style = "display: none;";
-                // atuacao.style = "display: none;";
 
             });
         } else {
@@ -77,7 +76,7 @@ function exibir_comercial(idFuncionario) {
                 pessoal.style = "display: none;";
                 comercial.style = "display: flex;";
                 personalizar.style = "display: none;";
-                // atuacao.style = "display: none;";
+
             });
         } else {
             throw ('Houve um erro na API!');
@@ -91,7 +90,7 @@ function exibir_personalizar() {
     pessoal.style = "display: none;";
     comercial.style = "display: none;";
     personalizar.style = "display: flex;";
-    // atuacao.style = "display: none;";
+
 }
 
 function mudarNome(idFuncionario) {
