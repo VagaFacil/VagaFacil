@@ -1,19 +1,33 @@
 
+// Js que está sendo usado
+
+
     function cadastrar() {
+        // Card 1
         var nomeVar = ipt_nome.value;
         var cargoVar = ipt_cargo.value;
         var telefoneVar = ipt_telefone.value;
         var cpfVar = ipt_cpf.value;
-        var dataNascimentoVar = ipt_dataN.value;
-        var fkSuperiorVar = null;
 
+        // Adaptar a data de Nascimento para o MySQL
+        const datetime = new Date(infos.ipt_dataN.value);
+                const dia = datetime.getDate().toString().padStart(2, '0');
+                const mes = (datetime.getMonth() + 1).toString().padStart(2, '0'); // Lembrando que os meses começam em 0
+                const ano = datetime.getFullYear().toString();
+                var dataNascimentoVar = `${ano}/${mes}/${dia}`;
+        
+        // var fkSuperiorVar = null;
+
+        // Card 2
         var razaoVar = ipt_razao.value;
         var cnpjVar = ipt_cnpj.value;
         var cepVar = ipt_cep.value;
         var numeroVar = ipt_numero.value;
-        var compVar = ipt_comp.value;
+        var complementoVar = ipt_complemento.value;
         var bairroVar = ipt_bairro.value;
+        var enderecoVar = ipt_endereco.value;
 
+        // Card 3
         var emailVar = ipt_email.value;
         var senhaVar = ipt_senha.value;
         var confirmarSenhaVar = ipt_confirmarSenha.value;
@@ -36,13 +50,13 @@
             vCargo.style.display = 'none';
             ipt_cargo.style = 'border-color: #32a7b1';
         }
-        if (telefoneVar.length > 14 || telefoneVar.length < 13) {
-            vTelefone.style.display = 'block';
-            ipt_telefone.style = 'border-color: red';
+        if (dataNascimentoVar.length < 10) {
+            vDataN.style.display = 'block';
+            ipt_dataN.style = 'border-color: red';
             erroCadastro = true;
         } else {
-            vTelefone.style.display = 'none';
-            ipt_telefone.style = 'border-color: #32a7b1';
+            vDataN.style.display = 'none';
+            ipt_dataN.style = 'border-color: #32a7b1';
         }
         if (cpfVar.length != 13 ) {
             vCpf.style.display = 'block';
@@ -52,19 +66,20 @@
             vCpf.style.display = 'none';
             ipt_cpf.style = 'border-color: #32a7b1';
         }
-        if (dataNascimentoVar.length < 10) {
-            vDataN.style.display = 'block';
-            ipt_dataN.style = 'border-color: red';
+        if (telefoneVar.length > 14 || telefoneVar.length < 13) {
+            vTelefone.style.display = 'block';
+            ipt_telefone.style = 'border-color: red';
             erroCadastro = true;
         } else {
-            vDataN.style.display = 'none';
-            ipt_dataN.style = 'border-color: #32a7b1';
+            vTelefone.style.display = 'none';
+            ipt_telefone.style = 'border-color: #32a7b1';
         }
+       
 
         if (razaoVar.length < 3) {
             vRazao.style.display = 'block';
             ipt_razao.style = 'border-color: red';
-            erroCadastro = true;;
+            erroCadastro = true;
         } else {
             vRazao.style.display = 'none';
             ipt_razao.style = 'border-color: #32a7b1';
@@ -72,7 +87,7 @@
         if (cnpjVar.length < 3) {
             vCnpj.style.display = 'block';
             ipt_cnpj.style = 'border-color: red';
-            erroCadastro = true;;
+            erroCadastro = true;
         } else {
             vCnpj.style.display = 'none';
             ipt_cnpj.style = 'border-color: #32a7b1';
@@ -80,10 +95,34 @@
         if (cepVar.length != 9) {
             vCep.style.display = 'block';
             ipt_cep.style = 'border-color: red';
-            erroCadastro = true;;
+            erroCadastro = true;
         } else {
             vCep.style.display = 'none';
             ipt_cep.style = 'border-color: #32a7b1';
+        }
+        if (bairroVar.length != 9) {
+            vBairro.style.display = 'block';
+            ipt_bairro.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vBairro.style.display = 'none';
+            ipt_bairro.style = 'border-color: #32a7b1';
+        }
+        if (enderecoVar.length == 0) {
+            vEndereco.style.display = 'block';
+            ipt_endereco.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vEndereco.style.display = 'none';
+            ipt_endereco.style = 'border-color: #32a7b1';
+        }
+        if (numeroVar.length == 0 || isNaN(numeroVar)) {
+            vNumero.style.display = 'block';
+            ipt_numero.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vNumero.style.display = 'none';
+            ipt_numero.style = 'border-color: #32a7b1';
         }
 
         if (emailVar.indexOf('@') < 0 && emailVar.indexOf('.com') < 0) {
@@ -105,9 +144,17 @@
         if (confirmarSenhaVar != senhaVar) {
             vConfirmarSenha.style.display = 'block';
             ipt_confirmarSenha.style = 'border-color: red';
-            erroCadastro = true;;
+            erroCadastro = true;
         } else {
             vConfirmarSenha.style.display = 'none';
+            ipt_confirmarSenha.style = 'border-color: #32a7b1';
+        }
+        if ( confirmarSenhaVar == "") {
+            vConfirmarSenhaInvalida.style.display = 'block';
+            ipt_confirmarSenha.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vConfirmarSenhaInvalida.style.display = 'none';
             ipt_confirmarSenha.style = 'border-color: #32a7b1';
         }
 
@@ -131,7 +178,14 @@
                     telefoneServer: telefoneVar,
                     cpfServer: cpfVar,
                     dataNascimentoServer: dataNascimentoVar,
-                    fkSuperiorServer: fkSuperiorVar
+                    // fkSuperiorServer: fkSuperiorVar
+                    razaoServer: razaoVar,
+                    cnpjServer: cnpjVar,
+                    nomeBairroServer: bairroVar, 
+                    enderecoServer: enderecoVar, 
+                    cepServer: cepVar,
+                    numeroServer: numeroVar, 
+                    complementoServer: complementoVar 
                 })
             }).then(function (resposta) {
                 console.log("resposta: ", resposta);

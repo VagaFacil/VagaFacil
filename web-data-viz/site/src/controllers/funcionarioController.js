@@ -62,6 +62,8 @@ function entrar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    // Dados Funcionario
+    var idFuncionario = 100000;
     var nome = req.body.nomeServer;
     var cargo = req.body.cargoServer;
     var email = req.body.emailServer;
@@ -69,9 +71,28 @@ function cadastrar(req, res) {
     var telefone = req.body.telefoneServer;
     var cpf = req.body.cpfServer;
     var dataNascimento = req.body.dataNascimentoServer;
-    var fkSuperior = req.body.fkSuperiorServer;
+    var foto = `${usuarioPadrao.png}`;
+    // Dados Empresa
+    var idEmpresa = 1;
+    var razao = req.body.razaoServer; 
+    var cnpj = req.body.cnpjServer; 
+    // Dados bairro
+    var idBairro = 1;
+    var nomeBairro = req.body.nomeBairroServer; 
+    //Dados bairro
+    var idEndereco = 150000;
+    var logradouro = req.body.enderecoServer;  
+    var cep = req.body.cepServer; // falta configurar
+    var fkBairro = idBairro;
+    //Dados Filial
+    var idFilial = 50000;
+    var numero = req.body.numeroServer; // falta configurar
+    var complemento = req.body.complementoServer;
 
-    console.log(`${nome} ${cargo} ${email} ${senha} ${telefone} ${cpf} ${dataNascimento} ${fkSuperior}`);
+
+
+   
+    console.log(`${nome} ${cargo} ${email} ${senha} ${telefone} ${cpf} ${dataNascimento}`);
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -88,12 +109,13 @@ function cadastrar(req, res) {
         res.status(400).send("Seu CPF está undefined!");
     } else if (dataNascimento == undefined) {
         res.status(400).send("Sua data de nascimento está undefined!");
-    } else if (fkSuperior === undefined) {
-        res.status(400).send("Seu superior está undefined!");
     } 
+    // else if (fkSuperior === undefined) {
+    //     res.status(400).send("Seu superior está undefined!");
+    // } 
     else {
         // Passe os valores como parâmetro e vá para o arquivo funcionarioModel.js
-        funcionarioModel.cadastrar(nome, cargo, email, senha, telefone, cpf, dataNascimento, fkSuperior)
+        funcionarioModel.cadastrar(nome, cargo, email, senha, telefone, cpf, dataNascimento)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -108,9 +130,7 @@ function cadastrar(req, res) {
                     res.status(500).json(erro.sqlMessage);
                 }
             );
-
     }
-
 }
 
 
