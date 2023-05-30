@@ -20,7 +20,7 @@ function listarBairro() {
 function listarRuas(idBairro) {
     console.log("ACESSEI O expandir MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarRuas()", idBairro);
     var instrucao = `
-            select e.idEndereco, e.logradouro FROM endereco e JOIN bairro b ON b.idBairro = e.fkBairro
+            select e.idEndereco, e.logradouro, e.cep, b.nome FROM endereco e JOIN bairro b ON b.idBairro = e.fkBairro
                 WHERE b.idBairro = ${idBairro} AND EXISTS (SELECT idSensor FROM sensor s WHERE e.idEndereco = s.fkEndereco);
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);

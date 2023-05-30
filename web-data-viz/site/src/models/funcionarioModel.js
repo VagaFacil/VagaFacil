@@ -12,7 +12,7 @@ function listar() {
 function entrar(email, senha) {
     console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
-        SELECT * FROM funcionario WHERE email = '${email}' AND senha = '${senha}';
+        SELECT f.*, GROUP_CONCAT(ff.fkFilial) AS filiais FROM funcionario f JOIN filialFuncionario ff ON f.idFuncionario = ff.fkFuncionario WHERE f.email = '${email}' AND f.senha = '${senha}' GROUP BY f.idFuncionario;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
