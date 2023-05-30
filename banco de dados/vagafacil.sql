@@ -335,7 +335,7 @@ SELECT valor FROM dados WHERE idDados = 250000;
 -- select das tabelas simples
 -- select * from empresa;
 -- select * from filial;
--- select * from funcionario;
+select * from funcionario;
 -- use vagaFacil;
 -- select * from endereco;
 -- select * from sensor;
@@ -373,9 +373,3 @@ SELECT valor FROM dados WHERE idDados = 250000;
 
 
 -- drop database VagaFacil;
-
--- grant delete on vagafacil.* to 'vaga'@'localhost';
--- flush privileges;
-insert into funcionario values
-	(null,'Henrique Bechis','Desenvolvedor','henrique@gmail.com','henrique123','(11)96789-9876','564.189.654-87','1997-04-24',100000,'usuarioPadrao.png');
-select * from funcionario;

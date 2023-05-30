@@ -97,32 +97,35 @@ function exibir_personalizar() {
 function mudarNome(idFuncionario) {
     var nomeNovo = outroNome.value;
 
-    fetch(`/perfil/alterarNome/${idFuncionario}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            nome: nomeNovo
-        })
-    }).then(function (resposta) {
-        console.log(resposta)
-        if (resposta.ok) {
-            if (nomeNovo.length >= 5) {
+    if (nomeNovo.length >= 5) {
+        fetch(`/perfil/alterarNome/${idFuncionario}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nome: nomeNovo
+            })
+        }).then(function (resposta) {
+            console.log(resposta)
+            if (resposta.ok) {
+
                 infos = resposta[0]
                 carregarPagina(idFuncionario);
+                outroNome.value = "";
+
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
             } else {
-                validacaoNome.innerHTML = "O seu novo nome tem que ter no mínimo <u>5</u> caracteres";
-                outroNome.style = "border-color: red;";
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
             }
-        } else if (resposta.status == 404) {
-            window.alert("Deu 404!");
-        } else {
-            throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-        }
-    }).catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-    });
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    } else {
+        validacaoNome.innerHTML = "O seu novo nome tem que ter no mínimo <u>5</u> caracteres";
+        outroNome.style = "border-color: red;";
+    }
 }
 
 function novaImagem(idFuncionario) {
@@ -133,8 +136,8 @@ function novaImagem(idFuncionario) {
         method: "POST",
         body: formData
     })
-        .then(res => {  
-                carregarPagina(idFuncionario);
+        .then(res => {
+            carregarPagina(idFuncionario);
         })
         .catch(err => {
             console.log(err);
