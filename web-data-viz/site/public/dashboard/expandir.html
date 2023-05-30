@@ -145,80 +145,12 @@
             <div class="containerDadosFiltros">
                 <div class="titulo">
                     <h2><img src="img/seta_voltar.png" alt="Retornar para a lista de ruas"
-                            onclick="mostrarRuas()">Filtros<span></span></h2>
+                            onclick="mostrarRuas()"><span id="spanEnderecoSel"></span><span></span></h2>
                 </div>
-                <div class="endereco">
-                    Endereço<br>
-                    <input type="text" id="inpEndereco" class="inputWide">
-                </div>
-                <div class="cardContainer">
-                    <div class="card">
-                        <div>Dados
-                            <label class="switch">
-                                <input type="checkbox" onclick="changeDisabled('selTipo')">
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                        <select id="selTipo" onchange="mudarTipoGrafico()" disabled="true">
-                            <option value="tempoReal">Tempo Real</option>
-                            <option value="anual">Histórico Anual</option>
-                            <option value="semanal">Histórico Semanal</option>
-                            <option value="diario">Histórico Diário</option>
-                        </select>
-                    </div>
-                    <div class="card">
-                        <div>Dia da semana
-                            <label class="switch">
-                                <input type="checkbox" onclick="changeDisabled('selSemana')">
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                        <select id="selSemana" disabled="true">
-                            <option value="2">Segunda</option>
-                            <option value="3">Terça</option>
-                            <option value="4">Quarta</option>
-                            <option value="5">Quinta</option>
-                            <option value="6">Sexta</option>
-                            <option value="7">Sabado</option>
-                            <option value="1">Domingo</option>
-                        </select>
-                    </div>
-                    <div class="card">
-                        <div>Mês
-                            <label class="switch">
-                                <input type="checkbox" onclick="changeDisabled('selMes')">
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                        <select id="selMes" disabled="true">
-                            <option value="1">Janeiro</option>
-                            <option value="2">Fevereiro</option>
-                            <option value="3">Março</option>
-                            <option value="4">Abril</option>
-                            <option value="5">Maio</option>
-                            <option value="6">Junho</option>
-                            <option value="7">Julho</option>
-                            <option value="8">Agosto</option>
-                            <option value="9">Setembro</option>
-                            <option value="10">Outubro</option>
-                            <option value="11">Novembro</option>
-                            <option value="12">Dezembro</option>
-                        </select>
-                    </div>
-                    <div class="card">
-                        <div>Vaga
-                            <label class="switch">
-                                <input type="checkbox" onclick="changeDisabled('selVaga')">
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                        <select id="selVaga" disabled="true">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                </div>
+                <!-- <div class="endereco">
+
+                </div> -->
+                
             </div>
             <div class="containerGraficos">
                 <div class="cardGauge">
@@ -240,6 +172,17 @@
                     </div>
                 </div>
                 <div class="cardGrafico">
+                        <div class="card">
+                            <div>Tipo
+                            </div>
+                            <select id="selTipo" onchange="mudarTipoGrafico()">
+                                <option value="tempoReal">Tempo Real</option>
+                                <option value="anual">Histórico Anual</option>
+                                <option value="semanal">Histórico Semanal</option>
+                                <option value="diario">Histórico Diário</option>
+                            </select>
+                        </div>
+                        
                     <canvas id="canvLine"></canvas>
                     <cavas id="canvMap"></cavas>
                 </div>
@@ -392,6 +335,7 @@
         divRua.style.display = 'flex';
         divBairro.style.display = 'none';
         divDados.style.display = 'none';
+        selTipo.value = 'tempoReal';
         fetch(`/expandir/listarRuas/${idBairro}`).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
@@ -399,7 +343,7 @@
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     ruas = resposta;
                     for (var i = 0; i < resposta.length; i++) {
-                        divRuaLista.innerHTML += `<div onclick="mostrarDados(${ruas[0].idEndereco})" class="ruaCard" id="rua${ruas[0].idEndereco}">${ruas[0].logradouro}</div>`
+                        divRuaLista.innerHTML += `<div onclick="mostrarDados(${ruas[i].idEndereco}, '${ruas[i].logradouro}')" class="ruaCard" id="rua${ruas[i].idEndereco}">${ruas[i].logradouro}</div>`
                     }
                 });
             } else {
@@ -438,7 +382,7 @@
     var dadosHistorico = {};
     var dadosTempoReal = [];
 
-    function mostrarDados(idRua) {
+    function mostrarDados(idRua, logradouro) {
         divDados.style.display = 'flex';
         divRua.style.display = 'none';
         fetch('/expandir/historicoMensal/' + idRua).then((response) => {
@@ -526,6 +470,7 @@
         }).catch((erro) => {
             dadosHistorico.diario = '';
         });
+        spanEnderecoSel.innerHTML = logradouro;
         plotarTempoMedio(idRua);
         plotarOcupacao(idRua);
         obterDadosGrafico(idRua);
@@ -683,7 +628,7 @@
 
 
     var contextoChave = document.getElementById('canvLine').getContext('2d');
-    contextoChave.canvas.width = 300;
+    contextoChave.canvas.width = 220;
     contextoChave.canvas.height = 100;
     // var cores = ['#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24', '#F49C24'];
     var chartLinha = new Chart(

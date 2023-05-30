@@ -178,13 +178,13 @@ html {
 
 .dashboard .card {
   display: flex;
-  flex-wrap: wrap;
-  width: 20%;
-  gap: 50%;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
 }
 
 .dashboard .card select {
-  width: 100%;
+  width: 60%;
 }
 
 .dashboard .containerGraficos {
@@ -202,9 +202,14 @@ html {
 
 .dashboard .cardGrafico {
   display: flex;
-  width: 50%;
+  width: 70%;
   justify-content: space-between;
   margin: auto;
+  height: 40vh;
+}
+
+.dashboard .cardGrafico canvas {
+  width: 50%;
 }
 
 .dashboard .cardGauge {
