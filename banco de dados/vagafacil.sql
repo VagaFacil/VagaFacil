@@ -6,7 +6,7 @@ use VagaFacil;
 create table empresa (
 		idEmpresa int primary key auto_increment,
         razao varchar(45),
-        cnpj char(18)        
+        cnpj char(18)     
 );
 
 -- Dados referentes as empresas
@@ -55,17 +55,18 @@ INSERT INTO bairro VALUES (null, 'Água Rasa', 'Leste', 715.05), (null, 'Alto de
 -- criação da tabela endereco e inserção de valores 
 create table endereco (
 		idEndereco int primary key auto_increment,
-        logradouro varchar(45), 
+        logradouro varchar(45),
+        cep CHAR(9),
         fkBairro int,
         foreign key (fkBairro) references bairro(idBairro)
 )auto_increment = 150000;
 SELECT * FROM endereco;
 -- Dados referentes as ruas
-insert into endereco values (null, 'Rua Antonio Bento',  44),
-					   (null, 'Rua Consolação', 26),
-                       (null, 'Avenida Doutor Luís Rocha Miranda', 37),
-                       (null, 'Rua dos Pinheiros', 63),
-                       (null, 'Alameda Itupiranga', 79);
+insert into endereco values (null, 'Rua Antonio Bento', '01432-000', 44),
+					   (null, 'Rua Consolação', '01301-000', 26),
+                       (null, 'Avenida Doutor Luís Rocha Miranda', '04344-010', 37),
+                       (null, 'Rua dos Pinheiros', '08142-640', 63),
+                       (null, 'Alameda Itupiranga', '04294-090', 79);
 
 -- Criação tabela Filial
 create table filial (
@@ -333,16 +334,13 @@ select dataHora, SUM(valor) FROM dados group by dataHora;
 select SUM(valor) FROM dados group by dataHora;
 SELECT valor FROM dados WHERE idDados = 250000;
 -- select das tabelas simples
-<<<<<<< HEAD
  select * from empresa;
  select * from filial;
  select * from funcionario;
  select * from endereco;
-=======
 -- select * from empresa;
 -- select * from filial;
 select * from funcionario;
->>>>>>> 6cf178fb4ce9fc039fd456970d3bdc494477586e
 -- use vagaFacil;
 -- select * from sensor;
 -- select * from dados;
