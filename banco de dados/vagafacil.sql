@@ -232,7 +232,6 @@ INSERT INTO bairroRenda VALUES (1, 57.1932, 47.0499, 12.1096), (2, 8.9715, 19.50
                                (89, 146.1914, 25.2075, 4.7168), (90, 15.2567, 19.8849, 27.7995), (91, 70.6696, 16.3737, 9.2671), (92, 32.3848, 66.7291, 55.3953),
                                (93, 79.2010, 31.5674, 7.5392), (94, 93.5469, 48.7579, 15.5779), (95, 66.1859, 33.8683, 8.9264), (96, 54.4991, 32.0654, 31.4439);
 
-SELECT * FROM funcionario;
 
 create table sensor(
 		idSensor int primary key auto_increment,
@@ -334,11 +333,17 @@ select dataHora, SUM(valor) FROM dados group by dataHora;
 select SUM(valor) FROM dados group by dataHora;
 SELECT valor FROM dados WHERE idDados = 250000;
 -- select das tabelas simples
+<<<<<<< HEAD
+ select * from empresa;
+ select * from filial;
+ select * from funcionario;
+ select * from endereco;
+=======
 -- select * from empresa;
 -- select * from filial;
--- select * from funcionario;
+select * from funcionario;
+>>>>>>> 6cf178fb4ce9fc039fd456970d3bdc494477586e
 -- use vagaFacil;
--- select * from endereco;
 -- select * from sensor;
 -- select * from dados;
 -- select * from bairro;
@@ -374,9 +379,3 @@ SELECT valor FROM dados WHERE idDados = 250000;
 
 
 -- drop database VagaFacil;
-
--- grant delete on vagafacil.* to 'vaga'@'localhost';
--- flush privileges;
-insert into funcionario values
-	(null,'Henrique Bechis','Desenvolvedor','henrique@gmail.com','henrique123','(11)96789-9876','564.189.654-87','1997-04-24',100000,'usuarioPadrao.png');
-select * from funcionario;

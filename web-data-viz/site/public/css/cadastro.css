@@ -164,7 +164,7 @@
 }
 
 /* Final do segundo e terceiro card */
-#vEmail, #vSenha, #vConfirmarSenha {
+#vEmail, #vSenha, #vConfirmarSenha, #vConfirmarSenhaInvalida {
     display: none   ;
     color: red;
     font-size: 14px;
