@@ -4,10 +4,11 @@
 
     let proximaAtualizacao;
 
-    window.onload = obterDadosGraficos();
+    // window.onload = obterDadosGraficos();
 
     function obterDadosGraficos() {
-        obterDadosGrafico(150000)
+        obterDadosGrafico(endereco.value)
+        banner2.style.display = "block"
     }
 
     // verificar_autenticacao();
@@ -18,7 +19,7 @@
      } */
 
     function exibirAquario(idRua) {
-        banner2.style.display = "block"
+        
     }
     var contextoChave = document.getElementById('canvLine').getContext('2d');
     // contextoChave.canvas.width = 300;
