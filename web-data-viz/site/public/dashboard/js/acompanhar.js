@@ -370,9 +370,29 @@ function plotarOcupacao(idRua){
     });
 }
 
+/* Mudando o tipo do gráfico (Mensal, anual, Diario, tempoReal*/
 
+function mudarTipoGrafico(){
+    var tipo = selTipo.value;
+    if (tipo == 'tempoReal') {
+        obterDadosGrafico(idAtual);
+    } else if (tipo == "diario") {
 
+        chartLinha.data = dadosHistorico.diario;
+        chartLinha.options.plugins.title.text = 'Historico Diario';
+        chartLinha.update();
+    } else if (tipo == "semanal") {
 
+        chartLinha.data = dadosHistorico.semanal;
+        chartLinha.options.plugins.title.text = 'Historico Semanal';
+        chartLinha.update();
+    } else {
+
+        chartLinha.data = dadosHistorico.mensal;
+        chartLinha.options.plugins.title.text = 'Historico Anual';
+        chartLinha.update();
+    }
+}
 
 
 
