@@ -179,6 +179,7 @@
 
         setTimeout(() => atualizarGrafico(idRua, dados/* , chartLinha */), 2000);
         plotarTempoMedio(idRua)
+        plotarOcupacao(idRua)
     }
 
 
@@ -242,7 +243,7 @@
             });
 
     }
-/* Criação do gráfico de tempo médio de permanência */
+/* Criação e integração do gráfico de tempo médio de permanência */
 const chartGauge1 = document.getElementById('canvGauge1');
     var chartTempoMedio = new Chart(chartGauge1, {
         type: 'doughnut',
@@ -280,7 +281,7 @@ const chartGauge1 = document.getElementById('canvGauge1');
         }
     });
 function plotarTempoMedio(idRua) {
-    fetch('/expandir/tempo-medio/' + idRua, { cache: 'no-store' }).then((response) => {
+    fetch('/acompanhar/tempo-medio/' + idRua, { cache: 'no-store' }).then((response) => {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -310,8 +311,73 @@ function plotarTempoMedio(idRua) {
 
     });
 }
+/* Criação e integração do gráfico de ocupação média */
+const chartGauge2 = document.getElementById('canvGauge2');
+    var chartOcupacao = new Chart(chartGauge2, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [0, 100],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Ocupação média',
+                    color: '#FCF4EC',
+                    font: {
+                        size: 20
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: '0%',
+                    color: '#FCF4EC',
+                    padding: 0,
+                    font: {
+                        size: 16
+                    }
+                },
+            },
+            backgroundColor: ['#FCF4EC', '#0C243C'],
+            borderColor: '#FCF4EC',
+            circumference: 180,
+            rotation: -90,
+            cutout: '70%'
+        }
+    });
+function plotarOcupacao(idRua){
+    fetch('/acompanhar/ocupacao/' + idRua, { cache: 'no-store' }).then((response) => {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                var ocupacao = Math.floor(100 * resposta[0].ocupacao);
+                var cor = '';
+                if (ocupacao < 35) {
+                    cor = 'red';
+                } else if (ocupacao < 60) {
+                    cor = 'yellow';
+                } else if (ocupacao < 90) {
+                    cor = 'limegreen';
+                } else {
+                    cor = 'green';
+                }
+                chartOcupacao.data.datasets[0].data = [ocupacao, 100 - ocupacao];
+                chartOcupacao.options.plugins.title.color = cor;
+                chartOcupacao.options.plugins.subtitle.color = cor;
+                chartOcupacao.options.plugins.subtitle.text = ocupacao + '%';
+                chartOcupacao.options.backgroundColor = [cor, '#0C243C'];
+                chartOcupacao.update();
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    }).catch((erro) => {
 
-
+    });
+}
 
 
 
@@ -460,7 +526,7 @@ var graficoPizza = new Chart(chartGauge1, {
     }
 }); */
 //Gráfico de ocupação média
-const chartGauge2 = document.getElementById('canvGauge2');
+/* const chartGauge2 = document.getElementById('canvGauge2');
 var graficoOcupacao = new Chart(chartGauge2, {
     type: 'doughnut',
     data: {
@@ -495,7 +561,7 @@ var graficoOcupacao = new Chart(chartGauge2, {
         rotation: -90,
         cutout: '70%'
     }
-});
+}); */
 /*Final dos gráficos de pizza*/
 /*Começo da function para a definição dos gráficos e endereços*/
 function prosseguir() {

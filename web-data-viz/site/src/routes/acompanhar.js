@@ -14,4 +14,8 @@ router.get("/tempo-real/:idRua", function (req, res) {
 router.get('/tempo-medio/:idRua', function (req, res) {
     acompanharController.buscarTempoMedio(req, res);
 });
+
+router.get("/ocupacao/:idRua", function (req, res) {
+    acompanharController.buscarOcupacao(req, res);
+});
 module.exports = router;

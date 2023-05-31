@@ -60,8 +60,13 @@ function buscarTempoMedio(idRua){
         WHERE fkEndereco = ${idRua} GROUP BY idSensor ORDER BY idSensor; `;
     return database.executar(instrucao);
 }
+function buscarOcupacao(idRua){
+    var instrucao = `SELECT SUM(valor) / COUNT(valor) AS ocupacao FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor WHERE fkEndereco = ${idRua}`;
+    return database.executar(instrucao);
+}
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    buscarTempoMedio
+    buscarTempoMedio,
+    buscarOcupacao
 }
