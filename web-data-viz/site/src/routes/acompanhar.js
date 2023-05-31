@@ -18,4 +18,17 @@ router.get('/tempo-medio/:idRua', function (req, res) {
 router.get("/ocupacao/:idRua", function (req, res) {
     acompanharController.buscarOcupacao(req, res);
 });
+
+router.get("/historicoMensal/:idRua", function (req, res) {
+    acompanharController.historicoMensal(req, res);
+});
+
+router.get("/historicoSemanal/:idRua", function (req, res) {
+    acompanharController.historicoSemanal(req, res);
+});
+
+router.get("/historicoDiario/:idRua", function (req, res) {
+    acompanharController.historicoDiario(req, res);
+});
+
 module.exports = router;

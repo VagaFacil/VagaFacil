@@ -60,13 +60,37 @@ function buscarTempoMedio(idRua){
         WHERE fkEndereco = ${idRua} GROUP BY idSensor ORDER BY idSensor; `;
     return database.executar(instrucao);
 }
+function historicoMensal(idRua) {
+    var instrucao = `SELECT MONTH(dataHora) AS mes, SUM(valor) AS valor 
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
+        WHERE fkEndereco = ${idRua} GROUP BY mes ORDER BY mes;
+    `;
+    return database.executar(instrucao);
+}
 function buscarOcupacao(idRua){
     var instrucao = `SELECT SUM(valor) / COUNT(valor) AS ocupacao FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor WHERE fkEndereco = ${idRua}`;
+    return database.executar(instrucao);
+}
+function historicoSemanal(idRua) {
+    var instrucao = `SELECT DAYOFWEEK(dataHora) AS dia, SUM(valor) AS valor 
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
+        WHERE fkEndereco = ${idRua} GROUP BY dia ORDER BY dia;
+    `;
+    return database.executar(instrucao);
+}
+function historicoDiario(idRua) {
+    var instrucao = `SELECT HOUR(dataHora) AS hora, SUM(valor) AS valor
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
+        WHERE fkEndereco = ${idRua} GROUP BY hora ORDER BY hora;
+    `;
     return database.executar(instrucao);
 }
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     buscarTempoMedio,
-    buscarOcupacao
+    buscarOcupacao,
+    historicoMensal,
+    historicoSemanal,
+    historicoDiario
 }
