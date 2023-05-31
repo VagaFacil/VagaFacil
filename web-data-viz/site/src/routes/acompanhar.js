@@ -11,4 +11,7 @@ router.get("/tempo-real/:idRua", function (req, res) {
     acompanharController.buscarMedidasEmTempoReal(req, res);
 })
 
+router.get('/tempo-medio/:idRua', function (req, res) {
+    acompanharController.buscarTempoMedio(req, res);
+});
 module.exports = router;

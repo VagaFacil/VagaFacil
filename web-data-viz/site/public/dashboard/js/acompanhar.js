@@ -178,6 +178,7 @@
         chartLinha.update();
 
         setTimeout(() => atualizarGrafico(idRua, dados/* , chartLinha */), 2000);
+        plotarTempoMedio(idRua)
     }
 
 
@@ -186,7 +187,7 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idRua, dados/* , chartLinha */) {
+    function atualizarGrafico(idRua, dados) {
 
 
 
@@ -228,12 +229,12 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idRua, dados/* , chartLinha */), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idRua, dados), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idRua, dados/* , chartLinha */), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idRua, dados), 2000);
             }
         })
             .catch(function (error) {
@@ -241,9 +242,74 @@
             });
 
     }
+/* Criação do gráfico de tempo médio de permanência */
+const chartGauge1 = document.getElementById('canvGauge1');
+    var chartTempoMedio = new Chart(chartGauge1, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [0, 120],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Tempo médio de permanência',
+                    color: '#F49C24',
+                    font: {
+                        size: 20
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: '- mins',
+                    color: '#F49C24',
+                    padding: 0,
+                    font: {
+                        size: 16
+                    }
+                },
+            },
+            backgroundColor: ['#F49C24', '#0C243C'],
+            borderColor: '#FCF4EC',
+            circumference: 180,
+            rotation: -90,
+            cutout: '70%'
+        }
+    });
+function plotarTempoMedio(idRua) {
+    fetch('/expandir/tempo-medio/' + idRua, { cache: 'no-store' }).then((response) => {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                var tempoMedio = Math.round(resposta.tempoMedio);
+                console.log(tempoMedio);
+                var cor = '';
+                if (tempoMedio <= 15) {
+                    cor = 'green';
+                } else if (tempoMedio <= 30) {
+                    cor = 'limegreen';
+                } else if (tempoMedio <= 60) {
+                    cor = 'yellow';
+                } else {
+                    cor = 'red';
+                }
+                chartTempoMedio.data.datasets[0].data = [tempoMedio, 120 - tempoMedio];
+                chartTempoMedio.options.plugins.title.color = cor;
+                chartTempoMedio.options.plugins.subtitle.color = cor;
+                chartTempoMedio.options.plugins.subtitle.text = tempoMedio + ' min';
+                chartTempoMedio.options.backgroundColor = [cor, '#0C243C'];
+                chartTempoMedio.update();
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    }).catch((erro) => {
 
-
-
+    });
+}
 
 
 
@@ -357,7 +423,7 @@ function changeDisabled(elemento) {
 
 /*Começo dos gráficos de pizza*/
 //gráfico do tempo médio de permanência
-const chartGauge1 = document.getElementById('canvGauge1');
+/* const chartGauge1 = document.getElementById('canvGauge1');
 var graficoPizza = new Chart(chartGauge1, {
     type: 'doughnut',
     data: {
@@ -392,7 +458,7 @@ var graficoPizza = new Chart(chartGauge1, {
         rotation: -90,
         cutout: '70%'
     }
-});
+}); */
 //Gráfico de ocupação média
 const chartGauge2 = document.getElementById('canvGauge2');
 var graficoOcupacao = new Chart(chartGauge2, {

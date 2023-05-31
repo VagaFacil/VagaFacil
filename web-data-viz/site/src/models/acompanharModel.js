@@ -54,8 +54,14 @@ function buscarMedidasEmTempoReal(idRua) {
     return database.executar(instrucaoSql);
 }
 
-
+function buscarTempoMedio(idRua){
+    var instrucao = `SELECT idSensor, REPLACE(GROUP_CONCAT(valor), ',', '') as tempo
+	FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
+        WHERE fkEndereco = ${idRua} GROUP BY idSensor ORDER BY idSensor; `;
+    return database.executar(instrucao);
+}
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    buscarTempoMedio
 }

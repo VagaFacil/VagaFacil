@@ -2,13 +2,11 @@ var acompanharModel = require("../models/acompanharModel");
 
 function buscarUltimasMedidas(req, res) {
 
-    const limite_linhas = 7;
 
     var idRua = req.params.idRua;
 
-    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    acompanharModel.buscarUltimasMedidas(idRua, limite_linhas).then(function (resultado) {
+    acompanharModel.buscarUltimasMedidas(idRua).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -41,7 +39,29 @@ function buscarMedidasEmTempoReal(req, res) {
     });
 }
 
+function buscarTempoMedio (req,res){
+    var idRua = req.params.idRua;
+    acompanharModel.buscarTempoMedio(idRua).then(function (resultado) {
+        if (resultado.length > 0) {
+            var contagem = 0;
+            var divisoes = 0;
+            for (var i  = 0; i < resultado.length; i++) {
+                contagem += resultado[i].tempo.split('1').length - 1;
+                divisoes += resultado[i].tempo.split(/1+/).length - 1;
+            }
+            res.status(200).json({tempoMedio: (contagem * 5 / divisoes)});
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!");
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar a ocupação", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    buscarTempoMedio
 }

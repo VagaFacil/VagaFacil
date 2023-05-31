@@ -8,7 +8,7 @@ var mySqlConfig = {
     database: "VagaFacil",
     user: "vaga",
     password: "urubu100",
-};
+};  
 
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js
