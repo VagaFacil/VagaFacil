@@ -4,23 +4,13 @@
 
     let proximaAtualizacao;
 
-    // window.onload = obterDadosGraficos();
-
     function obterDadosGraficos() {
         obterDadosGrafico(endereco.value)
-        banner2.style.display = "block"
+        if(endereco.value != ""){
+            banner2.style.display = "block"
+        }
     }
 
-    // verificar_autenticacao();
-
-    /*  function alterarTitulo(idRua) {
-         var tituloAquario = document.getElementById(`tituloAquario${idRua}`)
-         tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idRua + "</span>"
-     } */
-
-    function exibirAquario(idRua) {
-        
-    }
     var contextoChave = document.getElementById('canvLine').getContext('2d');
     // contextoChave.canvas.width = 300;
     // contextoChave.canvas.height = 100;
