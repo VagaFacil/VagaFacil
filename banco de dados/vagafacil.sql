@@ -111,7 +111,6 @@ insert into funcionario values (null,'Fernando Brandão', 'CEO','fernando@gmail.
                            (null,'Lucas Neves', 'Desenvolvedor','lucas@gmail.com','lucas123','(11)97890-0987','456.987.652-30','1975-08-1',100000,'usuarioPadrao.png');
                            
 
-
 -- Tabela Filial e Funcionários (muitos para muitos)
 create table FilialFuncionario (
 fkFilial int,
