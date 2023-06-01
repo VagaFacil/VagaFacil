@@ -8,6 +8,7 @@
         var cargoVar = ipt_cargo.value;
         var telefoneVar = ipt_telefone.value;
         var cpfVar = ipt_cpf.value;
+        var dataNascimentoVar = ipt_dataN.value;
 
         // // Adaptar a data de Nascimento para o MySQL
         // const datetime = new Date(ipt_dataN.value);
@@ -35,129 +36,129 @@
         var erroCadastro = false;
 
         // Inicio Validação
-        // if (nomeVar.length < 3) {
-        //     vNome.style.display = 'block';
-        //     ipt_nome.style = 'border-color: red';
-        //     erroCadastro = true;
-        // } else {
-        //     vNome.style.display = 'none';
-        //     ipt_nome.style = 'border-color: #32a7b1';
-        // }
-        // if (cargoVar.length < 3) {
-        //     vCargo.style.display = 'block';
-        //     ipt_cargo.style = 'border-color: red';
-        //     erroCadastro = true;
-        // } else {
-        //     vCargo.style.display = 'none';
-        //     ipt_cargo.style = 'border-color: #32a7b1';
-        // }
-        // if (dataNascimentoVar.length < 10) {
-        //     vDataN.style.display = 'block';
-        //     ipt_dataN.style = 'border-color: red';
-        //     erroCadastro = true;
-        // } else {
-        //     vDataN.style.display = 'none';
-        //     ipt_dataN.style = 'border-color: #32a7b1';
-        // }
-        // if (cpfVar.length != 14 ) {
-        //     vCpf.style.display = 'block';
-        //     ipt_cpf.style = 'border-color: red';
-        //     erroCadastro = true;
-        // } else {
-        //     vCpf.style.display = 'none';
-        //     ipt_cpf.style = 'border-color: #32a7b1';
-        // }
-        // if (telefoneVar.length > 14 || telefoneVar.length < 13) {
-        //     vTelefone.style.display = 'block';
-        //     ipt_telefone.style = 'border-color: red';
-        //     erroCadastro = true;
-        // } else {
-        //     vTelefone.style.display = 'none';
-        //     ipt_telefone.style = 'border-color: #32a7b1';
-        // }
+        if (nomeVar.length < 3) {
+            vNome.style.display = 'block';
+            ipt_nome.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vNome.style.display = 'none';
+            ipt_nome.style = 'border-color: #32a7b1';
+        }
+        if (cargoVar.length < 3) {
+            vCargo.style.display = 'block';
+            ipt_cargo.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vCargo.style.display = 'none';
+            ipt_cargo.style = 'border-color: #32a7b1';
+        }
+        if (dataNascimentoVar.length < 10) {
+            vDataN.style.display = 'block';
+            ipt_dataN.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vDataN.style.display = 'none';
+            ipt_dataN.style = 'border-color: #32a7b1';
+        }
+        if (cpfVar.length != 14 ) {
+            vCpf.style.display = 'block';
+            ipt_cpf.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vCpf.style.display = 'none';
+            ipt_cpf.style = 'border-color: #32a7b1';
+        }
+        if (telefoneVar.length > 14 || telefoneVar.length < 13) {
+            vTelefone.style.display = 'block';
+            ipt_telefone.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vTelefone.style.display = 'none';
+            ipt_telefone.style = 'border-color: #32a7b1';
+        }
        
 
-        // if (razaoVar.length < 3) {
-        //     vRazao.style.display = 'block';
-        //     ipt_razao.style = 'border-color: red';
-        //     erroCadastro = true;
-        // } else {
-        //     vRazao.style.display = 'none';
-        //     ipt_razao.style = 'border-color: #32a7b1';
-        // }
-        // if (cnpjVar.length < 3) {
-        //     vCnpj.style.display = 'block';
-        //     ipt_cnpj.style = 'border-color: red';
-        //     erroCadastro = true;
-        // } else {
-        //     vCnpj.style.display = 'none';
-        //     ipt_cnpj.style = 'border-color: #32a7b1';
-        // }
-        // if (cepVar.length != 9) {
-        //     vCep.style.display = 'block';
-        //     ipt_cep.style = 'border-color: red';
-        //     erroCadastro = true;
-        // } else {
-        //     vCep.style.display = 'none';
-        //     ipt_cep.style = 'border-color: #32a7b1';
-        // }
-        // if (bairroVar.length < 3) {
-        //     vBairro.style.display = 'block';
-        //     ipt_bairro.style = 'border-color: red';
-        //     erroCadastro = true;
-        // } else {
-        //     vBairro.style.display = 'none';
-        //     ipt_bairro.style = 'border-color: #32a7b1';
-        // }
-        // if (enderecoVar.length == 0) {
-        //     vEndereco.style.display = 'block';
-        //     ipt_endereco.style = 'border-color: red';
-        //     erroCadastro = true;
-        // } else {
-        //     vEndereco.style.display = 'none';
-        //     ipt_endereco.style = 'border-color: #32a7b1';
-        // }
-        // if (numeroVar.length == 0 || isNaN(numeroVar)) {
-        //     vNumero.style.display = 'block';
-        //     ipt_numero.style = 'border-color: red';
-        //     erroCadastro = true;
-        // } else {
-        //     vNumero.style.display = 'none';
-        //     ipt_numero.style = 'border-color: #32a7b1';
-        // }
+        if (razaoVar.length < 3) {
+            vRazao.style.display = 'block';
+            ipt_razao.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vRazao.style.display = 'none';
+            ipt_razao.style = 'border-color: #32a7b1';
+        }
+        if (cnpjVar.length < 3) {
+            vCnpj.style.display = 'block';
+            ipt_cnpj.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vCnpj.style.display = 'none';
+            ipt_cnpj.style = 'border-color: #32a7b1';
+        }
+        if (cepVar.length != 9) {
+            vCep.style.display = 'block';
+            ipt_cep.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vCep.style.display = 'none';
+            ipt_cep.style = 'border-color: #32a7b1';
+        }
+        if (bairroVar.length < 3) {
+            vBairro.style.display = 'block';
+            ipt_bairro.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vBairro.style.display = 'none';
+            ipt_bairro.style = 'border-color: #32a7b1';
+        }
+        if (enderecoVar.length == 0) {
+            vEndereco.style.display = 'block';
+            ipt_endereco.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vEndereco.style.display = 'none';
+            ipt_endereco.style = 'border-color: #32a7b1';
+        }
+        if (numeroVar.length == 0 || isNaN(numeroVar)) {
+            vNumero.style.display = 'block';
+            ipt_numero.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vNumero.style.display = 'none';
+            ipt_numero.style = 'border-color: #32a7b1';
+        }
 
-        // if (emailVar.indexOf('@') < 0 && emailVar.indexOf('.com') < 0) {
-        //     vEmail.style.display = 'block';
-        //     ipt_email.style = 'border-color: red';
-        //     erroCadastro = true;;
-        // } else {
-        //     vEmail.style.display = 'none';
-        //     ipt_email.style = 'border-color: #32a7b1';
-        // }
-        // if (senhaVar.length < 6) {
-        //     vSenha.style.display = 'block';
-        //     ipt_senha.style = 'border-color: red';
-        //     erroCadastro = true;;
-        // } else {
-        //     vSenha.style.display = 'none';
-        //     ipt_senha.style = 'border-color: #32a7b1';
-        // }
-        // if (confirmarSenhaVar != senhaVar) {
-        //     vConfirmarSenha.style.display = 'block';
-        //     ipt_confirmarSenha.style = 'border-color: red';
-        //     erroCadastro = true;
-        // } else {
-        //     vConfirmarSenha.style.display = 'none';
-        //     ipt_confirmarSenha.style = 'border-color: #32a7b1';
-        // }
-        // if ( confirmarSenhaVar == "") {
-        //     vConfirmarSenhaInvalida.style.display = 'block';
-        //     ipt_confirmarSenha.style = 'border-color: red';
-        //     erroCadastro = true;
-        // } else {
-        //     vConfirmarSenhaInvalida.style.display = 'none';
-        //     ipt_confirmarSenha.style = 'border-color: #32a7b1';
-        // }
+        if (emailVar.indexOf('@') < 0 && emailVar.indexOf('.com') < 0) {
+            vEmail.style.display = 'block';
+            ipt_email.style = 'border-color: red';
+            erroCadastro = true;;
+        } else {
+            vEmail.style.display = 'none';
+            ipt_email.style = 'border-color: #32a7b1';
+        }
+        if (senhaVar.length < 6) {
+            vSenha.style.display = 'block';
+            ipt_senha.style = 'border-color: red';
+            erroCadastro = true;;
+        } else {
+            vSenha.style.display = 'none';
+            ipt_senha.style = 'border-color: #32a7b1';
+        }
+        if (confirmarSenhaVar != senhaVar) {
+            vConfirmarSenha.style.display = 'block';
+            ipt_confirmarSenha.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vConfirmarSenha.style.display = 'none';
+            ipt_confirmarSenha.style = 'border-color: #32a7b1';
+        }
+        if ( confirmarSenhaVar == "") {
+            vConfirmarSenhaInvalida.style.display = 'block';
+            ipt_confirmarSenha.style = 'border-color: red';
+            erroCadastro = true;
+        } else {
+            vConfirmarSenhaInvalida.style.display = 'none';
+            ipt_confirmarSenha.style = 'border-color: #32a7b1';
+        }
         //Final Validação
 
         if (erroCadastro) {
@@ -219,7 +220,7 @@ function cpf(v){
         v=v.replace(/(\d{3})(\d)/,"$1.$2")       //Coloca um ponto entre o terceiro e o quarto dígitos
                                                  //de novo (para o segundo bloco de números)
         v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2") //Coloca um hífen entre o terceiro e o quarto dígitos
-        ipt_cpf.value = v
+        ipt_cpf.value = v;
         return v
     }
 }
@@ -231,8 +232,20 @@ function cnpj(v){
         v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3") //Coloca ponto entre o quinto e o sexto dígitos
         v=v.replace(/\.(\d{3})(\d)/,".$1/$2")           //Coloca uma barra entre o oitavo e o nono dígitos
         v=v.replace(/(\d{4})(\d)/,"$1-$2")              //Coloca um hífen depois do bloco de quatro dígitos
-        ipt_cnpj.value = v
+        ipt_cnpj.value = v;
 
         return v
+    }
+}
+
+function ver_cep() {
+    if (ipt_cep.value.length == 8) {
+        fetch(`https://viacep.com.br/ws/${ipt_cep.value}/json/`).then(nome_qualquer=>{
+            return nome_qualquer.json();
+        }).then(corpo=>{
+            document.getElementById('ipt_endereco').value = corpo.logradouro;
+            document.getElementById('ipt_bairro').value = corpo.bairro;
+        })
+        
     }
 }

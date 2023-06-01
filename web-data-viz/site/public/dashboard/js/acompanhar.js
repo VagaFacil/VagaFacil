@@ -5,8 +5,8 @@
     let proximaAtualizacao;
 
     function obterDadosGraficos() {
-        // obterDadosGrafico(endereco.value)
-        if(endereco.value != ""){
+        Mapas()    
+        if(endereco.value != "" && endereco.value >= "150"){
             banner2.style.display = "block"
         }
         mostrarDados(endereco.value)
@@ -463,12 +463,30 @@ function mudarTipoGrafico(){
         chartLinha.update();
     }
 }
+/* Configuração dos mapas do acompanhar */
+function Mapas(){
+    //Dados integrados com o banco 
+    if(endereco.value == "150000"){
+        Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.727076598191!2d-46.705063599999995!3d-23.6499432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5055ec762b93%3A0x277c30da4832ae5b!2sR.%20Dr.%20Ant%C3%B4nio%20Bento%2C%2044%20-%20Santo%20Amaro%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004750-010!5e0!3m2!1spt-BR!2sbr!4v1685627338161!5m2!1spt-BR!2sbr"    
+    }
+    if(endereco.value == "150001"){
+        Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.2745475341712!2d-46.6658177!3d-23.558581099999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce582b4e2bfa55%3A0x57bab3e2fa19f3ca!2sR.%20da%20Consola%C3%A7%C3%A3o%2C%202905%20-%20Cerqueira%20C%C3%A9sar%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001416-001!5e0!3m2!1spt-BR!2sbr!4v1685627845766!5m2!1spt-BR!2sbr"
+    }
+    if(endereco.value == "150002"){
+        Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1827.5496995406481!2d-46.64630537858709!3d-23.636611058268656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5af212063d33%3A0x90b0016bee679144!2sBanco%20Volkswagen!5e0!3m2!1spt-BR!2sbr!4v1685627949652!5m2!1spt-BR!2sbr" 
+    }
+    if(endereco.value == "150003"){
+        Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1033.651164128113!2d-46.68819830560044!3d-23.567955641001944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce570b5465edd5%3A0xe076c9f6a23e4fa5!2zMznCsCBDYXJ0w7NyaW8!5e0!3m2!1spt-BR!2sbr!4v1685628093894!5m2!1spt-BR!2sbr" 
+    }
+    if(endereco.value == "150004"){
+        Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228.47396800946515!2d-46.60553620478098!3d-23.61926616607334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5bc6b28b629d%3A0xe8e562504fb0c687!2sNPR%20Emerg%C3%AAncias!5e0!3m2!1spt-BR!2sbr!4v1685628181572!5m2!1spt-BR!2sbr" 
+    }
+    // Gráficos com os dados fixos para demontração
+    if (endereco.value == "150005"){
+        Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7453671599083!2d-46.67085422070135!3d-23.57758700747471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59de0605f81b%3A0x94d136afd6b32738!2sRua%20Conselheiro%20Torres%20Homem%2C%20300-498%20-%20Jardim%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001432-010!5e0!3m2!1spt-BR!2sbr!4v1685636700980!5m2!1spt-BR!2sbr"     
+    }
 
-
-
-
-
-
+}
 
 
 

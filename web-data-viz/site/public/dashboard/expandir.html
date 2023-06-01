@@ -226,7 +226,7 @@
                     divBairroLista.innerHTML += `<div class="bairroCard" id="card${cards[i].idBairro}" onclick="mostrarRuas(${cards[i].idBairro})">
                                 <img src="img/bairros/${cards[i].idBairro}.png">
                                 <h3>${cards[i].bairro}</h3>
-                                <p>Ocupação Média: ${cards[i].ocupacao * 100}%</p>
+                                <p>Ocupação Média: ${cards[i].ocupacao * 100}%</p>${cards[i].alta}
                             </div>`;
                     cards[i].card = 'card' + cards[i].idBairro;
                 }
@@ -260,13 +260,13 @@
         }
 
         if (renda == '-') {
-            cards.sort((a, b) => a.fluxo - b.fluxo);
+            cards.sort((a, b) => b.ocupacao - a.ocupacao);
         } else if (renda == '1') {
-            cards.sort((a, b) => a.baixa - b.baixa);
+            cards.sort((a, b) => b.baixa - a.baixa);
         } else if (renda == '2') {
-            cards.sort((a, b) => a.media - b.media);
+            cards.sort((a, b) => b.media - a.media);
         } else {
-            cards.sort((a, b) => a.alta - b.alta);
+            cards.sort((a, b) => b.alta - a.alta);
         }
 
         for (var i = 1; i <= cards.length; i++) {
@@ -282,15 +282,15 @@
         }
 
         if (idade == '-') {
-            cards.sort((a, b) => a.fluxo - b.fluxo);
+            cards.sort((a, b) => b.ocupacao - a.ocupacao);
         } else if (idade == '1') {
-            cards.sort((a, b) => a.adolescente - b.adolescente);
+            cards.sort((a, b) => b.adolescente - a.adolescente);
         } else if (idade == '2') {
-            cards.sort((a, b) => a.jovemAdulto - b.jovemAdulto);
+            cards.sort((a, b) => b.jovemAdulto - a.jovemAdulto);
         } else if (idade == '3') {
-            cards.sort((a, b) => a.adulto - b.adulto);
+            cards.sort((a, b) => b.adulto - a.adulto);
         } else if (idade == '4') {
-            cards.sort((a, b) => a.idoso - b.idoso);
+            cards.sort((a, b) => b.idoso - a.idoso);
         }
 
         for (var i = 1; i <= cards.length; i++) {
@@ -670,7 +670,6 @@
             chartLinha.update();
         }
     }
-    +9
 
     let proximaAtualizacao;
 
@@ -692,9 +691,9 @@
                 console.error('Nenhum dado encontrado ou erro na API');
             }
         })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
     }
 
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico

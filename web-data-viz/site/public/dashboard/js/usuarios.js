@@ -12,14 +12,12 @@ function atualizarFormulario(idFuncionario) {
             }
 
             resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                // console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                 var lista = document.getElementById("scroll");
                 lista.innerHTML = "";
                 for (let i = 0; i < resposta.length; i++) {
                     var publicacao = resposta[i];
-
-                    console.log(publicacao.nome)
                     // criando e manipulando elementos do HTML via JavaScript
                     var spanImg = document.createElement("img");
                     spanImg.className = "foto";
@@ -40,14 +38,14 @@ function atualizarFormulario(idFuncionario) {
                     lista.appendChild(divFuncionario);
                 }
 
-                finalizarAguardar();
+                // finalizarAguardar();
             });
         } else {
             throw ('Houve um erro na API!');
         }
     }).catch(function (resposta) {
         console.error(resposta);
-        finalizarAguardar();
+        // finalizarAguardar();
     });
 }
 
@@ -57,7 +55,7 @@ function exibir(idFuncionario) {
         if (resposta.ok) {
 
             resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                // console.log("Dados recebidos: ", JSON.stringify(resposta));
                 infos = resposta[0]
 
                 const datetime = new Date(infos.nascimento);
@@ -84,7 +82,6 @@ function exibir(idFuncionario) {
         }
     }).catch(function (resposta) {
         console.error(resposta);
-        // finalizarAguardar();
     });
 }
 
@@ -97,26 +94,28 @@ function deletarUsuario(funcExibido) {
         },
         body: JSON.stringify({})
     }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO deletarUsuario()!")
+        // console.log("ESTOU NO THEN DO deletarUsuario()!")
 
         if (resposta.ok) {
-            console.log(resposta);
+            // console.log(resposta);
 
             resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
+                // console.log(json);
+                // console.log(JSON.stringify(json));
             });
-            // cardErroDelete.style.display = "block"
-            // cardErroDelete.style.border = "2px solid greenyellow"
-            // cardErroDelete.style.color = "greenyellow"
-            // mensagem_erroDelete.innerHTML = "Usuário deletado com sucesso✅";
+            cardErroDelete.style.display = "block"
+            cardErroDelete.style.border = "2px solid greenyellow"
+            cardErroDelete.style.color = "greenyellow"
+            mensagem_erroDelete.innerHTML = "✅Funcionário deletado com sucesso!✅<br>Atualizando a página...";
+            // console.log("Funcionário deletado com sucesso! Atualizando a página...");
+            setTimeout(()=> {location.reload()},3000)
         } else {
-            // cardErroDelete.style.display = "block"
-            // cardErroDelete.style.border = "2px solid red"
-            // cardErroDelete.style.color = "red"
-            // mensagem_erroDelete.innerHTML = "❌Usuário não cadastrado❌";
+            cardErroDelete.style.display = "block"
+            cardErroDelete.style.border = "2px solid red"
+            cardErroDelete.style.color = "red"
+            mensagem_erroDelete.innerHTML = "❌Funcionário não cadastrado❌";
 
-            console.log("Houve um erro ao tentar deletar o usuário!");
+            console.log("Houve um erro ao tentar deletar o funcionário!");
 
             resposta.text().then(texto => {
                 console.error(texto);
@@ -146,23 +145,12 @@ function pesquisa() {
 }
 
 
-
-
-
-
-
 function aguardar() {
     var divAguardar = document.getElementById("div_aguardar");
     divAguardar.style.display = "flex";
 }
 
-function finalizarAguardar(texto) {
-    var divAguardar = document.getElementById("div_aguardar");
-    divAguardar.style.display = "none";
-
-    var divErrosLogin = document.getElementById("div_erros_login");
-    if (texto) {
-        divErrosLogin.style.display = "flex";
-        divErrosLogin.innerHTML = texto;
-    }
-}
+// function finalizarAguardar() {
+//     var divAguardar = document.getElementById("div_aguardar");
+//     divAguardar.style.display = "none";
+// }
