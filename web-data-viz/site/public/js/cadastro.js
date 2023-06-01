@@ -220,7 +220,7 @@ function cpf(v){
         v=v.replace(/(\d{3})(\d)/,"$1.$2")       //Coloca um ponto entre o terceiro e o quarto dígitos
                                                  //de novo (para o segundo bloco de números)
         v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2") //Coloca um hífen entre o terceiro e o quarto dígitos
-        ipt_cpf.value = v
+        ipt_cpf.value = v;
         return v
     }
 }
@@ -232,20 +232,20 @@ function cnpj(v){
         v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3") //Coloca ponto entre o quinto e o sexto dígitos
         v=v.replace(/\.(\d{3})(\d)/,".$1/$2")           //Coloca uma barra entre o oitavo e o nono dígitos
         v=v.replace(/(\d{4})(\d)/,"$1-$2")              //Coloca um hífen depois do bloco de quatro dígitos
-        ipt_cnpj.value = v
+        ipt_cnpj.value = v;
 
         return v
     }
 }
 
-setTime(() => {
-    
-}, timeout);
-
-// function dataN(v) {
-//     v=v.replace(/\D/g,"")
-//     v=v.replace(/^(\d{2})\(\d)/,"$1/$2")
-
-//     ipt_dataN.value = v
-//     return v
-// }
+function ver_cep() {
+    if (ipt_cep.value.length == 8) {
+        fetch(`https://viacep.com.br/ws/${ipt_cep.value}/json/`).then(nome_qualquer=>{
+            return nome_qualquer.json();
+        }).then(corpo=>{
+            document.getElementById('ipt_endereco').value = corpo.logradouro;
+            document.getElementById('ipt_bairro').value = corpo.bairro;
+        })
+        
+    }
+}
