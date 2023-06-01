@@ -50,6 +50,7 @@ INSERT INTO bairro VALUES (null, 'Água Rasa', 'Leste', 715.05), (null, 'Alto de
                           (null, 'Vila Andrade', 'Sul', 1032.63), (null, 'Vila Curuçá', 'Leste', 952.36), (null, 'Vila Formosa', 'Leste', 751.52), (null, 'Vila Guilherme', 'Leste', 724.79),
                           (null, 'Vila Jacuí', 'Leste', 823.01), (null, 'Vila Leopoldina', 'Oeste', 700.48), (null, 'Vila Maria', 'Norte', 1181.71), (null, 'Vila Mariana', 'Sul', 854.26),
                           (null, 'Vila Matilde', 'Leste', 891.87), (null, 'Vila Medeiros', 'Norte', 789.39), (null, 'Vila Prudente', 'Leste', 960.19), (null, 'Vila Sônia', 'Sul', 1008.97);
+-- SELECT * FROM bairro WHERE nome = 'Jardim Paulista';
 
 
 -- criação da tabela endereco e inserção de valores 
@@ -62,12 +63,13 @@ create table endereco (
 )auto_increment = 150000;
 SELECT * FROM endereco;
 -- Dados referentes as ruas
+-- Rua Conselheiro Torres Homem, 300-498 - Jardim Paulista, São Paulo - SP, 01432-010
 insert into endereco values (null, 'Rua Antonio Bento', '01432-000', 44),
 					   (null, 'Rua Consolação', '01301-000', 26),
                        (null, 'Avenida Doutor Luís Rocha Miranda', '04344-010', 37),
                        (null, 'Rua dos Pinheiros', '08142-640', 63),
-                       (null, 'Alameda Itupiranga', '04294-090', 79);
-
+                       (null, 'Alameda Itupiranga', '04294-090', 79),
+                       (NULL, 'Rua Conselheiro Torres Homem', '01432-010', 44);
 -- Criação tabela Filial
 create table filial (
 		idFilial int primary key auto_increment,
@@ -253,7 +255,8 @@ insert into sensor values (null, 150000, '202', '1'),
                           (null, 150003, '485', '7'),
                           (null, 150000, '604', '8'),
                           (null, 150002, '200', '9'),
-                          (null, 150002, '578', '10');
+                          (null, 150002, '578', '10'),
+                          (NULL, 150005, '300', '11');
 
 create table dados(
 		idDados int primary key auto_increment,
@@ -262,7 +265,17 @@ create table dados(
 		fkSensor int,
 		foreign key(fksensor) references sensor(idSensor)
 )auto_increment=250000;
-USE vagaFacil;
+INSERT INTO dados VALUES (null,'2023-06-01 09:00:00', '0', 200010),
+                         (null,'2023-06-01 09:15:00', '1', 200010),
+                         (null,'2023-06-01 09:30:00', '1', 200010),
+                         (null,'2023-06-01 09:45:00', '1', 200010),
+                         (null,'2023-06-01 10:00:00', '1', 200010),
+                         (null,'2023-06-01 10:15:00', '1', 200010),
+                         (null,'2023-06-01 10:30:00', '1', 200010),
+                         (null,'2023-06-01 10:45:00', '1', 200010),
+                         (null,'2023-06-01 11:15:00', '1', 200010),
+                         (null,'2023-06-01 11:15:00', '1', 200010);
+                         SELECT * FROM dados;
 -- Dados referenter aos dados do sensor
 insert into dados values (null,'2023-06-01 09:00:00', '0', 200000), (null, '2023-06-01 07:30:00', '0', 200000), (null, '2023-06-01 08:00:00', '0', 200000), (null, '2023-06-01 08:30:00', '1', 200000),
                          (null, '2023-06-01 09:00:00', '0', 200000), (null, '2023-06-01 09:30:00', '1', 200000), (null, '2023-06-01 10:00:00', '1', 200000), (null, '2023-06-01 10:30:00', '1', 200000),

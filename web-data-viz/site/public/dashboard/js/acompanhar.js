@@ -6,7 +6,7 @@
 
     function obterDadosGraficos() {
         Mapas()    
-        if(endereco.value != ""){
+        if(endereco.value != "" && endereco.value >= "150"){
             banner2.style.display = "block"
         }
         mostrarDados(endereco.value)
@@ -465,6 +465,7 @@ function mudarTipoGrafico(){
 }
 /* Configuração dos mapas do acompanhar */
 function Mapas(){
+    //Dados integrados com o banco 
     if(endereco.value == "150000"){
         Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.727076598191!2d-46.705063599999995!3d-23.6499432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5055ec762b93%3A0x277c30da4832ae5b!2sR.%20Dr.%20Ant%C3%B4nio%20Bento%2C%2044%20-%20Santo%20Amaro%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004750-010!5e0!3m2!1spt-BR!2sbr!4v1685627338161!5m2!1spt-BR!2sbr"    
     }
@@ -480,10 +481,12 @@ function Mapas(){
     if(endereco.value == "150004"){
         Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228.47396800946515!2d-46.60553620478098!3d-23.61926616607334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5bc6b28b629d%3A0xe8e562504fb0c687!2sNPR%20Emerg%C3%AAncias!5e0!3m2!1spt-BR!2sbr!4v1685628181572!5m2!1spt-BR!2sbr" 
     }
+    // Gráficos com os dados fixos para demontração
+    if (endereco.value == "6"){
+        Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1148560446027!2d-46.66680352488864!3d-23.564318061700366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d16cc69cd3%3A0x941940dcb39dc8ff!2sR.%20Padre%20Jo%C3%A3o%20Manuel%2C%20755%20-%20Cerqueira%20C%C3%A9sar%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001411-001!5e0!3m2!1spt-BR!2sbr!4v1681769011142!5m2!1spt-BR!2sbr"
+    }
+
 }
-
-
-
 
 
 
