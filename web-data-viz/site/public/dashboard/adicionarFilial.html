@@ -223,65 +223,10 @@
 
 </html>
 
-<script src="../js/cadastro.js"></script>
+<script src="js/cadastroFilial.js"></script>
 
 <script>
     window.onload = () => {
-        if (sessionStorage.CEP == undefined) {
-            ipt_cep.disabled = false;
-        } else {
-            ipt_cep.disabled = true;
-            ipt_cep.value = sessionStorage.CEP
-        }
-
-        if (sessionStorage.LOGRADOURO == undefined) {
-            ipt_endereco.disabled = false;
-        } else {
-            ipt_endereco.disabled = true;
-            ipt_endereco.value = sessionStorage.LOGRADOURO
-        }
-
-        if (sessionStorage.BAIRRO == undefined) {
-            ipt_bairro.disabled = false;
-        } else {
-            ipt_bairro.disabled = true;
-            ipt_bairro.value = sessionStorage.BAIRRO
-        }
-
-        if(sessionStorage.FK_FILIAIS == undefined) {
-            ipt_razao.disabled = false;
-            ipt_cnpj.disabled = false;
-        } else {
-
-            
-            fetch('/funcionario/listarEmpresa/' + sessionStorage.FK_FILIAIS.split(',')[0]).then(function (resposta) {
-                
-                if (resposta.ok) {
-                    console.log(resposta);
-
-                    resposta.json().then(json => {
-                        console.log(json);
-                        
-                        ipt_razao.disabled = true;
-                        ipt_cnpj.disabled = true;
-
-                        ipt_razao.value = json[0].razao;
-                        ipt_cnpj.value = json[0].cnpj;
-                    });
-                } else {
-                    console.log("Houve um erro ao tentar obter os dados da empresa!");
-                    ipt_razao.disabled = false;
-                    ipt_cnpj.disabled = false;
-                    resposta.text().then(texto => {
-                        console.error(texto);
-                    });
-                }
-
-            }).catch(function (erro) {
-                console.log(erro);
-                ipt_razao.disabled = false;
-                ipt_cnpj.disabled = false;
-            });
-        }
-    }
+        preencherCampos();
+    };
 </script>

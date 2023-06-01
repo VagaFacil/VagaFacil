@@ -90,7 +90,7 @@ function cadastrar(req, res) {
     var telefone = req.body.telefoneServer;
     var cpf = req.body.cpfServer;
     var dataNascimento = req.body.dataNascimentoServer;
-    var foto = `${usuarioPadrao.png}`;
+    var foto = 'usuarioPadrao.png';
     // Dados Empresa
     var idEmpresa = 1;
     var razao = req.body.razaoServer; 
@@ -134,7 +134,7 @@ function cadastrar(req, res) {
     // } 
     else {
         // Passe os valores como parâmetro e vá para o arquivo funcionarioModel.js
-        funcionarioModel.cadastrar(nome, cargo, email, senha, telefone, cpf, dataNascimento)
+        funcionarioModel.cadastrarFuncionario(idFuncionario, nome, cargo, email, senha, telefone, cpf, dataNascimento)
             .then(
                 function (resultado) {
                     res.json(resultado);
