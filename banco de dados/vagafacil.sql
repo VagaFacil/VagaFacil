@@ -1,15 +1,11 @@
 create database VagaFacil;
 use VagaFacil;
--- drop DATABASE VagaFacil;
 
--- Criação da  tabela empresa 
 create table empresa (
 		idEmpresa int primary key auto_increment,
         razao varchar(45),
         cnpj char(18) unique     
 );
-
--- Dados referentes as empresas
 insert into empresa values (null,'coca-cola','45.997.418/0001-53'),
 						   (null,'itaú','60.701.190/0001-04'),
                            (null,'burguer-king','13.574.594/0001-96'),
@@ -17,15 +13,12 @@ insert into empresa values (null,'coca-cola','45.997.418/0001-53'),
                            (null,'carrefour','45.543.915/0001-81'), 
                            (null,'continental','48.754.139/0001-57');
 
--- Criação tabela bairro
 create table bairro(
 		idBairro int primary key auto_increment,
 		nome varchar(45),
 		regiao varchar(10),
 		area decimal(7,2)
 );
-
--- Inserindo dados na tebela bairro
 INSERT INTO bairro VALUES (null, 'Água Rasa', 'Leste', 715.05), (null, 'Alto de Pinheiros', 'Oeste', 751.27), (null, 'Anhanguera', 'Oeste', 3339.95), (null, 'Aricanduva', 'Leste', 686.27),
                           (null, 'Artur Alvim', 'Leste', 653.04), (null, 'Barra Funda', 'Centro', 589.81), (null, 'Bela Vista', 'Centro', 276.71), (null, 'Belém', 'Leste', 613.55),
                           (null, 'Bom Retiro', 'Centro', 427.39), (null, 'Brás', 'Centro', 364.61), (null, 'Brasilândia', 'Oeste', 2106.12), (null, 'Butantã', 'Oeste', 1291.72),
@@ -50,10 +43,7 @@ INSERT INTO bairro VALUES (null, 'Água Rasa', 'Leste', 715.05), (null, 'Alto de
                           (null, 'Vila Andrade', 'Sul', 1032.63), (null, 'Vila Curuçá', 'Leste', 952.36), (null, 'Vila Formosa', 'Leste', 751.52), (null, 'Vila Guilherme', 'Leste', 724.79),
                           (null, 'Vila Jacuí', 'Leste', 823.01), (null, 'Vila Leopoldina', 'Oeste', 700.48), (null, 'Vila Maria', 'Norte', 1181.71), (null, 'Vila Mariana', 'Sul', 854.26),
                           (null, 'Vila Matilde', 'Leste', 891.87), (null, 'Vila Medeiros', 'Norte', 789.39), (null, 'Vila Prudente', 'Leste', 960.19), (null, 'Vila Sônia', 'Sul', 1008.97);
--- SELECT * FROM bairro WHERE nome = 'Jardim Paulista';
 
-
--- criação da tabela endereco e inserção de valores 
 create table endereco (
 		idEndereco int primary key auto_increment,
         logradouro varchar(45),
@@ -61,8 +51,6 @@ create table endereco (
         fkBairro int,
         foreign key (fkBairro) references bairro(idBairro)
 )auto_increment = 150000;
-SELECT * FROM endereco;
--- Dados referentes as ruas
 insert into endereco values (null, 'Rua Antonio Bento', '01432000', 44),
 					   (null, 'Rua Consolação', '01301000', 26),
                        (null, 'Avenida Doutor Luís Rocha Miranda', '04344010', 37),
@@ -73,7 +61,6 @@ insert into endereco values (null, 'Rua Antonio Bento', '01432000', 44),
                        (NULL, 'R. Martins Fontes', '01050000', 26),
                        (NULL, 'R. Artur de Azevedo', '05404014', 63);
 
--- Criação tabela Filial
 create table filial (
 		idFilial int primary key auto_increment,
         cep char(9),
@@ -84,14 +71,9 @@ create table filial (
         fkEmpresa int,
         foreign key (fkEmpresa) references empresa(idEmpresa)
 )auto_increment = 50000;
-
--- Dados referentes as filiais
 insert into filial values (50000, '01432000', 'Rua Antonio Bento', 105, 'Predio verde', 'Chácara Santo Antônio',1);
 insert into filial values (50001, '01301000', 'Rua Consolação', 100, 'ap 1004', 'Jabaquara',2);
--- insert into filial values (50002, 213, '04344-010', 'Vila Tramontano, São Paulo - SP',3, 15000);
--- insert into filial values (50003, 131, '05422-000', 'Vila Endres, Guarulhos - SP',4, 15003);
 
--- Criação do Funcionário
 create table funcionario (
 		idFuncionario int primary key auto_increment,
         nome varchar(50),
@@ -105,8 +87,6 @@ create table funcionario (
         foreign key (fkSuperior) references funcionario(idFuncionario),
         foto varchar(300)
 )auto_increment = 100000;
-
--- Dados referentes aos usuarios
 insert into funcionario values (null,'Fernando Brandão', 'CEO','fernando@gmail.com','fernando123','(11)91234-4321','123.456.897-51','1960-09-08',null,'usuarioPadrao.png'),
                            (null,'Bruno Lima', 'Desenvolvedor','bruno@gmail.com','bruno123','(11)93456-6543','456.987.321-56','2005-10-25',100000,'usuarioPadrao.png'),
                            (null,'Daniel Yuzo', 'Desenvolvedor','daniel@gmail.com','daniel123','(11)94567-7654','456.987.321-56','2005-10-25',100000,'usuarioPadrao.png'),
@@ -114,8 +94,6 @@ insert into funcionario values (null,'Fernando Brandão', 'CEO','fernando@gmail.
 						   (null,'Henrique Bechis','Desenvolvedor','henrique@gmail.com','henrique123','(11)96789-9876','564.189.654-87','1997-04-24',100000,'usuarioPadrao.png'),
                            (null,'Lucas Neves', 'Desenvolvedor','lucas@gmail.com','lucas123','(11)97890-0987','456.987.652-30','1975-08-1',100000,'usuarioPadrao.png');
                            
-
--- Tabela Filial e Funcionários (muitos para muitos)
 create table FilialFuncionario (
 	fkFilial int,
 	foreign key (fkFilial) references filial(idFilial),
@@ -123,18 +101,12 @@ create table FilialFuncionario (
 	foreign key (fkFuncionario) references funcionario(idFuncionario) ON DELETE CASCADE, 
 	primary key (fkFilial, fkFuncionario)
 );
-
-
--- Inserir valores na tabela filiaFuncionario
 insert into FilialFuncionario values (50000,100000),
 									 (50001,100001),
 									 (50001,100002),
 									 (50001,100003),
 									 (50001,100004),
 									 (50001,100005);
-
-
-
 
 create table bairroPopulacao(
 		idBairro int primary key,
@@ -143,7 +115,6 @@ create table bairroPopulacao(
         empregos int,
         fluxo int
 );
-
 INSERT INTO bairroPopulacao VALUES (1, 60.7314, 116.3513, 228.1379), (2, 47.3425, 55.2105, 159.1332), (3, 6.1513, 24.2061, 24.6159), (4, 44.5816, 126.1603, 204.6367),
                                    (9, 155.8764, 88.7199, 398.6359), (10, 217.3171, 88.5768, 568.5170), (11, 24.9592, 132.0713, 181.2784), (12, 49.6586, 41.7939, 176.9168),
                                    (5, 45.1060, 155.2968, 306.0149), (6, 148.1443, 26.6170, 450.1212), (7, 521.3436, 262.1409, 1399.9675), (8, 105.7599, 78.8852, 311.1825),
@@ -177,7 +148,6 @@ create table bairroIdade(
         adulto int,
         idoso int
 );
-
 INSERT INTO bairroIdade VALUES (1, 7.6456, 18.7497, 50.0818, 27.0792), (2, 3.5726, 7.7948, 22.8333, 16.4708), (3, 2.2452, 6.1603, 10.4052, 1.8479), (4, 10.8339, 21.4158, 54.6199, 22.4343),
                                (5, 12.0238, 27.9585, 65.2043, 28.9584), (6, 2.5618, 3.7368, 10.8611, 6.7123), (7, 11.7524, 37.3423, 135.9402, 48.2816), (8, 5.5676, 11.6893, 34.2319, 14.2710),
                                (9, 8.0442, 16.3574, 38.4122, 13.2666), (10, 5.6855, 16.5327, 40.0976, 11.4177), (11, 16.1373, 28.2121, 52.3417, 14.7978), (12, 2.8729, 5.9928, 19.8433, 8.8564),
@@ -210,7 +180,6 @@ create table bairroRenda(
         media int,
         alta int
 );
-
 INSERT INTO bairroRenda VALUES (1, 57.1932, 47.0499, 12.1096), (2, 8.9715, 19.5083, 26.7294), (3, 17.0712, 6.5049, 0.6302), (4, 81.8963, 38.2211, 6.0428),
                                (5, 105.6627, 48.1762, 1.4578), (6, 8.5044, 10.2118, 7.8992), (7, 86.2817, 126.1465, 49.7127), (8, 43.7177, 25.4584, 9.7074),
                                (9, 49.7719, 35.2044, 3.7413), (10, 69.9158, 17.3720, 1.2945), (11, 104.5439, 23.2584, 4.2695), (12, 11.6906, 19.7938, 10.3095),
@@ -236,7 +205,6 @@ INSERT INTO bairroRenda VALUES (1, 57.1932, 47.0499, 12.1096), (2, 8.9715, 19.50
                                (89, 146.1914, 25.2075, 4.7168), (90, 15.2567, 19.8849, 27.7995), (91, 70.6696, 16.3737, 9.2671), (92, 32.3848, 66.7291, 55.3953),
                                (93, 79.2010, 31.5674, 7.5392), (94, 93.5469, 48.7579, 15.5779), (95, 66.1859, 33.8683, 8.9264), (96, 54.4991, 32.0654, 31.4439);
 
-
 create table sensor(
 		idSensor int primary key auto_increment,
 		fkEndereco int,
@@ -244,9 +212,6 @@ create table sensor(
 		numRua varchar(45),
 		numSensor varchar(45)
 )auto_increment=200000;
-SELECT * FROM sensor;
-
--- Dados referentes aos sensores
 insert into sensor values (null, 150000, '202', '1'),
 						  (null, 150001, '307', '2'),
                           (null, 150002, '472', '3'),
@@ -310,7 +275,6 @@ INSERT INTO dados VALUES (null,'2023-06-01 09:00:00', '0', 200011),
                          (null,'2023-06-01 13:15:00', '1', 200013),
                          (null,'2023-06-01 13:15:00', '1', 200013);
                          
--- Dados referenter aos dados do sensor
 insert into dados values (null,'2023-06-01 09:00:00', '0', 200000), (null, '2023-06-01 07:30:00', '0', 200000), (null, '2023-06-01 08:00:00', '0', 200000), (null, '2023-06-01 08:30:00', '1', 200000),
                          (null, '2023-06-01 09:00:00', '0', 200000), (null, '2023-06-01 09:30:00', '1', 200000), (null, '2023-06-01 10:00:00', '1', 200000), (null, '2023-06-01 10:30:00', '1', 200000),
                          (null, '2023-06-01 11:00:00', '0', 200000), (null, '2023-06-01 11:30:00', '0', 200000), (null, '2023-06-01 12:00:00', '1', 200000), (null, '2023-06-01 12:30:00', '1', 200000),
@@ -437,27 +401,31 @@ insert into dados values (null,'2023-06-01 09:00:00', '0', 200000), (null, '2023
 --                          (null, now(), '1', 200009), (null, now(), '1', 200009), (null, now(), '1', 200009), (null, now(), '1', 200009),
 --                          (null, now(), '1', 200009), (null, now(), '1', 200009), (null, now(), '1', 200009), (null, now(), '0', 200009),
 --                          (null, now(), '1', 200009), (null, now(), '0', 200009);
-INSERT INTO dados VALUES(null, '2023-06-01 22:00:00','1', 200001);
+
+DELIMITER //
+CREATE PROCEDURE cadastrar_funcionario(IN 
+	fu_nome VARCHAR(45), fu_cargo VARCHAR(45), fu_email VARCHAR(70), fu_senha VARCHAR(16), fu_telefone CHAR(14), fu_cpf CHAR(14), fu_dataNascimento DATE, fu_foto VARCHAR(300),
+	em_razao VARCHAR(45), em_cnpj VARCHAR(18),
+    fi_cep VARCHAR(9), fi_logradouro VARCHAR(120), fi_numero INT, fi_complemento VARCHAR(45), fi_bairro VARCHAR(45)
+)
+BEGIN
+	INSERT INTO funcionario (nome, cargo, email, senha, telefone, cpf, dataNascimento, foto) 
+		VALUES (fu_nome, fu_cargo, fu_email,senha, fu_telefone, fu_cpf, fu_dataNascimento, fu_foto);
+    INSERT INTO empresa (razao,cnpj)
+		VALUES (em_razao,em_cnpj);
+	INSERT INTO filial (cep, logradouro, numero, complemento, bairro) 
+        VALUES (fi_cep, fi_logradouro, fi_numero, fi_complemento, fi_bairro);
+END//
+DELIMITER ;
+
+-- CREATE USER 'vaga'@'localhost' identified by 'urubu100';
+GRANT INSERT, SELECT, UPDATE, DELETE ON vagafacil.* to 'vaga'@'localhost';
+GRANT EXECUTE ON PROCEDURE cadastrar_funcionario to 'vaga'@'localhost';
+flush privileges;
 
 -- select dataHora, SUM(valor) FROM dados group by dataHora;
 -- select SUM(valor) FROM dados group by dataHora;
 -- SELECT valor FROM dados WHERE idDados = 250000;
--- select das tabelas simples
--- select * from empresa;
--- select * from filial;
--- select * from funcionario;
--- select * from endereco;
--- select * from empresa;
--- select * from sensor;
--- select * from dados;
--- select * from bairro;
--- select * from bairro where nome in ('Jardim Paulista', 'Cerqueira César', 'Jabaquara', 'Pinheiros', 'Saúde');
--- select das tabelas relacionadas
-
--- UPDATE funcionario SET foto = 'usuarioPadrao.png' WHERE idFuncionario = 100005;
-
--- select tabela empresa e filial
--- select * from empresa join filial on fkEmpresa = idEmpresa;
 
 -- select tabela filial e funcionario
 -- select * from filial join filialFuncionario join funcionario on fkFilial = idFilial and fkFilial = idFilial;
@@ -481,28 +449,6 @@ INSERT INTO dados VALUES(null, '2023-06-01 22:00:00','1', 200001);
 -- select * from bairro join bairroRenda join bairroIdade join bairroPopulacao on bairro.idBairro = bairroRenda.idBairro 
 --                             and bairro.idBairro = bairroIdade.idBairro and bairro.idBairro = bairroPopulacao.idBairro;
 
-
--- drop database VagaFacil;
- select * from empresa;
- select * from filial;
- select * from funcionario;
- select * from endereco;
- 
-DELIMITER //
-CREATE PROCEDURE cadastrar_funcionario(IN 
-	fu_nome VARCHAR(45), fu_cargo VARCHAR(45), fu_email VARCHAR(70), fu_senha VARCHAR(16), fu_telefone CHAR(14), fu_cpf CHAR(14), fu_dataNascimento DATE, fu_foto VARCHAR(300),
-	em_razao VARCHAR(45), em_cnpj VARCHAR(18),
-    fi_cep VARCHAR(9), fi_logradouro VARCHAR(120), fi_numero INT, fi_complemento VARCHAR(45), fi_bairro VARCHAR(45)
-)
-BEGIN
-	INSERT INTO funcionario (nome, cargo, email, senha, telefone, cpf, dataNascimento, foto) 
-		VALUES (fu_nome, fu_cargo, fu_email,senha, fu_telefone, fu_cpf, fu_dataNascimento, fu_foto);
-    INSERT INTO empresa (razao,cnpj)
-		VALUES (em_razao,em_cnpj);
-	INSERT INTO filial (cep, logradouro, numero, complemento, bairro) 
-        VALUES (fi_cep, fi_logradouro, fi_numero, fi_complemento, fi_bairro);
-END//
-DELIMITER ;
 
 -- drop database vagafacil;
 
