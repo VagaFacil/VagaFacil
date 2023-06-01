@@ -3,7 +3,7 @@ function carregarPagina(idFuncionario) {
         if (resposta.ok) {
 
             resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                // console.log("Dados recebidos: ", JSON.stringify(resposta));
                 infos = resposta[0]
                 var nome = document.getElementById("nomeUsuario");
                 nome.innerHTML = infos.nome;
@@ -25,7 +25,7 @@ function exibir_informacaoPessoal(idFuncionario) {
         if (resposta.ok) {
 
             resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                // console.log("Dados recebidos: ", JSON.stringify(resposta));
                 infos = resposta[0]
 
                 const datetime = new Date(infos.dataNascimento);
@@ -61,7 +61,7 @@ function exibir_comercial(idFuncionario) {
         if (resposta.ok) {
 
             resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                // console.log("Dados recebidos: ", JSON.stringify(resposta));
                 infos = resposta[0]
                 var nome = document.getElementById("nomeEmpresa");
                 var cep = document.getElementById("cep");
@@ -106,7 +106,7 @@ function mudarNome(idFuncionario) {
                 nome: nomeNovo
             })
         }).then(function (resposta) {
-            console.log(resposta)
+            // console.log(resposta)
             if (resposta.ok) {
 
                 infos = resposta[0]

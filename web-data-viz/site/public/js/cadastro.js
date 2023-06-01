@@ -8,13 +8,14 @@
         var cargoVar = ipt_cargo.value;
         var telefoneVar = ipt_telefone.value;
         var cpfVar = ipt_cpf.value;
+        var dataNascimentoVar = ipt_dataN.value;
 
-        // Adaptar a data de Nascimento para o MySQL
-        const datetime = new Date(infos.ipt_dataN.value);
-                const dia = datetime.getDate().toString().padStart(2, '0');
-                const mes = (datetime.getMonth() + 1).toString().padStart(2, '0'); // Lembrando que os meses começam em 0
-                const ano = datetime.getFullYear().toString();
-                var dataNascimentoVar = `${ano}/${mes}/${dia}`;
+        // // Adaptar a data de Nascimento para o MySQL
+        // const datetime = new Date(ipt_dataN.value);
+        //         const dia = datetime.getDate();
+        //         const mes = (datetime.getMonth() + 1) // Lembrando que os meses começam em 0
+        //         const ano = datetime.getFullYear();
+        //         var dataNascimentoVar = `${ano}-${mes}-${dia}`;
         
         // var fkSuperiorVar = null;
 
@@ -34,6 +35,7 @@
 
         var erroCadastro = false;
 
+        // Inicio Validação
         if (nomeVar.length < 3) {
             vNome.style.display = 'block';
             ipt_nome.style = 'border-color: red';
@@ -58,7 +60,7 @@
             vDataN.style.display = 'none';
             ipt_dataN.style = 'border-color: #32a7b1';
         }
-        if (cpfVar.length != 13 ) {
+        if (cpfVar.length != 14 ) {
             vCpf.style.display = 'block';
             ipt_cpf.style = 'border-color: red';
             erroCadastro = true;
@@ -100,7 +102,7 @@
             vCep.style.display = 'none';
             ipt_cep.style = 'border-color: #32a7b1';
         }
-        if (bairroVar.length != 9) {
+        if (bairroVar.length < 3) {
             vBairro.style.display = 'block';
             ipt_bairro.style = 'border-color: red';
             erroCadastro = true;
@@ -157,6 +159,7 @@
             vConfirmarSenhaInvalida.style.display = 'none';
             ipt_confirmarSenha.style = 'border-color: #32a7b1';
         }
+        //Final Validação
 
         if (erroCadastro) {
             return false;
@@ -191,6 +194,7 @@
                 console.log("resposta: ", resposta);
                 if (resposta.ok) {
                     setTimeout(() => {
+                        alert(Funcionou)
                         window.location = "login.html";
                     }, "2000")
                 } else {
@@ -200,6 +204,8 @@
                 console.log(`#ERRO: ${resposta}`);
             });
             return false;
+
+
         }
 
     }
@@ -214,7 +220,7 @@ function cpf(v){
         v=v.replace(/(\d{3})(\d)/,"$1.$2")       //Coloca um ponto entre o terceiro e o quarto dígitos
                                                  //de novo (para o segundo bloco de números)
         v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2") //Coloca um hífen entre o terceiro e o quarto dígitos
-        ipt_cpf.value = v
+        ipt_cpf.value = v;
         return v
     }
 }
@@ -226,8 +232,20 @@ function cnpj(v){
         v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3") //Coloca ponto entre o quinto e o sexto dígitos
         v=v.replace(/\.(\d{3})(\d)/,".$1/$2")           //Coloca uma barra entre o oitavo e o nono dígitos
         v=v.replace(/(\d{4})(\d)/,"$1-$2")              //Coloca um hífen depois do bloco de quatro dígitos
-        ipt_cnpj.value = v
+        ipt_cnpj.value = v;
 
         return v
+    }
+}
+
+function ver_cep() {
+    if (ipt_cep.value.length == 8) {
+        fetch(`https://viacep.com.br/ws/${ipt_cep.value}/json/`).then(nome_qualquer=>{
+            return nome_qualquer.json();
+        }).then(corpo=>{
+            document.getElementById('ipt_endereco').value = corpo.logradouro;
+            document.getElementById('ipt_bairro').value = corpo.bairro;
+        })
+        
     }
 }
