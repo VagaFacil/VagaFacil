@@ -1,7 +1,6 @@
 create database VagaFacil;
 use VagaFacil;
 
-
 -- Criação da  tabela empresa 
 create table empresa (
 		idEmpresa int primary key auto_increment,
@@ -62,28 +61,27 @@ create table endereco (
 )auto_increment = 150000;
 SELECT * FROM endereco;
 -- Dados referentes as ruas
-insert into endereco values (null, 'Rua Antonio Bento', '01432-000', 44),
-					   (null, 'Rua Consolação', '01301-000', 26),
-                       (null, 'Avenida Doutor Luís Rocha Miranda', '04344-010', 37),
-                       (null, 'Rua dos Pinheiros', '08142-640', 63),
-                       (null, 'Alameda Itupiranga', '04294-090', 79);
+insert into endereco values (null, 'Rua Antonio Bento', '01432000', 44),
+					   (null, 'Rua Consolação', '01301000', 26),
+                       (null, 'Avenida Doutor Luís Rocha Miranda', '04344010', 37),
+                       (null, 'Rua dos Pinheiros', '08142640', 63),
+                       (null, 'Alameda Itupiranga', '04294090', 79);
 
 -- Criação tabela Filial
 create table filial (
 		idFilial int primary key auto_increment,
-        numero int,
         cep char(9),
+        logradouro VARCHAR(120),
+        numero int,
         complemento varchar(45),
+        bairro VARCHAR(45),
         fkEmpresa int,
-        foreign key (fkEmpresa) references empresa(idEmpresa),
-        fkEndereco int,
-        foreign key (fkEndereco) references endereco(idEndereco)
+        foreign key (fkEmpresa) references empresa(idEmpresa)
 )auto_increment = 50000;
 
-desc filial;
 -- Dados referentes as filiais
-insert into filial values (50000, 105, '01432-000', 'Chácara Santo Antônio (Zona Sul)',1,150000);
-insert into filial values (50001, 100, '01416-003', 'Jabaquara, São Paulo)',2, 150001);
+insert into filial values (50000, '01432000', 'Rua Antonio Bento', 105, 'Predio verde', 'Chácara Santo Antônio',1);
+insert into filial values (50001, '01301000', 'Rua Consolação', 100, 'ap 1004', 'Jabaquara',2);
 -- insert into filial values (50002, 213, '04344-010', 'Vila Tramontano, São Paulo - SP',3, 15000);
 -- insert into filial values (50003, 131, '05422-000', 'Vila Endres, Guarulhos - SP',4, 15003);
 
@@ -113,11 +111,11 @@ insert into funcionario values (null,'Fernando Brandão', 'CEO','fernando@gmail.
 
 -- Tabela Filial e Funcionários (muitos para muitos)
 create table FilialFuncionario (
-fkFilial int,
-foreign key (fkFilial) references filial(idFilial),
-fkFuncionario int,
-foreign key (fkFuncionario) references funcionario(idFuncionario) ON DELETE CASCADE, 
-Primary key (fkFilial, fkFuncionario)
+	fkFilial int,
+	foreign key (fkFilial) references filial(idFilial),
+	fkFuncionario int,
+	foreign key (fkFuncionario) references funcionario(idFuncionario) ON DELETE CASCADE, 
+	primary key (fkFilial, fkFuncionario)
 );
 
 
@@ -390,21 +388,16 @@ insert into dados values (null,'2023-06-01 09:00:00', '0', 200000), (null, '2023
 --                          (null, now(), '1', 200009), (null, now(), '1', 200009), (null, now(), '1', 200009), (null, now(), '0', 200009),
 --                          (null, now(), '1', 200009), (null, now(), '0', 200009);
 INSERT INTO dados VALUES(null, '2023-06-01 22:00:00','1', 200001);
-SELECT * FROM dados;
 
-TRUNCATE TABLE dados;
-select dataHora, SUM(valor) FROM dados group by dataHora;
-select SUM(valor) FROM dados group by dataHora;
-SELECT valor FROM dados WHERE idDados = 250000;
+-- select dataHora, SUM(valor) FROM dados group by dataHora;
+-- select SUM(valor) FROM dados group by dataHora;
+-- SELECT valor FROM dados WHERE idDados = 250000;
 -- select das tabelas simples
- select * from empresa;
- select * from filial;
- select * from funcionario;
- select * from endereco;
 -- select * from empresa;
 -- select * from filial;
-select * from funcionario;
--- use vagaFacil;
+-- select * from funcionario;
+-- select * from endereco;
+-- select * from empresa;
 -- select * from sensor;
 -- select * from dados;
 -- select * from bairro;
@@ -440,3 +433,26 @@ select * from funcionario;
 
 
 -- drop database VagaFacil;
+ select * from empresa;
+ select * from filial;
+ select * from funcionario;
+ select * from endereco;
+ 
+DELIMITER //
+CREATE PROCEDURE cadastrar_funcionario(IN 
+	fu_nome VARCHAR(45), fu_cargo VARCHAR(45), fu_email VARCHAR(70), fu_senha VARCHAR(16), fu_telefone CHAR(14), fu_cpf CHAR(14), fu_dataNascimento DATE, fu_foto VARCHAR(300),
+	em_razao VARCHAR(45), em_cnpj VARCHAR(18),
+    fi_cep VARCHAR(9), fi_logradouro VARCHAR(120), fi_numero INT, fi_complemento VARCHAR(45), fi_bairro VARCHAR(45)
+)
+BEGIN
+	INSERT INTO funcionario (nome, cargo, email, senha, telefone, cpf, dataNascimento, foto) 
+		VALUES (fu_nome, fu_cargo, fu_email,senha, fu_telefone, fu_cpf, fu_dataNascimento, fu_foto);
+    INSERT INTO empresa (razao,cnpj)
+		VALUES (em_razao,em_cnpj);
+	INSERT INTO filial (cep, logradouro, numero, complemento, bairro) 
+        VALUES (fi_cep, fi_logradouro, fi_numero, fi_complemento, fi_bairro);
+END//
+DELIMITER ;
+
+-- drop database vagafacil;
+

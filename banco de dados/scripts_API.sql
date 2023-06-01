@@ -1,5 +1,6 @@
 CREATE USER 'vaga'@'localhost' identified by 'urubu100';
 GRANT INSERT, SELECT, UPDATE, DELETE ON vagafacil.* to 'vaga'@'localhost';
+GRANT EXECUTE ON PROCEDURE cadastrar_funcionario to 'vaga'@'localhost';
 flush privileges;
 
 use vagafacil;
