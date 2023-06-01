@@ -90,7 +90,6 @@ function cadastrar(req, res) {
     var telefone = req.body.telefoneServer;
     var cpf = req.body.cpfServer;
     var dataNascimento = req.body.dataNascimentoServer;
-    var foto = 'usuarioPadrao.png';
     // Dados Empresa
     var idEmpresa = 1;
     var razao = req.body.razaoServer; 

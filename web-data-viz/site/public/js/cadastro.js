@@ -9,12 +9,12 @@
         var telefoneVar = ipt_telefone.value;
         var cpfVar = ipt_cpf.value;
 
-        // Adaptar a data de Nascimento para o MySQL
-        const datetime = new Date(infos.ipt_dataN.value);
-                const dia = datetime.getDate().toString().padStart(2, '0');
-                const mes = (datetime.getMonth() + 1).toString().padStart(2, '0'); // Lembrando que os meses começam em 0
-                const ano = datetime.getFullYear().toString();
-                var dataNascimentoVar = `${ano}/${mes}/${dia}`;
+        // // Adaptar a data de Nascimento para o MySQL
+        // const datetime = new Date(ipt_dataN.value);
+        //         const dia = datetime.getDate();
+        //         const mes = (datetime.getMonth() + 1) // Lembrando que os meses começam em 0
+        //         const ano = datetime.getFullYear();
+        //         var dataNascimentoVar = `${ano}-${mes}-${dia}`;
         
         // var fkSuperiorVar = null;
 
@@ -34,129 +34,131 @@
 
         var erroCadastro = false;
 
-        if (nomeVar.length < 3) {
-            vNome.style.display = 'block';
-            ipt_nome.style = 'border-color: red';
-            erroCadastro = true;
-        } else {
-            vNome.style.display = 'none';
-            ipt_nome.style = 'border-color: #32a7b1';
-        }
-        if (cargoVar.length < 3) {
-            vCargo.style.display = 'block';
-            ipt_cargo.style = 'border-color: red';
-            erroCadastro = true;
-        } else {
-            vCargo.style.display = 'none';
-            ipt_cargo.style = 'border-color: #32a7b1';
-        }
-        if (dataNascimentoVar.length < 10) {
-            vDataN.style.display = 'block';
-            ipt_dataN.style = 'border-color: red';
-            erroCadastro = true;
-        } else {
-            vDataN.style.display = 'none';
-            ipt_dataN.style = 'border-color: #32a7b1';
-        }
-        if (cpfVar.length != 13 ) {
-            vCpf.style.display = 'block';
-            ipt_cpf.style = 'border-color: red';
-            erroCadastro = true;
-        } else {
-            vCpf.style.display = 'none';
-            ipt_cpf.style = 'border-color: #32a7b1';
-        }
-        if (telefoneVar.length > 14 || telefoneVar.length < 13) {
-            vTelefone.style.display = 'block';
-            ipt_telefone.style = 'border-color: red';
-            erroCadastro = true;
-        } else {
-            vTelefone.style.display = 'none';
-            ipt_telefone.style = 'border-color: #32a7b1';
-        }
+        // Inicio Validação
+        // if (nomeVar.length < 3) {
+        //     vNome.style.display = 'block';
+        //     ipt_nome.style = 'border-color: red';
+        //     erroCadastro = true;
+        // } else {
+        //     vNome.style.display = 'none';
+        //     ipt_nome.style = 'border-color: #32a7b1';
+        // }
+        // if (cargoVar.length < 3) {
+        //     vCargo.style.display = 'block';
+        //     ipt_cargo.style = 'border-color: red';
+        //     erroCadastro = true;
+        // } else {
+        //     vCargo.style.display = 'none';
+        //     ipt_cargo.style = 'border-color: #32a7b1';
+        // }
+        // if (dataNascimentoVar.length < 10) {
+        //     vDataN.style.display = 'block';
+        //     ipt_dataN.style = 'border-color: red';
+        //     erroCadastro = true;
+        // } else {
+        //     vDataN.style.display = 'none';
+        //     ipt_dataN.style = 'border-color: #32a7b1';
+        // }
+        // if (cpfVar.length != 14 ) {
+        //     vCpf.style.display = 'block';
+        //     ipt_cpf.style = 'border-color: red';
+        //     erroCadastro = true;
+        // } else {
+        //     vCpf.style.display = 'none';
+        //     ipt_cpf.style = 'border-color: #32a7b1';
+        // }
+        // if (telefoneVar.length > 14 || telefoneVar.length < 13) {
+        //     vTelefone.style.display = 'block';
+        //     ipt_telefone.style = 'border-color: red';
+        //     erroCadastro = true;
+        // } else {
+        //     vTelefone.style.display = 'none';
+        //     ipt_telefone.style = 'border-color: #32a7b1';
+        // }
        
 
-        if (razaoVar.length < 3) {
-            vRazao.style.display = 'block';
-            ipt_razao.style = 'border-color: red';
-            erroCadastro = true;
-        } else {
-            vRazao.style.display = 'none';
-            ipt_razao.style = 'border-color: #32a7b1';
-        }
-        if (cnpjVar.length < 3) {
-            vCnpj.style.display = 'block';
-            ipt_cnpj.style = 'border-color: red';
-            erroCadastro = true;
-        } else {
-            vCnpj.style.display = 'none';
-            ipt_cnpj.style = 'border-color: #32a7b1';
-        }
-        if (cepVar.length != 9) {
-            vCep.style.display = 'block';
-            ipt_cep.style = 'border-color: red';
-            erroCadastro = true;
-        } else {
-            vCep.style.display = 'none';
-            ipt_cep.style = 'border-color: #32a7b1';
-        }
-        if (bairroVar.length != 9) {
-            vBairro.style.display = 'block';
-            ipt_bairro.style = 'border-color: red';
-            erroCadastro = true;
-        } else {
-            vBairro.style.display = 'none';
-            ipt_bairro.style = 'border-color: #32a7b1';
-        }
-        if (enderecoVar.length == 0) {
-            vEndereco.style.display = 'block';
-            ipt_endereco.style = 'border-color: red';
-            erroCadastro = true;
-        } else {
-            vEndereco.style.display = 'none';
-            ipt_endereco.style = 'border-color: #32a7b1';
-        }
-        if (numeroVar.length == 0 || isNaN(numeroVar)) {
-            vNumero.style.display = 'block';
-            ipt_numero.style = 'border-color: red';
-            erroCadastro = true;
-        } else {
-            vNumero.style.display = 'none';
-            ipt_numero.style = 'border-color: #32a7b1';
-        }
+        // if (razaoVar.length < 3) {
+        //     vRazao.style.display = 'block';
+        //     ipt_razao.style = 'border-color: red';
+        //     erroCadastro = true;
+        // } else {
+        //     vRazao.style.display = 'none';
+        //     ipt_razao.style = 'border-color: #32a7b1';
+        // }
+        // if (cnpjVar.length < 3) {
+        //     vCnpj.style.display = 'block';
+        //     ipt_cnpj.style = 'border-color: red';
+        //     erroCadastro = true;
+        // } else {
+        //     vCnpj.style.display = 'none';
+        //     ipt_cnpj.style = 'border-color: #32a7b1';
+        // }
+        // if (cepVar.length != 9) {
+        //     vCep.style.display = 'block';
+        //     ipt_cep.style = 'border-color: red';
+        //     erroCadastro = true;
+        // } else {
+        //     vCep.style.display = 'none';
+        //     ipt_cep.style = 'border-color: #32a7b1';
+        // }
+        // if (bairroVar.length < 3) {
+        //     vBairro.style.display = 'block';
+        //     ipt_bairro.style = 'border-color: red';
+        //     erroCadastro = true;
+        // } else {
+        //     vBairro.style.display = 'none';
+        //     ipt_bairro.style = 'border-color: #32a7b1';
+        // }
+        // if (enderecoVar.length == 0) {
+        //     vEndereco.style.display = 'block';
+        //     ipt_endereco.style = 'border-color: red';
+        //     erroCadastro = true;
+        // } else {
+        //     vEndereco.style.display = 'none';
+        //     ipt_endereco.style = 'border-color: #32a7b1';
+        // }
+        // if (numeroVar.length == 0 || isNaN(numeroVar)) {
+        //     vNumero.style.display = 'block';
+        //     ipt_numero.style = 'border-color: red';
+        //     erroCadastro = true;
+        // } else {
+        //     vNumero.style.display = 'none';
+        //     ipt_numero.style = 'border-color: #32a7b1';
+        // }
 
-        if (emailVar.indexOf('@') < 0 && emailVar.indexOf('.com') < 0) {
-            vEmail.style.display = 'block';
-            ipt_email.style = 'border-color: red';
-            erroCadastro = true;;
-        } else {
-            vEmail.style.display = 'none';
-            ipt_email.style = 'border-color: #32a7b1';
-        }
-        if (senhaVar.length < 6) {
-            vSenha.style.display = 'block';
-            ipt_senha.style = 'border-color: red';
-            erroCadastro = true;;
-        } else {
-            vSenha.style.display = 'none';
-            ipt_senha.style = 'border-color: #32a7b1';
-        }
-        if (confirmarSenhaVar != senhaVar) {
-            vConfirmarSenha.style.display = 'block';
-            ipt_confirmarSenha.style = 'border-color: red';
-            erroCadastro = true;
-        } else {
-            vConfirmarSenha.style.display = 'none';
-            ipt_confirmarSenha.style = 'border-color: #32a7b1';
-        }
-        if ( confirmarSenhaVar == "") {
-            vConfirmarSenhaInvalida.style.display = 'block';
-            ipt_confirmarSenha.style = 'border-color: red';
-            erroCadastro = true;
-        } else {
-            vConfirmarSenhaInvalida.style.display = 'none';
-            ipt_confirmarSenha.style = 'border-color: #32a7b1';
-        }
+        // if (emailVar.indexOf('@') < 0 && emailVar.indexOf('.com') < 0) {
+        //     vEmail.style.display = 'block';
+        //     ipt_email.style = 'border-color: red';
+        //     erroCadastro = true;;
+        // } else {
+        //     vEmail.style.display = 'none';
+        //     ipt_email.style = 'border-color: #32a7b1';
+        // }
+        // if (senhaVar.length < 6) {
+        //     vSenha.style.display = 'block';
+        //     ipt_senha.style = 'border-color: red';
+        //     erroCadastro = true;;
+        // } else {
+        //     vSenha.style.display = 'none';
+        //     ipt_senha.style = 'border-color: #32a7b1';
+        // }
+        // if (confirmarSenhaVar != senhaVar) {
+        //     vConfirmarSenha.style.display = 'block';
+        //     ipt_confirmarSenha.style = 'border-color: red';
+        //     erroCadastro = true;
+        // } else {
+        //     vConfirmarSenha.style.display = 'none';
+        //     ipt_confirmarSenha.style = 'border-color: #32a7b1';
+        // }
+        // if ( confirmarSenhaVar == "") {
+        //     vConfirmarSenhaInvalida.style.display = 'block';
+        //     ipt_confirmarSenha.style = 'border-color: red';
+        //     erroCadastro = true;
+        // } else {
+        //     vConfirmarSenhaInvalida.style.display = 'none';
+        //     ipt_confirmarSenha.style = 'border-color: #32a7b1';
+        // }
+        //Final Validação
 
         if (erroCadastro) {
             return false;
@@ -191,6 +193,7 @@
                 console.log("resposta: ", resposta);
                 if (resposta.ok) {
                     setTimeout(() => {
+                        alert(Funcionou)
                         window.location = "login.html";
                     }, "2000")
                 } else {
@@ -200,6 +203,8 @@
                 console.log(`#ERRO: ${resposta}`);
             });
             return false;
+
+
         }
 
     }
