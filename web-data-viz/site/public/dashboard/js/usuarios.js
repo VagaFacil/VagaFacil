@@ -57,7 +57,7 @@ function exibir(idFuncionario) {
         if (resposta.ok) {
 
             resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                // console.log("Dados recebidos: ", JSON.stringify(resposta));
                 infos = resposta[0]
 
                 const datetime = new Date(infos.nascimento);
@@ -84,7 +84,6 @@ function exibir(idFuncionario) {
         }
     }).catch(function (resposta) {
         console.error(resposta);
-        // finalizarAguardar();
     });
 }
 

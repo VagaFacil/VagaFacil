@@ -148,7 +148,7 @@
 .space-btn {
     text-align: center;
 }
-#btn-excluir {
+#btnExcluir {
     margin-top: 40px;
     width: 50%;
     height: auto;
@@ -162,7 +162,7 @@
     cursor: pointer;
     transition: .3s;
     box-shadow: 0 2px 4px black;
-} #btn-excluir:hover {
+} #btnExcluir:hover {
     background-color: #F49C24;
     color: #0C243C;
     transition: .3s;
