@@ -6,7 +6,7 @@
 
     function obterDadosGraficos() {
         Mapas()    
-        if(endereco.value != ""){
+        if(endereco.value != "" && endereco.value >= "150"){
             banner2.style.display = "block"
         }
         mostrarDados(endereco.value)
@@ -465,6 +465,7 @@ function mudarTipoGrafico(){
 }
 /* Configuração dos mapas do acompanhar */
 function Mapas(){
+    //Dados integrados com o banco 
     if(endereco.value == "150000"){
         Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.727076598191!2d-46.705063599999995!3d-23.6499432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5055ec762b93%3A0x277c30da4832ae5b!2sR.%20Dr.%20Ant%C3%B4nio%20Bento%2C%2044%20-%20Santo%20Amaro%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004750-010!5e0!3m2!1spt-BR!2sbr!4v1685627338161!5m2!1spt-BR!2sbr"    
     }
@@ -480,10 +481,21 @@ function Mapas(){
     if(endereco.value == "150004"){
         Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228.47396800946515!2d-46.60553620478098!3d-23.61926616607334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5bc6b28b629d%3A0xe8e562504fb0c687!2sNPR%20Emerg%C3%AAncias!5e0!3m2!1spt-BR!2sbr!4v1685628181572!5m2!1spt-BR!2sbr" 
     }
+    // Gráficos com os dados fixos para demontração
+    if (endereco.value == "150005"){
+        Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7453671599083!2d-46.67085422070135!3d-23.57758700747471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59de0605f81b%3A0x94d136afd6b32738!2sRua%20Conselheiro%20Torres%20Homem%2C%20300-498%20-%20Jardim%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001432-010!5e0!3m2!1spt-BR!2sbr!4v1685636700980!5m2!1spt-BR!2sbr"     
+    }
+    if(endereco.value == "150006"){
+        Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.1234286069885!2d-46.6464762248859!3d-23.635750364328942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5af04bedec07%3A0x18f63fab1d23bd9e!2sR.%20Volkswagen%2C%20187%20-%20Jabaquara%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004344-020!5e0!3m2!1spt-BR!2sbr!4v1685638592447!5m2!1spt-BR!2sbr" 
+    }
+    if(endereco.value == "150007"){
+        Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.5510720713746!2d-46.64597962488922!3d-23.548643761124676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce584da8a43619%3A0xeca75d595bedf84a!2sR.%20Martins%20Fontes%2C%2099%20-%20Centro%20Hist%C3%B3rico%20de%20S%C3%A3o%20Paulo%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001050-000!5e0!3m2!1spt-BR!2sbr!4v1685638773353!5m2!1spt-BR!2sbr"
+    }
+    if(endereco.value == "150008"){
+        Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.081081256248!2d-46.68941242488868!3d-23.565531261744947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce579e30819555%3A0x111e0595ff967471!2sR.%20Artur%20de%20Azevedo%2C%201676%20-%20Pinheiros%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2005404-014!5e0!3m2!1spt-BR!2sbr!4v1685638880094!5m2!1spt-BR!2sbr"
+    }
+
 }
-
-
-
 
 
 
