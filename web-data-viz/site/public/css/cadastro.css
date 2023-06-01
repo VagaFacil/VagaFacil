@@ -118,6 +118,9 @@
     outline: none;
     border-color: #32a7b1;
 }    
+.card2 input:disabled {
+    color: rgb(80,80,80);
+}
 #ipt_endereco {
     width: 95%;
 }
