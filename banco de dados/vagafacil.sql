@@ -6,7 +6,7 @@ use VagaFacil;
 create table empresa (
 		idEmpresa int primary key auto_increment,
         razao varchar(45),
-        cnpj char(18)     
+        cnpj char(18) unique     
 );
 
 -- Dados referentes as empresas
@@ -92,10 +92,10 @@ create table funcionario (
 		idFuncionario int primary key auto_increment,
         nome varchar(50),
         cargo varchar(45),
-        email varchar(100),
+        email varchar(100) unique,
         senha varchar(18),
-        telefone char(14),
-        cpf char(14),
+        telefone char(14) unique,
+        cpf char(14) unique,
         dataNascimento date,
         fkSuperior int,
         foreign key (fkSuperior) references funcionario(idFuncionario),
@@ -262,7 +262,7 @@ create table dados(
 		fkSensor int,
 		foreign key(fksensor) references sensor(idSensor)
 )auto_increment=250000;
-USE vagaFacil;
+-- USE vagaFacil;
 -- Dados referenter aos dados do sensor
 insert into dados values (null,'2023-06-01 09:00:00', '0', 200000), (null, '2023-06-01 07:30:00', '0', 200000), (null, '2023-06-01 08:00:00', '0', 200000), (null, '2023-06-01 08:30:00', '1', 200000),
                          (null, '2023-06-01 09:00:00', '0', 200000), (null, '2023-06-01 09:30:00', '1', 200000), (null, '2023-06-01 10:00:00', '1', 200000), (null, '2023-06-01 10:30:00', '1', 200000),
