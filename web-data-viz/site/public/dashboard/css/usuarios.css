@@ -168,3 +168,22 @@
     transition: .3s;
     box-shadow: 0 4px 8px black;
 }
+
+.card_erro {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    top: 80px;
+    right: 20px;
+    border: 2px solid var(--laranja);
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.393);
+    backdrop-filter: blur(10px);
+    color: var(--laranja);
+    font-family: 'fonte';
+    border-radius: 10px;
+}
+.card_erro #mensagem_erro {
+    font-weight: 500;
+    font-size: 25px;
+}

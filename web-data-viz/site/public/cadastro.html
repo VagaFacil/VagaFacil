@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/cadastro.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/mediaQueries.css">
-    <script src="js/cadastro.js"></script>
+    <script src="../public/js/cadastro.js"></script>
     <title>Vaga Fácil</title>
 </head>
 
@@ -61,7 +61,7 @@
                         </li>
                         <li>
                             <p>Data de nascimento</p>
-                            <input id="ipt_dataN" type="text" placeholder="00/00/0000" maxlength="10">
+                            <input id="ipt_dataN" type="date" placeholder="00/00/0000" maxlength="10">
                             <div id="vDataN">Informe um data válida</div>
                         </li>
                         <li>
@@ -144,12 +144,12 @@
                     <ul class="card2-space">
                         <li>
                             <p>Senha</p>
-                            <input id="ipt_senha" type="senha">
+                            <input id="ipt_senha" type="password">
                             <div id="vSenha">Informe uma senha válida</div>
                         </li>
                         <li>
                             <p>Confirmar senha</p>
-                            <input id="ipt_confirmarSenha" type="confirmação">
+                            <input id="ipt_confirmarSenha" type="password">
                             <div id="vConfirmarSenha">Senhas diferentes</div>
                             <div id="vConfirmarSenhaInvalida">Senhas inválida</div>
                         </li>

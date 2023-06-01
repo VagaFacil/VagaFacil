@@ -15,7 +15,7 @@ function listarBairro() {
                 JOIN endereco e ON b.idBairro = e.fkBairro
                 JOIN sensor s ON e.idEndereco = s.fkEndereco
                 JOIN dados d ON s.idSensor = d.fkSensor
-                GROUP BY b.idBairro;
+                GROUP BY b.idBairro ORDER BY ocupacao DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -30,7 +30,7 @@ function listarRuas(idBairro) {
                 JOIN sensor s ON e.idEndereco = s.fkEndereco
                 JOIN dados d ON s.idSensor = d.fkSensor
                 WHERE b.idBairro = ${idBairro}
-                GROUP BY e.idEndereco;
+                GROUP BY e.idEndereco ORDER BY ocupacao DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
