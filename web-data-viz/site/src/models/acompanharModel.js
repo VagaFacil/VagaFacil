@@ -17,7 +17,7 @@ function buscarUltimasMedidas(idRua, limite_linhas) {
         instrucaoSql = `
         SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
-        WHERE dataHora <= CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 24`;
+        WHERE dataHora >= CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 24`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -44,7 +44,7 @@ function buscarMedidasEmTempoReal(idRua) {
         instrucaoSql = `
         SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
-        WHERE dataHora <= CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 1`;
+        WHERE dataHora >= CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 1`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -54,8 +54,43 @@ function buscarMedidasEmTempoReal(idRua) {
     return database.executar(instrucaoSql);
 }
 
-
+function buscarTempoMedio(idRua){
+    var instrucao = `SELECT idSensor, REPLACE(GROUP_CONCAT(valor), ',', '') as tempo
+	FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
+        WHERE fkEndereco = ${idRua} GROUP BY idSensor ORDER BY idSensor; `;
+    return database.executar(instrucao);
+}
+function historicoMensal(idRua) {
+    var instrucao = `SELECT MONTH(dataHora) AS mes, SUM(valor) AS valor 
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
+        WHERE fkEndereco = ${idRua} GROUP BY mes ORDER BY mes;
+    `;
+    return database.executar(instrucao);
+}
+function buscarOcupacao(idRua){
+    var instrucao = `SELECT SUM(valor) / COUNT(valor) AS ocupacao FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor WHERE fkEndereco = ${idRua}`;
+    return database.executar(instrucao);
+}
+function historicoSemanal(idRua) {
+    var instrucao = `SELECT DAYOFWEEK(dataHora) AS dia, SUM(valor) AS valor 
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
+        WHERE fkEndereco = ${idRua} GROUP BY dia ORDER BY dia;
+    `;
+    return database.executar(instrucao);
+}
+function historicoDiario(idRua) {
+    var instrucao = `SELECT HOUR(dataHora) AS hora, SUM(valor) AS valor
+        FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
+        WHERE fkEndereco = ${idRua} GROUP BY hora ORDER BY hora;
+    `;
+    return database.executar(instrucao);
+}
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    buscarTempoMedio,
+    buscarOcupacao,
+    historicoMensal,
+    historicoSemanal,
+    historicoDiario
 }

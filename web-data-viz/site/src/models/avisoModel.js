@@ -9,7 +9,6 @@ function listar() {
             a.descricao,
             a.fk_usuario,
             u.id AS idUsuario,
-            u.nome,
             u.email,
             u.senha
             u.cpf
