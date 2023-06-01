@@ -248,8 +248,14 @@
             ipt_bairro.value = sessionStorage.BAIRRO
         }
 
-        fetch('/funcionario/listarEmpresa/' + sessionStorage.FK_FILIAIS.split(',')[0]).then(function (resposta) {
+        if(sessionStorage.FK_FILIAIS == undefined) {
+            ipt_razao.disabled = false;
+            ipt_cnpj.disabled = false;
+        } else {
 
+            
+            fetch('/funcionario/listarEmpresa/' + sessionStorage.FK_FILIAIS.split(',')[0]).then(function (resposta) {
+                
                 if (resposta.ok) {
                     console.log(resposta);
 
@@ -277,4 +283,5 @@
                 ipt_cnpj.disabled = false;
             });
         }
+    }
 </script>
