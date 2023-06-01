@@ -121,6 +121,12 @@ html {
   margin: 5px;
 }
 
+.dashboard .ruaCard h3 {
+  font-weight: bold;
+  font-size: large;
+  margin-bottom: 10px;
+}
+
 /* Fim da tela de ruas */
 
 /* Início da tela de dados */

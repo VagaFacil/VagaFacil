@@ -5,13 +5,17 @@ function listarBairro() {
     var instrucao = `
             select b.idBairro, b.nome AS 'bairro', b.regiao AS 'zona', bp.fluxo, 
                 bi.adolescente, bi.jovemAdulto, bi.adulto, bi.idoso, 
-                br.baixa, br.media, br.alta
-                from bairro AS b 
-                join bairroRenda AS br 
-                join bairroIdade AS bi 
-                join bairroPopulacao AS bp 
-                on b.idBairro = br.idBairro and b.idBairro = bi.idBairro and b.idBairro = bp.idBairro
-                WHERE EXISTS (SELECT idEndereco FROM endereco e WHERE b.idBairro = e.fkBairro);
+                br.baixa, br.media, br.alta,
+                SUM(d.valor) / COUNT(d.valor) AS ocupacao
+                FROM bairro AS b 
+                JOIN bairroRenda AS br 
+                JOIN bairroIdade AS bi 
+                JOIN bairroPopulacao AS bp 
+                ON b.idBairro = br.idBairro AND b.idBairro = bi.idBairro AND b.idBairro = bp.idBairro
+                JOIN endereco e ON b.idBairro = e.fkBairro
+                JOIN sensor s ON e.idEndereco = s.fkEndereco
+                JOIN dados d ON s.idSensor = d.fkSensor
+                GROUP BY b.idBairro;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -20,8 +24,13 @@ function listarBairro() {
 function listarRuas(idBairro) {
     console.log("ACESSEI O expandir MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarRuas()", idBairro);
     var instrucao = `
-            select e.idEndereco, e.logradouro, e.cep, b.nome FROM endereco e JOIN bairro b ON b.idBairro = e.fkBairro
-                WHERE b.idBairro = ${idBairro} AND EXISTS (SELECT idSensor FROM sensor s WHERE e.idEndereco = s.fkEndereco);
+            select e.idEndereco, e.logradouro, e.cep, b.nome,
+                SUM(d.valor) / COUNT(d.valor) AS ocupacao
+                FROM endereco e JOIN bairro b ON b.idBairro = e.fkBairro
+                JOIN sensor s ON e.idEndereco = s.fkEndereco
+                JOIN dados d ON s.idSensor = d.fkSensor
+                WHERE b.idBairro = ${idBairro}
+                GROUP BY e.idEndereco;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

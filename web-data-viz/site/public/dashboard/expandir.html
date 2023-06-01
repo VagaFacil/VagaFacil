@@ -113,29 +113,6 @@
                     Procurar uma rua:
                 </div>
                 <input id="inpPesquisaRua" onkeyup="filtrarNomeRua()">
-                <div>
-                    Faixa de Renda: <label class="switch">
-                        <input type="checkbox" onclick="changeDisabled('selRendaRua'); filtrarRendaRua();">
-                        <span class="slider"></span>
-                    </label>
-                </div>
-                <select id="selRendaRua" onchange="filtrarRendaRua()" disabled="true">
-                    <option value="1">Baixa</option>
-                    <option value="2">Média</option>
-                    <option value="3">Alta</option>
-                </select>
-                <div>
-                    Faixa Etária: <label class="switch">
-                        <input type="checkbox" onclick="changeDisabled('selIdadeRua'); filtrarIdadeRua();">
-                        <span class="slider"></span>
-                    </label>
-                </div>
-                <select id="selIdadeRua" onchange="filtrarIdadeRua()" disabled="true">
-                    <option value="1">Adolescente</option>
-                    <option value="2">Jovem adulto</option>
-                    <option value="3">Adulto</option>
-                    <option value="4">Idoso</option>
-                </select>
             </div>
             <div class="ruaLista" id="divRuaLista">
             </div>
@@ -249,7 +226,7 @@
                     divBairroLista.innerHTML += `<div class="bairroCard" id="card${cards[i].idBairro}" onclick="mostrarRuas(${cards[i].idBairro})">
                                 <img src="img/bairros/${cards[i].idBairro}.png">
                                 <h3>${cards[i].bairro}</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p>Ocupação Média: ${cards[i].ocupacao * 100}%</p>
                             </div>`;
                     cards[i].card = 'card' + cards[i].idBairro;
                 }
@@ -342,7 +319,9 @@
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     ruas = resposta;
                     for (var i = 0; i < resposta.length; i++) {
-                        divRuaLista.innerHTML += `<div onclick="mostrarDados(${ruas[i].idEndereco}, '${ruas[i].logradouro}')" class="ruaCard" id="rua${ruas[i].idEndereco}">${ruas[i].logradouro}</div>`
+                        divRuaLista.innerHTML += `<div onclick="mostrarDados(${ruas[i].idEndereco}, '${ruas[i].logradouro}')" class="ruaCard" id="rua${ruas[i].idEndereco}">
+                                <h3>${ruas[i].logradouro}</h3>
+                                <p>Ocupação Média: ${ruas[i].ocupacao * 100}%</p></div>`
                     }
                 });
             } else {
@@ -361,20 +340,6 @@
             } else {
                 ruas[i].style.display = 'none';
             }
-        }
-    }
-
-    function filtrarIdadeRua() {
-        ruas = ruas.sort((a, b) => 0.5 - Math.random());
-        for (var i = 0; i < ruas.length; i++) {
-            ruas[i].style.order = i;
-        }
-    }
-
-    function filtrarRendaRua() {
-        ruas = ruas.sort((a, b) => 0.5 - Math.random());
-        for (var i = 0; i < ruas.length; i++) {
-            ruas[i].style.order = i;
         }
     }
 
