@@ -120,7 +120,7 @@ function historicoSemanal(req, res) {
 }
 function historicoDiario(req, res) {
     var idRua = req.params.idRua;
-    expandirModel.historicoDiario(idRua)
+    acompanharModel.historicoDiario(idRua)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 for (var i = 0; i <= 23; i++) {

@@ -5,10 +5,11 @@
     let proximaAtualizacao;
 
     function obterDadosGraficos() {
-        obterDadosGrafico(endereco.value)
+        // obterDadosGrafico(endereco.value)
         if(endereco.value != ""){
             banner2.style.display = "block"
         }
+        mostrarDados(endereco.value)
     }
 
     var contextoChave = document.getElementById('canvLine').getContext('2d');
@@ -102,9 +103,7 @@
     var dadosHistorico = {};
     var dadosTempoReal = [];
     var idAtual = -1;
-    function mostrarDados(idRua, logradouro) {
-        divDados.style.display = 'flex';
-        divRua.style.display = 'none';
+    function mostrarDados(idRua) {
         fetch('/acompanhar/historicoMensal/' + idRua).then((response) => {
             if (response.ok) {
                 response.json().then(function (resposta) {
@@ -190,7 +189,7 @@
         }).catch((erro) => {
             dadosHistorico.diario = '';
         });
-        spanEnderecoSel.innerHTML = logradouro;
+        
         plotarTempoMedio(idRua);
         plotarOcupacao(idRua);
         obterDadosGrafico(idRua);
@@ -236,11 +235,11 @@
         console.log(dados.datasets)
         console.log('----------------------------------------------')
 
-        
+        chartLinha.data = dados;
         chartLinha.options.plugins.title.text = 'Ocupação Recente';
         chartLinha.update();
 
-        setTimeout(() => atualizarGrafico(idRua, dados/* , chartLinha */), 2000);
+        setTimeout(() => atualizarGrafico(idRua, dados), 2000);
         plotarTempoMedio(idRua)
         plotarOcupacao(idRua)
     }
@@ -266,7 +265,7 @@
 
                     // let avisoCaptura = document.getElementById(`avisoCaptura${idRua}`)
                     // avisoCaptura.innerHTML = ""
-                     var hora = new Date(novoRegistro[0].hora);
+                    //  var hora = new Date(novoRegistro[0].hora);
 
                     if (novoRegistro[0].hora == dados.labels[dados.labels.length - 1]) {
                         console.log("---------------------------------------------------------------")
@@ -449,7 +448,6 @@ function mudarTipoGrafico(){
     if (tipo == 'tempoReal') {
         obterDadosGrafico(idAtual);
     } else if (tipo == "diario") {
-
         chartLinha.data = dadosHistorico.diario;
         chartLinha.options.plugins.title.text = 'Historico Diario';
         chartLinha.update();
