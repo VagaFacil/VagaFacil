@@ -1,6 +1,6 @@
 create database VagaFacil;
 use VagaFacil;
-
+-- drop DATABASE VagaFacil;
 
 -- Criação da  tabela empresa 
 create table empresa (
@@ -64,12 +64,19 @@ create table endereco (
 SELECT * FROM endereco;
 -- Dados referentes as ruas
 -- Rua Conselheiro Torres Homem, 300-498 - Jardim Paulista, São Paulo - SP, 01432-010
+-- Rua Volkswagem, 187 - Vila Guarani, São Paulo - SP, 04344-020
+-- R. Martins Fontes, 99 - Centro Histórico de São Paulo, São Paulo - SP, 01050-000
+-- R. Artur de Azevedo, 1676 - Pinheiros, São Paulo - SP, 05404-014
 insert into endereco values (null, 'Rua Antonio Bento', '01432-000', 44),
 					   (null, 'Rua Consolação', '01301-000', 26),
                        (null, 'Avenida Doutor Luís Rocha Miranda', '04344-010', 37),
                        (null, 'Rua dos Pinheiros', '08142-640', 63),
                        (null, 'Alameda Itupiranga', '04294-090', 79),
-                       (NULL, 'Rua Conselheiro Torres Homem', '01432-010', 44);
+                       (NULL, 'Rua Conselheiro Torres Homem', '01432-010', 44),
+                       (NULL, 'Rua Volkswagem', '04344-020', 37),
+                       (NULL, 'R. Martins Fontes', '01050-000', 26),
+                       (NULL, 'R. Artur de Azevedo', '05404-014', 63);
+                       
 -- Criação tabela Filial
 create table filial (
 		idFilial int primary key auto_increment,
@@ -255,7 +262,10 @@ insert into sensor values (null, 150000, '202', '1'),
                           (null, 150000, '604', '8'),
                           (null, 150002, '200', '9'),
                           (null, 150002, '578', '10'),
-                          (NULL, 150005, '300', '11');
+                          (NULL, 150005, '300', '11'),
+                          (NULL, 150006, '189', '12'),
+                          (NULL, 150007, '99', '13'),
+                          (NULL, 150008, '1676', '14');
 
 create table dados(
 		idDados int primary key auto_increment,
@@ -264,7 +274,17 @@ create table dados(
 		fkSensor int,
 		foreign key(fksensor) references sensor(idSensor)
 )auto_increment=250000;
-INSERT INTO dados VALUES (null,'2023-06-01 09:00:00', '0', 200010),
+INSERT INTO dados VALUES (null,'2023-06-01 09:00:00', '0', 200011),
+                         (null,'2023-06-01 09:15:00', '1', 200011),
+                         (null,'2023-06-01 09:30:00', '1', 200011),
+                         (null,'2023-06-01 09:45:00', '1', 200011),
+                         (null,'2023-06-01 11:00:00', '1', 200011),
+                         (null,'2023-06-01 11:15:00', '1', 200011),
+                         (null,'2023-06-01 11:30:00', '1', 200011),
+                         (null,'2023-06-01 11:45:00', '1', 200011),
+                         (null,'2023-06-01 11:15:00', '1', 200011),
+                         (null,'2023-06-01 11:15:00', '1', 200011),
+                         (null,'2023-06-01 09:00:00', '0', 200010), -- rua 2
                          (null,'2023-06-01 09:15:00', '1', 200010),
                          (null,'2023-06-01 09:30:00', '1', 200010),
                          (null,'2023-06-01 09:45:00', '1', 200010),
@@ -272,9 +292,29 @@ INSERT INTO dados VALUES (null,'2023-06-01 09:00:00', '0', 200010),
                          (null,'2023-06-01 10:15:00', '1', 200010),
                          (null,'2023-06-01 10:30:00', '1', 200010),
                          (null,'2023-06-01 10:45:00', '1', 200010),
-                         (null,'2023-06-01 11:15:00', '1', 200010),
-                         (null,'2023-06-01 11:15:00', '1', 200010);
-                         SELECT * FROM dados;
+                         (null,'2023-06-01 10:15:00', '1', 200010),
+                         (null,'2023-06-01 10:15:00', '1', 200010),
+                         (null,'2023-06-01 09:00:00', '0', 200012), -- rua 3
+                         (null,'2023-06-01 09:15:00', '1', 200012),
+                         (null,'2023-06-01 09:30:00', '1', 200012),
+                         (null,'2023-06-01 09:45:00', '1', 200012),
+                         (null,'2023-06-01 12:00:00', '1', 200012),
+                         (null,'2023-06-01 12:15:00', '1', 200012),
+                         (null,'2023-06-01 12:30:00', '1', 200012),
+                         (null,'2023-06-01 12:45:00', '1', 200012),
+                         (null,'2023-06-01 12:15:00', '1', 200012),
+                         (null,'2023-06-01 12:15:00', '1', 200012),
+                         (null,'2023-06-01 09:00:00', '0', 200013), -- rua 4
+                         (null,'2023-06-01 09:15:00', '1', 200013),
+                         (null,'2023-06-01 09:30:00', '1', 200013),
+                         (null,'2023-06-01 09:45:00', '1', 200013),
+                         (null,'2023-06-01 13:00:00', '1', 200013),
+                         (null,'2023-06-01 13:15:00', '1', 200013),
+                         (null,'2023-06-01 13:30:00', '1', 200013),
+                         (null,'2023-06-01 13:45:00', '1', 200013),
+                         (null,'2023-06-01 13:15:00', '1', 200013),
+                         (null,'2023-06-01 13:15:00', '1', 200013);
+                         
 -- Dados referenter aos dados do sensor
 insert into dados values (null,'2023-06-01 09:00:00', '0', 200000), (null, '2023-06-01 07:30:00', '0', 200000), (null, '2023-06-01 08:00:00', '0', 200000), (null, '2023-06-01 08:30:00', '1', 200000),
                          (null, '2023-06-01 09:00:00', '0', 200000), (null, '2023-06-01 09:30:00', '1', 200000), (null, '2023-06-01 10:00:00', '1', 200000), (null, '2023-06-01 10:30:00', '1', 200000),

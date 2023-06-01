@@ -482,8 +482,8 @@ function Mapas(){
         Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228.47396800946515!2d-46.60553620478098!3d-23.61926616607334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5bc6b28b629d%3A0xe8e562504fb0c687!2sNPR%20Emerg%C3%AAncias!5e0!3m2!1spt-BR!2sbr!4v1685628181572!5m2!1spt-BR!2sbr" 
     }
     // Gráficos com os dados fixos para demontração
-    if (endereco.value == "6"){
-        Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1148560446027!2d-46.66680352488864!3d-23.564318061700366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d16cc69cd3%3A0x941940dcb39dc8ff!2sR.%20Padre%20Jo%C3%A3o%20Manuel%2C%20755%20-%20Cerqueira%20C%C3%A9sar%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001411-001!5e0!3m2!1spt-BR!2sbr!4v1681769011142!5m2!1spt-BR!2sbr"
+    if (endereco.value == "150005"){
+        Rua1.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7453671599083!2d-46.67085422070135!3d-23.57758700747471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59de0605f81b%3A0x94d136afd6b32738!2sRua%20Conselheiro%20Torres%20Homem%2C%20300-498%20-%20Jardim%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001432-010!5e0!3m2!1spt-BR!2sbr!4v1685636700980!5m2!1spt-BR!2sbr"     
     }
 
 }
