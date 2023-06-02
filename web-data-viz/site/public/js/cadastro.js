@@ -193,11 +193,34 @@ function cadastrar() {
         }).then(function (resposta) {
             console.log("resposta: ", resposta);
             if (resposta.ok) {
-                inserirFk()
+                inserirFk();
+                ipt_nome.value = '';
+                ipt_cargo.value = '';
+                ipt_dataN.value = '';
+                ipt_cpf.value = '';
+                ipt_telefone.value = '';
+                ipt_razao.value = '';
+                ipt_cnpj.value = '';
+                ipt_cep.value = '';
+                ipt_endereco.value = '';
+                ipt_numero.value = '';
+                ipt_complemento.value = '';
+                ipt_bairro.value = '';
+                ipt_email.value = '';
+                ipt_senha.value = '';
+                ipt_confirmarSenha.value = '';
                 setTimeout(() => {
                     window.location = "login.html";
                 }, "2000")
+                cardErroCadastro.style.display = "block"
+                cardErroCadastro.style.border = "2px solid greenyellow"
+                cardErroCadastro.style.color = "greenyellow"
+                mensagem_erroCadastro.innerHTML = `✅Conta cadastrada com sucesso!✅<br>Redirecionando...✅`;
             } else {
+                cardErroCadastro.style.display = "block"
+                    cardErroCadastro.style.border = "2px solid red"
+                    cardErroCadastro.style.color = "red"
+                    mensagem_erroCadcardErroCadastro.innerHTML = "❌Erro ao realizar cadastro❌";
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {

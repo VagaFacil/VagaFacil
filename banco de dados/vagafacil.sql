@@ -442,9 +442,9 @@ CREATE PROCEDURE inserir_fk(IN
     ff_cpf CHAR(14)
 )
 BEGIN
-UPDATE filial SET fkEmpresa = (SELECT idEmpresa FROM empresa WHERE cnpj = fi_cnpj) WHERE cep = fi_cep AND numero = fi_num AND complemento = fi_comp;
-INSERT INTO filialFuncionario (fkFilial, fkFuncionario)
-	VALUES ((SELECT idFilial FROM filial WHERE fkEmpresa = (SELECT idEmpresa FROM empresa WHERE cnpj = fi_cnpj) ),(SELECT idFuncionario FROM funcionario WHERE cpf = ff_cpf));
+	UPDATE filial SET fkEmpresa = (SELECT idEmpresa FROM empresa WHERE cnpj = fi_cnpj) WHERE cep = fi_cep AND numero = fi_num AND complemento = fi_comp;
+	INSERT INTO filialFuncionario (fkFilial, fkFuncionario)
+		VALUES ((SELECT idFilial FROM filial WHERE fkEmpresa = (SELECT idEmpresa FROM empresa WHERE cnpj = fi_cnpj) ),(SELECT idFuncionario FROM funcionario WHERE cpf = ff_cpf));
 END//
 DELIMITER ;
 
@@ -481,10 +481,4 @@ flush privileges;
 --                             and bairro.idBairro = bairroIdade.idBairro and bairro.idBairro = bairroPopulacao.idBairro;
 
 -- drop database vagafacil;
-select * from funcionario;
-select * from filial;
-select * from empresa;
-select * from filialFuncionario;
-
-        
 
