@@ -88,7 +88,7 @@ create table funcionario (
         foto varchar(300)
 )auto_increment = 100000;
 insert into funcionario values (null,'Fernando Brandão', 'CEO','fernando@gmail.com','fernando123','(11)91234-4321','123.456.897-51','1960-09-08',null,'usuarioPadrao.png'),
-                           (null,'Bruno Lima', 'Desenvolvedor','bruno@gmail.com','bruno123','(11)93456-6543','456.987.321-56','2005-10-25',100000,'usuarioPadrao.png'),
+                           (null,'Bruno Lima', 'Desenvolvedor','bruno@gmail.com','bruno123','(11)93456-6543','456.987.321-12','2005-10-25',100000,'usuarioPadrao.png'),
                            (null,'Daniel Yuzo', 'Desenvolvedor','daniel@gmail.com','daniel123','(11)94567-7654','456.987.321-56','2005-10-25',100000,'usuarioPadrao.png'),
 						   (null,'Gabriel Branco', 'Desenvolvedor','gabriel@gmail.com','gabriel123','(11)95678-8765','598.621.789-56','2003-03-24',100000,'usuarioPadrao.png'),
 						   (null,'Henrique Bechis','Desenvolvedor','henrique@gmail.com','henrique123','(11)96789-9876','564.189.654-87','1997-04-24',100000,'usuarioPadrao.png'),

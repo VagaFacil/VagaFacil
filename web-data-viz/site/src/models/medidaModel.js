@@ -45,13 +45,16 @@ function buscarMedidasEmTempoReal(idAquario) {
                     order by id desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
+        instrucaoSql = `
+        BEGIN TRANSACTION;
+        select 
         dht11_temperatura as temperatura, 
         dht11_umidade as umidade,
                         DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
                         fk_aquario 
                         from medida where fk_aquario = ${idAquario} 
-                    order by id desc limit 1`;
+                    order by id desc limit 1
+        COMMIT;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return

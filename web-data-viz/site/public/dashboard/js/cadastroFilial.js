@@ -148,7 +148,7 @@ function preencherCampos(){
             vCnpj.style.display = 'none';
             ipt_cnpj.style = 'border-color: #32a7b1';
         }
-        if (cepVar.length != 9) {
+        if (cepVar.length != 8) {
             vCep.style.display = 'block';
             ipt_cep.style = 'border-color: red';
             erroCadastro = true;
