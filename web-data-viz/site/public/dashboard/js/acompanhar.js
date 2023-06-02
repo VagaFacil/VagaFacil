@@ -498,6 +498,54 @@ function Mapas(){
 }
 
 
+// Alertas
+var selectCriado = false;
+
+function listarAlertas() {
+    fetch("/acompanhar/alertas/" + sessionStorage.FK_FILIAIS).then((response)=>{
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                var texto = '';
+                if (!selectCriado) {
+                    endereco.innerHTML = '<option selected disabled value="">Selecione</option>';
+                }
+                for (let i = 0; i < resposta.length; i++) {
+                    console.log(resposta[i])
+                    if (!selectCriado) {
+                        endereco.innerHTML += `<option value="${resposta[i].idEndereco}">${resposta[i].logradouro} ${resposta[i].numero}</option>`;
+                    }
+                    if (resposta[i].ocupacao < 0.35) {
+                        texto += `<div class="cardAlerta critico" onclick="mostrarDadosAlerta(${resposta[i].idEndereco});">
+                            ${resposta[i].logradouro} ${resposta[i].numero}<br>Estado Crítico!<br>Ocupação: ${(resposta[i].ocupacao*100).toFixed(1)}%</div>`;
+                    } else if (resposta[i].ocupacao < 0.60) {
+                        texto += `<div class="cardAlerta alerta" onclick="mostrarDadosAlerta(${resposta[i].idEndereco});">
+                            ${resposta[i].logradouro} ${resposta[i].numero}<br>Estado de Alerta.<br>Ocupação: ${(resposta[i].ocupacao*100).toFixed(1)}%</div>`;
+                    }
+                }
+                selectCriado = true;
+                if (texto == '') {
+                    divAlertas.style.display = 'none';
+                } else {
+                    divAlertas.style.display = 'flex';
+                    divAlertas.innerHTML = texto;
+                }
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    }) 
+    .catch((erro)=>{
+        console.log(erro);
+    });
+
+    setTimeout(()=>{listarAlertas()}, 5000);
+}
+
+function mostrarDadosAlerta(idEndereco) {
+    endereco.value = idEndereco;
+    obterDadosGraficos();
+}
+
 
 
 

@@ -137,21 +137,34 @@ p{
 .containerAlertas {
     margin-top: 10px;
     display: none;
-    width: 90%;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+    top: 80px;
+    width: 15%;
 }
 
 .cardAlerta {
-    width: 20%;
+    width: 100%;
     padding: 5px;
+    margin: 5px 0px;
+    text-align: center;
     border-radius: 10px;
     background-color: #0C243C;
+    cursor: pointer;
+}
+
+.cardAlerta:hover {
+    transition: .3s;
+    transform: scale(1.05);
 }
 
 .critico {
-    border: 1px solid red;
+    border: 3px solid red;
 }
 
 .alerta {
-    border: 1px solid yellow;
+    border: 3px solid yellow;
 }
