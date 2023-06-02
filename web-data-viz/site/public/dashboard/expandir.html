@@ -352,7 +352,7 @@
         fetch('/expandir/historicoMensal/' + idRua).then((response) => {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    var labels = [];
+                    var labels = [`Janeiro`, `Fevereiro`, `Março`, `Abril`, `Maio`, `Junho`, `Julho`, `Agosto`,`Setembro`,`Outubro`,`Novembro`, `Dezembro`];
                     // Criando estrutura para plotar gráfico - dados
                     var dados = {
                         labels: labels,
@@ -367,7 +367,7 @@
                     // Inserindo valores recebidos em estrutura para plotar o gráfico
                     for (i = 0; i < resposta.length; i++) {
                         var registro = resposta[i];
-                        labels.push(registro.mes);
+                        // labels.push(registro.mes);
                         dados.datasets[0].data.push(registro.valor);
                     }
                     dadosHistorico.mensal = dados;
