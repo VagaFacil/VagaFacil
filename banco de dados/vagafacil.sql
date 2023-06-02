@@ -112,6 +112,12 @@ create table FilialFuncionario (
 	foreign key (fkFuncionario) references funcionario(idFuncionario) ON DELETE CASCADE, 
 	primary key (fkFilial, fkFuncionario)
 );
+-- Cadastramento do funcionario que servirá de exemplo na apresentação
+INSERT INTO FilialFuncionario VALUES(50002,100000),
+                                    (50003,100000),
+                                    (50004,100000),
+                                    (50005,100000),
+                                    (50006,100000);
 insert into FilialFuncionario values (50000,100000),
 									 (50001,100001),
 									 (50001,100002),
