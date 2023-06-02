@@ -136,7 +136,7 @@
             if (response.ok) {
                 response.json().then(function (resposta) {
                     
-                    var labels = [];
+                    var labels = [`Domingo`, `Segunda`, `Terça`, `Quarta`, `Quinta`, `Sexta`,`Sabado`];
                     // Criando estrutura para plotar gráfico - dados
                     var dados = {
                         labels: labels,
@@ -151,7 +151,7 @@
                     // Inserindo valores recebidos em estrutura para plotar o gráfico
                     for (i = 0; i < resposta.length; i++) {
                         var registro = resposta[i];
-                        labels.push(registro.dia);
+                        // labels.push(registro.dia);
                         dados.datasets[0].data.push(registro.valor);
                     }
                     dadosHistorico.semanal = dados;
@@ -353,7 +353,7 @@ function plotarTempoMedio(idRua) {
                 if (tempoMedio <= 15) {
                     cor = 'green';
                 } else if (tempoMedio <= 30) {
-                    cor = 'limegreen';
+                    cor = 'yellowgreen';
                 } else if (tempoMedio <= 60) {
                     cor = 'yellow';
                 } else {
@@ -422,7 +422,7 @@ function plotarOcupacao(idRua){
                 } else if (ocupacao < 60) {
                     cor = 'yellow';
                 } else if (ocupacao < 90) {
-                    cor = 'limegreen';
+                    cor = 'yellowgreen';
                 } else {
                     cor = 'green';
                 }

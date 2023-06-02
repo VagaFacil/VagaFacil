@@ -381,7 +381,7 @@
             if (response.ok) {
                 response.json().then(function (resposta) {
                     
-                    var labels = [];
+                    var labels = [`Domingo`, `Segunda`, `Terça`, `Quarta`, `Quinta`, `Sexta`,`Sabado`];
                     // Criando estrutura para plotar gráfico - dados
                     var dados = {
                         labels: labels,
@@ -396,7 +396,7 @@
                     // Inserindo valores recebidos em estrutura para plotar o gráfico
                     for (i = 0; i < resposta.length; i++) {
                         var registro = resposta[i];
-                        labels.push(registro.dia);
+                        // labels.push(registro.dia);
                         dados.datasets[0].data.push(registro.valor);
                     }
                     dadosHistorico.semanal = dados;
