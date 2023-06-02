@@ -29,7 +29,7 @@ function entrar(email, senha) {
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrarFuncionario(nome, cargo, email, senha, telefone, cpf, dataNascimento,razao,cnpj,cep,logradouro,numero,complemento,nomeBairro) {
-    console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():",nome, cargo, email, senha, telefone, cpf, dataNascimento,razao,cnpj,cep,logradouro,numero,complemento,nomeBairro);
+    console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():",nome, cargo, email, senha, telefone, cpf, dataNascimento);
     var instrucao = `
         CALL cadastrar_funcionario('${nome}','${cargo}','${email}', '${senha}', '${telefone}','${cpf}', '${dataNascimento}', 'usuarioPadrao.png',
             '${razao}','${cnpj}',
@@ -40,22 +40,10 @@ function cadastrarFuncionario(nome, cargo, email, senha, telefone, cpf, dataNasc
     return database.executar(instrucao);
 }
 
-function inserirFk(cpf,cnpj, cep, numero, complemento) {
-    console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function inserirFk():");
-    var instrucao = `
-        CALL inserir_fk('${cnpj}','${cep}','${numero}','${complemento}',
-            '${cpf}'
-        );
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
 module.exports = {
     entrar,
     listarEmpresa,
-    cadastrarFuncionario,
-    inserirFk
+    cadastrarFuncionario
 };
 
 

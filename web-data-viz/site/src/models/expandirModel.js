@@ -88,6 +88,25 @@ function buscarMedidasEmTempoReal(idRua) {
     return database.executar(instrucao);
 }
 
+function cadastrarFilial(idFunc, nome, cargo, email, senha, telefone, cpf, dataNascimento,cnpj,cep,logradouro,numero,complemento,nomeBairro) {
+    console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():",nome, cargo, email, senha, telefone, cpf, dataNascimento);
+    var instrucao = `
+        CALL cadastrar_filial(${idFunc}, '${nome}','${cargo}','${email}', '${senha}', '${telefone}','${cpf}', '${dataNascimento}', 'usuarioPadrao.png',
+            '${cnpj}',
+            '${cep}', '${logradouro}', '${numero}', '${complemento}', '${nomeBairro}'
+        );
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function buscarFiliais(idFunc) {
+    var instrucao = `
+        SELECT GROUP_CONCAT(fkFilial) as filiais FROM filialFuncionario WHERE fkFuncionario = ${idFunc};
+    `;
+    return database.executar(instrucao);
+}
+
 module.exports = {
     listarBairro,
     listarRuas,
@@ -97,5 +116,7 @@ module.exports = {
     buscarTempoMedio,
     buscarOcupacao,
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    cadastrarFilial,
+    buscarFiliais
 };

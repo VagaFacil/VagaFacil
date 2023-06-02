@@ -41,6 +41,14 @@ router.get("/ultimas/:idRua", function (req, res) {
 
 router.get("/tempo-real/:idRua", function (req, res) {
     expandirController.buscarMedidasEmTempoReal(req, res);
-})
+});
+
+router.post("/cadastrarFilial", function (req, res) {
+    expandirController.cadastrar(req, res);
+});
+
+router.get("/buscarFiliais/:idFunc", function (req, res) {
+    expandirController.buscarFiliais(req, res);
+});
 
 module.exports = router;
