@@ -40,10 +40,12 @@ function cadastrarFuncionario(nome, cargo, email, senha, telefone, cpf, dataNasc
     return database.executar(instrucao);
 }
 
-function inserirFk(cnpj,cep,numero,complemento) {
+function inserirFk(cpf,cnpj, cep, numero, complemento) {
     console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function inserirFk():");
     var instrucao = `
-    UPDATE filial SET fkEmpresa = (SELECT idEmpresa FROM empresa WHERE cnpj = '${cnpj}') WHERE cep = '${cep}' AND numero = '${numero}' AND complemento = '${complemento}';;
+        CALL inserir_fk('${cnpj}','${cep}','${numero}','${complemento}',
+            '${cpf}'
+        );
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

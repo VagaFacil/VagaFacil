@@ -160,6 +160,7 @@ function cadastrar(req, res) {
 }
 
 function inserirFk(req, res) {
+    var cpf = req.body.cpfServer;
     var cnpj = req.body.cnpjServer;
     var cep = req.body.cepServer; 
     var numero = req.body.numeroServer;
@@ -174,7 +175,7 @@ function inserirFk(req, res) {
     } else if (complemento == undefined) {
         res.status(400).send("Seu complemento está undefined!");
     } else {
-        funcionarioModel.inserirFk(cnpj, cep, numero, complemento)
+        funcionarioModel.inserirFk(cpf,cnpj, cep, numero, complemento)
             .then(function (resultado) {res.json(resultado);}
             ).catch(function (erro) {
                     console.log(erro);
