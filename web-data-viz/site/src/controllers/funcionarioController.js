@@ -11,19 +11,19 @@ function listarEmpresa(req, res) {
     var idFilial = req.params.idFilial;
 
     funcionarioModel.listarEmpresa(idFilial)
-    .then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(
-        function (erro) {
-            console.log(erro);
-            console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-            res.status(500).json(erro.sqlMessage);
-        }
-    );
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 }
 
 function listar(req, res) {
@@ -82,7 +82,6 @@ function entrar(req, res) {
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     // Dados Funcionario
-    var idFuncionario = 100000;
     var nome = req.body.nomeServer;
     var cargo = req.body.cargoServer;
     var email = req.body.emailServer;
@@ -91,26 +90,23 @@ function cadastrar(req, res) {
     var cpf = req.body.cpfServer;
     var dataNascimento = req.body.dataNascimentoServer;
     // Dados Empresa
-    var idEmpresa = 1;
-    var razao = req.body.razaoServer; 
-    var cnpj = req.body.cnpjServer; 
+    var razao = req.body.razaoServer;
+    var cnpj = req.body.cnpjServer;
     // Dados bairro
-    var idBairro = 1;
-    var nomeBairro = req.body.nomeBairroServer; 
+    var nomeBairro = req.body.nomeBairroServer;
     //Dados bairro
-    var idEndereco = 150000;
-    var logradouro = req.body.enderecoServer;  
+    var logradouro = req.body.enderecoServer;
     var cep = req.body.cepServer; // falta configurar
-    var fkBairro = idBairro;
     //Dados Filial
-    var idFilial = 50000;
     var numero = req.body.numeroServer; // falta configurar
     var complemento = req.body.complementoServer;
 
 
 
-   
-    console.log(`${nome} ${cargo} ${email} ${senha} ${telefone} ${cpf} ${dataNascimento}`);
+
+    console.log(`${nome} ${cargo} ${email} ${senha} ${telefone} ${cpf} ${dataNascimento} - 
+                 ${razao} ${cnpj} - 
+                 ${cep} ${logradouro} ${numero} ${complemento} ${nomeBairro}`);
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -127,13 +123,25 @@ function cadastrar(req, res) {
         res.status(400).send("Seu CPF está undefined!");
     } else if (dataNascimento == undefined) {
         res.status(400).send("Sua data de nascimento está undefined!");
-    } 
-    // else if (fkSuperior === undefined) {
-    //     res.status(400).send("Seu superior está undefined!");
-    // } 
+    } else if (razao == undefined) {
+        res.status(400).send("Sua razao está undefined!");
+    } else if (cnpj == undefined) {
+        res.status(400).send("Seu cnpj está undefined!");
+    } else if (cep == undefined) {
+        res.status(400).send("Sua razao está undefined!");
+    } else if (logradouro == undefined) {
+        res.status(400).send("Seu cnpj está undefined!");
+    } else if (numero == undefined) {
+        res.status(400).send("Seu cnpj está undefined!");
+    } else if (complemento == undefined) {
+        res.status(400).send("Seu cnpj está undefined!");
+    } else if (nomeBairro == undefined) {
+        res.status(400).send("Seu cnpj está undefined!");
+    }
+
     else {
         // Passe os valores como parâmetro e vá para o arquivo funcionarioModel.js
-        funcionarioModel.cadastrarFuncionario(idFuncionario, nome, cargo, email, senha, telefone, cpf, dataNascimento)
+        funcionarioModel.cadastrarFuncionario(nome, cargo, email, senha, telefone, cpf, dataNascimento, razao, cnpj, cep, logradouro, numero, complemento, nomeBairro)
             .then(
                 function (resultado) {
                     res.json(resultado);

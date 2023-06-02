@@ -51,7 +51,7 @@
     <div class="dashboard">
         <div class="containerBairro" id="divBairro">
             <div class="bairroFiltros">
-                <h2><a href="Acompanhar.html"><img src="img/seta_voltar.png"
+                <h2><a href="./Acompanhar.html"><img src="img/seta_voltar.png"
                             alt="Retornar para página de acompanhamento"></a>Filtros</h2>
                 <div>
                     Procurar um bairro:
@@ -226,7 +226,7 @@
                     divBairroLista.innerHTML += `<div class="bairroCard" id="card${cards[i].idBairro}" onclick="mostrarRuas(${cards[i].idBairro})">
                                 <img src="img/bairros/${cards[i].idBairro}.png">
                                 <h3>${cards[i].bairro}</h3>
-                                <p>Ocupação Média: ${cards[i].ocupacao * 100}%</p>${cards[i].alta}
+                                <p>Ocupação Média: ${(cards[i].ocupacao * 100).toFixed(1)}%</p>
                             </div>`;
                     cards[i].card = 'card' + cards[i].idBairro;
                 }
@@ -321,7 +321,7 @@
                     for (var i = 0; i < resposta.length; i++) {
                         divRuaLista.innerHTML += `<div onclick="mostrarDados(${ruas[i].idEndereco}, '${ruas[i].logradouro}')" class="ruaCard" id="rua${ruas[i].idEndereco}">
                                 <h3>${ruas[i].logradouro}</h3>
-                                <p>Ocupação Média: ${ruas[i].ocupacao * 100}%</p></div>`
+                                <p>Ocupação Média: ${(ruas[i].ocupacao * 100).toFixed(1)}%</p></div>`
                     }
                 });
             } else {

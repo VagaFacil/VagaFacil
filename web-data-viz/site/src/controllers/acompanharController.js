@@ -140,6 +140,25 @@ function historicoDiario(req, res) {
             }
         );
 }
+
+function buscarAlertas(req, res) {
+    var idFiliais = req.params.idFiliais;
+    acompanharModel.buscarAlertas(idFiliais)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
@@ -147,5 +166,6 @@ module.exports = {
     buscarOcupacao,
     historicoMensal,
     historicoSemanal,
-    historicoDiario
+    historicoDiario,
+    buscarAlertas
 }

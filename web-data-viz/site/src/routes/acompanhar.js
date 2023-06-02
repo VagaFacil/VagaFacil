@@ -31,4 +31,8 @@ router.get("/historicoDiario/:idRua", function (req, res) {
     acompanharController.historicoDiario(req, res);
 });
 
+router.get("/alertas/:idFiliais", function (req, res) {
+    acompanharController.buscarAlertas(req, res);
+});
+
 module.exports = router;

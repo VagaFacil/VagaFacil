@@ -85,6 +85,17 @@ function historicoDiario(idRua) {
     `;
     return database.executar(instrucao);
 }
+
+function buscarAlertas(idFiliais) {
+    var instrucao = `
+        SELECT e.idEndereco, f.logradouro, f.numero, SUM(d.valor) / count(d.valor) AS ocupacao
+        FROM dados d JOIN sensor s ON d.fkSensor = s.idSensor
+        JOIN endereco e ON e.idEndereco = s.fkEndereco
+        JOIN filial f ON f.cep = e.cep WHERE f.idFilial IN (${idFiliais}) GROUP BY e.idEndereco, f.logradouro, f.numero;
+        `;
+    return database.executar(instrucao);
+}
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
@@ -92,5 +103,6 @@ module.exports = {
     buscarOcupacao,
     historicoMensal,
     historicoSemanal,
-    historicoDiario
+    historicoDiario,
+    buscarAlertas
 }
