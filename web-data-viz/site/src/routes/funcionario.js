@@ -20,6 +20,10 @@ router.post("/cadastrar", function (req, res) {
     funcionarioController.cadastrar(req, res);
 })
 
+router.post("/inserirFk", function (req, res) {
+    funcionarioController.inserirFk(req, res);
+})
+
 router.post("/autenticar", function (req, res) {
     funcionarioController.entrar(req, res);
 });
