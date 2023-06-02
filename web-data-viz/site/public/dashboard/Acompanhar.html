@@ -77,7 +77,7 @@
                 <option value="150006">Rua Volkswagem, 187 - Vila Guarani, São Paulo</option>
                 <option value="150007">R. Martins Fontes, 99</option>
                 <option value="150008">R. Artur de Azevedo, 1676 - Pinheiros</option> -->
-               <!--  <option value="10">Rua Bela Cintra, 1200 - Consolação</option>
+                <!--  <option value="10">Rua Bela Cintra, 1200 - Consolação</option>
                 <option value="11">Rua Frei Caneca, 569 - Consolação</option>
                 <option value="12">Rua Augusta, 129 - Consolação </option>
                 <option value="13">Rua Estados Unidos, 1585 - Jardins</option>
@@ -92,7 +92,16 @@
     <div class="banner2" id="banner2">
         <div class="container">
             <div class="card">
-
+                <div class="tipo">
+                    <p>Histórico:</p>
+                    <select id="selTipo" onchange="mudarTipoGrafico()">
+                        <option selected disabled value="">Tipo</option>
+                        <option value="tempoReal">Tempo Real</option>
+                        <option value="anual">Histórico Anual</option>
+                        <option value="semanal">Histórico Semanal</option>
+                        <option value="diario">Histórico Diário</option>
+                    </select>
+                </div>
                 <div class="img1">
                     <!--Começo do grafico de linha-->
                     <div class="graphCard">
@@ -119,15 +128,7 @@
                         Ideal
                     </div>
                 </div>
-                <div>
-                    Tipo:
-                    <select id="selTipo" onchange="mudarTipoGrafico()">
-                        <option value="tempoReal">Tempo Real</option>
-                        <option value="anual">Histórico Anual</option>
-                        <option value="semanal">Histórico Semanal</option>
-                        <option value="diario">Histórico Diário</option>
-                    </select>
-                </div>
+
                 <!--final-->
             </div>
             <div class="card">
