@@ -56,13 +56,15 @@ insert into endereco values (null, 'Rua Antonio Bento', '01432000', 44),
                        (null, 'Avenida Doutor Luís Rocha Miranda', '04344010', 37),
                        (null, 'Rua dos Pinheiros', '08142640', 63),
                        (null, 'Alameda Itupiranga', '04294090', 79),
-                       (NULL, 'Rua Conselheiro Torres Homem', '01432010', 44),
-                       (NULL, 'Rua Volkswagem', '04344020', 37),
-                       (NULL, 'R. Martins Fontes', '01050000', 26),
-                       (NULL, 'R. Artur de Azevedo', '05404014', 63);
+                       (NULL, 'Rua Conselheiro Torres Homem', '01432010', 44), -- dados chumbados
+                       (NULL, 'Rua Volkswagem', '04344020', 37), -- dados chumbados
+                       (NULL, 'R. Martins Fontes', '01050000', 26), -- dados chumbados
+                       (NULL, 'R. Artur de Azevedo', '05404014', 63); -- dados chumbados
 
+SELECT * FROM filial 
+JOIN empresa ON fkEmpresa = idEmpresa
+WHERE idEmpresa = 3;
 
--- desc filial;
 create table filial (
 		idFilial int primary key auto_increment,
         cep char(8),
@@ -75,6 +77,13 @@ create table filial (
 )auto_increment = 50000;
 insert into filial values (50000, '01432000', 'Rua Antonio Bento', 105, 'Predio verde', 'Chácara Santo Antônio',1);
 insert into filial values (50001, '01301000', 'Rua Consolação', 100, 'ap 1004', 'Jabaquara',2);
+INSERT INTO filial VALUES(NULL,'04344010','Avenida Doutor Luís Rocha',341, NULL,'Jabaquara',3),
+                         (NULL,'01432010','Rua Conselheiro Torres Homem',479, NULL,'Jardim Paulista',3),
+                         (NULL,'04344020','Rua Volkswagem',187, NULL,'Jabaquara',3),
+                         (NULL,'01050000','Rua Martins Fontes',99, NULL,'Consolação',3),
+                         (NULL,'05404014','Rua Artur de Azevedo',1676, NULL,'Pinheiros',3);
+                         
+
 
 create table funcionario (
 		idFuncionario int primary key auto_increment,
