@@ -193,8 +193,8 @@ function cadastrar() {
         }).then(function (resposta) {
             console.log("resposta: ", resposta);
             if (resposta.ok) {
+                inserirFk()
                 setTimeout(() => {
-                    alert(Funcionou)
                     window.location = "login.html";
                 }, "2000")
             } else {
@@ -203,6 +203,7 @@ function cadastrar() {
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
         });
+
         return false;
 
 
@@ -211,17 +212,19 @@ function cadastrar() {
 }
 
 function inserirFk() {
+    var cpfVar = ipt_cpf.value;
     var cnpjVar = ipt_cnpj.value;
     var cepVar = ipt_cep.value;
     var numeroVar = ipt_numero.value;
     var complementoVar = ipt_complemento.value;
-    
+
     fetch("/funcionario/inserirFk", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
+            cpfServer: cpfVar,
             cnpjServer: cnpjVar,
             cepServer: cepVar,
             numeroServer: numeroVar,

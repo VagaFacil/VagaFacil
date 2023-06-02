@@ -430,13 +430,11 @@ INSERT INTO filialFuncionario (fkFilial, fkFuncionario)
 END//
 DELIMITER ;
 
-select * from filial;
-select * from funcionario;
-select * from filialFuncionario;
 -- CREATE USER 'vaga'@'localhost' identified by 'urubu100';
 GRANT INSERT, SELECT, UPDATE, DELETE ON vagafacil.* to 'vaga'@'localhost';
 GRANT EXECUTE ON PROCEDURE cadastrar_funcionario to 'vaga'@'localhost';
-flush privileges;
+GRANT EXECUTE ON PROCEDURE inserir_fk to 'vaga'@'localhost';
+flush privileges;	
 
 -- select dataHora, SUM(valor) FROM dados group by dataHora;
 -- select SUM(valor) FROM dados group by dataHora;
@@ -465,6 +463,9 @@ flush privileges;
 --                             and bairro.idBairro = bairroIdade.idBairro and bairro.idBairro = bairroPopulacao.idBairro;
 
 -- drop database vagafacil;
+select * from funcionario;
+select * from filial;
+select * from empresa;
 
         
 
