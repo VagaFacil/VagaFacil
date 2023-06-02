@@ -421,12 +421,12 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE inserir_fk(IN 
 	fi_cnpj CHAR(18), fi_cep CHAR(8), fi_num INT, fi_comp VARCHAR(45),
-    ff_cnpj INT, ff_cpf INT
+    ff_cpf CHAR(14)
 )
 BEGIN
 UPDATE filial SET fkEmpresa = (SELECT idEmpresa FROM empresa WHERE cnpj = fi_cnpj) WHERE cep = fi_cep AND numero = fi_num AND complemento = fi_comp;
 INSERT INTO filialFuncionario (fkFilial, fkFuncionario)
-	VALUES ((SELECT idFilial FROM filial WHERE fkEmpresa = (SELECT idEmpresa FROM empresa WHERE cnpj = ff_cnpj) ),(SELECT idFuncionario FROM funcionario WHERE cpf = ff_cpf));
+	VALUES ((SELECT idFilial FROM filial WHERE fkEmpresa = (SELECT idEmpresa FROM empresa WHERE cnpj = fi_cnpj) ),(SELECT idFuncionario FROM funcionario WHERE cpf = ff_cpf));
 END//
 DELIMITER ;
 
@@ -466,6 +466,7 @@ flush privileges;
 select * from funcionario;
 select * from filial;
 select * from empresa;
+select * from filialFuncionario;
 
         
 
