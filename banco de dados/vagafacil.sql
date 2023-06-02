@@ -63,7 +63,7 @@ insert into endereco values (null, 'Rua Antonio Bento', '01432000', 44),
 
 create table filial (
 		idFilial int primary key auto_increment,
-        cep char(9),
+        cep char(8),
         logradouro VARCHAR(120),
         numero int,
         complemento varchar(45),
@@ -418,6 +418,21 @@ BEGIN
 END//
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE inserir_fk(IN 
+	fi_cnpj CHAR(18), fi_cep CHAR(8), fi_num INT, fi_comp VARCHAR(45),
+    ff_cnpj INT, ff_cpf INT
+)
+BEGIN
+UPDATE filial SET fkEmpresa = (SELECT idEmpresa FROM empresa WHERE cnpj = fi_cnpj) WHERE cep = fi_cep AND numero = fi_num AND complemento = fi_comp;
+INSERT INTO filialFuncionario (fkFilial, fkFuncionario)
+	VALUES ((SELECT idFilial FROM filial WHERE fkEmpresa = (SELECT idEmpresa FROM empresa WHERE cnpj = ff_cnpj) ),(SELECT idFuncionario FROM funcionario WHERE cpf = ff_cpf));
+END//
+DELIMITER ;
+
+select * from filial;
+select * from funcionario;
+select * from filialFuncionario;
 -- CREATE USER 'vaga'@'localhost' identified by 'urubu100';
 GRANT INSERT, SELECT, UPDATE, DELETE ON vagafacil.* to 'vaga'@'localhost';
 GRANT EXECUTE ON PROCEDURE cadastrar_funcionario to 'vaga'@'localhost';
@@ -450,4 +465,6 @@ flush privileges;
 --                             and bairro.idBairro = bairroIdade.idBairro and bairro.idBairro = bairroPopulacao.idBairro;
 
 -- drop database vagafacil;
+
+        
 
