@@ -570,10 +570,28 @@ BEGIN
 END//
 DELIMITER ;
 
+
+DELIMITER //
+CREATE PROCEDURE cadastrar_filial(IN 
+	fu_nome VARCHAR(45), fu_cargo VARCHAR(45), fu_email VARCHAR(70), fu_senha VARCHAR(16), fu_telefone CHAR(14), fu_cpf CHAR(14), fu_dataNascimento DATE, fu_foto VARCHAR(300),
+	em_cnpj VARCHAR(18),
+    fi_cep VARCHAR(9), fi_logradouro VARCHAR(120), fi_numero INT, fi_complemento VARCHAR(45), fi_bairro VARCHAR(45)
+)
+BEGIN
+	INSERT INTO funcionario (nome, cargo, email, senha, telefone, cpf, dataNascimento, foto) 
+		VALUES (fu_nome, fu_cargo, fu_email, fu_senha, fu_telefone, fu_cpf, fu_dataNascimento, fu_foto);
+	INSERT INTO filial (cep, logradouro, numero, complemento, bairro, fkEmpresa) 
+        VALUES (fi_cep, fi_logradouro, fi_numero, fi_complemento, fi_bairro, (SELECT idEmpresa FROM empresa WHERE cnpj = em_cnpj));
+	INSERT INTO filialFuncionario VALUES ((SELECT f.idFilial FROM filial f JOIN empresa e ON f.fkEmpresa = e.idEmpresa WHERE e.cnpj = em_cnpj AND f.cep = fi_cep AND f.numero = fi_numero), 
+		(SELECT f.idFuncionario FROM funcionario f WHERE f.cpf = fu_cpf));
+END//
+DELIMITER ;
+
 -- CREATE USER 'vaga'@'localhost' identified by 'urubu100';
 GRANT INSERT, SELECT, UPDATE, DELETE ON vagafacil.* to 'vaga'@'localhost';
 GRANT EXECUTE ON PROCEDURE cadastrar_funcionario to 'vaga'@'localhost';
 GRANT EXECUTE ON PROCEDURE inserir_fk to 'vaga'@'localhost';
+GRANT EXECUTE ON PROCEDURE cadastrar_filial to 'vaga'@'localhost';
 flush privileges;	
 
 -- select dataHora, SUM(valor) FROM dados group by dataHora;

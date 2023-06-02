@@ -65,12 +65,14 @@ function preencherCampos(){
         var telefoneVar = ipt_telefone.value;
         var cpfVar = ipt_cpf.value;
 
+        var dataNascimentoVar = ipt_dataN.value;
+
         // Adaptar a data de Nascimento para o MySQL
-        const datetime = new Date(ipt_dataN.value);
-                const dia = datetime.getDate().toString().padStart(2, '0');
-                const mes = (datetime.getMonth() + 1).toString().padStart(2, '0'); // Lembrando que os meses começam em 0
-                const ano = datetime.getFullYear().toString();
-                var dataNascimentoVar = `${ano}/${mes}/${dia}`;
+        // const datetime = new Date(ipt_dataN.value);
+        //         const dia = datetime.getDate().toString().padStart(2, '0');
+        //         const mes = (datetime.getMonth() + 1).toString().padStart(2, '0'); // Lembrando que os meses começam em 0
+        //         const ano = datetime.getFullYear().toString();
+        //         var dataNascimentoVar = `${ano}/${mes}/${dia}`;
         
         // var fkSuperiorVar = null;
 
@@ -219,7 +221,7 @@ function preencherCampos(){
         }
         else {
             // Enviando o valor da nova input
-            fetch("/funcionario/cadastrar", {
+            fetch("/expandir/cadastrarFilial", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -227,6 +229,7 @@ function preencherCampos(){
                 body: JSON.stringify({
                     // crie um atributo que recebe o valor recuperado aqui
                     // Agora vá para o arquivo routes/funcionario.js
+                    idFuncServer: sessionStorage.ID_FUNCIONARIO,
                     nomeServer: nomeVar,
                     cargoServer: cargoVar,
                     emailServer: emailVar,
@@ -235,7 +238,6 @@ function preencherCampos(){
                     cpfServer: cpfVar,
                     dataNascimentoServer: dataNascimentoVar,
                     // fkSuperiorServer: fkSuperiorVar
-                    razaoServer: razaoVar,
                     cnpjServer: cnpjVar,
                     nomeBairroServer: bairroVar, 
                     enderecoServer: enderecoVar, 
@@ -246,9 +248,7 @@ function preencherCampos(){
             }).then(function (resposta) {
                 console.log("resposta: ", resposta);
                 if (resposta.ok) {
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, "2000")
+                    alterarFiliais();
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }
@@ -260,6 +260,22 @@ function preencherCampos(){
 
     }
 
+    function alterarFiliais() {
+        fetch('/expandir/buscarFiliais/' + sessionStorage.ID_FUNCIONARIO).then((response)=>{
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                   sessionStorage.FK_FILIAIS = resposta[0].filiais; 
+                });
+                setTimeout(() => {
+                    window.location = "Acompanhar.html";
+                }, "1000");
+            } else {
+                throw ("Houve um erro ao buscar as filiais do usuário!");
+            }
+        }).catch((erro)=>{
+            console.log(`#ERRO: ${erro}`);
+        });
+    }
 
 // v = ipt_cpf.value
 
