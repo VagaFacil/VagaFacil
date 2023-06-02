@@ -449,6 +449,5 @@ flush privileges;
 -- select * from bairro join bairroRenda join bairroIdade join bairroPopulacao on bairro.idBairro = bairroRenda.idBairro 
 --                             and bairro.idBairro = bairroIdade.idBairro and bairro.idBairro = bairroPopulacao.idBairro;
 
-
 -- drop database vagafacil;
 
