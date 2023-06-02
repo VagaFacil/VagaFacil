@@ -83,7 +83,7 @@ INSERT INTO filial VALUES(NULL,'04344010','Avenida Doutor Luís Rocha',341, NULL
                          (NULL,'01050000','Rua Martins Fontes',99, NULL,'Consolação',3),
                          (NULL,'05404014','Rua Artur de Azevedo',1676, NULL,'Pinheiros',3);
                          
-
+SELECT * FROM filial;
 
 create table funcionario (
 		idFuncionario int primary key auto_increment,

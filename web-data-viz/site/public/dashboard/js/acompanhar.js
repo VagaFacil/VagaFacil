@@ -512,7 +512,7 @@ function listarAlertas() {
                 for (let i = 0; i < resposta.length; i++) {
                     console.log(resposta[i])
                     if (!selectCriado) {
-                        endereco.innerHTML += `<option value="${resposta[i].idEndereco}">${resposta[i].logradouro} ${resposta[i].numero}</option>`;
+                        endereco.innerHTML += `<option value="${resposta[i].idEndereco}">${resposta[i].logradouro} ${resposta[i].numero} - ${resposta[i].bairro}</option>`;
                     }
                     if (resposta[i].ocupacao < 0.35) {
                         texto += `<div class="cardAlerta critico" onclick="mostrarDadosAlerta(${resposta[i].idEndereco});">
