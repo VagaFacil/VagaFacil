@@ -79,7 +79,7 @@ function entrar(req, res) {
 
 }
 
-function cadastrar(req, res) {
+function cadastrarEmpresa(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     // Dados Funcionario
     var nome = req.body.nomeServer;
@@ -141,7 +141,7 @@ function cadastrar(req, res) {
 
     else {
         // Passe os valores como parâmetro e vá para o arquivo funcionarioModel.js
-        funcionarioModel.cadastrarFuncionario(nome, cargo, email, senha, telefone, cpf, dataNascimento, razao, cnpj, cep, logradouro, numero, complemento, nomeBairro)
+        funcionarioModel.cadastrarEmpresa(nome, cargo, email, senha, telefone, cpf, dataNascimento, razao, cnpj, cep, logradouro, numero, complemento, nomeBairro)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -187,7 +187,7 @@ function inserirFk(req, res) {
 }
 module.exports = {
     entrar,
-    cadastrar,
+    cadastrarEmpresa,
     listar,
     testar,
     listarEmpresa,

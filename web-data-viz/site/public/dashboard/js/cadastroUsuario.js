@@ -20,13 +20,13 @@ function cadastrar() {
     // var fkSuperiorVar = null;
 
     // Card 2
-    var razaoVar = ipt_razao.value;
-    var cnpjVar = ipt_cnpj.value;
-    var cepVar = ipt_cep.value;
-    var numeroVar = ipt_numero.value;
-    var complementoVar = ipt_complemento.value;
-    var bairroVar = ipt_bairro.value;
-    var enderecoVar = ipt_endereco.value;
+    // var razaoVar = ipt_razao.value;
+    // var cnpjVar = ipt_cnpj.value;
+    // var cepVar = ipt_cep.value;
+    // var numeroVar = ipt_numero.value;
+    // var complementoVar = ipt_complemento.value;
+    // var bairroVar = ipt_bairro.value;
+    // var enderecoVar = ipt_endereco.value;
 
     // Card 3
     var emailVar = ipt_email.value;
@@ -77,56 +77,6 @@ function cadastrar() {
         ipt_telefone.style = 'border-color: #32a7b1';
     }
 
-
-    if (razaoVar.length < 3) {
-        vRazao.style.display = 'block';
-        ipt_razao.style = 'border-color: red';
-        erroCadastro = true;
-    } else {
-        vRazao.style.display = 'none';
-        ipt_razao.style = 'border-color: #32a7b1';
-    }
-    if (cnpjVar.length < 3) {
-        vCnpj.style.display = 'block';
-        ipt_cnpj.style = 'border-color: red';
-        erroCadastro = true;
-    } else {
-        vCnpj.style.display = 'none';
-        ipt_cnpj.style = 'border-color: #32a7b1';
-    }
-    if (cepVar.length != 8) {
-        vCep.style.display = 'block';
-        ipt_cep.style = 'border-color: red';
-        erroCadastro = true;
-    } else {
-        vCep.style.display = 'none';
-        ipt_cep.style = 'border-color: #32a7b1';
-    }
-    if (bairroVar.length < 3) {
-        vBairro.style.display = 'block';
-        ipt_bairro.style = 'border-color: red';
-        erroCadastro = true;
-    } else {
-        vBairro.style.display = 'none';
-        ipt_bairro.style = 'border-color: #32a7b1';
-    }
-    if (enderecoVar.length == 0) {
-        vEndereco.style.display = 'block';
-        ipt_endereco.style = 'border-color: red';
-        erroCadastro = true;
-    } else {
-        vEndereco.style.display = 'none';
-        ipt_endereco.style = 'border-color: #32a7b1';
-    }
-    if (numeroVar.length == 0 || isNaN(numeroVar)) {
-        vNumero.style.display = 'block';
-        ipt_numero.style = 'border-color: red';
-        erroCadastro = true;
-    } else {
-        vNumero.style.display = 'none';
-        ipt_numero.style = 'border-color: #32a7b1';
-    }
-
     if (emailVar.indexOf('@') < 0 && emailVar.indexOf('.com') < 0) {
         vEmail.style.display = 'block';
         ipt_email.style = 'border-color: red';
@@ -144,11 +94,11 @@ function cadastrar() {
         ipt_senha.style = 'border-color: #32a7b1';
     }
     if (confirmarSenhaVar != senhaVar) {
-        vConfirmarSenha.style.display = 'block';
+        vConfirmarSenhaInvalida.style.display = 'block';
         ipt_confirmarSenha.style = 'border-color: red';
         erroCadastro = true;
     } else {
-        vConfirmarSenha.style.display = 'none';
+        vConfirmarSenhaInvalida.style.display = 'none';
         ipt_confirmarSenha.style = 'border-color: #32a7b1';
     }
     if (confirmarSenhaVar == "") {
@@ -166,7 +116,7 @@ function cadastrar() {
     }
     else {
         // Enviando o valor da nova input
-        fetch("/funcionario/cadastrarEmpresas", {
+        fetch("/funcionario/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -181,14 +131,8 @@ function cadastrar() {
                 telefoneServer: telefoneVar,
                 cpfServer: cpfVar,
                 dataNascimentoServer: dataNascimentoVar,
-                // fkSuperiorServer: fkSuperiorVar
-                razaoServer: razaoVar,
-                cnpjServer: cnpjVar,
-                nomeBairroServer: bairroVar,
-                enderecoServer: enderecoVar,
-                cepServer: cepVar,
-                numeroServer: numeroVar,
-                complementoServer: complementoVar
+                fkSuperiorServer: sessionStorage.ID_USUARIO,
+                fkFilial: sessionStorage.FK_FILIAIS.split(',')[0]
             })
         }).then(function (resposta) {
             console.log("resposta: ", resposta);
@@ -199,19 +143,9 @@ function cadastrar() {
                 ipt_dataN.value = '';
                 ipt_cpf.value = '';
                 ipt_telefone.value = '';
-                ipt_razao.value = '';
-                ipt_cnpj.value = '';
-                ipt_cep.value = '';
-                ipt_endereco.value = '';
-                ipt_numero.value = '';
-                ipt_complemento.value = '';
-                ipt_bairro.value = '';
                 ipt_email.value = '';
                 ipt_senha.value = '';
                 ipt_confirmarSenha.value = '';
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
                 cardErroCadastro.style.display = "block"
                 cardErroCadastro.style.border = "2px solid greenyellow"
                 cardErroCadastro.style.color = "greenyellow"
@@ -276,19 +210,6 @@ function cpf(v) {
         //de novo (para o segundo bloco de números)
         v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2") //Coloca um hífen entre o terceiro e o quarto dígitos
         ipt_cpf.value = v;
-        return v
-    }
-}
-
-function cnpj(v) {
-    if (v.length == 13) {
-        v = v.replace(/\D/g, "")                           //Remove tudo o que não é dígito
-        v = v.replace(/^(\d{2})(\d)/, "$1.$2")             //Coloca ponto entre o segundo e o terceiro dígitos
-        v = v.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3") //Coloca ponto entre o quinto e o sexto dígitos
-        v = v.replace(/\.(\d{3})(\d)/, ".$1/$2")           //Coloca uma barra entre o oitavo e o nono dígitos
-        v = v.replace(/(\d{4})(\d)/, "$1-$2")              //Coloca um hífen depois do bloco de quatro dígitos
-        ipt_cnpj.value = v;
-
         return v
     }
 }

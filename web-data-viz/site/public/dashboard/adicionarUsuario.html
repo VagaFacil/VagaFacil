@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/mediaQueries.css">
     <script src="js/menuH.js"></script>
     <script src="js/usuarios.js"></script>
+    <script src="js/cadastroUsuario.js"></script>
     <title>Vaga Fácil</title>
 </head>
 
@@ -71,17 +72,17 @@
                         </li>
                         <li>
                             <p>Sobrenome</p>
-                            <input id="ipt_sobrenome" type="text">
-                            <div id="vSobrenome">Informe um sobrenome válido</div>
+                            <input id="ipt_cargo" type="text">
+                            <div id="vCargo">Informe um cargo válido</div>
                         </li>
                         <li>
                             <p>Data de nascimento</p>
-                            <input id="ipt_dataN" type="text" placeholder="00/00/0000" maxlength="10">
+                            <input id="ipt_dataN" type="date" placeholder="00/00/0000" maxlength="10">
                             <div id="vDataN">Informe um data válida</div>
                         </li>
                         <li>
                             <p>CPF</p>
-                            <input id="ipt_cpf" type="text" placeholder="000-000-000-94">
+                            <input onkeydown="cpf(ipt_cpf.value)" id="ipt_cpf" type="text" placeholder="000-000-000-94">
                             <div id="vCpf">Informe um CPF válido</div>
 
                         </li>
@@ -108,21 +109,15 @@
                     <ul class="senha">
                         <li>
                             <p>Senha</p>
-                            <input id="ipt_senha" type="senha">
+                            <input id="ipt_senha" type="password">
                             <div id="vSenha">Informe uma senha válida</div>
                         </li>
                         <li>
                             <p>Confirmar senha</p>
-                            <input id="ipt_senhaRep" type="confirmação" id="ipt_senha" oninput="cadastro()">
-                            <div id="vSenhaRep">Informe uma senha válida</div>
+                            <input id="ipt_confirmarSenha" type="password" id="ipt_senha">
+                            <div id="vConfirmarSenhaInvalida">Informe uma senha válida</div>
                         </li>
                         
-                    </ul>
-                    <ul class="validacao">
-                        <li>1 letra Maiúscula</li>
-                        <li>1 Número</li>
-                        <li>1 Letra minúscula</li>
-                        <li>8+ caracteres</li>
                     </ul>
                 </div>
                 <div class="boxCadastro">

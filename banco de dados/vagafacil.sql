@@ -543,18 +543,30 @@ insert into dados values (null,now() , '0', 200000), (null, now(), '0', 200000),
                          (null, now(), '1', 200009), (null, now(), '0', 200009);
 
 DELIMITER //
-CREATE PROCEDURE cadastrar_funcionario(IN 
+CREATE PROCEDURE cadastrar_empresa(IN 
 	fu_nome VARCHAR(45), fu_cargo VARCHAR(45), fu_email VARCHAR(70), fu_senha VARCHAR(16), fu_telefone CHAR(14), fu_cpf CHAR(14), fu_dataNascimento DATE, fu_foto VARCHAR(300),
 	em_razao VARCHAR(45), em_cnpj VARCHAR(18),
     fi_cep VARCHAR(9), fi_logradouro VARCHAR(120), fi_numero INT, fi_complemento VARCHAR(45), fi_bairro VARCHAR(45)
 )
 BEGIN
 	INSERT INTO funcionario (nome, cargo, email, senha, telefone, cpf, dataNascimento, foto) 
-		VALUES (fu_nome, fu_cargo, fu_email,senha, fu_telefone, fu_cpf, fu_dataNascimento, fu_foto);
+		VALUES (fu_nome, fu_cargo, fu_email, fu_senha, fu_telefone, fu_cpf, fu_dataNascimento, fu_foto);
     INSERT INTO empresa (razao,cnpj)
 		VALUES (em_razao,em_cnpj);
 	INSERT INTO filial (cep, logradouro, numero, complemento, bairro) 
         VALUES (fi_cep, fi_logradouro, fi_numero, fi_complemento, fi_bairro);
+END//
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE cadastrar_funcionario(IN 
+	fu_nome VARCHAR(45), fu_cargo VARCHAR(45), fu_email VARCHAR(70), fu_senha VARCHAR(16), fu_telefone CHAR(14), fu_cpf CHAR(14), fu_dataNascimento DATE, fu_foto VARCHAR(300), fu_fkSupervisor INT,
+    fi_idFilial INT
+)
+BEGIN
+	INSERT INTO funcionario (nome, cargo, email, senha, telefone, cpf, dataNascimento, foto, fkSupervisor) 
+		VALUES (fu_nome, fu_cargo, fu_email, fu_senha, fu_telefone, fu_cpf, fu_dataNascimento, fu_foto, fu_fkSupervisor);
+	INSERT INTO filialFuncionario VALUES (fi_idFilial, (SELECT idFuncionario FROM funcionario WHERE cpf = fu_cpf));
 END//
 DELIMITER ;
 
@@ -589,6 +601,7 @@ DELIMITER ;
 
 -- CREATE USER 'vaga'@'localhost' identified by 'urubu100';
 GRANT INSERT, SELECT, UPDATE, DELETE ON vagafacil.* to 'vaga'@'localhost';
+GRANT EXECUTE ON PROCEDURE cadastrar_empresa to 'vaga'@'localhost';
 GRANT EXECUTE ON PROCEDURE cadastrar_funcionario to 'vaga'@'localhost';
 GRANT EXECUTE ON PROCEDURE inserir_fk to 'vaga'@'localhost';
 GRANT EXECUTE ON PROCEDURE cadastrar_filial to 'vaga'@'localhost';
