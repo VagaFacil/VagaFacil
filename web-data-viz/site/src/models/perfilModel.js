@@ -33,12 +33,11 @@ function exibirDadosEmpresariais(idFuncionario) {
             cep, 
             logradouro, 
             cnpj,
-            cargo FROM empresa JOIN filial 
-            JOIN endereco 
+            cargo FROM empresa 
+            JOIN filial 
             JOIN funcionario 
             JOIN FilialFuncionario 
             ON idEmpresa = fkEmpresa 
-            AND idEndereco = fkEndereco 
             AND idFuncionario = fkFuncionario 
             AND fkFilial= idFilial WHERE idFuncionario = ${idFuncionario};
     `;
