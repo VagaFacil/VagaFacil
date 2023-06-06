@@ -73,7 +73,7 @@
 /* final do primeiro card */
 
 /* Erros card1 */
-#vNome, #vSobrenome, #vDataN, #vCpf, #vTelefone {
+#vNome, #vCargo, #vDataN, #vCpf, #vTelefone {
     display: none   ;
     color: red;
     font-size: 14px;
@@ -124,7 +124,7 @@
 /* Final card2 */
 
 /* Erros card1 */
-#vRazao, #vCnpj, #vCep, #vEndereco, #vNumero, #vBairro {
+#vRazao, #vCnpj, #vCep, #vEndereco, #vNumero, #vBairro, #vFilial {
     display: none   ;
     color: red;
     font-size: 14px;
@@ -164,7 +164,7 @@
 }
 
 /* Final do segundo e terceiro card */
-#vEmail, #vSenha, #vSenhaRep {
+#vEmail, #vSenha, #vSenhaRep, #vConfirmarSenhaInvalida {
     display: none   ;
     color: red;
     font-size: 14px;

@@ -20,6 +20,7 @@ function cadastrar() {
     // var fkSuperiorVar = null;
 
     // Card 2
+    var idFilial = selFilial.value;
     // var razaoVar = ipt_razao.value;
     // var cnpjVar = ipt_cnpj.value;
     // var cepVar = ipt_cep.value;
@@ -77,6 +78,15 @@ function cadastrar() {
         ipt_telefone.style = 'border-color: #32a7b1';
     }
 
+    if (idFilial == '') {
+        vFilial.style.display = 'block';
+        selFilial.style = 'border-color: red';
+        erroCadastro = true;
+    } else {
+        vFilial.style.display = 'none';
+        selFilial.style = 'border-color: #32a7b1';
+    }
+
     if (emailVar.indexOf('@') < 0 && emailVar.indexOf('.com') < 0) {
         vEmail.style.display = 'block';
         ipt_email.style = 'border-color: red';
@@ -116,7 +126,7 @@ function cadastrar() {
     }
     else {
         // Enviando o valor da nova input
-        fetch("/funcionario/cadastrar", {
+        fetch("/funcionario/cadastrarFuncionario", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -131,30 +141,33 @@ function cadastrar() {
                 telefoneServer: telefoneVar,
                 cpfServer: cpfVar,
                 dataNascimentoServer: dataNascimentoVar,
-                fkSuperiorServer: sessionStorage.ID_USUARIO,
-                fkFilial: sessionStorage.FK_FILIAIS.split(',')[0]
+                fkSupervisorServer: sessionStorage.ID_FUNCIONARIO,
+                idFilialServer: selFilial.value
             })
         }).then(function (resposta) {
             console.log("resposta: ", resposta);
             if (resposta.ok) {
-                inserirFk();
                 ipt_nome.value = '';
                 ipt_cargo.value = '';
                 ipt_dataN.value = '';
                 ipt_cpf.value = '';
                 ipt_telefone.value = '';
+                selFilial.value = '';
                 ipt_email.value = '';
                 ipt_senha.value = '';
                 ipt_confirmarSenha.value = '';
                 cardErroCadastro.style.display = "block"
                 cardErroCadastro.style.border = "2px solid greenyellow"
                 cardErroCadastro.style.color = "greenyellow"
-                mensagem_erroCadastro.innerHTML = `✅Conta cadastrada com sucesso!✅<br>Redirecionando...✅`;
+                mensagem_erroCadastro.innerHTML = `✅Usuário cadastrado com sucesso!✅`;
+                setTimeout(()=>{
+                    cardErroCadastro.style.display = "block";
+                }, 3000)
             } else {
                 cardErroCadastro.style.display = "block"
                     cardErroCadastro.style.border = "2px solid red"
                     cardErroCadastro.style.color = "red"
-                    mensagem_erroCadcardErroCadastro.innerHTML = "❌Erro ao realizar cadastro❌";
+                    mensagem_erroCadcardErroCadastro.innerHTML = "❌Erro ao realizar o cadastro❌";
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
@@ -224,4 +237,22 @@ function ver_cep() {
         })
 
     }
+}
+
+function buscarFiliais() {
+    fetch("/funcionario/buscarFiliais/" + sessionStorage.FK_FILIAIS).then((response)=>{
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                selFilial.innerHTML = '<option selected disabled value="">Selecione</option>';
+                for (let i = 0; i < resposta.length; i++) {
+                    selFilial.innerHTML += `<option value="${resposta[i].idFilial}">${resposta[i].logradouro} ${resposta[i].numero}${resposta[i].complemento != '' ? ' - ' + resposta[i].complemento : ''}</option>`;
+                }
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    }) 
+    .catch((erro)=>{
+        console.log(erro);
+    });
 }
