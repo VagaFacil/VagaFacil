@@ -16,8 +16,8 @@ router.get("/listarEmpresa/:idFilial", function (req, res) {
 });
 
 //Recebendo os dados do html e direcionando para a função cadastrar de funcionarioController.js
-router.post("/cadastrar", function (req, res) {
-    funcionarioController.cadastrar(req, res);
+router.post("/cadastrarEmpresa", function (req, res) {
+    funcionarioController.cadastrarEmpresa(req, res);
 })
 
 router.post("/inserirFk", function (req, res) {

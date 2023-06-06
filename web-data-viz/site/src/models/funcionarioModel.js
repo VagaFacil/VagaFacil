@@ -28,10 +28,10 @@ function entrar(email, senha) {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-function cadastrarFuncionario(nome, cargo, email, senha, telefone, cpf, dataNascimento,razao,cnpj,cep,logradouro,numero,complemento,nomeBairro) {
+function cadastrarEmpresa(nome, cargo, email, senha, telefone, cpf, dataNascimento,razao,cnpj,cep,logradouro,numero,complemento,nomeBairro) {
     console.log("ACESSEI O funcionario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():",nome, cargo, email, senha, telefone, cpf, dataNascimento);
     var instrucao = `
-        CALL cadastrar_funcionario('${nome}','${cargo}','${email}', '${senha}', '${telefone}','${cpf}', '${dataNascimento}', 'usuarioPadrao.png',
+        CALL cadastrar_empresa('${nome}','${cargo}','${email}', '${senha}', '${telefone}','${cpf}', '${dataNascimento}', 'usuarioPadrao.png',
             '${razao}','${cnpj}',
             '${cep}', '${logradouro}', '${numero}', '${complemento}', '${nomeBairro}'
         );
@@ -43,7 +43,7 @@ function cadastrarFuncionario(nome, cargo, email, senha, telefone, cpf, dataNasc
 module.exports = {
     entrar,
     listarEmpresa,
-    cadastrarFuncionario
+    cadastrarEmpresa
 };
 
 

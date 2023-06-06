@@ -166,7 +166,7 @@ function cadastrar() {
     }
     else {
         // Enviando o valor da nova input
-        fetch("/funcionario/cadastrar", {
+        fetch("/funcionario/cadastrarEmpresas", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
