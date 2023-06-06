@@ -161,7 +161,7 @@ function cadastrar() {
                 cardErroCadastro.style.color = "greenyellow"
                 mensagem_erroCadastro.innerHTML = `✅Usuário cadastrado com sucesso!✅`;
                 setTimeout(()=>{
-                    cardErroCadastro.style.display = "block";
+                    cardErroCadastro.style.display = "none";
                 }, 3000)
             } else {
                 cardErroCadastro.style.display = "block"
@@ -245,7 +245,7 @@ function buscarFiliais() {
             response.json().then(function (resposta) {
                 selFilial.innerHTML = '<option selected disabled value="">Selecione</option>';
                 for (let i = 0; i < resposta.length; i++) {
-                    selFilial.innerHTML += `<option value="${resposta[i].idFilial}">${resposta[i].logradouro} ${resposta[i].numero}${resposta[i].complemento != '' ? ' - ' + resposta[i].complemento : ''}</option>`;
+                    selFilial.innerHTML += `<option value="${resposta[i].idFilial}">${resposta[i].logradouro} ${resposta[i].numero}${resposta[i].complemento == null || resposta[i].complemento == '' ? '' : ' - ' + resposta[i].complemento}</option>`;
                 }
             });
         } else {
