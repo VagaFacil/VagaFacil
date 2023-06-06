@@ -15,7 +15,7 @@ function buscarUltimasMedidas(idRua, limite_linhas) {
                     order by id desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
-        SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
+        SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor)/COUNT(valor)*100 AS valor
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
         WHERE dataHora >= CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 24`;
     } else {
@@ -42,7 +42,7 @@ function buscarMedidasEmTempoReal(idRua) {
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
-        SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
+        SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor)/COUNT(valor)*100 AS valor
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
         WHERE dataHora >= CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 1`;
     } else {
@@ -61,7 +61,7 @@ function buscarTempoMedio(idRua){
     return database.executar(instrucao);
 }
 function historicoMensal(idRua) {
-    var instrucao = `SELECT MONTH(dataHora) AS mes, SUM(valor) AS valor 
+    var instrucao = `SELECT MONTH(dataHora) AS mes, SUM(valor)/COUNT(valor)*100 AS valor 
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
         WHERE fkEndereco = ${idRua} GROUP BY mes ORDER BY mes;
     `;
@@ -72,14 +72,14 @@ function buscarOcupacao(idRua){
     return database.executar(instrucao);
 }
 function historicoSemanal(idRua) {
-    var instrucao = `SELECT DAYOFWEEK(dataHora) AS dia, SUM(valor) AS valor 
+    var instrucao = `SELECT DAYOFWEEK(dataHora) AS dia, SUM(valor)/COUNT(valor)*100 AS valor 
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
         WHERE fkEndereco = ${idRua} GROUP BY dia ORDER BY dia;
     `;
     return database.executar(instrucao);
 }
 function historicoDiario(idRua) {
-    var instrucao = `SELECT HOUR(dataHora) AS hora, SUM(valor) AS valor
+    var instrucao = `SELECT HOUR(dataHora) AS hora, SUM(valor)/COUNT(valor)*100 AS valor
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor 
         WHERE fkEndereco = ${idRua} GROUP BY hora ORDER BY hora;
     `;

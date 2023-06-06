@@ -31,7 +31,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Ocupação Recente',
+                        text: 'Porcentagem de ocupação recente',
                         color: '#F49C24',
                         font: {
                             size: 20
@@ -43,9 +43,12 @@
                 },
                 scales: {
                     y: {
+                        
+                        max:100,
                         beginAtZero: true,
                         ticks: {
-                            color: '#F49C24',
+                            stepSize: 10,
+                            color: '#F49C24'
                         }
                     },
                     x: {
