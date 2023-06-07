@@ -75,7 +75,7 @@ function buscarOcupacao(idRua) {
 function buscarUltimasMedidas(idRua) {
     var instrucao = `SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
-        WHERE dataHora > CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 24`
+        WHERE dataHora > CURDATE() AND dataHora <= NOW() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 24`
 
     return database.executar(instrucao);
 }
@@ -83,7 +83,7 @@ function buscarUltimasMedidas(idRua) {
 function buscarMedidasEmTempoReal(idRua) {
     var instrucao = `SELECT DATE_FORMAT(dataHora, '%H:%i') as hora, SUM(valor) AS valor
         FROM sensor s JOIN dados d ON s.idSensor = d.fkSensor
-        WHERE dataHora > CURDATE() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 1`
+        WHERE dataHora > CURDATE() AND dataHora <= NOW() AND fkEndereco = ${idRua} GROUP BY hora ORDER BY hora DESC LIMIT 1`
 
     return database.executar(instrucao);
 }
