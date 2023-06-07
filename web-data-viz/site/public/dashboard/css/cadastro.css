@@ -73,7 +73,7 @@
 /* final do primeiro card */
 
 /* Erros card1 */
-#vNome, #vSobrenome, #vDataN, #vCpf, #vTelefone {
+#vNome, #vCargo, #vDataN, #vCpf, #vTelefone {
     display: none   ;
     color: red;
     font-size: 14px;
@@ -88,11 +88,6 @@
     justify-content: space-between;
 }
 
-.card2-space {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 .card2 {
     background-color: #0C243C;
     width: auto;
@@ -111,8 +106,8 @@
     margin: 0;
     padding: 0 0 0 10px;
 }
-.card2 input {
-    width: 85%;
+.card2 select {
+    width: 100%;
     padding: 10px;
     border-radius: 15px;
     outline: none;
@@ -124,7 +119,7 @@
 /* Final card2 */
 
 /* Erros card1 */
-#vRazao, #vCnpj, #vCep, #vEndereco, #vNumero, #vBairro {
+#vRazao, #vCnpj, #vCep, #vEndereco, #vNumero, #vBairro, #vFilial {
     display: none   ;
     color: red;
     font-size: 14px;
@@ -164,7 +159,7 @@
 }
 
 /* Final do segundo e terceiro card */
-#vEmail, #vSenha, #vSenhaRep {
+#vEmail, #vSenha, #vSenhaRep, #vConfirmarSenhaInvalida {
     display: none   ;
     color: red;
     font-size: 14px;
@@ -228,4 +223,23 @@
     color: #0C243C;
     font-size: 25px;
     font-weight: 700;
+}
+
+.card_erro {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    top: 80px;
+    right: 20px;
+    border: 2px solid var(--laranja);
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.393);
+    backdrop-filter: blur(10px);
+    color: var(--laranja);
+    font-family: 'fonte';
+    border-radius: 10px;
+}
+.card_erro #mensagem_erro {
+    font-weight: 500;
+    font-size: 25px;
 }

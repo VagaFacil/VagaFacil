@@ -28,7 +28,6 @@
             <div id="listaMenuH">
                 <img onclick="seta()" src="img/seta.png" alt="">
                 <ul class="itens-menuH">
-                    <!-- <li><a href="dashboard.html">Dashboard</a></li> -->
                     <li><a href="acompanhar.html">Acompanhar</a></li>
                     <li><a href="expandir.html">Expandir</a></li>
                     <li><a href="perfil.html">Perfil</a></li>
@@ -177,9 +176,6 @@
                 </div>
                 <div class="cardFooterCentral">
                     <ul>
-                        <!-- <li>
-                            <a href="dashboard.html">Dashboard</a>
-                        </li> -->
                         <li>
                             <a href="Acompanhar.html">Acompanhar</a>
                         </li>
@@ -429,6 +425,8 @@
                         dados.datasets[0].data.push(registro.valor);
                     }
                     dadosHistorico.diario = dados;
+                    selTipo.value = 'diario';
+                    mudarTipoGrafico();
                 });
             }
         }).catch((erro) => {
@@ -437,7 +435,7 @@
         spanEnderecoSel.innerHTML = logradouro;
         plotarTempoMedio(idRua);
         plotarOcupacao(idRua);
-        obterDadosGrafico(idRua);
+        //obterDadosGrafico(idRua);
         idAtual = idRua;
     }
     // Fim de tela de filtro de ruas

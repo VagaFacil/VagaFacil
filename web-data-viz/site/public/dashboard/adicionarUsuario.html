@@ -47,6 +47,11 @@
             </div>
         </div>
     </header>
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErroCadastro">
+            <span id="mensagem_erroCadastro"></span>
+        </div>
+    </div>
     <!-- Fim do Header -->
     <!-- Começo do titulo login-->
     <div class="box_mensagem">
@@ -71,7 +76,7 @@
                             <!-- v de validar -->
                         </li>
                         <li>
-                            <p>Sobrenome</p>
+                            <p>Cargo</p>
                             <input id="ipt_cargo" type="text">
                             <div id="vCargo">Informe um cargo válido</div>
                         </li>
@@ -95,6 +100,19 @@
                 </div>
             </div>
             <div class="coluna">
+                <div class="card2">
+                    <div class="card-titulo">
+                        <h1>Filial</h1>
+                    </div>
+                    <ul>
+                        <li>
+                            <select id="selFilial"></select>
+                            <div id="vFilial">Informe uma filial</div>
+                        </li>
+                    </ul>
+
+
+                </div>
                 <div class="card">
                     <div class="card-titulo">
                         <h1>Informações de login</h1>
@@ -176,3 +194,7 @@
 </body>
 
 </html>
+
+<script>
+    buscarFiliais();
+</script>

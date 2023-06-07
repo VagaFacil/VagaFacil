@@ -564,7 +564,7 @@ CREATE PROCEDURE cadastrar_funcionario(IN
     fi_idFilial INT
 )
 BEGIN
-	INSERT INTO funcionario (nome, cargo, email, senha, telefone, cpf, dataNascimento, foto, fkSupervisor) 
+	INSERT INTO funcionario (nome, cargo, email, senha, telefone, cpf, dataNascimento, foto, fkSuperior) 
 		VALUES (fu_nome, fu_cargo, fu_email, fu_senha, fu_telefone, fu_cpf, fu_dataNascimento, fu_foto, fu_fkSupervisor);
 	INSERT INTO filialFuncionario VALUES (fi_idFilial, (SELECT idFuncionario FROM funcionario WHERE cpf = fu_cpf));
 END//
