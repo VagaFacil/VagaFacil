@@ -61,10 +61,6 @@ insert into endereco values (null, 'Rua Antonio Bento', '01432000', 44),
                        (NULL, 'R. Martins Fontes', '01050000', 26), -- dados chumbados
                        (NULL, 'R. Artur de Azevedo', '05404014', 63); -- dados chumbados
 
-SELECT * FROM filial 
-JOIN empresa ON fkEmpresa = idEmpresa
-WHERE idEmpresa = 3;
-
 create table filial (
 		idFilial int primary key auto_increment,
         cep char(8),
@@ -82,8 +78,6 @@ INSERT INTO filial VALUES(NULL,'04344010','Avenida Doutor Luís Rocha',341, NULL
                          (NULL,'04344020','Rua Volkswagem',187, NULL,'Jabaquara',3),
                          (NULL,'01050000','Rua Martins Fontes',99, NULL,'Consolação',3),
                          (NULL,'05404014','Rua Artur de Azevedo',1676, NULL,'Pinheiros',3);
-                         
-SELECT * FROM filial;
 
 create table funcionario (
 		idFuncionario int primary key auto_increment,
@@ -252,7 +246,6 @@ create table dados(
 		foreign key(fksensor) references sensor(idSensor)
 )auto_increment=250000;
 -- Inserção dos dados fixos referentes aos gráficos de ocupação e tempo de permanência e histórico semanal
-USE vagaFacil;
 -- TRUNCATE TABLE dados;    
 INSERT INTO dados VALUES (null,'2023-06-01 09:00:00', '0', 200011), -- 28/05 a 03/06
                          (null,'2023-05-31 09:15:00', '1', 200011),
