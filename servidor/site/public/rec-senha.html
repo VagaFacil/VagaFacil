@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/recuperacao.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/mediaQueries.css">
+    <script src="js/recuperacao.js"></script>
+    <title>Vaga Fácil</title>
+</head>
+
+<body>
+    <!--Começo do Header-->
+    <header>
+        <nav class="nav">
+            <a href=""><img class="logo" src="img/nav/logo-home.png" alt=""></a>
+            <ul class="nav-lista">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobrenos.html">Sobre Nós</a></li>
+                <li><a href="calculadora.html">Calculadora</a></li>
+                <li><a href="https://vaga-facil.atlassian.net/servicedesk/customer/portal/1/user/login?destination=portal%2F1">Fale Conosco</a></li>
+                <li><a class="btn-login" href="login.html"><img src="img/nav/login.png" alt=""></a></li>
+            </ul>
+        </nav>
+    </header>
+    <!--Fim header-->
+
+    <!-- Início da frase: "Recuperação de Senha" -->
+    <div class="box_frase">
+        <div class="frase">
+            <h1>Recuperação de Senha</h1>
+        </div>
+    </div>
+    <!-- Início da frase: "Recuperação de Senha" -->
+
+    <!-- Início do banner -->
+    <div class="banner">
+        <div class="container">
+            <div id="div_tela1"  class="tela01">
+                <p>Para redefinir sua senha, informe o e-mail cadastrado na sua conta e lhe enviaremos um link com as instruções.</p>
+                <h1>E-mail</h1>
+                <input type="text" id="rec_email">
+                <div id="div_erro">Email não cadastrado!</div>
+                <button onclick="enviar()"><a>Enviar</a></button>
+                <div class=" cancelar">
+                    <a href="login.html">Cancelar</a>
+                </div>
+            </div>
+
+            <div id="div_tela2"  class="tela02">
+                <p>Preencha os campos abaixo</p>
+                <h1>Digite sua nova senha</h1>
+                <input type="password" id="ipt_senha" onkeyup="validar()">
+                <div class="erroSenha">
+                    <div id="erro1">1 letra maiúscula</div>
+                    <div id="erro2">1 letra minúscula</div>
+                    <div id="erro3">1 número</div>
+                    <div id="erro4">8+ caracteres</div>
+                </div>
+                <h1>Digite novamente</h1>
+                <input type="password" id="ipt_senha_repeat">
+                <div id="erroRepeat">Senhas diferentes</div>
+                <button onclick="continuar()"><a>Continuar</a></button>
+                <div class="cancelar">
+                    <a onclick="cancelar()" >Cancelar</a>
+                </div>
+            </div>
+
+            <div id="div_tela3" class="tela03">
+                <div class="banner">
+                    <div class="container">
+                        <h1>Senha alterada com sucesso !</h1>
+                        <a href="login.html"><button>Concluído</button></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+ 
+
+    <!-- Final do banner -->
+
+    <!--Início Footer-->
+
+    <div class="footer">
+        <div class="rodape">
+            <div class="container">
+                <div class="cardFooter">
+                    <img src="img/logo.png" id="logoFooter">
+                </div>
+                <div class="cardFooterCentral">
+                    <ul>
+                        <li>
+                            <a href="index.html">Início</a>
+                        </li>
+                        <li>
+                            <a href="sobrenos.html">Sobre Nós</a>
+                        </li>
+                        <li>
+                            <a href="calculadora.html">Simule Aqui</a>
+                        </li>
+                        <li>
+                            <a href="faleconosco.html">Fale Conosco</a>
+                        </li>
+                        <li>
+                            <a href="login.html">Acessar o Sistema</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cardFooter">
+                    <a href=""><img src="img/instagram.png" alt="Link para nossa página no instagram"></a>
+                    <a href=""><img src="img/facebook.png" alt="Link para nossa página no FaceBook"></a>
+                    <a href=""><img src="img/twitter.png" alt="Link para nossa página no Twitter"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Fim do Footer-->
+    
+</body>
+</html>

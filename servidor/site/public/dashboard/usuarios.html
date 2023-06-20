@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/usuarios.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <script src="js/menuH.js"></script>
+    <script src="js/usuarios.js"></script>
+    <title>Vaga Fácil</title>
+</head>
+
+<body>
+    <!-- Começo do Header -->
+    <header>
+        <nav class="nav">
+            
+            <a href=""><img class="logo" src="img/logo.png" alt="Home"></a>
+            
+            <img class="menuH" onclick="menuH()" src="img/menuH.png" alt="Menu Hamburguer">
+            
+            <div id="listaMenuH">
+                <img onclick="seta()" src="img/seta.png" alt="">
+                <ul class="itens-menuH">
+                    <!-- <li><a href="dashboard.html">Dashboard</a></li> -->
+                    <li><a href="acompanhar.html">Acompanhar</a></li>
+                    <li><a href="expandir.html">Expandir</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="usuarios.html">Lista de usuários</a></li>
+                    <li><a href="adicionarUsuario.html">Adicionar usuário</a></li>
+                    <button class="btn-site" onclick="sair()">Site Institucional</button>
+                </ul>
+            </div>
+        </nav>
+        <div id="alertSair">
+            <div class="caixa">
+                <h1>Deseja voltar para o Site Institucional?</h1>
+                <button onclick="sim()">Sim</button>
+                <button onclick="nao()">Não</button>
+            </div>
+        </div>
+    </header>
+    <!-- Fim do Header -->
+    
+    <main>
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErroDelete">
+                <span id="mensagem_erroDelete"></span>
+            </div>
+        </div>
+        <div class="lista">
+            <div class="campo-usuarios">
+                <div class="pesquisa">
+                    <input id="ipt_pesquisa" type="text" placeholder="Pesquisar usuário" oninput="pesquisa()">
+                </div>
+                <div id="scroll">
+                    <div id="div_aguardar" class="loading-div">
+                        <img src="../assets/circle-loading.gif" id="loading-gif">
+                    </div>
+                </div>
+            </div>
+            <div class="campo-info">
+                <h1>Informações</h1>
+                <div class="space-campo-info">
+                    <div class="perguntas">
+                        <p>Nome</p>
+                        <p>Nascimento</p>
+                        <p>CPF</p>
+                        <p>Telefone</p>
+                        <p>Email</p>
+                    </div>
+                    <form class="respostas" id="form_infos">
+                        <p id="nome" name="nome">-</p>
+                        <p id="dataN" name="">-</p>
+                        <p id="cpf" name="">-</p>
+                        <p id="telefone" name="">-</p>
+                        <p id="email" name="">-</p>
+                    </form>
+                </div>
+                <div class="space-btn">
+                    <button style="display: none;" id="btnExcluir" onclick="deletarUsuario(funcExibido)">Excluir usuário</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="rodape">
+            <div class="container">
+                <div class="cardFooter">
+                    <img src="img/logo.png" id="logoFooter">
+                </div>
+                <div class="cardFooterCentral">
+                    <ul>
+                        <!-- <li>
+                            <a href="dashboard.html">Dashboard</a>
+                        </li> -->
+                        <li>
+                            <a href="Acompanhar.html">Acompanhar</a>
+                        </li>
+                        <li>
+                            <a href="expandir.html">Expandir</a>
+                        </li>
+                        <li>
+                            <a href="perfil.html">Perfil</a>
+                        </li>
+                        <li>
+                            <a href="usuarios.html">Lista de usuários</a>
+                        </li>
+                        <li>
+                            <a href="adicionarUsuario.html">Adicionar usuário</a>
+                        </li>
+                        <li>
+                            <a href="../index.html">Site Institucional</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cardFooter">
+                    <a href=""><img src="../img/instagram.png" alt="Link para nossa página no instagram"></a>
+                    <a href=""><img src="../img/facebook.png" alt="Link para nossa página no FaceBook"></a>
+                    <a href=""><img src="../img/twitter.png" alt="Link para nossa página no Twitter"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+<script>
+        var idFuncionario = sessionStorage.ID_FUNCIONARIO;
+        var funcExibido = 0;
+        atualizarFormulario(idFuncionario)
+
+
+</script>

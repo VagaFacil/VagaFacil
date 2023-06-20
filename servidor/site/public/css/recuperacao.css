@@ -1,0 +1,374 @@
+html {
+    font-family: 'font';
+}
+
+body {
+    width: auto;
+    height: auto;
+    background-color: #1c7c94;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.container {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    margin: auto;
+
+
+}
+
+/* Incio do botão "Cancelar" */
+a {
+    color: #F49C24;
+    font-family: 'fonte';
+    text-decoration: none;
+}
+
+.cancelar a{
+    font-family: 'fonte';
+    color: #32a7b1;
+    text-decoration: underline ;
+}.cancelar {
+    margin: 0 0 20px 0;
+}
+
+/* Fim do botão "Cancelar" */
+
+
+
+
+/* Início da frase: "Recuperação de Senha" */
+
+.box_frase {
+    width: auto;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    margin: 70px 0 0 0;
+}
+
+.frase {
+    width: 500px;
+    background-color: #F49C24;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0C243C;
+    font-family: 'fonte'; 
+    font-size: 30px;
+}
+
+/* Fim da frase: "Recuperação de Senha" */
+
+
+
+/* Início Banner */
+
+.banner {
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+.banner .container{
+    width: 40%;
+    height: auto;
+    background-color: #0C243C;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto auto auto;
+}
+
+/* Fim Banner */
+
+
+
+
+
+/* Início Banner Tela 01 */
+
+
+.tela01 {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.tela01 p {
+    font-family: 'font';
+    color: #fdfdfd;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+.tela01 h1 {
+    font-family: 'font';
+    font-size: larger;
+    color: #F49C24;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.tela01 input{
+    width: 70%;
+    border: solid 3px #32a7b1;
+    border-radius: 10px;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+.tela01 button {
+    background-color: #F49C24;
+    color: #0C243C;
+    width: auto;
+    height: auto;
+    border-radius: 20px;
+    font-family: 'fonte';
+    margin: 20px auto 10px auto;
+    padding: 10px 30px 10px 30px;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 2px 4px black;
+}.tela01 button:hover {
+    background-color: #FCF4EC;
+    color: #F49C24;
+    transition: .3s;
+    box-shadow: 0 4px 8px black;
+}
+
+.tela01 button a{
+    color: #0C243C;
+    font-family: 'fonte';
+}
+
+/* Final Banner Tela 01 */
+
+/* Erro tela 1  */
+#div_erro {
+    color: red;
+    font-size: 14px;
+    display: none;
+    padding: 5px 0 0 0;
+}
+
+/* Início Banner Tela 02 */
+
+.tela02 {
+    width: 100%;
+    height: auto;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+
+.tela02 p {
+    font-family: 'fonte';
+    color: #fdfdfd;
+    margin: 20px 10px 20px 10px;
+    text-align: center;
+}
+
+.tela02 h1 {
+    font-family: 'font';
+    font-size: 24px;
+    color: #F49C24;
+}
+
+.tela02 input{
+    width: 70%;
+    border: solid 3px #32a7b1;
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+.tela02 button {
+    background-color: #F49C24;
+    color: #0C243C;
+    width: auto;
+    height: auto;
+    border-radius: 20px;
+    font-family: 'fonte';
+    margin: 10px auto;
+    padding: 10px 30px 10px 30px;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 4px 8px black;
+}.tela02 button:hover {
+    background-color: #FCF4EC;
+    color: #F49C24;
+    transition: .3s;
+    box-shadow: 0 8px 16px black;
+}
+
+.tela02 button a{
+    color: #0C243C;
+    font-family: 'fonte';
+}
+
+.cancelar{
+    margin: 10px 10px 20px 10px;
+}
+
+/* erros tela 02 */
+.erroSenha {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    margin: auto;
+    justify-content: space-between;
+    width: 70%;
+    padding: 0 0 10px 0;
+}
+
+#erroRepeat {
+    display: none;
+    color: red;
+    font-size: 14px;
+    padding: 0 0 10px 0;
+}
+
+
+/* Fim Banner Tela 02 */
+
+
+
+
+/* Início Banner Tela 02 */
+
+.tela03 {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: none;
+}
+.tela03 .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tela03 h1 {
+    font-family: 'font';
+    text-align: center;
+    width: auto;
+    color: black;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #58D244;   
+}   
+
+.tela03 button {
+    background-color: #F49C24;
+    color: #0C243C;
+    width: auto;
+    height: auto;
+    border-radius: 20px;
+    font-family: 'fonte';
+    margin: 20px auto;
+    padding: 10px 30px 10px 30px;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 4px 8px black;
+}.tela03 button:hover {
+    background-color: #FCF4EC;
+    color: #0C243C;
+    transition: .3s;
+    box-shadow: 0 8px 16px black;
+}
+
+.tela03 a button{
+    color: #0C243C;
+    font-family: 'fonte';
+}
+
+/* Fim do footer 3 */
+
+/* Início footer 3 */
+
+.footer {
+    width: auto;
+    height: 100px;
+    margin-top: 50px;
+}
+
+.footer1 {
+    width: auto;
+    height: 15px;
+    background-color: #061829;
+
+}
+
+
+
+.footer2 {
+    width: auto;
+    height: auto;
+    background-color: #0C243C;
+    display: flex;
+    justify-content: space-between;
+    color: #fdfdfd;
+    font-family: 'fonte';
+    text-align: center;
+
+}
+
+.footer2 ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    margin-bottom: 20px;
+}
+
+.footer2 h1{
+    margin: 10px;
+    font-family: 'font';
+    text-decoration: underline;
+    color: #F49C24  ;
+}
+
+.footer2 li{
+    margin: 5px;
+}
+
+.footer3 {
+    background-color: #061829;
+    width: auto;
+    height: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    color: #fdfdfd;
+}
+
+
+/* Fim do footer */
